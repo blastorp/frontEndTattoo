@@ -1,5 +1,5 @@
 import React from "react";
-import '../navegacionAdmin/estilos/navbar.css'
+import '../estilos/navbar.css'
 import { useState } from 'react';
 
 function MyNavBar({listaLinks}) {

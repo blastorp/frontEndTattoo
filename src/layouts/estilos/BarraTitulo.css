@@ -1,0 +1,17 @@
+.contenedorBarraTitulo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--gris-color);
+    border-radius: 3px;
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+    font-weight: bold;
+    font-size: large;
+    font-family: var(--primary-font);
+    color: var(--oscuro-color);
+}

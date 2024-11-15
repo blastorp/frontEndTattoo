@@ -1,6 +1,8 @@
 
 import './App.css';
-import MyNavBar from './layouts/navegacionAdmin/navbar';
+import MyNavBar from './layouts/componentes/Navbar';
+import MainAdmin from './layouts/MainAdmin';
+
 import { useState } from 'react';
 
 function App() {
@@ -11,12 +13,14 @@ function App() {
     {nombre: 'Vista Cliente' , ruta:'#'}
 
   ]
-
+const titulo = "sjdfla"
 
 
   return (
     <div className="App">
-        <MyNavBar listaLinks={arrayLinks} />
+        <MainAdmin tituloPagina={titulo} />
+        {/* <BarraTitulo titulo={titulo}/> */}
+        
     </div>
   );
 }
