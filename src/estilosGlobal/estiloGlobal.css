@@ -1,0 +1,38 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+:root {
+    /* Color Palette */
+    --oscuro-color: #303841; 
+    --intermedio-color: #3A4750; 
+    --gris-color: #D3D6DB; 
+    --rojo-color: #BE3144; 
+   
+    --SecudandarioOscuro-color: #171717; 
+    --SecundarioIntermedio-color: #444444; 
+    --Secundariogris-color: #EDEDED; 
+    --SecundarioRojo-color: #DA0037; 
+
+    
+
+    --text-color: #333333; 
+  
+    /* Font Variables */
+    --primary-font: 'Anton', sans-serif;
+    --secondary-font: 'DM Sans', sans-serif;
+  
+    /* Spacing (optional) */
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 24px;
+  }
+  
+  /* Global Reset (optional) */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--primary-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+  }
