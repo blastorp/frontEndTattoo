@@ -13,13 +13,13 @@ function App() {
     {nombre: 'Vista Cliente' , ruta:'#'}
 
   ]
-const titulo = "sjdfla"
+const titulo = "Prueba Titulo"
 
 
   return (
     <div className="App">
         <MainAdmin tituloPagina={titulo} />
-        {/* <BarraTitulo titulo={titulo}/> */}
+        
         
     </div>
   );

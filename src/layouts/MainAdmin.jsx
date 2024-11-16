@@ -2,7 +2,7 @@ import React from "react";
 import MyNavBar from "./componentes/Navbar";
 import BarraTitulo from "./componentes/BarraTitulo.jsx";
 import AsideAdmin from "./componentes/AsideAdmin.jsx";
-
+import './estilos/MainAdmin.css'
 
 function MainAdmin({tituloPagina}) {
     
@@ -12,10 +12,23 @@ function MainAdmin({tituloPagina}) {
 
   ]
     return(
-        <div>
+        <div className="contenedorLayout">
             <MyNavBar clasName listaLinks={arrayLinks} />
-            <AsideAdmin  />
-            <BarraTitulo titulo={tituloPagina}/>
+            <div className="distribucionContenido">
+              <div className="contenedorAside">
+                <AsideAdmin  />
+              </div>
+              <div className="contenedorBarraTitulo">
+
+              <BarraTitulo titulo={tituloPagina}/>
+              </div>
+              <div className="contenedorContenidoPagina">
+                
+              </div>
+              
+              
+            </div>
+            
 
         </div>
     );

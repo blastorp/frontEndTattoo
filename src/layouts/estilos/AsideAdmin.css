@@ -1,17 +1,17 @@
 .contenedorAsideAdmin {
+    width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
     display: grid;
-    grid-template-columns: 30% 70%;
-    height: 80%;
-    justify-content: center;
-    align-content: center;
+    grid-template-rows: 4fr 6fr;
+    height:80%;
     background-color: var(--gris-color);
     border-radius: 3px;
     box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .contenedorLogo {
+    min-width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +23,8 @@
     height: auto;
     padding: 10px;
     margin: 10px auto;
-    background-color: var(--oscuro-color);
+    border-radius: 3px;
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .contenedorContenido{

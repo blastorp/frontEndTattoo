@@ -7,7 +7,7 @@ function BarraTitulo({titulo}) {
 
     return (
         <div className="contenedorBarraTitulo">
-            <h3 className="titulo">cgdg</h3>
+            <h3 className="titulo">{titulo}</h3>
         </div>
     );
 }

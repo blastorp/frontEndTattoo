@@ -5,13 +5,12 @@
     justify-content: center;
     align-content: center;
     background-color: var(--gris-color);
-    border-radius: 3px;
-    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 3px;
 }
 
 .titulo {
     font-weight: bold;
-    font-size: large;
+    font-size: larger;
     font-family: var(--primary-font);
     color: var(--oscuro-color);
 }

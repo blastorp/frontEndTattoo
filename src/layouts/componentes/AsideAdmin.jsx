@@ -1,7 +1,7 @@
 import React from "react";
 import '../estilos/BarraTitulo.css'
 import ToILogo from  '../assets/logo.png'
-
+import '../estilos/AsideAdmin.css'
 
 function AsideAdmin({contenidoAside}) {
     
