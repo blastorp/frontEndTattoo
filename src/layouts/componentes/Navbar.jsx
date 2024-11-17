@@ -1,6 +1,7 @@
 import React from "react";
 import '../estilos/navbar.css'
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 
 function MyNavBar({listaLinks}) {
     const [isSidebarVisible, setIsSidebarVisible] = useState(false);
@@ -25,7 +26,12 @@ function MyNavBar({listaLinks}) {
                     </a>
                 </li>
                 {listaLinks.map((item,index) => (
-                    <li><a href={item.ruta}>{item.nombre}</a></li>
+                    <li key={index}><Link to={item.ruta}>{item.nombre}</Link>
+
+                        {/* <a href={item.ruta}>{item.nombre}
+                            </a> */}
+                            
+                            </li>
                 ))}
                 {/* <li><a href="#">Blog</a></li>
                 <li><a href="#">Products</a></li>
@@ -38,7 +44,7 @@ function MyNavBar({listaLinks}) {
             <ul>
                 <li className="titulo"><a  href="#">Temple of Ink</a></li>
                 {listaLinks.map((item,index) => (
-                    <li className="hideOnMobile"><a href={item.ruta}>{item.nombre}</a></li>
+                    <li className="hideOnMobile"><Link to={item.ruta}>{item.nombre}</Link></li>
                 ))}
 
 

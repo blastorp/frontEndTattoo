@@ -2,7 +2,8 @@ import React from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import EditIcon from '@mui/icons-material/Edit';
-
+import '../estilos/Tarjeta.css'
+import { Link } from 'react-router-dom';
 export const Tarjeta = ({objetoArtista}) => {
   return (
     <div className="card">
@@ -10,13 +11,19 @@ export const Tarjeta = ({objetoArtista}) => {
           <img src="https://via.placeholder.com/100" alt="Foto de perfil" />
           <div className="contenedorBotonesAccion">
             <div className="contenedorEdit">
-                <a href=""></a>
+                <Link >
+                <EditIcon/>
+                </Link>
             </div>
             <div className="contenedorVer">
-            <a href=""></a>
+            <Link>
+            <VisibilityIcon/>
+            </Link>
             </div>
             <div className="contenedorArchivar">
-            <a href=""></a>
+            <Link>
+            <ArchiveIcon/>
+            </Link>
             </div>
            </div>
         </div>

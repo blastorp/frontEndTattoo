@@ -1,14 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+
 import App from './App';
 import './estilosGlobal/estiloGlobal.css';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+import ArtistasDash from './modulos1/Artistas/pages/ArtistasDash';
+import ArtistaEditArtista from  './modulos1/Artistas/pages/ArtistaEditArtista'
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />
+  },
+  {
+    path: "/pages/ArtistasDash",
+    element: <ArtistasDash />
+  },
+]);
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
