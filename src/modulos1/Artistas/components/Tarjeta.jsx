@@ -3,11 +3,22 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import EditIcon from '@mui/icons-material/Edit';
 
-export const Tarjeta = () => {
+export const Tarjeta = ({objetoArtista}) => {
   return (
     <div className="card">
         <div className="profile-pic">
           <img src="https://via.placeholder.com/100" alt="Foto de perfil" />
+          <div className="contenedorBotonesAccion">
+            <div className="contenedorEdit">
+                <a href=""></a>
+            </div>
+            <div className="contenedorVer">
+            <a href=""></a>
+            </div>
+            <div className="contenedorArchivar">
+            <a href=""></a>
+            </div>
+           </div>
         </div>
         <div className="info">
           <h3>Nombre de Usuario</h3>

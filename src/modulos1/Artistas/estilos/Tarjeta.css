@@ -23,7 +23,24 @@ body {
     align-items: center;
     gap: 12px;
   }
-  
+  .profile-pic {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end ;
+    
+  }
+  .contenedorBotonesAccion  {
+    background-color: #acacac;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 3px;
+    gap: 8px;
+  }
+
   /* Imagen de perfil */
   .profile-pic img {
     width: 100px;
