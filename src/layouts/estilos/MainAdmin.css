@@ -27,3 +27,13 @@ background-color: var(--oscuro-color);
     justify-content: center;
     align-items: center;
 }
+
+.contenedorContenidoPagina {
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+}

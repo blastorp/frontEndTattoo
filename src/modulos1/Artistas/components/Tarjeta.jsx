@@ -4,7 +4,7 @@ import ArchiveIcon from '@mui/icons-material/Archive';
 import EditIcon from '@mui/icons-material/Edit';
 import '../estilos/Tarjeta.css'
 import { Link } from 'react-router-dom';
-export const Tarjeta = ({objetoArtista}) => {
+export const Tarjeta = ( {objetoArtista} ) => {
   return (
     <div className="card">
         <div className="profile-pic">
@@ -28,8 +28,8 @@ export const Tarjeta = ({objetoArtista}) => {
            </div>
         </div>
         <div className="info">
-          <h3>Nombre de Usuario</h3>
-          <p>📞 Teléfono: +123 456 789</p>
+          <h3>{objetoArtista.nombre}</h3>
+          <p>{objetoArtista.telefono}</p>
         </div>
         <div className="toggle">
           <label for="publicado">
