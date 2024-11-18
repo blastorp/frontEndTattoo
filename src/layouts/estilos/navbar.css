@@ -13,7 +13,7 @@
 nav{
   background-color: var(--intermedio-color);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-  position: sticky; /* Set the navbar to fixed position */
+  position: sticky; 
   top: 0; /* Position the navbar at the top of the page */
   width: 100%;
 }
