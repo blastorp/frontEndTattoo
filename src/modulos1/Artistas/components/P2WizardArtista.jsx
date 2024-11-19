@@ -1,6 +1,6 @@
 import React from "react";
 
-function PersonalInfo({ formData, setFormData }) {
+function P2WizardArtista({ formData, setFormData }) {
   return (
     <div className="personal-info-container">
       <input
@@ -31,4 +31,4 @@ function PersonalInfo({ formData, setFormData }) {
   );
 }
 
-export default PersonalInfo;
+export default P2WizardArtista;

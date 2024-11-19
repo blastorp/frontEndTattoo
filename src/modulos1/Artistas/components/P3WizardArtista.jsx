@@ -1,6 +1,6 @@
 import React from "react";
 
-function OtherInfo({ formData, setFormData }) {
+function P3WizardArtista({ formData, setFormData }) {
   return (
     <div className="other-info-container">
       <input
@@ -23,4 +23,4 @@ function OtherInfo({ formData, setFormData }) {
   );
 }
 
-export default OtherInfo;
+export default P3WizardArtista;
