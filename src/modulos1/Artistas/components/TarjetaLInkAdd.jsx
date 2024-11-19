@@ -11,7 +11,7 @@ function TarjetaLInkAdd() {
         <Button variant="outlined"
         color="primary" 
         component={Link} 
-        to="/target-page"
+        to="/pages/AddArtista"
         startIcon={<AddIcon/>}
         >
             Nuevo Perfil
