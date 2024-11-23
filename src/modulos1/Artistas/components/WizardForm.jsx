@@ -42,7 +42,7 @@ function WizardForm() {
         </div>
         <div className="form-container">
           <div className="header">
-            <h1>{FormTitles[page]}</h1>
+            <h2 className="tituloPaginaWizard">{FormTitles[page]}</h2>
           </div>
           <div className="body">{PageDisplay()}</div>
           <div className="footer">

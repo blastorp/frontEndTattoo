@@ -29,11 +29,13 @@ background-color: var(--oscuro-color);
 }
 
 .contenedorContenidoPagina {
-    width: 100%;
+    min-width: 300px;
+    
     margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     flex-wrap: wrap;
     align-items: center;
+    border-radius: 3px;
 }

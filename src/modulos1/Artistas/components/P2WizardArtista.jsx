@@ -2,31 +2,30 @@ import React from "react";
 
 function P2WizardArtista({ formData, setFormData }) {
   return (
-    <div className="personal-info-container">
+    <div className="p1-container">
+      <label htmlFor="NombreArt">Pseudonimo:</label>
       <input
         type="text"
-        placeholder="First Name..."
-        value={formData.firstName}
-        onChange={(e) => {
-          setFormData({ ...formData, firstName: e.target.value });
-        }}
+        name="NombreArt"
+        placeholder="nombre..."
+        value={formData.nombreArt}
+        maxLength={90}
+        onChange={(event) =>
+          setFormData({ ...formData, nombreArt: event.target.value })
+        }
       />
-      <input
-        type="text"
-        placeholder="Last Name..."
-        value={formData.lastName}
-        onChange={(e) => {
-          setFormData({ ...formData, lastName: e.target.value });
-        }}
+      <label htmlFor="DescripcionArtista">Descripcion:</label>
+      <textarea
+        name="DescripcionArtista"
+        placeholder="Numero Identificacion..."
+        rows="4" cols="50"
+        maxLength={900}
+        value={formData.nroIdentificacion}
+        onChange={(event) =>
+          setFormData({ ...formData, nroIdentificacion: event.target.value })
+        }
       />
-      <input
-        type="text"
-        placeholder="Username..."
-        value={formData.username}
-        onChange={(e) => {
-          setFormData({ ...formData, username: e.target.value });
-        }}
-      />
+     
     </div>
   );
 }
