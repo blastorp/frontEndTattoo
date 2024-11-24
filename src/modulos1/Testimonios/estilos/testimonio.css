@@ -1,0 +1,54 @@
+form {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.stars {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+    .stars input[type="radio"] {
+        display: none;
+    }
+
+    .stars label {
+        font-size: 24px;
+        cursor: pointer;
+        color: #ccc;
+    }
+
+        .stars label.selected {
+            color: gold;
+        }
+
+button {
+    background-color: #DA0037;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+    button:hover {
+        background-color: #BE3144;
+    }

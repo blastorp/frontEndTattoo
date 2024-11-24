@@ -1,23 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import App from './App';
+//import App from './App';
 import './estilosGlobal/estiloGlobal.css';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 
+import Home from './modulos1/Inicio/pages/Home';
 import ArtistasDash from './modulos1/Artistas/pages/ArtistasDash';
 import ArtistaEditArtista from  './modulos1/Artistas/pages/ArtistaEditArtista'
 import Galeria from './modulos1/Galeria/pages/galeria';
 import Membresia from './modulos1/Membresias/pages/membresia';
 import AgendaArtistas from './modulos1/AgendaArtistas/pages/agendaartistas';
+import NuevoTestimonio from './modulos1/Testimonios/pages/nuevotestimonio';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <Home />
   },
   {
     path: "/pages/ArtistasDash",
@@ -38,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/pages/agendaartistas",
     element: <AgendaArtistas />
+  },
+  {
+    path: "/pages/nuevotestimonio",  
+    element: <NuevoTestimonio />
   },
 ]);
 
