@@ -1,63 +1,57 @@
+/*#region Testimonios*/
 
-/* Asegura que la sección ocupe todo el ancho de la página con márgenes iguales */
 .testimonial-section {
-    background-color: #b1a6a660; /* Gris */
-    display: block; /* Asegura que sea un bloque de nivel de bloque */
-    width: 110%; /* Ajusta el ancho de la sección */
-    max-width: 1900px; /* Máximo ancho */
-    margin: 0 auto; /* Centra la sección */
+    background-color: #b1a6a660;
+    display: block;
+    width: 110%;
+    max-width: 1900px;
+    margin: 0 auto;
     padding: 20px 0;
-    margin-left: -20px; /* Espacio superior e inferior */
+    margin-left: -20px;
 }
 
-
-/* Estilo para el título fuera del slider */
 .testimonial-title {
     font-size: 2em;
     color: white;
     text-align: center;
-    margin-bottom: 20px; /* Espacio debajo del título */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra en el título */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Estilo para el slider de testimonios */
 .testimonial-slider {
-    width: 100%; /* Ajusta el ancho al 100% de la página */
-    height: 300px; /* Ajusta la altura del slider */
+    width: 100%;
+    height: 300px;
     overflow: hidden;
     position: relative;
     background: url('/src/layouts/assets/Testimonios_img.png') no-repeat center center/cover;
     background-color: #BE3144;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    color: white; /* Para que el texto sea legible sobre el fondo */
+    color: white;
     display: flex;
-    flex-direction: column; /* Organiza los elementos del slider verticalmente */
-    justify-content: center; /* Centra el contenido verticalmente */
-    align-items: center; /* Centra el contenido horizontalmente */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
     text-align: center;
 }
 
-/* Estilo de cada slide (testimonio) */
 .testimonial-slider .testimonial-slide {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    position: absolute; /* Todos los testimonios ocupan el mismo espacio */
-    top: 50%; /* Centrado verticalmente */
-    transform: translateY(-50%); /* Ajuste para centrar exactamente */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     padding: 20px;
     font-size: 1.2em;
     font-style: italic;
     max-width: 80%;
 }
 
-/* Muestra el slide activo */
 .testimonial-slider .testimonial-slide.active {
     opacity: 1;
 }
 
-/* Controles de navegación */
 .controls {
     position: absolute;
     top: 0;
@@ -69,7 +63,6 @@
     z-index: 10;
 }
 
-/* Estilo de los botones de control */
 .controls button {
     background-color: transparent;
     border: none;
@@ -78,22 +71,19 @@
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    height: 100%; /* Asegura que los botones ocupen todo el alto */
-    width: auto; /* Los botones ocupan solo lo necesario en ancho */
+    height: 100%;
+    width: auto;
 }
 
-/* Efecto al pasar el mouse sobre los botones */
 .controls button:hover {
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con transparencia */
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Estilo para el contenedor del botón de añadir testimonio */
 .button-container {
     margin-top: 20px;
     text-align: center;
 }
 
-/* Estilo para el botón de añadir testimonio */
 .add-testimonial-button {
     background-color: #BE3144;
     color: white;
@@ -103,7 +93,8 @@
     transition: background-color 0.3s ease;
 }
 
-/* Efecto al pasar el mouse sobre el botón */
 .add-testimonial-button:hover {
     background-color: #9c2636;
 }
+
+/*#endregion Testimonios*/
