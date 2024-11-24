@@ -1,28 +1,24 @@
-/* Asegura que el menú tenga una altura fija pero no empuje el contenido hacia abajo */
 .navbar {
-  height: 80px; /* Asegura la altura del menú */
-  padding: 0; /* Elimina el padding adicional */
-  position: sticky; /* Hace que el menú se quede fijo en la parte superior */
-  top: 0; /* Asegura que se quede al principio de la página */
-  z-index: 1000; /* Asegura que el menú quede por encima de otros elementos */
-  background-color: #1E1E1E; /* Color de fondo del menú */
+  height: 80px;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #1E1E1E;
 }
 
-/* Cambiar el tamaño de la imagen del logo */
 .logo-img {
-  height: 100px; /* Ajusta la altura a lo que necesites */
-  width: auto;   /* Mantiene la proporción original */
-  object-fit: contain;  /* Asegura que la imagen no se distorsione */
+  height: 100px;
+  width: auto;
+  object-fit: contain;
 }
 
-/* Contenedor de la barra de navegación */
 .navbar-collapse {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Ajustes a la lista de navegación */
 .navbar-nav {
   display: flex;
   justify-content: center;
@@ -32,35 +28,31 @@
   flex-grow: 1;
 }
 
-/* Asegura que el área del botón esté bien centrada */
 .navbar-nav .nav-item {
-  margin: 0 10px; /* Margen entre los botones */
+  margin: 0 10px;
   display: flex;
-  align-items: center; /* Alinea verticalmente los elementos */
-  justify-content: center; /* Alinea horizontalmente los elementos */
+  align-items: center;
+  justify-content: center;
 }
 
-/* Estilo de los enlaces dentro de los botones */
 .navbar-nav .nav-item a {
   color: white !important;
   text-decoration: none;
   font-weight: 500;
-  padding: 12px 20px; /* Padding mayor para un área clicable más grande */
-  border-radius: 4px; /* Bordes redondeados */
-  display: flex;  /* Utilizamos flexbox para centrar el contenido */
-  justify-content: center; /* Centra el texto horizontalmente */
-  align-items: center; /* Centra el texto verticalmente */
-  height: 60px; /* Altura del botón */
-  transition: background-color 0.3s ease; /* Transición suave para el hover */
+  padding: 12px 20px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  transition: background-color 0.3s ease;
 }
 
-/* Efecto hover */
 .navbar-nav .nav-item a:hover {
-  background-color: #444444; /* Fondo al pasar el ratón */
-  color: white;  /* Asegura que el color del texto no cambie */
+  background-color: #444444;
+  color: white;
 }
 
-/* Para pantallas pequeñas */
 @media (max-width: 767px) {
   .navbar-nav {
     display: flex;
@@ -74,11 +66,10 @@
 
   .navbar-nav .nav-item a {
     padding: 10px 20px;
-    height: auto; /* Permite que el botón se ajuste en pantallas pequeñas */
+    height: auto;
   }
 }
 
-/* Dropdown ajustes */
 .navbar-nav .nav-item.dropdown {
   position: relative;
 }
@@ -86,7 +77,7 @@
 .navbar-nav .nav-item .dropdown-toggle {
   color: white;
   font-weight: 500;
-  padding: 10px 15px; /* Ajustamos el padding aquí también */
+  padding: 10px 15px;
   border-radius: 4px;
 }
 

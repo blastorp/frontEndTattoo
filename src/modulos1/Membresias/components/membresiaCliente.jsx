@@ -9,10 +9,6 @@ const Membresia = () => {
   const cardWidth = 350; // Ancho de cada tarjeta (ajústalo según corresponda)
   const maxIndex = totalCards - cardsToShow; // Último índice permitido
 
-  const moveCarousel = (index) => {
-    setCurrentIndex(Math.max(0, Math.min(index, maxIndex)));
-  };
-
   const nextSlide = () => {
     if (currentIndex < maxIndex) {
       setCurrentIndex(currentIndex + 1);

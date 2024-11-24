@@ -3,10 +3,10 @@
   padding: 10px 0;
   color: white;
   background-color: #222;
-  width: 100vw; /* Usa el ancho completo de la ventana */
+  width: 100vw;
   text-align: center;
   box-sizing: border-box;
-  overflow-x: hidden; /* Previene scroll horizontal */
+  overflow-x: hidden;
 }
 
 .footer-container {
@@ -17,9 +17,8 @@
   margin: 0 auto;
   padding: 0 10px;
   box-sizing: border-box;
-  overflow-x: hidden; /* Previene scroll horizontal si algún hijo se desborda */
+  overflow-x: hidden;
 }
-
 
 .footer-column {
   flex: 1;
@@ -64,15 +63,14 @@
 }
 
 .social-icons li a {
-  font-size: 24px; /* Tamaño de los íconos */
+  font-size: 24px;
   color: white;
   text-decoration: none;
 }
 
 .social-icons li a:hover {
-  color: #DA0037; /* Cambia el color al pasar el cursor */
+  color: #DA0037;
 }
-
 
 .footer-copyright {
   background-color: rgba(0, 0, 0, 0.7);
@@ -84,11 +82,10 @@
   font-size: 12px;
 }
 
-
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Asegura que ningún elemento cause scroll horizontal */
+  overflow-x: hidden;
 }
 
 *, *::before, *::after {
