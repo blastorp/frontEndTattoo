@@ -1,0 +1,41 @@
+/* Estilo general del header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Alinea todo al margen derecho */
+  padding: 10px 20px;
+  background-color: #343a40;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Asegúrate de que el contenido principal tenga espacio para no ocultar el header */
+body {
+  padding-top: 60px; /* Ajusta este valor según la altura de tu header */
+}
+
+/* Título en el margen derecho */
+.header-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 20px; /* Espacio antes del botón de logout */
+}
+
+/* Botón de logout */
+.logout-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.logout-button:hover {
+  color: #f00;
+}

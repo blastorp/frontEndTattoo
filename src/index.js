@@ -15,6 +15,7 @@ import Galeria from './modulos1/Galeria/pages/galeria';
 import Membresia from './modulos1/Membresias/pages/membresia';
 import AgendaArtistas from './modulos1/AgendaArtistas/pages/agendaartistas';
 import NuevoTestimonio from './modulos1/Testimonios/pages/nuevotestimonio';
+import Dashboard from './modulos1/Inicio/pages/Dashboard';
 
 
 const router = createBrowserRouter([
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/pages/nuevotestimonio",  
     element: <NuevoTestimonio />
+  },
+  {
+    path: "/pages/dashboard",  
+    element: <Dashboard />
   },
 ]);
 

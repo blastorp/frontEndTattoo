@@ -1,0 +1,62 @@
+/* Dashboard.css */
+
+/* Estilo para el contenedor del Dashboard */
+.dashboard-container {
+    background-image: url('https://www.example.com/your-background-image.jpg'); /* Reemplaza con la URL de tu imagen */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Color del texto */
+  }
+  
+  /* Estilo para el contenido dentro del Dashboard */
+  .dashboard-content {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 900px;
+    width: 100%;
+  }
+  
+  /* Estilos para el título y el párrafo */
+  .dashboard-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Cuadrícula de botones (4x4) */
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 botones por fila */
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Estilo para los botones */
+  .dashboard-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #BE3144;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .dashboard-button svg {
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+  }
+  
+  
