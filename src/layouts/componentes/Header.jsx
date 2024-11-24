@@ -66,7 +66,7 @@ const Header = () => {
               <li className="nav-item">
                 <Link to="/tienda" className="nav-link text-white">
                   {/* Icono de Tienda */}
-                  <i className="bi bi-shop" style={{ marginRight: '8px' }}></i>
+                  <i className="bi bi-shop"></i>
                 </Link>
               </li>
               {/* Dropdown para Perfil */}
