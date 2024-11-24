@@ -1,0 +1,115 @@
+#contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra todo el contenido en el eje vertical */
+    align-items: center; /* Centra todo el contenido en el eje horizontal */
+    min-height: 100vh; /* Hace que el contenedor principal ocupe toda la altura de la ventana */
+    padding: 20px 20px 100px;
+}
+
+.filtros {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filtros ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filtros li {
+    display: inline-block;
+}
+
+.filtros button {
+    background-color: #DA0037;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filtros button:hover {
+    background-color: #BE3144;
+}
+
+/* Estilos para la galería */
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center; /* Centra las imágenes en la galería */
+    width: 100%; /* Asegura que la galería ocupe el 100% del contenedor */
+}
+
+/* Estilos para las imágenes */
+.galeria .imagen {
+    flex: 1 1 calc(20% - 15px);
+    max-width: calc(20% - 15px);
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.galeria img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.galeria .imagen:hover img {
+    transform: scale(1.1);
+}
+
+.imagen-expandida {
+    position: fixed;  /* Fijar la imagen expandida sobre el resto del contenido */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Para asegurarse de que esté sobre otros elementos */
+  }
+  
+  .imagen-expandida img {
+    max-width: 90%;  /* Limitar el tamaño máximo de la imagen */
+    max-height: 90%; /* Limitar el tamaño máximo de la imagen */
+  }
+  
+  .controls button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+  }
+  
+  .controls button:hover {
+    opacity: 0.8; /* Efecto visual */
+  }
+  
+  .cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: white; /* Para que el icono de cerrar sea visible */
+  }
+  
+  

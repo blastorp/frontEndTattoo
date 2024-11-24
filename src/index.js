@@ -10,6 +10,9 @@ import {
 
 import ArtistasDash from './modulos1/Artistas/pages/ArtistasDash';
 import ArtistaEditArtista from  './modulos1/Artistas/pages/ArtistaEditArtista'
+import Galeria from './modulos1/Galeria/pages/galeria';
+import Membresia from './modulos1/Membresias/pages/membresia';
+import AgendaArtistas from './modulos1/AgendaArtistas/pages/agendaartistas';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +22,22 @@ const router = createBrowserRouter([
   {
     path: "/pages/ArtistasDash",
     element: <ArtistasDash />
+  },
+  {
+    path: "/pages/ArtistaEditArtista",
+    element: <ArtistaEditArtista />
+  },
+  {
+    path: "/pages/galeria",
+    element: <Galeria />
+  },
+  {
+    path: "/pages/membresia",
+    element: <Membresia />
+  },
+  {
+    path: "/pages/agendaartistas",
+    element: <AgendaArtistas />
   },
 ]);
 

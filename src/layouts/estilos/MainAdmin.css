@@ -1,33 +1,3 @@
-.contenedorLayout{
-
-min-width: 100vw;
-height: 50%;
-background-color: var(--oscuro-color);
-}
-
-.distribucionContenido{
-    padding: 10px;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr 6fr;
-    background-color: var(--oscuro-color);
-    display: grid;
-}
-
-.contenedorAside {
-    grid-column: 1/2;
-    grid-row: 1/6;
-    
-}
-.contenedorBarraTitulo{
-    margin-left: 15px;
-    grid-column: 2/4;
-    grid-row: 1/2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .contenedorContenidoPagina {
     width: 100%;
     margin: 10px;
