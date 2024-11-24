@@ -8,6 +8,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+//Cliente
 import Home from './modulos1/Inicio/pages/Home';
 import ArtistasDash from './modulos1/Artistas/pages/ArtistasDash';
 import ArtistaEditArtista from  './modulos1/Artistas/pages/ArtistaEditArtista'
@@ -15,7 +16,13 @@ import Galeria from './modulos1/Galeria/pages/galeria';
 import Membresia from './modulos1/Membresias/pages/membresia';
 import AgendaArtistas from './modulos1/AgendaArtistas/pages/agendaartistas';
 import NuevoTestimonio from './modulos1/Testimonios/pages/nuevotestimonio';
+
+//Administrador
 import Dashboard from './modulos1/Inicio/pages/Dashboard';
+import GaleriaAdm from './modulos1/Galeria/pages/galeriaadm';
+//import Membresia from './modulos1/Membresias/pages/membresia';
+//import AgendaArtistas from './modulos1/AgendaArtistas/pages/agendaartistas';
+//import NuevoTestimonio from './modulos1/Testimonios/pages/nuevotestimonio';
 
 
 const router = createBrowserRouter([
@@ -50,6 +57,10 @@ const router = createBrowserRouter([
   {
     path: "/pages/dashboard",  
     element: <Dashboard />
+  },
+  {
+    path: "/pages/galeriaaadm",  
+    element: <GaleriaAdm />
   },
 ]);
 
