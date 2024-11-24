@@ -28,8 +28,11 @@ const GaleriaCliente = () => {
       <section className="filtros">
         <ul>
           <li><button data-filter="Estilo">Estilo</button></li>
+          <li><button data-filter="Ubicacion">Ubicación</button></li>
+          <li><button data-filter="Tamano">Tamaño </button></li>
+          <li><button data-filter="Color">Color</button></li>
+          <li><button data-filter="Tematica">Temática</button></li>
           <li><button data-filter="Artista">Artista</button></li>
-          <li><button data-filter="Concepto">Concepto</button></li>
         </ul>
       </section>
 
