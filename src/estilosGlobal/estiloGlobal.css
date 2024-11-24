@@ -26,6 +26,7 @@
     --spacing-large: 24px;
   }
   
+  
   /* Global Reset (optional) */
   body, html {
     min-width: 100vw;
@@ -36,5 +37,4 @@
     background-color: black !important;
     color: var(--text-color);
     box-sizing: border-box;
-    
   }

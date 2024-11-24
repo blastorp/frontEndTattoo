@@ -7,6 +7,7 @@
   text-align: center;
   box-sizing: border-box;
   overflow-x: hidden;
+  margin-left: -20px; /* Margen a la izquierda */
 }
 
 .footer-container {
@@ -90,4 +91,41 @@ html, body {
 
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-column {
+    min-width: 100%;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .footer-column ul li a {
+    font-size: 12px;
+  }
+
+  .footer-copyright {
+    font-size: 10px;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-column h3 {
+    font-size: 14px;
+  }
+
+  .social-icons li a {
+    font-size: 20px;
+  }
 }

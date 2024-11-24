@@ -1,9 +1,10 @@
 .contenedorContenidoPagina {
     width: 100%;
-    margin: 10px;
+    margin: 0; /* Eliminar márgenes adicionales */
+    padding: 0; /* Eliminar rellenos */
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start; /* Asegura que los elementos estén alineados al inicio */
+    overflow-x: hidden; /* Asegura que no haya desbordamiento horizontal */
 }
