@@ -1,3 +1,11 @@
+h1 {
+    font-size: 36px;
+    color: white; /* Color del texto en blanco */
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 20px;
+}
+
 .membership-carousel-wrapper {
     display: flex;
     justify-content: center;
@@ -35,12 +43,13 @@
     flex-direction: column;
     justify-content: space-between;
     margin: 0;
+    color: white; 
 }
 
 .choose-button {
     background-color: #DA0037; /* Color del botón */
     border: none;
-    color: white;
+    color: white; /* Texto blanco */
     font-size: 1rem;
     padding: 10px 20px;
     border-radius: 5px;
@@ -48,10 +57,9 @@
     transition: background-color 0.3s ease;
 }
 
-    .choose-button:hover {
-        background-color: #BE3144; /* Color al pasar el mouse */
-    }
-
+.choose-button:hover {
+    background-color: #BE3144; /* Color al pasar el mouse */
+}
 
 /* Botones de navegación */
 .carousel-nav {
@@ -61,7 +69,7 @@
     width: 50px;
     height: 50px;
     background-color: #DA0037;
-    color: white;
+    color: white; /* Color de texto blanco */
     font-size: 1.5rem;
     border: none;
     border-radius: 50%;
@@ -70,9 +78,9 @@
     transition: background-color 0.3s ease;
 }
 
-    .carousel-nav:hover {
-        background-color: #BE3144;
-    }
+.carousel-nav:hover {
+    background-color: #BE3144;
+}
 
 .prev-btn {
     margin-right: 20px;

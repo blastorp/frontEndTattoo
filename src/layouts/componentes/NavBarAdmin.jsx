@@ -12,7 +12,7 @@ const NavBarAdmin = () => {
   };
 
   return (
-    <div className="navbar">
+    <div className="navbarA">
       {/* Header */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <Button variant="light" className="menu-button" onClick={toggleMenu}>

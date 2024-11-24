@@ -22,6 +22,8 @@ const Membresia = () => {
   };
 
   return (
+<div >
+    <h1>Membresía</h1>
     <div className="membership-carousel-wrapper">
       <button className="carousel-nav prev-btn" onClick={prevSlide}>
         &#10094;
@@ -76,6 +78,7 @@ const Membresia = () => {
       <button className="carousel-nav next-btn" onClick={nextSlide}>
         &#10095;
       </button>
+    </div>
     </div>
   );
 };

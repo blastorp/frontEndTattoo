@@ -35,11 +35,11 @@ const Inicio = () => {
                     </Link>
                 </div>
                 <div className="membership-image">
-                    {/* Ya no es necesario poner la imagen aquí */}
+                    <img src="/src/layouts/assets/Membresia.png" alt="Membresía" />
                 </div>
             </div>
 
-
+            {/* Sección de Testimonios */}
             <div className="testimonial-section">
                 <h2 className="testimonial-title">Testimonios de usuarios</h2>
 
@@ -69,6 +69,28 @@ const Inicio = () => {
                     </Link>
                 </div>
             </div>
+
+            {/* Sección de Galería */}
+            <section className="gallery-section">
+                <h2 className="gallery-title">
+                    Explora nuestra galería de tatuajes únicos y encuentra tu próxima obra maestra.
+                </h2>
+                <div className="gallery-container">
+                    {/* Aquí puedes agregar las imágenes de los tatuajes */}
+                    <div className="gallery-item">
+                        <img src="/src/layouts/assets/tatuaje1.jpg" alt="Tatuaje 1" />
+                    </div>
+                    <div className="gallery-item">
+                        <img src="/src/layouts/assets/tatuaje2.jpg" alt="Tatuaje 2" />
+                    </div>
+                    <div className="gallery-item">
+                        <img src="/src/layouts/assets/tatuaje3.jpg" alt="Tatuaje 3" />
+                    </div>
+                    <div className="gallery-item">
+                        <img src="/src/layouts/assets/tatuaje4.jpg" alt="Tatuaje 4" />
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

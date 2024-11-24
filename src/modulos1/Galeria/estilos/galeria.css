@@ -7,6 +7,14 @@
     padding: 20px 20px 100px;
 }
 
+h1 {
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 20px;
+}
+
 .filtros {
     width: 100%;
     text-align: center;
@@ -82,14 +90,14 @@
     justify-content: center;
     align-items: center;
     z-index: 1000; /* Para asegurarse de que esté sobre otros elementos */
-  }
+}
   
-  .imagen-expandida img {
+.imagen-expandida img {
     max-width: 90%;  /* Limitar el tamaño máximo de la imagen */
     max-height: 90%; /* Limitar el tamaño máximo de la imagen */
-  }
+}
   
-  .controls button {
+.controls button {
     background: none;
     border: none;
     cursor: pointer;
@@ -98,18 +106,16 @@
     justify-content: center;
     align-items: center;
     transition: opacity 0.3s ease;
-  }
+}
   
-  .controls button:hover {
+.controls button:hover {
     opacity: 0.8; /* Efecto visual */
-  }
+}
   
-  .cerrar {
+.cerrar {
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
     color: white; /* Para que el icono de cerrar sea visible */
-  }
-  
-  
+}

@@ -24,6 +24,7 @@ const GaleriaCliente = () => {
 
   return (
     <div>
+      <h1>Galería</h1>
       <section className="filtros">
         <ul>
           <li><button data-filter="Estilo">Estilo</button></li>

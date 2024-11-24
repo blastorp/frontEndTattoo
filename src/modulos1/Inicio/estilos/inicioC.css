@@ -1,11 +1,12 @@
 /*#region Testimonios*/
+
 .testimonial-section {
     background-color: #b1a6a660;
     display: block;
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding: 20px 0 20px 20px;
+    padding: 20px;
     text-align: center;
     box-sizing: border-box;
 }
@@ -13,7 +14,6 @@
 .testimonial-title {
     font-size: 2em;
     color: white;
-    text-align: center;
     margin-bottom: 20px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
@@ -108,27 +108,37 @@
         font-size: 1em;
         max-width: 90%;
     }
+
+    .testimonial-title {
+        font-size: 1.5em;
+    }
 }
 
 @media (max-width: 480px) {
     .testimonial-title {
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
 
     .testimonial-slider .testimonial-slide {
         font-size: 0.9em;
     }
+
+    .controls button {
+        font-size: 1.5em;
+    }
 }
+
 /*#endregion Testimonios*/
 
 /*#region Membresía*/
+
 .membership-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #f4f4f4;
-    padding: 20px 20px 40px 20px;
-    flex-wrap: wrap; 
+    padding: 20px;
+    flex-wrap: wrap;
 }
 
 .membership-content {
@@ -139,7 +149,7 @@
 .membership-image {
     width: 50%;
     height: 300px;
-    background-image: url('/src//layouts/assets/Membresia.png');
+    background-image: url('/src/layouts/assets/Membresia.png');
     background-size: cover;
     background-position: center;
     border-radius: 8px;
@@ -210,4 +220,63 @@
         padding: 8px 16px;
     }
 }
+
 /*#endregion Membresía*/
+
+/*#region Galería*/
+
+.gallery-section {
+    background-color: #f9f9f9;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.gallery-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 250px;
+    background-color: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .gallery-title {
+        font-size: 2rem;
+    }
+
+    .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-title {
+        font-size: 1.5rem;
+    }
+
+    .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+/*#endregion Galería*/
