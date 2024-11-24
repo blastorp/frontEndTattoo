@@ -70,7 +70,7 @@
 }
 
     .dia.seleccionada {
-        background-color: #28a745; /* Verde para indicar selección */
+        background-color: #DA0037; /* Verde para indicar selección */
         color: #fff;
         transform: scale(1.1); /* Efecto visual */
     }
@@ -107,7 +107,7 @@
     padding: 10px 20px;
     color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s, tra2nsform 0.2s;
     user-select: none;
 }
 
@@ -116,7 +116,7 @@
     }
 
     .hora.seleccionada {
-        background-color: #28a745; /* Verde para indicar selección */
+        background-color: #DA0037; /* Verde para indicar selección */
         transform: scale(1.1); /* Efecto visual */
         color: #fff;
     }

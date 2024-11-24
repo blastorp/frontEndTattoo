@@ -69,6 +69,7 @@ const Header = () => {
                   <i className="bi bi-shop"></i>
                 </Link>
               </li>
+
               {/* Dropdown para Perfil */}
               <li className="nav-item dropdown">
                 <Link
