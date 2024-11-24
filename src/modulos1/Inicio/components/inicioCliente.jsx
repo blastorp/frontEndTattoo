@@ -35,7 +35,6 @@ const Inicio = () => {
                     </Link>
                 </div>
                 <div className="membership-image">
-                    <img src="/src/layouts/assets/Membresia.png" alt="Membresía" />
                 </div>
             </div>
 
@@ -73,7 +72,7 @@ const Inicio = () => {
             {/* Sección de Galería */}
             <section className="gallery-section">
                 <h2 className="gallery-title">
-                    Explora nuestra galería de tatuajes únicos y encuentra tu próxima obra maestra.
+                    Explora nuestra galería de tatuajes únicos y  encuentra tu próxima obra maestra.
                 </h2>
                 <div className="gallery-container">
                     {/* Aquí puedes agregar las imágenes de los tatuajes */}
