@@ -6,10 +6,9 @@ import { Link } from 'react-router-dom'; // Importa el componente Link
 const MembresiaADMIN = () => {
   // Define los títulos, las acciones y los íconos de los botones
   const buttons = [
-    { label: "Crear membresia", icon: <FaUser />, path: "/perfiles-artistas"},
-    { label: "Consultar membresia", icon: <FaTag />, path: "/perfiles-artistas" },
-    { label: "Editar membresia", icon: <FaTag />, path: "/perfiles-artistas" },
-    { label: "Ventas membresia", icon: <FaTag />, path: "/perfiles-artistas" },
+    { label: "Crear membresia", icon: <FaUser />, path: "/pages/membresiaadd"},
+    { label: "Consultar membresia", icon: <FaTag />, path: "/pages/membresiacon" },
+    { label: "Ventas membresia", icon: <FaTag />, path: "/pages/membresiaventa" },
   ];
 
   return (

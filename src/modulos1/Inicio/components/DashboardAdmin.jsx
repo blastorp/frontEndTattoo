@@ -3,12 +3,11 @@ import {
   FaUser, FaTag, FaCreditCard, FaGift, 
   FaImages, FaQuestionCircle, FaComments, FaShoppingCart, 
   FaCalendarAlt, FaStar 
-} from 'react-icons/fa'; // Iconos de React Icons
-import { Link } from 'react-router-dom'; // Importa el componente Link
-import '../estilos/dashboard.css'; // Importa el archivo de estilos
+} from 'react-icons/fa'; 
+import { Link } from 'react-router-dom'; 
+import '../estilos/dashboard.css'; 
 
 const Dashboard = () => {
-  // Define los títulos, las acciones y los íconos de los botones
   const buttons = [
     { label: "Perfiles de artistas", icon: <FaUser />, path: "/pages/adm" },
     { label: "Ofertas y promociones", icon: <FaTag />, path: "/pages/adm" },

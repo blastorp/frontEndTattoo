@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'; // Importa el componente Link
 const AgendaArtistaADMIN = () => {
   // Define los títulos, las acciones y los íconos de los botones
   const buttons = [
-    { label: "Consultar imágenes", icon: <FaTag />, path: "/perfiles-artistas" },
+    { label: "Consultar imágenes", icon: <FaTag />, path: "/pages/agendaartistascon" },
     { label: "Editar horarios", icon: <FaCreditCard />, path: "/perfiles-artistas" },
   ];
 

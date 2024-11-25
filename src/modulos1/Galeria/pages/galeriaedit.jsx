@@ -1,14 +1,14 @@
 import React from "react";
-import "../estilos/agendaartistascon.css";
+import "../estilos/galeriacon.css";
 import MainDash from "../../../layouts/MainDash";  
-import AgendaArtistaADMINCON from "../components/agendaartistaAdminCon.jsx";  
+import GaleriaADMINEDIT from "../components/galeriaAdminEdit.jsx";  
 
 function DashBoard({ tituloPagina, children }) {
   return (
     <MainDash tituloPagina={tituloPagina}>
       {/*children */}
       <div className='contenedorContenidoPagina'>
-        <AgendaArtistaADMINCON />
+        <GaleriaADMINEDIT />
       </div>
     </MainDash>
   );

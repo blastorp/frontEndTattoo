@@ -26,15 +26,16 @@ import TestimonioAdm from './modulos1/Testimonios/pages/testimonioadm';
 import ChatbotAdm from './modulos1/Chatbot/pages/chatbotadm';
 
 //Subpáginas Administrador
-//import GaleriaAdmAdd from './modulos1/Galeria/pages/galeriaadd';
-//import GaleriaAdmEdit from './modulos1/Galeria/pages/galeriaedit';
+import GaleriaAdmAdd from './modulos1/Galeria/pages/galeriaadd';
+import GaleriaAdmCon from './modulos1/Galeria/pages/galeriacon';
+import GaleriaAdmEdit from './modulos1/Galeria/pages/galeriaedit';
 //import GaleriaAdmInfo from './modulos1/Galeria/pages/galeriainfo';
-//import MembresiaAdmAdd from './modulos1/Membresias/pages/membresiaadd';
-//import MembresiaAdmVenta from './modulos1/Membresias/pages/membresiaventa';
-//import MembresiaAdmEdit from './modulos1/Membresias/pages/membresiaedit';
-//import MembresiaAdmCon from './modulos1/Membresias/pages/membresiacon';
+import MembresiaAdmAdd from './modulos1/Membresias/pages/membresiaadd';
+import MembresiaAdmVenta from './modulos1/Membresias/pages/membresiaventa';
+import MembresiaAdmEdit from './modulos1/Membresias/pages/membresiaedit';
+import MembresiaAdmCon from './modulos1/Membresias/pages/membresiacon';
 //import AgendaArtistasAdmAdd from './modulos1/AgendaArtistas/pages/agendaartistasaad';
-//import AgendaArtistasAdmCon from './modulos1/AgendaArtistas/pages/agendaartistascon';
+import AgendaArtistasAdmCon from './modulos1/AgendaArtistas/pages/agendaartistascon';
 //import AgendaArtistasAdmEdit from './modulos1/AgendaArtistas/pages/agendaartistasedit';
 
 
@@ -91,6 +92,50 @@ const router = createBrowserRouter([
     path: "/pages/chatbotadm",  
     element: <ChatbotAdm />
   },
+  {
+    path: "/pages/galeriaadd",  
+    element: <GaleriaAdmAdd />
+  },
+  {
+    path: "/pages/galeriacon",  
+    element: <GaleriaAdmCon />
+  },
+  {
+    path: "/pages/galeriaedit/:id",  
+    element: <GaleriaAdmEdit />
+  },
+  /*{
+    path: "/pages/galeriainfo",  
+    element: <GaleriaAdmInfo />
+  },*/
+  {
+    path: "/pages/membresiaadd",  
+    element: <MembresiaAdmAdd />
+  },
+  {
+    path: "/pages/membresiaventa",  
+    element: <MembresiaAdmVenta />
+  },
+  {
+    path: "/pages/membresiaedit/:id",  
+    element: <MembresiaAdmEdit />
+  },
+  {
+    path: "/pages/membresiacon",  
+    element: <MembresiaAdmCon />
+  },
+  /* {
+    path: "/pages/agendaartistasaad",  
+    element: <AgendaArtistasAdmAdd />
+  },*/
+  {
+    path: "/pages/agendaartistascon",  
+    element: <AgendaArtistasAdmCon />
+  },
+ /* {
+    path: "/pages/agendaartistasedit",  
+    element: <AgendaArtistasAdmEdit />
+  },*/
 ]);
 
 

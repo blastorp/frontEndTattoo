@@ -1,13 +1,12 @@
 import React from 'react';
-import { FaUser, FaTag, FaCreditCard } from 'react-icons/fa'; // Iconos de React Icons
-import '../estilos/galeriaDash.css'; // Importa el archivo de estilos
-import { Link } from 'react-router-dom'; // Importa el componente Link
+import { FaUser, FaTag, FaCreditCard } from 'react-icons/fa'; 
+import '../estilos/galeriaDash.css'; 
+import { Link } from 'react-router-dom'; 
 
 const GaleriaADMIN = () => {
-  // Define los títulos, las acciones y los íconos de los botones
   const buttons = [
-    { label: "Cargar imágenes", icon: <FaUser />, path: "/perfiles-artistas"},
-    { label: "Consultar imágenes", icon: <FaTag />, path: "/perfiles-artistas" },
+    { label: "Cargar imágenes", icon: <FaUser />, path: "/pages/galeriaadd"},
+    { label: "Consultar imágenes", icon: <FaTag />, path: "/pages/galeriacon" },
     { label: "Información galería", icon: <FaCreditCard />, path: "/perfiles-artistas" },
   ];
 

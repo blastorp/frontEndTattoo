@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../estilos/galeria.css";
-import {FaTimesCircle } from "react-icons/fa"; // Usamos react-icons
+import {FaTimesCircle } from "react-icons/fa"; 
 
 const GaleriaCliente = () => {
   const [imagenExpandida, setImagenExpandida] = useState(null);
