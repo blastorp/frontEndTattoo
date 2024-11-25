@@ -29,7 +29,8 @@ const NavBarAdmin = () => {
     { label: "Agenda de artistas", icon: <FaCalendarAlt />, path: "/pages/agendaartistasadm" },
     { label: "Tienda", icon: <FaShoppingCart />, path: "/pages/adm" },
     { label: "Calificaciones de los artistas", icon: <FaStar />, path: "/pages/adm" },
-    { label: "Chatbot", icon: <FaComments />, path: "/pages/chatbotadm" }
+    { label: "Chatbot", icon: <FaComments />, path: "/pages/chatbotadm" },
+    { label: "espacio" }
   ];
 
   return (
