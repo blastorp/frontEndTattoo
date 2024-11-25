@@ -1,11 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Asegura un mejor control del tamaño */
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+}
+
 /*#region Testimonios*/
 
 .testimonial-section {
     background-color: #b1a6a660;
     display: block;
     width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
+    margin: 0; /* Elimina márgenes */
     padding: 20px;
     text-align: center;
     box-sizing: border-box;
@@ -19,7 +30,7 @@
 }
 
 .testimonial-slider {
-    width: 100%;
+    width: 100%; /* Asegura que ocupe todo el ancho */
     height: 300px;
     overflow: hidden;
     position: relative;
@@ -138,11 +149,14 @@
     justify-content: space-between;
     background-color: #f4f4f4;
     padding: 20px;
+    width: 100%; /* Ocupa todo el ancho */
+    margin: 0;
     flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 .membership-content {
-    width: 50%;
+    width: 50%; /* Ajusta ancho al 50% para pantallas grandes */
     padding: 50px;
 }
 
@@ -179,12 +193,6 @@
 
 .join-button:hover {
     background-color: #9c2636;
-}
-
-.membership-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
 }
 
 /* Responsividad para pantallas pequeñas */
@@ -227,8 +235,11 @@
 
 .gallery-section {
     background-color: #f9f9f9;
-    padding: 50px 20px;
+    padding: 50px 0; /* Elimina padding lateral innecesario */
+    width: 100%; /* Ocupa todo el ancho */
+    margin: 0;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .gallery-title {
@@ -241,6 +252,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
+    width: 100%;
 }
 
 .gallery-item {

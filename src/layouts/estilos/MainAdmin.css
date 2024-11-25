@@ -1,11 +1,12 @@
 .contenedorContenidoPagina {
     width: 100%;
-    margin: 0;
-    padding: 20px 40px; /* Asegura que haya un padding adecuado */
+    margin: 0 10px 0 0; /* Margen derecho de 10px */
+    padding: 0; /* Asegura que no haya padding interno */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     overflow-x: hidden;
-    margin-top: 120px; /* Agrega margen superior para que no se solape con el navbar */
+    margin-top: 120px; /* Margen superior */
+    box-sizing: border-box;
 }

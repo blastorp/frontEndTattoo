@@ -12,11 +12,15 @@
   left: 0;
   width: 100%;
   z-index: 1000;
+  height: 100px; /* Asegúrate de definir una altura para el header */
 }
 
-/* Asegúrate de que el contenido principal tenga espacio para no ocultar el header */
-body {
-  padding-top: 60px; /* Ajusta este valor según la altura de tu header */
+/* Contenedor principal */
+.main-content {
+  margin-top: 100px; /* Ajusta este valor según la altura del header */
+  padding: 20px;
+  overflow-y: auto; /* Asegura que el contenido pueda hacer scroll si es necesario */
+  height: calc(100vh - 60px); /* Asegura que el contenido ocupe el espacio disponible */
 }
 
 /* Título en el margen derecho */
