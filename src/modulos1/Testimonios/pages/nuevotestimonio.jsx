@@ -7,6 +7,7 @@ function Testimonios({ tituloPagina, children }) {
 
   return (
     <MainAdmin tituloPagina={"Nuevo Testimonio"}>
+        {/*children */}
         <div className='contenedorContenidoPagina' >
             <TestimoniosClientes />
         </div>

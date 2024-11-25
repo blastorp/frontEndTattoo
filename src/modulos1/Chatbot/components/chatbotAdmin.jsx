@@ -1,10 +1,9 @@
 import React from 'react';
-import { FaUser, FaTag, FaCreditCard } from 'react-icons/fa'; // Iconos de React Icons
-import '../estilos/chatbotDash.css'; // Importa el archivo de estilos
-import { Link } from 'react-router-dom'; // Importa el componente Link
+import { FaUser, FaTag, FaCreditCard } from 'react-icons/fa'; 
+import '../estilos/chatbotDash.css'; 
+import { Link } from 'react-router-dom';
 
 const ChatbotADMIN = () => {
-  // Define los títulos, las acciones y los íconos de los botones
   const buttons = [
     { label: "Cargar imágenes", icon: <FaUser />, path: "/perfiles-artistas"},
     { label: "Consultar imágenes", icon: <FaTag />, path: "/perfiles-artistas" },
