@@ -21,31 +21,56 @@ h1 {
     margin-bottom: 20px;
 }
 
-.filtros ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.filtros li {
+.filtros .filtro-item {
     display: inline-block;
+    margin: 0 10px;
 }
 
-.filtros button {
+.filtros label {
+    display: block;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.filtros select {
+    width: 150px;
+    padding: 10px;
     background-color: #DA0037;
     color: white;
     border: none;
-    padding: 10px 15px;
     border-radius: 5px;
+    font-size: 14px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.filtros button:hover {
+.filtros select:focus {
+    outline: none;
     background-color: #BE3144;
+}
+
+.filtros select option {
+    padding-left: 25px;
+}
+
+.filtros select i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+}
+
+.filtros select {
+    position: relative;
+}
+
+.filtros select::-ms-expand {
+    display: none; /* Elimina la flecha en IE */
 }
 
 /* Estilos para la galería */
@@ -79,8 +104,9 @@ h1 {
     transform: scale(1.1);
 }
 
+/* Contenedor de la imagen expandida */
 .imagen-expandida {
-    position: fixed;  /* Fijar la imagen expandida sobre el resto del contenido */
+    position: fixed; /* Fijar la imagen expandida sobre el resto del contenido */
     top: 0;
     left: 0;
     right: 0;
@@ -89,15 +115,10 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Para asegurarse de que esté sobre otros elementos */
-}
+    z-index: 1000; /* Asegura que se muestre sobre los demás elementos */
+  }
   
-.imagen-expandida img {
-    max-width: 90%;  /* Limitar el tamaño máximo de la imagen */
-    max-height: 90%; /* Limitar el tamaño máximo de la imagen */
-}
-  
-.controls button {
+  .controls button {
     background: none;
     border: none;
     cursor: pointer;

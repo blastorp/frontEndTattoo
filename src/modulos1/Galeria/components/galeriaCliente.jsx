@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../estilos/galeria.css";
+import {FaTimesCircle } from "react-icons/fa"; // Usamos react-icons
 
 const GaleriaCliente = () => {
-  const [zoom, setZoom] = useState(1);
   const [imagenExpandida, setImagenExpandida] = useState(null);
 
   const handleImageClick = (src) => {
@@ -11,60 +11,86 @@ const GaleriaCliente = () => {
 
   const handleClose = () => {
     setImagenExpandida(null);
-    setZoom(1);
   };
 
-  const handleZoomIn = () => {
-    setZoom((prevZoom) => prevZoom + 0.1);
-  };
-
-  const handleZoomOut = () => {
-    setZoom((prevZoom) => (prevZoom > 0.1 ? prevZoom - 0.1 : 0.1));
-  };
 
   return (
     <div>
       <h1>Galería</h1>
       <section className="filtros">
-        <ul>
-          <li><button data-filter="Estilo">Estilo</button></li>
-          <li><button data-filter="Ubicacion">Ubicación</button></li>
-          <li><button data-filter="Tamano">Tamaño </button></li>
-          <li><button data-filter="Color">Color</button></li>
-          <li><button data-filter="Tematica">Temática</button></li>
-          <li><button data-filter="Artista">Artista</button></li>
-        </ul>
+        <div className="filtro-item">
+          <select>
+            <option value="Estilo">
+              <i className="bi bi-palette"></i> Estilo
+            </option>
+            {/* Agregar más opciones según sea necesario */}
+          </select>
+        </div>
+
+        <div className="filtro-item">
+          <select>
+            <option value="Ubicacion">
+              <i className="bi bi-geo-alt"></i> Ubicación
+            </option>
+            {/* Agregar más opciones */}
+          </select>
+        </div>
+
+        <div className="filtro-item">
+          <select>
+            <option value="Tamano">
+              <i className="bi bi-arrows-expand"></i> Tamaño
+            </option>
+            {/* Agregar más opciones */}
+          </select>
+        </div>
+
+        <div className="filtro-item">
+          <select>
+            <option value="Color">
+              <i className="bi bi-paint-bucket"></i> Color
+            </option>
+            {/* Agregar más opciones */}
+          </select>
+        </div>
+
+        <div className="filtro-item">
+          <select>
+            <option value="Tematica">
+              <i className="bi bi-file-earmark-text"></i> Temática
+            </option>
+            {/* Agregar más opciones */}
+          </select>
+        </div>
+
+        <div className="filtro-item">
+          <select>
+            <option value="Artista">
+              <i className="bi bi-person"></i> Artista
+            </option>
+            {/* Agregar más opciones */}
+          </select>
+        </div>
       </section>
 
       <section className="galeria">
-        {/* Asegúrate de colocar imágenes con diferentes categorías aquí */}
-        <div className="imagen" onClick={() => handleImageClick('assets/logo_TOI.png')}>
-          <img src="../assets/logo_TOI.png" alt="TempleOfInk" />
+        <div className="imagen" onClick={() => handleImageClick('https://wildwomantattoo.com/wp-content/uploads/2021/09/Tatuaje-Li%CC%81nea-fina-010_s1500.jpg')}>
+          <img src="https://wildwomantattoo.com/wp-content/uploads/2021/09/Tatuaje-Li%CC%81nea-fina-010_s1500.jpg" alt="TempleOfInk" />
         </div>
-        {/* Más imágenes */}
       </section>
 
       {imagenExpandida && (
         <div id="imagenExpandida" className="imagen-expandida">
           <div className="controls">
-            <button id="zoomIn" className="zoom-btn" onClick={handleZoomIn}>
-              {/* Icono de Zoom In de Bootstrap */}
-              <i className="bi bi-search-plus" style={{ fontSize: '50px', color: 'white' }}></i>
-            </button>
-            <button id="zoomOut" className="zoom-btn" onClick={handleZoomOut}>
-              {/* Icono de Zoom Out de Bootstrap */}
-              <i className="bi bi-search-minus" style={{ fontSize: '50px', color: 'white' }}></i>
-            </button>
             <span id="cerrar" className="cerrar" onClick={handleClose}>
-              {/* Icono de cerrar (X) de Bootstrap */}
-              <i className="bi bi-x-circle" style={{ fontSize: '50px', color: 'white' }}></i>
+              <FaTimesCircle /> {/* Icono de Cerrar */}
             </span>
           </div>
           <img
             id="imgExpandida"
             src={imagenExpandida}
             alt="Imagen expandida"
-            style={{ transform: `scale(${zoom})`, maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+            style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
           />
         </div>
       )}
