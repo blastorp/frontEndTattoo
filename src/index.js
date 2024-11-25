@@ -20,10 +20,10 @@ import NuevoTestimonio from './modulos1/Testimonios/pages/nuevotestimonio';
 //Administrador
 import Dashboard from './modulos1/Inicio/pages/Dashboard';
 import GaleriaAdm from './modulos1/Galeria/pages/galeriaadm';
-//import Membresia from './modulos1/Membresias/pages/membresia';
-//import AgendaArtistas from './modulos1/AgendaArtistas/pages/agendaartistas';
-//import NuevoTestimonio from './modulos1/Testimonios/pages/nuevotestimonio';
-
+import MembresiaAdm from './modulos1/Membresias/pages/membresiaadm';
+import AgendaArtistasAdm from './modulos1/AgendaArtistas/pages/agendaartistasadm';
+import TestimonioAdm from './modulos1/Testimonios/pages/testimonioadm';
+import ChatbotAdm from './modulos1/Chatbot/pages/chatbotadm';
 
 const router = createBrowserRouter([
   {
@@ -61,6 +61,22 @@ const router = createBrowserRouter([
   {
     path: "/pages/galeriaaadm",  
     element: <GaleriaAdm />
+  },
+  {
+    path: "/pages/membresiaadm",  
+    element: <MembresiaAdm />
+  },
+  {
+    path: "/pages/agendaartistasadm",  
+    element: <AgendaArtistasAdm />
+  },
+  {
+    path: "/pages/testimonioadm",  
+    element: <TestimonioAdm />
+  },
+  {
+    path: "/pages/chatbotadm",  
+    element: <ChatbotAdm />
   },
 ]);
 

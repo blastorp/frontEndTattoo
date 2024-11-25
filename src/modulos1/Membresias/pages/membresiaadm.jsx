@@ -1,7 +1,7 @@
 import React from "react";
-import "../estilos/Dash.css";
+import "../estilos/membresiaDash.css";
 import MainDash from "../../../layouts/MainDash";  // Importa MainDash
-import MembresiaADMIN from "../components/Membresiaadmin.jsx";  // Importa el componente que deseas mostrar dentro
+import MembresiaADMIN from "../components/membresiaAdmin.jsx";  // Importa el componente que deseas mostrar dentro
 
 function DashBoard({ tituloPagina, children }) {
   return (
