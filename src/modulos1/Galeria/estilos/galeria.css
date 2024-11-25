@@ -77,32 +77,65 @@ h1 {
 .galeria {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center; /* Centra las imágenes en la galería */
-    width: 100%; /* Asegura que la galería ocupe el 100% del contenedor */
+    justify-content: flex-start; /* Las imágenes se alinean al principio */
+    width: 100%;
 }
 
 /* Estilos para las imágenes */
 .galeria .imagen {
-    flex: 1 1 calc(20% - 15px);
-    max-width: calc(20% - 15px);
+    flex: 1 1 calc(20%); /* 5 imágenes por fila */
+    max-width: calc(20%); /* Asegura que no haya espacio extra */
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    align-items: flex-start; /* Alinea las imágenes por la parte superior */
+    height: auto; /* Asegura que la imagen mantenga su proporción original */
 }
 
+/* Asegura que las imágenes se ajusten correctamente */
 .galeria img {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Las imágenes ocupan el 100% del contenedor */
+    height: auto; /* Mantiene la altura proporcional sin distorsionar */
     display: block;
-    object-fit: cover;
     transition: transform 0.3s ease;
 }
 
 .galeria .imagen:hover img {
     transform: scale(1.1);
 }
+
+/* Media queries para la adaptabilidad */
+@media (max-width: 1200px) {
+    .galeria .imagen {
+        flex: 1 1 calc(25%); /* 4 imágenes por fila */
+        max-width: calc(25%);
+    }
+}
+
+@media (max-width: 900px) {
+    .galeria .imagen {
+        flex: 1 1 calc(33.33%); /* 3 imágenes por fila */
+        max-width: calc(33.33%);
+    }
+}
+
+@media (max-width: 600px) {
+    .galeria .imagen {
+        flex: 1 1 calc(50%); /* 2 imágenes por fila */
+        max-width: calc(50%);
+    }
+}
+
+@media (max-width: 400px) {
+    .galeria .imagen {
+        flex: 1 1 calc(100%); /* 1 imagen por fila */
+        max-width: calc(100%);
+    }
+}
+
 
 /* Contenedor de la imagen expandida */
 .imagen-expandida {
