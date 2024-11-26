@@ -1,4 +1,5 @@
-const BASE_URL = "https://tiusr39pl.cuc-carrera-ti.ac.cr/apiTattoo";
+const BASE_URL = "https://tiusr39pl.cuc-carrera-ti.ac.cr/toi";
+//const BASE_URL = "https://tiusr39pl.cuc-carrera-ti.ac.cr/apiTattoo";
 
 const fetchApiM1 = async (segmentoRuta, cabecera) => {
   try {

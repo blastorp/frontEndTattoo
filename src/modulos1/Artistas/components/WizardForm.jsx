@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
-
+import fetchApiM1  from "../../../services/api/fetchApiM1";
+import ENDPOINTS  from "../../../services/api/endpoints";
 // cambio
 import P1WizardArtista from "../components/P1WizardArtista";
 import P2WizardArtista from "../components/P2WizardArtista";
@@ -30,18 +31,42 @@ function WizardForm() {
         descripcionArt: "",
         telefono: "",
         email: "",
-        fechaCreacion: "",
+        fechaIngreso: "",
         publicado: "",
         urlImagen: ""
     });
 
 
     const [imageUpload, setImageUpload] = useState(null);
-  
-    const FormTitles = ["Datos Personales", "Datos Ficha Artista", "Galeria"];
-  
+    const [categorias, setCategorias] = useState([]);
+    const [categoriasElegidas, setcategoriasElegidas] = useState([]);
+    const [error, setError] = useState(null);
     
+    const FormTitles = ["Datos Personales", "Datos Ficha Artista", "Categorias Artista"];
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        
+        try {
+          const result = await fetchApiM1(ENDPOINTS.GETCATEGORIAS);
+          // setData(result)
+  
+          if (Array.isArray(result)) {
+            setCategorias(result);
+            
+          } else {
+            console.error("Unexpected data format:", result);
+            setError("Unexpected data received from API."); // Provide a more informative error message
+          }
+          
+        } catch (err) {
+          setError(err.message);
+        }
+      };
+      fetchData();
 
+
+  }, []);
     const PageDisplay = () => {
       if (page === 0) {
         return <P1WizardArtista formData={formData} setFormData={setFormData} />;
@@ -49,7 +74,10 @@ function WizardForm() {
         return <P2WizardArtista formData={formData} setFormData={setFormData}
                                  setImageUpload ={setImageUpload}/>;
       } else {
-        return <P3WizardArtista formData={formData} setFormData={setFormData} />;
+        return <P3WizardArtista 
+        formData={formData} setFormData={setFormData} 
+        categorias= {categorias} categoriasElegidas ={ categoriasElegidas }
+        setcategoriasElegidas={setcategoriasElegidas}/>;
       }
     };
   
@@ -78,7 +106,7 @@ function WizardForm() {
               onClick={() => {
                 if (page === FormTitles.length - 1) {
                   alert("FORM SUBMITTED");
-                  console.log(formData);
+                  
                 } else {
                   setPage((currPage) => currPage + 1);
                 }
