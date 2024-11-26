@@ -27,10 +27,10 @@ const Dashboard = () => {
   ];
 
   return (
- <div className="button-panel-container">
-      <div className="button-panel">
+ <div className="buttonD-panel-container">
+      <div className="buttonD-panel">
         {buttons.map((button, index) => (
-          <Link key={index} to={button.path} className="button">
+          <Link key={index} to={button.path} className="buttonD">
             {button.icon} {/* Ícono */}
             <span>{button.label}</span> {/* Título del botón */}
           </Link>

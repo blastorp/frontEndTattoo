@@ -1,4 +1,4 @@
-.button-panel {
+.buttonD-panel {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columnas */
   gap: 10px; /* Espaciado entre los botones */
@@ -6,7 +6,7 @@
   margin-top: 100px;
 }
 
-.button {
+.buttonD {
   background-color: #DA0037; /* Verde */
   border: none;
   color: white;
@@ -26,20 +26,20 @@
   transition: background-color 0.3s;
 }
 
-.button i {
+.buttonD i {
   font-size: 24px; /* Tamaño del ícono */
   margin-bottom: 8px;
 }
 
-.button span {
+.buttonD span {
   font-size: 14px;
   font-weight: bold;
 }
 
-.button:hover {
+.buttonD:hover {
   background-color: #BE3144;
 }
 
-.button:active {
+.buttonD:active {
   background-color: #DA0037;
 }
