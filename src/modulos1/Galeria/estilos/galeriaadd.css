@@ -1,105 +1,110 @@
+/* Contenedor principal */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 4rem;
-    color: white;
-    font-family: Arial, sans-serif;
-  }
-  
-  .form-title {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .form-layout {
-    display: flex;
-    align-items: center; /* Alinear elementos verticalmente */
-    gap: 2rem;
-    width: 100%;
-    max-width: 800px;
-  }
-  
-  .image-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 450px;
-    height: 450px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    font-size: 1rem;
-  }
-  
-  .image-preview {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 4px;
-  }
-  
-  .placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    font-size: 0.9rem;
-  }
-  
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-  }
-  
-  label {
-    font-size: 1rem;
-  }
-  
-  input[type="text"] {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-  }
-  
-  input[type="checkbox"] {
-    margin-right: 0.5rem;
-  }
-  
-  button {
-    background-color: #da0033;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #be3144;
-  }
-  
-  .button-group {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    width: 100%;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 80px;
+}
+
+/* Título del formulario */
+.form-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Diseño de formulario e imagen */
+.form-layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px; /* Ajuste de ancho máximo */
+  align-items: center; /* Alinea verticalmente imagen y formulario */
+}
+
+/* Contenedor de la imagen */
+.image-container {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  height: 300px;
+  overflow: hidden;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+/* Formulario */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 50%; /* Ancho del formulario */
+}
+
+/* Alinear "Nombre del tatuaje" y "Nombre artista" en la misma fila */
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Dividir los dos campos dentro de la fila */
+.form-row .form-group {
+  flex: 1;
+}
+
+/* Contenedor de selectores */
+.select-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+/* Selectores más amplios */
+.select-container {
+  display: flex;
+  flex-direction: column;
+  width: calc(50% - 0.5rem); /* Dos selectores por fila */
+}
+
+/* Ajustar estilos de input y select */
+input[type="text"], select {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Estilo de botones */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+button {
+  padding: 0.8rem 1.5rem;
+  background-color: #da0033; /* Color de fondo del botón */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #be3144; /* Color de fondo al pasar el cursor */
+}

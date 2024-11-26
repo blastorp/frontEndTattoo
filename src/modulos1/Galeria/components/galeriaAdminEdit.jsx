@@ -6,6 +6,23 @@ const EditarPagina = () => {
     const { id } = useParams(); 
     const [imagePreview, setImagePreview] = useState(null);
 
+
+    const artistas = [
+        "Seleccionar artista",
+        "Artista 1",
+        "Artista 2",
+        "Artista 3",
+    ]; 
+
+    const categorias = [
+        "Seleccionar...",
+        "Seleccionar...",
+        "Seleccionar...",
+        "Seleccionar...",
+        "Seleccionar...",
+
+    ]; 
+
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -19,8 +36,9 @@ const EditarPagina = () => {
 
     return (
         <div className="container">
-            <h1 className="form-title">Editar tatuaje ID:{id}</h1>
+            <h1 className="form-title">Editar imagen: {id}</h1>
             <div className="form-layout">
+                {/* Imagen al lado del formulario */}
                 <div className="image-container">
                     {imagePreview ? (
                         <img src={imagePreview} alt="Preview" className="image-preview" />
@@ -28,14 +46,24 @@ const EditarPagina = () => {
                         <div className="placeholder">Vista Previa</div>
                     )}
                 </div>
+                
+                {/* Formulario */}
                 <form className="form-container">
-                    <div className="form-group">
-                        <label htmlFor="tattooName">Nombre del tatuaje</label>
-                        <input type="text" id="tattooName" placeholder="Ej. Realismo en brazo" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="artistName">Nombre artista</label>
-                        <input type="text" id="artistName" placeholder="Ej. John Doe" />
+                    <div className="form-row">
+                        <div className="form-group">
+                            <label htmlFor="input1">Nombre del tatuaje</label>
+                            <input type="text" id="input1" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="artista">Nombre artista</label>
+                            <select id="artista">
+                                {artistas.map((artista, index) => (
+                                    <option key={index} value={artista}>
+                                        {artista}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
                     <div className="form-group">
                         <label>
@@ -55,8 +83,21 @@ const EditarPagina = () => {
                             accept="image/*"
                         />
                     </div>
+                    {/* Selector de categorías */}
+                    <div className="form-group">
+                        <label>Categorías</label>
+                        <div className="select-group">
+                            {categorias.map((categoria, index) => (
+                                <div key={index} className="select-container">
+                                    <select id={`categoria${index + 1}`}>
+                                        <option value="">{categoria}</option>
+                                    </select>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                     <div className="button-group">
-                        <button type="submit">Guardar cambios</button>
+                        <button type="submit">Enviar</button>
                     </div>
                 </form>
             </div>
