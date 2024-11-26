@@ -3,16 +3,17 @@ import { useState, useEffect } from "react";
 import '../estilos/wizard.css'
 
 
-function P2WizardArtista({ formData, setFormData,  setImageUpload }) {
+function P2WizardArtista({ formData, setFormData,  setImageUpload, image, setImage }) {
 
  
   // const [imageUrls, setImageUrls] = useState([]);
-  const [image, setImage] = useState(null)
+
 
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       setImage(URL.createObjectURL(event.target.files[0]));
-      setImageUpload(event.target.files[0])
+      setImageUpload(event.target.files[0]);
+      
 
     }
    }
@@ -37,9 +38,9 @@ function P2WizardArtista({ formData, setFormData,  setImageUpload }) {
         placeholder="Descripcion Artista..."
         rows="4" cols="50"
         maxLength={900}
-        value={formData.nroIdentificacion}
+        value={formData.descripcionArt}
         onChange={(event) =>
-          setFormData({ ...formData, nroIdentificacion: event.target.value })
+          setFormData({ ...formData, descripcionArt: event.target.value })
         }
       />
 <label htmlFor="Foto Perfil">Elegir Foto Perfil</label>

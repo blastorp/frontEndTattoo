@@ -49,7 +49,7 @@ function P1WizardArtista({ formData, setFormData }) {
         }
 
       />
-      <label htmlFor="fechaCreacion">Fecha Ingreso:</label>
+      {/* <label htmlFor="fechaCreacion">Fecha Ingreso:</label>
       <input
         type="date"
         name="fechaCreacion"
@@ -59,7 +59,7 @@ function P1WizardArtista({ formData, setFormData }) {
         onChange={(event) =>
           setFormData({ ...formData, fechaCreacion: event.target.value })
         }
-      />
+      /> */}
     </div>
   );
 }

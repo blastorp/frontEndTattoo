@@ -9,8 +9,10 @@ export const ENDPOINTS = {
     DELETEBENEFICIO: "Beneficio/deleteBeneficio",
     GETCATEGORIAS: "Categoria/listarCategorias",
     GETCATEGORIAXID: "Categoria/listarCategoriasXArtista",
-    GETCATEGORIAXARTISTA: "Categoria/listarArtistasXCategoria",
-    GETARTISTASXCATEGORIA: "Categoria/asignarCategoriaArtista",
+    GETARTISTASXCATEGORIA: "Categoria/listarArtistasXCategoria",
+    ASIGNARCATEGORIAS: "Categoria/asignarCategoriaArtista",
+    GUARDARIMAGENARTICULO: "ImagenArticulo/guardarImagen",
+    GETURLXIDIMAGEN: "ImagenArticulo/buscarUrlXID",
     
     COMMENTS: "comments",
   };

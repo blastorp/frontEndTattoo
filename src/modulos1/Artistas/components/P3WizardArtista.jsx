@@ -3,13 +3,16 @@ import React from "react";
 function P3WizardArtista({ formData, setFormData, categorias, categoriasElegidas, setcategoriasElegidas }) {
   const handleCheckboxChange = (item) => {
     setcategoriasElegidas((prev) => {
-      if (prev.includes(item.IdCategoria)) {
+      if (prev.includes(item.idCategoria)) {
         // Si ya está seleccionado, lo quitamos
-        return prev.filter((id) => id !== item.IdCategoria);
+        return prev.filter((id) => id !== item.idCategoria);
       } else {
         // Si no está seleccionado, lo agregamos
-        return [...prev, item.IdCategoria];
+        
+        return [...prev, item.idCategoria];
+        
       }
+      
     });
   };
 
@@ -20,9 +23,10 @@ function P3WizardArtista({ formData, setFormData, categorias, categoriasElegidas
           <label htmlFor={item.nombre}>{item.nombre}</label>
           <input
             type="checkbox"
-            id={item.nombre}
+            id={item.idCategoria}
+            value={item.idCategoria}
             name={item.nombre}
-            checked={categoriasElegidas.includes(item.IdCategoria)} // Marca el checkbox si ya está seleccionado
+            checked={categoriasElegidas.includes(item.idCategoria)} // Marca el checkbox si ya está seleccionado
             onChange={() => handleCheckboxChange(item)} // Maneja el cambio de estado
           />
         </div>
