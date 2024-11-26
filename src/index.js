@@ -36,7 +36,7 @@ import MembresiaAdmEdit from './modulos1/Membresias/pages/membresiaedit';
 import MembresiaAdmCon from './modulos1/Membresias/pages/membresiacon';
 //import AgendaArtistasAdmAdd from './modulos1/AgendaArtistas/pages/agendaartistasaad';
 import AgendaArtistasAdmCon from './modulos1/AgendaArtistas/pages/agendaartistascon';
-//import AgendaArtistasAdmEdit from './modulos1/AgendaArtistas/pages/agendaartistasedit';
+import AgendaArtistasAdmEdit from './modulos1/AgendaArtistas/pages/agendaartistasedit';
 
 
 const router = createBrowserRouter([
@@ -132,10 +132,10 @@ const router = createBrowserRouter([
     path: "/pages/agendaartistascon",  
     element: <AgendaArtistasAdmCon />
   },
- /* {
-    path: "/pages/agendaartistasedit",  
+  {
+    path: "/pages/agendaartistasedit/:id",  
     element: <AgendaArtistasAdmEdit />
-  },*/
+  },
 ]);
 
 

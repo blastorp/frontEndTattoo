@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Para redirigir a otra página
+import { useNavigate } from "react-router-dom"; 
 import '../estilos/galeriacon.css';
 
 const GaleriaADMINCon = () => {

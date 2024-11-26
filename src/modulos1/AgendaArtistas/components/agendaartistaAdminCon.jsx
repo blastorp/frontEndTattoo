@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import '../estilos/agendaartistascon.css';
 
 const MembresiaADMINVenta = () => {
     const [searchTerm, setSearchTerm] = useState("");
+    const navigate = useNavigate(); // Hook para navegación
 
     const data = [
         { id: 1, name: "John Doe", tattooStyle: "Realismo", date: "2024-12-01" },
@@ -15,11 +17,14 @@ const MembresiaADMINVenta = () => {
             row.date.includes(searchTerm)
     );
 
+    const handleEdit = (id) => {
+        navigate(`/pages/agendaartistaedit/${id}`); // Redirige a la página con el ID del elemento
+    };
     
 
     return (
         <div className="table-wrapper">
-            <h1 className="table-title">Lista de membresías</h1>
+            <h1 className="table-title">Lista de agenda de artistas</h1>
             <div className="search-container">
                 <label htmlFor="search-input" className="search-label">Buscar:</label>
                 <input
@@ -39,6 +44,7 @@ const MembresiaADMINVenta = () => {
                         <th>Dia</th>
                         <th>Horario</th>
                         <th>Horario miembro</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,7 +55,16 @@ const MembresiaADMINVenta = () => {
                             <td>{row.Dia}</td>
                             <td>{row.Horario}</td>
                             <td>{row.HorarioMiembro}</td>
+                            <td>
+                                <button
+                                    className="edit-button"
+                                    onClick={() => handleEdit(row.id)}
+                                >
+                                    Editar
+                                </button>
+                            </td>
                         </tr>
+
                     ))}
                     {filteredData.length === 0 && (
                         <tr>
