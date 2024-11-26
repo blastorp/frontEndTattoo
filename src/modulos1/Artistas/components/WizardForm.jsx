@@ -1,11 +1,24 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // cambio
 import P1WizardArtista from "../components/P1WizardArtista";
 import P2WizardArtista from "../components/P2WizardArtista";
 import P3WizardArtista from "../components/P3WizardArtista";
 import '../estilos/wizard.css'
+//interaccion con firebase
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  list,
+} from "firebase/storage";
+import { storage } from "../../../services/firebase/firebaseConn";
+import { v4 } from "uuid";
+
+
+
 function WizardForm() {
 
   
@@ -19,15 +32,24 @@ function WizardForm() {
         email: "",
         fechaCreacion: "",
         publicado: "",
+        urlImagen: ""
     });
+
+
+    const [imageUpload, setImageUpload] = useState(null);
   
     const FormTitles = ["Datos Personales", "Datos Ficha Artista", "Galeria"];
   
+    useEffect(() => {
+      
+    }, []);
+
     const PageDisplay = () => {
       if (page === 0) {
         return <P1WizardArtista formData={formData} setFormData={setFormData} />;
       } else if (page === 1) {
-        return <P2WizardArtista formData={formData} setFormData={setFormData} />;
+        return <P2WizardArtista formData={formData} setFormData={setFormData}
+                                 setImageUpload ={setImageUpload}/>;
       } else {
         return <P3WizardArtista formData={formData} setFormData={setFormData} />;
       }

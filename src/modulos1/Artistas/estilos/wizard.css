@@ -75,3 +75,12 @@ body {
     font-weight: bold;
     color: var(--Secundariogris-color);
   }
+
+  .fotoPerfil {
+    max-width: 300px ;
+    height: auto;
+    align-self: center;
+    justify-self: center;
+    border-radius: 3px;
+    border: var(--gris-color) solid 1px;
+  }
