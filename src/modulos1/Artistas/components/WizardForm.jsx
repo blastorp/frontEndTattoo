@@ -40,9 +40,7 @@ function WizardForm() {
   
     const FormTitles = ["Datos Personales", "Datos Ficha Artista", "Galeria"];
   
-    useEffect(() => {
-      
-    }, []);
+    
 
     const PageDisplay = () => {
       if (page === 0) {
