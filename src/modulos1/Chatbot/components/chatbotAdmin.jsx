@@ -2,6 +2,8 @@ import React from 'react';
 import { FaUser, FaTag, FaCreditCard } from 'react-icons/fa'; 
 import '../estilos/chatbotDash.css'; 
 import { Link } from 'react-router-dom';
+import fetchApiM2  from "../../../services/api/fetchApiM2";
+import ENDPOINTS  from "../../../services/api/endpoints";
 
 const ChatbotADMIN = () => {
   const buttons = [

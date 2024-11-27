@@ -1,10 +1,12 @@
 import React from 'react';
-import { FaTag, FaCreditCard } from 'react-icons/fa'; // Iconos de React Icons
-import '../estilos/agendaartistaDash.css'; // Importa el archivo de estilos
-import { Link } from 'react-router-dom'; // Importa el componente Link
+import { FaTag, FaCreditCard } from 'react-icons/fa';
+import '../estilos/agendaartistaDash.css'; 
+import { Link } from 'react-router-dom'; 
+import fetchApiM2  from "../../../services/api/fetchApiM2";
+import ENDPOINTS  from "../../../services/api/endpoints";
+
 
 const AgendaArtistaADMIN = () => {
-  // Define los títulos, las acciones y los íconos de los botones
   const buttons = [
     { label: "Agregar horarios", icon: <FaCreditCard />, path: "/pages/agendaartistasadd" },
     { label: "Consultar imágenes", icon: <FaTag />, path: "/pages/agendaartistascon" },

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import '../estilos/membresiaedit.css';
+import fetchApiM2  from "../../../services/api/fetchApiM2";
+import ENDPOINTS  from "../../../services/api/endpoints";
 
 const MembresiaADMINEdit = () => {
   const { id } = useParams(); // Obtiene el ID de la URL

@@ -1,10 +1,12 @@
 import React from 'react';
-import {FaTag, FaCreditCard } from 'react-icons/fa'; // Iconos de React Icons
-import '../estilos/testimonioDash.css'; // Importa el archivo de estilos
-import { Link } from 'react-router-dom'; // Importa el componente Link
+import {FaTag, FaCreditCard } from 'react-icons/fa'; 
+import '../estilos/testimonioDash.css'; 
+import { Link } from 'react-router-dom'; 
+import fetchApiM2  from "../../../services/api/fetchApiM2";
+import ENDPOINTS  from "../../../services/api/endpoints";
+
 
 const TestimonioADMIN = () => {
-  // Define los títulos, las acciones y los íconos de los botones
   const buttons = [
     { label: "Consultar testimonios", icon: <FaTag />, path: "/perfiles-artistas" },
     { label: "Eliminar testimonios", icon: <FaCreditCard />, path: "/perfiles-artistas" },

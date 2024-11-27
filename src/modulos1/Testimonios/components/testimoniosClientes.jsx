@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../estilos/testimonio.css";
+import fetchApiM2  from "../../../services/api/fetchApiM2";
+import ENDPOINTS  from "../../../services/api/endpoints";
 
 const TestimoniosClientes = () => {
   const [selectedRating, setSelectedRating] = useState(0);

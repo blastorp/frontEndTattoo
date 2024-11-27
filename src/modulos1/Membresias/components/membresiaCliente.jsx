@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import '../estilos/membresia.css'; // Asegúrate de que los estilos estén correctamente importados
+import '../estilos/membresia.css'; 
+import fetchApiM2  from "../../../services/api/fetchApiM2";
+import ENDPOINTS  from "../../../services/api/endpoints";
 
 const Membresia = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

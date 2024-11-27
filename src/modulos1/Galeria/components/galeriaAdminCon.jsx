@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
 import '../estilos/galeriacon.css';
+import fetchApiM2  from "../../../services/api/fetchApiM2";
+import ENDPOINTS  from "../../../services/api/endpoints";
 
 const GaleriaADMINCon = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -19,7 +21,7 @@ const GaleriaADMINCon = () => {
     );
 
     const handleEdit = (id) => {
-        navigate(`/pages/galeriaedit/${id}`); // Redirige a la página con el ID del elemento
+        navigate(`/pages/galeriaedit/${id}`);
     };
 
     return (
