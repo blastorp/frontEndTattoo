@@ -1,7 +1,8 @@
 .contenedorContenidoPagina {
     width: 100%;
     margin: 0 10px 0 0; /* Margen derecho de 10px */
-    padding: 0; /* Asegura que no haya padding interno */
+    padding-top: 20px; /* Asegura que no haya padding interno */
+    margin-left: -30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
