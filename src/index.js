@@ -14,6 +14,7 @@ import AddBeneficio from './modulos1/Beneficios/Pages/AddBeneficio';
 import ArtistasAddArtista from './modulos1/Artistas/pages/ArtistasAddArtista';
 import ArtistaEditArtista from  './modulos1/Artistas/pages/ArtistaEditArtista'
 import ArtistaView from  './modulos1/Artistas/pages/ArtistaView'
+import ArtistaDetails from  './modulos1/Artistas/pages/ArtistaDetails'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/pages/ArtistaView",
     element: <ArtistaView />
+  },
+  {
+    path: "/pages/ArtistaDetails/:artistaId", // Dynamic route for artist details
+    element: <ArtistaDetails />
   },
   {
     path: "/pages/AddArtista",
