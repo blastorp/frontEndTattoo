@@ -78,8 +78,11 @@ export const TarjetaClient = ({ objetoArtista }) => {
       </div>
       <div className="info">
         <h3>{objetoArtista.nombre}</h3>
+        <div className="description">
+        <p>{objetoArtista.descripcionArt}</p>
+      </div>
         <p> 📞 {objetoArtista.telefono}</p>
-        <Link className="link-style-none" to={objetoArtista.id}>
+        <Link className="link-style-none" to={`/pages/ArtistaDetails/${objetoArtista.idArtista}`}>
           Ver mas...
         </Link>
       </div>

@@ -35,7 +35,7 @@ function ArtistaView() {
 
   }, []);
   return (
-    <MainClient tituloPagina={"Administracion Perfiles de Artistas"}>
+    <MainClient tituloPagina={"Artistas"}>
         
         <div className='contenedorContenidoPagina' >
         {data.filter((item) => item.publicado)
