@@ -1,24 +1,24 @@
 import React from 'react'
 import MainAdmin from '../../../layouts/MainAdmin'
 import TarjetaLinkAdd from '../components/TarjetaLInkAdd'
-import ArrayTarjetaApi from '../components/ArrayTarjetaApi'
+
 import fetchApiM1  from "../../../services/api/fetchApiM1";
 import ENDPOINTS  from "../../../services/api/endpoints";
 import Tarjeta from '../components/Tarjeta'
-import '../estilos/ArtistasDash.css'
+import '../estilos/BeneficiosDash.css'
 import { useEffect, useRef, useState } from "react";
 
 
-function ArtistasDash() {
+function BeneficiosDash() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  
+
 
   useEffect(() => {
     const fetchData = async () => {
       
       try {
-        const result = await fetchApiM1(ENDPOINTS.GETARTISTAS);
+        const result = await fetchApiM1(ENDPOINTS.GETBENEFICIOS);
         // setData(result)
 
         if (Array.isArray(result)) {
@@ -30,6 +30,7 @@ function ArtistasDash() {
         
       } catch (err) {
         setError(err.message);
+        alert("error en useeffect " + error)
       }
     };
 
@@ -38,12 +39,12 @@ function ArtistasDash() {
 
   }, []);
   return (
-    <MainAdmin tituloPagina={"Administracion Perfiles de Artistas"}>
+    <MainAdmin tituloPagina={"Administracion Beneficios"}>
         
         <div className='contenedorContenidoPagina' >
         <TarjetaLinkAdd />
         {data.map((item) => (
-          <Tarjeta key={item.id} objetoArtista={item} />
+          <Tarjeta key={item.idBeneficios} objetoArtista={item} />
         ))}
         </div>
 
@@ -53,7 +54,4 @@ function ArtistasDash() {
    ) 
 }
 
-export default ArtistasDash;
-
-
-
+export default BeneficiosDash;

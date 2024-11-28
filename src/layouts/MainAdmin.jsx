@@ -9,7 +9,8 @@ function MainAdmin({ tituloPagina, children }) {
   const arrayLinks = [
     {nombre: 'Mi Dashboard' , ruta:'#'}, 
     {nombre: 'Vista Cliente' , ruta:'#'},
-    {nombre: 'ArtistaDash' , ruta:'/pages/ArtistasDash'},
+    {nombre: 'Artista' , ruta:'/pages/ArtistasDash'},
+    {nombre: 'Beneficios' , ruta:'/pages/BeneficiosDash'},
 
 
   ]

@@ -9,6 +9,9 @@ import {
 } from "react-router-dom";
 
 import ArtistasDash from './modulos1/Artistas/pages/ArtistasDash';
+import BeneficiosDash from './modulos1/Beneficios/Pages/BeneficiosDash';
+import AddBeneficio from './modulos1/Beneficios/Pages/AddBeneficio';
+
 import ArtistasAddArtista from './modulos1/Artistas/pages/ArtistasAddArtista';
 
 import ArtistaEditArtista from  './modulos1/Artistas/pages/ArtistaEditArtista'
@@ -25,6 +28,14 @@ const router = createBrowserRouter([
   {
     path: "/pages/AddArtista",
     element: <ArtistasAddArtista />
+  },
+  {
+    path: "/pages/BeneficiosDash",
+    element: <BeneficiosDash />
+  },
+  {
+    path: "/pages/AddBeneficio",
+    element: <AddBeneficio />
   },
 ]);
 

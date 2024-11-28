@@ -3,6 +3,8 @@ export const ENDPOINTS = {
     GETARTISTAXID: "Artista/getOneArtistaById",
     GUARDARARTISTA: "Artista/guardarArtista",
     DELETEARTISTA: "Artista/deleteArtista",
+    DESPUBLICARARTISTA: "Artista/despublicarArtista",
+    PUBLICARARTISTA: "Artista/publicarArtista",
     GETBENEFICIOS: "Beneficio/listarBeneficios",
     GETBENEFICIOXID: "Beneficio/getOneBeneficioById",
     GUARDARBENEFICIOS: "Beneficio/guardarBeneficio",
@@ -12,7 +14,7 @@ export const ENDPOINTS = {
     GETARTISTASXCATEGORIA: "Categoria/listarArtistasXCategoria",
     ASIGNARCATEGORIAS: "Categoria/asignarCategoriaArtista",
     GUARDARIMAGENARTICULO: "ImagenArticulo/guardarImagen",
-    GETURLXIDIMAGEN: "ImagenArticulo/buscarUrlXID",
+    GETURLIXDIMAGEN: "ImagenArticulo/buscarUrlXID",
     
     COMMENTS: "comments",
   };
