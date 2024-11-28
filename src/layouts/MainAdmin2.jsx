@@ -1,16 +1,17 @@
-import React from "react";
-import Header from "./componentes/Header.jsx";
-import Footer from "./componentes/Footer.jsx";
+import React, { Children } from "react";
+import MyNavBar from "./componentes2/Navbar";
+import BarraTitulo from "./componentes2/BarraTitulo.jsx";
+import AsideAdmin from "./componentes2/AsideAdmin.jsx";
 import './estilos/MainAdmin.css'
-
 
 function MainAdmin({ tituloPagina, children }) {
     
   const arrayLinks = [
     {nombre: 'Mi Dashboard' , ruta:'#'}, 
-    {nombre: 'Vista Cliente' , ruta:'/pages/ArtistaView'},
+    {nombre: 'Vista Cliente' , ruta:'/pages/ArtistasView'},
     {nombre: 'Artista' , ruta:'/pages/ArtistasDash'},
     {nombre: 'Beneficios' , ruta:'/pages/BeneficiosDash'},
+
 
 
   ]

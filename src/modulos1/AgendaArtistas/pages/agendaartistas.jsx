@@ -1,5 +1,5 @@
 import React from "react";
-import MainAdmin from '../../../layouts/MainAdmin'
+import MainAdmin from '../../../layouts/MainAdmin1.jsx'
 import "../estilos/agendaartista.css";
 import AgendaArtistaCliente from "../components/AgendaArtistaCliente.jsx";
 

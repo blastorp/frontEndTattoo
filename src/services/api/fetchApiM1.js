@@ -1,5 +1,5 @@
-//const BASE_URL = "https://tiusr39pl.cuc-carrera-ti.ac.cr/toi";
-const BASE_URL = "https://localhost:7257";
+const BASE_URL = "https://tiusr39pl.cuc-carrera-ti.ac.cr/toi";
+//const BASE_URL = "https://localhost:7257";
 //const BASE_URL = "https://tiusr39pl.cuc-carrera-ti.ac.cr/apiTattoo";
 
 // const fetchApiM1 = async (segmentoRuta, cabecera) => {

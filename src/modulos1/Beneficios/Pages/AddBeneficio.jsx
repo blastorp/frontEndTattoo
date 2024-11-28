@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 
 import WizardForm from "../components/wizardForm";
-import MainAdmin from "../../../layouts/MainAdmin";
+import MainAdmin from "../../../layouts/MainAdmin2";
 
 function AddBeneficio() {
   

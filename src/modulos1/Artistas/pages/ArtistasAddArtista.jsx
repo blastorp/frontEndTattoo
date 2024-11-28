@@ -2,11 +2,9 @@
 import React, { useState } from "react";
 
 // cambio
-import SignUpInfo from "../components/P1WizardArtista";
-import PersonalInfo from "../components/P2WizardArtista";
-import OtherInfo from "../components/P3WizardArtista";
+
 import WizardForm from "../components/WizardForm";
-import MainAdmin from "../../../layouts/MainAdmin";
+import MainAdmin from "../../../layouts/MainAdmin2";
 
 function ArtistasAddArtista() {
   

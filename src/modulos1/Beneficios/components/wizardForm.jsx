@@ -191,7 +191,7 @@ function WizardForm() {
                                      setImage={setImage}  />
                                  </div>
           {/* <div className="body">{PageDisplay()}</div> */}
-          <div className="footer">
+          <div className="">
             {/* <button
               disabled={page == 0}
               onClick={() => {

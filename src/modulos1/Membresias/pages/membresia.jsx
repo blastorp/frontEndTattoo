@@ -1,5 +1,5 @@
 import React from "react";
-import MainAdmin from '../../../layouts/MainAdmin'
+import MainAdmin from '../../../layouts/MainAdmin1.jsx'
 import '../estilos/membresia.css'
 import MembresiaCliente from "../components/membresiaCliente.jsx";
 

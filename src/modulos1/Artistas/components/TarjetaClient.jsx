@@ -39,49 +39,17 @@ export const TarjetaClient = ({ objetoArtista }) => {
     fetchData();
   }, [objetoArtista.idImagenFotoPerfil]);
 
-  const togglePublicar = async () => {
-    try {
-      const nuevoEstado = !publicado; // Invierte el estado actual
-      setPublicado(nuevoEstado); // Actualiza el estado local
-      let response;
-      if (publicado) {
-        response = await fetchApiM1(
-          ENDPOINTS.PUBLICARARTISTA, // Endpoint para actualizar
-          "GET",
-          null,
-          {},
-          { idArtista: objetoArtista.idArtista }
-        );
-        alert("artista publicado");
-      } else {
-        response = await fetchApiM1(
-          ENDPOINTS.DESPUBLICARARTISTA, // Endpoint para actualizar
-          "GET",
-          null,
-          {},
-          { idArtista: objetoArtista.idArtista }
-        );
-        alert("artista despublicado");
-      }
-      // Realiza la solicitud PUT
-
-      console.log("Respuesta del servidor:", response);
-    } catch (err) {
-      console.error("Error al actualizar el estado de publicación:", err);
-    }
-  };
-
   return (
     <div className="card">
       <div className="profile-pic">
         <img src={image} alt="Foto de perfil" />
       </div>
       <div className="info">
-        <h3>{objetoArtista.nombre}</h3>
+        <h3>{objetoArtista.nombreArt}</h3>
         <div className="description">
-        <p>{objetoArtista.descripcionArt}</p>
+        
       </div>
-        <p> 📞 {objetoArtista.telefono}</p>
+       
         <Link className="link-style-none" to={`/pages/ArtistaDetails/${objetoArtista.idArtista}`}>
           Ver mas...
         </Link>

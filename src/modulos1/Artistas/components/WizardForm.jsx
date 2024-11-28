@@ -218,7 +218,7 @@ function WizardForm() {
             <h2 className="tituloPaginaWizard">{FormTitles[page]}</h2>
           </div>
           <div className="body">{PageDisplay()}</div>
-          <div className="footer">
+          <div className="footer1">
             <button
               disabled={page == 0}
               onClick={() => {

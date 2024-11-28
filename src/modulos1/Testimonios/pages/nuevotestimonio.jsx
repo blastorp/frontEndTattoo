@@ -1,5 +1,5 @@
 import React from "react";
-import MainAdmin from '../../../layouts/MainAdmin.jsx'
+import MainAdmin from '../../../layouts/MainAdmin1.jsx'
 import "../estilos/testimonio.css";
 import TestimoniosClientes from "../components/testimoniosClientes.jsx";
 

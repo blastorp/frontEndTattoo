@@ -7,17 +7,18 @@ import { useParams } from "react-router-dom";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 
-function ArtistaDetails() {
+function ArtistaDetails( ) {
   const { artistaId } = useParams();
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const [image, setImage] = useState(null);
   const navigate = useNavigate();
   const handleGoBack = () => {
     navigate(-1); // Go back to the previous page
   };
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData1 = async () => {
       try {
         const result = await fetchApiM1(
           ENDPOINTS.GETARTISTAXID,
@@ -28,6 +29,7 @@ function ArtistaDetails() {
         );
         if (Array.isArray(result)) {
           setData(result[0]);
+          fetchData2(result[0].idImagenFotoPerfil)
         } else {
           console.error("Unexpected data format:", result);
           setError("Unexpected data received from API."); // Provide a more informative error message
@@ -37,7 +39,32 @@ function ArtistaDetails() {
       }
     };
 
-    fetchData();
+
+    const fetchData2 = async ( idImageh ) => {
+      try {
+        if (idImageh) {
+          console.log(idImageh);
+          const result = await fetchApiM1(
+            ENDPOINTS.GETURLIXDIMAGEN,
+            "GET",
+            null,
+            {},
+            { idImagenArticulo: idImageh }
+          );
+
+          console.log(result[0]);
+          setImage(result[0].imagenUrl);
+        } else {
+          setImage("https://via.placeholder.com/100");
+        }
+      } catch (err) {
+        setError(err.message);
+        console.log(err);
+      }
+    };
+    fetchData1();
+
+    fetchData2();
   }, []);
   return (
     <div>
@@ -54,7 +81,7 @@ function ArtistaDetails() {
       <main>
         {/* Profile Picture */}
         <div className="profile-pic">
-          <img src="https://via.placeholder.com/150" alt="Profile" />
+          <img src= { image } alt="Profile" />
         </div>
 
         {/* Description */}
@@ -64,15 +91,7 @@ function ArtistaDetails() {
         </section>
 
         {/* Contact Info */}
-        <section>
-          <h2>Contact</h2>
-          <p>
-            <strong>Phone:</strong> {data.telefono || "N/A"}
-          </p>
-          <p>
-            <strong>Email:</strong> {data.email || "N/A"}
-          </p>
-        </section>
+       
 
         {/* Creation Date */}
         <section>
