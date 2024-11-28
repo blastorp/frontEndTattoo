@@ -1,39 +1,13 @@
-.contenedorLayout{
-
-min-width: 100vw;
-height: 50%;
-background-color: var(--oscuro-color);
-}
-
-.distribucionContenido{
-    padding: 10px;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr 6fr;
-    background-color: var(--oscuro-color);
-    display: grid;
-}
-
-.contenedorAside {
-    grid-column: 1/2;
-    grid-row: 1/6;
-    
-}
-.contenedorBarraTitulo{
-    margin-left: 15px;
-    grid-column: 2/4;
-    grid-row: 1/2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .contenedorContenidoPagina {
     width: 100%;
-    margin: 10px;
+    margin: 0 10px 0 0; /* Margen derecho de 10px */
+    padding-top: 20px; /* Asegura que no haya padding interno */
+    margin-left: -30px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-x: hidden;
+    margin-top: 120px; /* Margen superior */
+    box-sizing: border-box;
 }

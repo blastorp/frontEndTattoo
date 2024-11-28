@@ -1,0 +1,45 @@
+.buttonD-panel {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  gap: 10px; /* Espaciado entre los botones */
+  justify-items: center; /* Centrar los botones en cada celda */
+  margin-top: 100px;
+}
+
+.buttonD {
+  background-color: #DA0037; /* Verde */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 200px;
+  height: 100px;
+  transition: background-color 0.3s;
+}
+
+.buttonD i {
+  font-size: 24px; /* Tamaño del ícono */
+  margin-bottom: 8px;
+}
+
+.buttonD span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.buttonD:hover {
+  background-color: #BE3144;
+}
+
+.buttonD:active {
+  background-color: #DA0037;
+}

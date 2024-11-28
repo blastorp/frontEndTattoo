@@ -1,0 +1,40 @@
+/* Modificar el estilo de los botones de navegación */
+.navegacion {
+  background-color: #DA0037; /* Color de fondo rojo */
+  color: white; /* Texto blanco */
+  font-size: 18px; /* Tamaño de fuente */
+  padding: 10px 20px; /* Aumentar el tamaño del botón */
+  border: none; /* Eliminar bordes */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de puntero al pasar sobre el botón */
+  margin: 0 10px; /* Espaciado a la izquierda y derecha */
+}
+
+/* Cambiar el color del texto de todos los elementos */
+body, .titulo-agenda, .dia, .hora, .btn-enviar, .btn-agendar {
+  color: white; /* Texto blanco */
+}
+
+/* Modificar el estilo de los días de la semana */
+.dia {
+  font-size: 18px;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.dia.seleccionada {
+  background-color: #BE3144; /* Cambiar color de fondo cuando el día está seleccionado */
+}
+
+/* Estilo de los botones de agendar y enviar */
+.btn-enviar, .btn-agendar {
+  background-color: #DA0037; /* Color de fondo rojo */
+  color: white; /* Texto blanco */
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px; /* Espaciado superior */
+}

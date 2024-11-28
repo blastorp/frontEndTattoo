@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Asegura un mejor control del tamaño */
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+}
+
+/*#region Testimonios*/
+
+.testimonial-section {
+    background-color: #b1a6a660;
+    display: block;
+    width: 100%;
+    margin: 0; /* Elimina márgenes */
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.testimonial-title {
+    font-size: 2em;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.testimonial-slider {
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    background: url('/src/layouts/assets/Testimonios_img.png') no-repeat center center/cover;
+    background-color: #BE3144;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.testimonial-slider .testimonial-slide {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+    font-size: 1.2em;
+    font-style: italic;
+    max-width: 80%;
+}
+
+.testimonial-slider .testimonial-slide.active {
+    opacity: 1;
+}
+
+.controls {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.controls button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 2em;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 100%;
+    width: auto;
+}
+
+.controls button:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.add-testimonial-button {
+    background-color: #BE3144;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.add-testimonial-button:hover {
+    background-color: #9c2636;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .testimonial-slider {
+        height: 200px;
+        padding: 10px;
+    }
+
+    .testimonial-slider .testimonial-slide {
+        font-size: 1em;
+        max-width: 90%;
+    }
+
+    .testimonial-title {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial-title {
+        font-size: 1.2em;
+    }
+
+    .testimonial-slider .testimonial-slide {
+        font-size: 0.9em;
+    }
+
+    .controls button {
+        font-size: 1.5em;
+    }
+}
+
+/*#endregion Testimonios*/
+
+/*#region Membresía*/
+
+.membership-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f4f4f4;
+    padding: 20px;
+    width: 100%; /* Ocupa todo el ancho */
+    margin: 0;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.membership-content {
+    width: 50%; /* Ajusta ancho al 50% para pantallas grandes */
+    padding: 50px;
+}
+
+.membership-image {
+    width: 50%;
+    height: 300px;
+    background-image: url('/src/layouts/assets/Membresia.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+}
+
+.membership-content h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.membership-content p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.join-button {
+    padding: 10px 20px;
+    background-color: #BE3144;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.join-button:hover {
+    background-color: #9c2636;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .membership-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .membership-content {
+        width: 80%;
+        padding: 10px;
+    }
+
+    .membership-image {
+        width: 80%;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .membership-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .membership-content p {
+        font-size: 1rem;
+    }
+
+    .join-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}
+
+/*#endregion Membresía*/
+
+/*#region Galería*/
+
+.gallery-section {
+    background-color: #f9f9f9;
+    padding: 50px 0; /* Elimina padding lateral innecesario */
+    width: 100%; /* Ocupa todo el ancho */
+    margin: 0;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.gallery-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 250px;
+    background-color: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .gallery-title {
+        font-size: 2rem;
+    }
+
+    .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-title {
+        font-size: 1.5rem;
+    }
+
+    .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+/*#endregion Galería*/

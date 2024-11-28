@@ -1,0 +1,106 @@
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #343a40;
+  height: 56px; /* Mantén la altura del navbar */
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Estilo para el logo */
+.navbar-brand {
+  display: inline-flex;
+  padding: 0;
+  margin-right: 20px;
+}
+
+/* Estilo para el botón del menú */
+.menu-button {
+  padding: 10px 10px;
+  font-size: 2.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  border: none;
+}
+
+/* Estilo para el botón de "Salir" */
+.logout-button {
+  padding: 0;
+  font-size: 2.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  border: none;
+}
+
+/* Menú lateral */
+.menu-sidebar {
+  position: fixed;
+  top: 56px; /* Deja espacio debajo del navbar */
+  left: -300px;
+  width: 300px;
+  height: 100%; /* Ocupar todo el alto de la pantalla */
+  background-color: #343a40;
+  transition: left 0.3s ease;
+  z-index: 1020;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  overflow-y: auto; /* Permitir desplazamiento */
+  display: flex;
+  flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+}
+
+/* Cuando el menú está abierto */
+.menu-sidebar.open {
+  left: 0;
+}
+
+/* Los elementos del menú */
+.menu-sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Hace que el ul ocupe el espacio restante */
+  overflow-y: auto; /* Asegura que se pueda desplazar */
+}
+
+/* Los elementos dentro de la lista */
+.menu-sidebar ul li {
+  padding: 10px 20px; /* Altura de los botones */
+  color: white;
+  font-size: 18px;
+}
+
+.menu-sidebar ul li:hover {
+  background-color: #495057;
+}
+
+.menu-sidebar ul li i {
+  margin-right: 15px; /* Aumento del espacio entre icono y texto */
+}
+
+/* Estilo para los links */
+.menu-item {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.menu-item:hover {
+  background-color: #495057;
+}
