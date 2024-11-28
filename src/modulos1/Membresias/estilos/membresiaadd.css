@@ -1,0 +1,97 @@
+.form-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+/* Form and Image Layout */
+.form-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 20px;
+  width: 100%;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 500px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+}
+
+.form-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #ffffff;
+}
+
+/* Input and Select Styles */
+.input,
+.select,
+.date {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #DA0037;
+  border-radius: 5px;
+  background-color: #121212;
+  color: #ffffff;
+  width: 100%;
+}
+
+.select {
+  appearance: none;
+}
+
+.input::placeholder {
+  color: #ffffff;
+}
+
+/* Checkbox Style */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+}
+
+.button {
+  padding: 6px 3px; /* Menos padding para reducir el tamaño */
+  font-size: 0.85rem; /* Fuente más pequeña */
+  background-color: #DA0037;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: auto; /* Elimina el 100% de ancho, para que sea proporcional */
+}
+
+.button:hover {
+  background-color: #BE3144;
+}

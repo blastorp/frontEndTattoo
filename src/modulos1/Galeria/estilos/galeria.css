@@ -1,0 +1,175 @@
+#contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra todo el contenido en el eje vertical */
+    align-items: center; /* Centra todo el contenido en el eje horizontal */
+    min-height: 100vh; /* Hace que el contenedor principal ocupe toda la altura de la ventana */
+    padding: 20px 20px 100px;
+}
+
+h1 {
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 20px;
+}
+
+.filtros {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filtros .filtro-item {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.filtros label {
+    display: block;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.filtros select {
+    width: 150px;
+    padding: 10px;
+    background-color: #DA0037;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filtros select:focus {
+    outline: none;
+    background-color: #BE3144;
+}
+
+.filtros select option {
+    padding-left: 25px;
+}
+
+.filtros select i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+}
+
+.filtros select {
+    position: relative;
+}
+
+.filtros select::-ms-expand {
+    display: none; /* Elimina la flecha en IE */
+}
+
+/* Estilos para la galería */
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Las imágenes se alinean al principio */
+    width: 100%;
+}
+
+/* Estilos para las imágenes */
+.galeria .imagen {
+    flex: 1 1 calc(20%); /* 5 imágenes por fila */
+    max-width: calc(20%); /* Asegura que no haya espacio extra */
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    align-items: flex-start; /* Alinea las imágenes por la parte superior */
+    height: auto; /* Asegura que la imagen mantenga su proporción original */
+}
+
+/* Asegura que las imágenes se ajusten correctamente */
+.galeria img {
+    width: 100%; /* Las imágenes ocupan el 100% del contenedor */
+    height: auto; /* Mantiene la altura proporcional sin distorsionar */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.galeria .imagen:hover img {
+    transform: scale(1.1);
+}
+
+/* Media queries para la adaptabilidad */
+@media (max-width: 1200px) {
+    .galeria .imagen {
+        flex: 1 1 calc(25%); /* 4 imágenes por fila */
+        max-width: calc(25%);
+    }
+}
+
+@media (max-width: 900px) {
+    .galeria .imagen {
+        flex: 1 1 calc(33.33%); /* 3 imágenes por fila */
+        max-width: calc(33.33%);
+    }
+}
+
+@media (max-width: 600px) {
+    .galeria .imagen {
+        flex: 1 1 calc(50%); /* 2 imágenes por fila */
+        max-width: calc(50%);
+    }
+}
+
+@media (max-width: 400px) {
+    .galeria .imagen {
+        flex: 1 1 calc(100%); /* 1 imagen por fila */
+        max-width: calc(100%);
+    }
+}
+
+
+/* Contenedor de la imagen expandida */
+.imagen-expandida {
+    position: fixed; /* Fijar la imagen expandida sobre el resto del contenido */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que se muestre sobre los demás elementos */
+  }
+  
+  .controls button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+  
+.controls button:hover {
+    opacity: 0.8; /* Efecto visual */
+}
+  
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: white; /* Para que el icono de cerrar sea visible */
+}

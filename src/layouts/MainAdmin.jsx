@@ -1,8 +1,8 @@
-import React, { Children } from "react";
-import MyNavBar from "./componentes/Navbar";
-import BarraTitulo from "./componentes/BarraTitulo.jsx";
-import AsideAdmin from "./componentes/AsideAdmin.jsx";
+import React from "react";
+import Header from "./componentes/Header.jsx";
+import Footer from "./componentes/Footer.jsx";
 import './estilos/MainAdmin.css'
+
 
 function MainAdmin({ tituloPagina, children }) {
     
