@@ -1,17 +1,16 @@
 import React, { Children } from "react";
-import MyNavBar from "./componentes/Navbar";
+import MyNavBar from "./componentes/Navbar.jsx";
 import BarraTitulo from "./componentes/BarraTitulo.jsx";
 import AsideAdmin from "./componentes/AsideAdmin.jsx";
 import './estilos/MainAdmin.css'
 
-function MainAdmin({ tituloPagina, children }) {
+function MainClient({ tituloPagina, children }) {
     
   const arrayLinks = [
     {nombre: 'Mi Dashboard' , ruta:'#'}, 
-    {nombre: 'Vista Cliente' , ruta:'/pages/ArtistaView'},
+    {nombre: 'Vista Cliente' , ruta:'#'},
     {nombre: 'Artista' , ruta:'/pages/ArtistasDash'},
     {nombre: 'Beneficios' , ruta:'/pages/BeneficiosDash'},
-
 
   ]
     return(
@@ -38,4 +37,4 @@ function MainAdmin({ tituloPagina, children }) {
         
 }
 
-export default MainAdmin;
+export default MainClient;

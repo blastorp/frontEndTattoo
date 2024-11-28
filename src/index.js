@@ -11,11 +11,9 @@ import {
 import ArtistasDash from './modulos1/Artistas/pages/ArtistasDash';
 import BeneficiosDash from './modulos1/Beneficios/Pages/BeneficiosDash';
 import AddBeneficio from './modulos1/Beneficios/Pages/AddBeneficio';
-
 import ArtistasAddArtista from './modulos1/Artistas/pages/ArtistasAddArtista';
-
 import ArtistaEditArtista from  './modulos1/Artistas/pages/ArtistaEditArtista'
-
+import ArtistaView from  './modulos1/Artistas/pages/ArtistaView'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/pages/ArtistasDash",
     element: <ArtistasDash />
+  },
+  {
+    path: "/pages/ArtistaView",
+    element: <ArtistaView />
   },
   {
     path: "/pages/AddArtista",
