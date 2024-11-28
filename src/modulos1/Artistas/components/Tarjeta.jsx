@@ -44,7 +44,7 @@ export const Tarjeta = ({ objetoArtista }) => {
       const nuevoEstado = !publicado; // Invierte el estado actual
       setPublicado(nuevoEstado); // Actualiza el estado local
       let response;
-      if (publicado) {
+      if (!publicado) {
          response = await fetchApiM1(
         ENDPOINTS.PUBLICARARTISTA, // Endpoint para actualizar
         "GET",null, {},

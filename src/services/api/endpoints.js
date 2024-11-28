@@ -9,6 +9,8 @@ export const ENDPOINTS = {
     GETBENEFICIOXID: "Beneficio/getOneBeneficioById",
     GUARDARBENEFICIOS: "Beneficio/guardarBeneficio",
     DELETEBENEFICIO: "Beneficio/deleteBeneficio",
+    PUBLICARBENEFICIO: "Beneficio/publicarBeneficio",
+    DESPUBLICARBENEFICIO: "Beneficio/despublicarBeneficio",
     GETCATEGORIAS: "Categoria/listarCategorias",
     GETCATEGORIAXID: "Categoria/listarCategoriasXArtista",
     GETARTISTASXCATEGORIA: "Categoria/listarArtistasXCategoria",

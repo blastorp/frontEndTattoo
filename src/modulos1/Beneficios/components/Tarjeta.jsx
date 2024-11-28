@@ -45,9 +45,9 @@ export const Tarjeta = ({ objetoBeneficio }) => {
       const nuevoEstado = !publicado; // Invierte el estado actual
       setPublicado(nuevoEstado); // Actualiza el estado local
       let response;
-      if (publicado) {
+      if (!publicado) {
          response = await fetchApiM1(
-        ENDPOINTS.PUBLICARARTISTA, // Endpoint para actualizar
+        ENDPOINTS.PUBLICARBENEFICIO, // Endpoint para actualizar
         "GET",null, {},
         { idBeneficio: objetoBeneficio.idBeneficio }
         
@@ -56,7 +56,7 @@ export const Tarjeta = ({ objetoBeneficio }) => {
       }
       else {
          response = await fetchApiM1(
-          ENDPOINTS.DESPUBLICARARTISTA, // Endpoint para actualizar
+          ENDPOINTS.DESPUBLICARBENEFICIO, // Endpoint para actualizar
           "GET", null, {},
           { idBeneficio: objetoBeneficio.idBeneficio }
         )

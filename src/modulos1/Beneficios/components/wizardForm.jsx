@@ -3,9 +3,7 @@ import React, { useState, useEffect } from "react";
 import fetchApiM1  from "../../../services/api/fetchApiM1";
 import ENDPOINTS  from "../../../services/api/endpoints";
 // cambio
-import P1WizardArtista from "../components/P1WizardArtista";
-import P2WizardArtista from "../components/P2WizardArtista";
-import P3WizardArtista from "../components/P3WizardArtista";
+import P1WizardBeneficio from "../components/P1WizardBeneficio";
 import '../estilos/wizard.css'
 //interaccion con firebase
 import {
@@ -23,20 +21,17 @@ import { useNavigate } from 'react-router-dom';
 
 function WizardForm() {
   
-    const [page, setPage] = useState(0);
+    //const [page, setPage] = useState(0);
     const [formData, setFormData] = useState({
-        idArtista: null,
+        idBeneficio: null,
         nombre: "",
-        nombreArt: "",
-        nroIdentificacion: "",
-        descripcionArt: "",
-        idImagenFotoPerfil : null,
-        telefono: "",
-        email: "",
-        fechaCreacion: null,
+        subtitulo: "",
+        descripcion: "",
+        idImagenArticulo: null,
+        cantVisitas: null,
         estadoLogico: true,
         publicado: true,
-        archivado: true
+        archivado: false
         
     });
 
@@ -50,80 +45,52 @@ function WizardForm() {
     //para navegar a otra pagina
     const navigate = useNavigate();
     
-    const FormTitles = ["Datos Personales", "Datos Ficha Artista", "Categorias Artista"];
+   // const FormTitles = ["Datos Personales", "Datos Ficha Artista", "Categorias Artista"];
   
-    useEffect(() => {
-      const fetchData = async () => {
-        
-        try {
-          const result = await fetchApiM1(ENDPOINTS.GETCATEGORIAS);
-          // setData(result)
-  
-          if (Array.isArray(result)) {
-            setCategorias(result);
-            
-          } else {
-            console.error("Unexpected data format:", result);
-            setError("Unexpected data received from API."); // Provide a more informative error message
-          }
-          
-        } catch (err) {
-          setError(err.message);
-          alert(error);
-        }
-      };
-      fetchData();
+   
+    // const PageDisplay = () => {
+    //   if (page === 0) {
+    //     return <P1WizardArtista formData={formData} setFormData={setFormData} />;
+    //   } else if (page === 1) {
+    //     return <P2WizardArtista formData={formData} setFormData={setFormData}
+    //                              setImageUpload ={setImageUpload}
+    //                              image={image} 
+    //                              setImage={setImage} />;
+    //   } else {
+    //     return <P3WizardArtista 
+    //     formData={formData} setFormData={setFormData} 
+    //     categorias= {categorias} categoriasElegidas ={ categoriasElegidas }
+    //     setcategoriasElegidas={setcategoriasElegidas}/>;
+    //   }
+    // };
 
-
-  }, []);
-    const PageDisplay = () => {
-      if (page === 0) {
-        return <P1WizardArtista formData={formData} setFormData={setFormData} />;
-      } else if (page === 1) {
-        return <P2WizardArtista formData={formData} setFormData={setFormData}
-                                 setImageUpload ={setImageUpload}
-                                 image={image} 
-                                 setImage={setImage} />;
-      } else {
-        return <P3WizardArtista 
-        formData={formData} setFormData={setFormData} 
-        categorias= {categorias} categoriasElegidas ={ categoriasElegidas }
-        setcategoriasElegidas={setcategoriasElegidas}/>;
-      }
-    };
-
-    const guardarArtista = async (idImagen) => {
+    const guardarBeneficio = async (idImagen) => {
       try {
 
-        const objArtista = {
-          idArtista: null,
-        nombre: formData.nombre,
-        nombreArt: formData.nombreArt,
-        nroIdentificacion: formData.nroIdentificacion,
-        descripcionArt: formData.descripcionArt,
-        idImagenFotoPerfil : idImagen,
-        telefono: formData.telefono,
-        email: formData.email,
-        fechaCreacion: null,
-        estadoLogico: true,
-        publicado: true,
-        archivado: true
+        const objetoBeneficio = {
+            idBeneficio: null,
+            nombre: formData.nombre,
+            subtitulo: formData.subtitulo,
+            descripcion: formData.descripcion,
+            idImagenArticulo: idImagen,
+            cantVisitas: 0,
+            estadoLogico: true,
+            publicado: true,
+            archivado: false
         }
         //console.log("objcreagdo: "+ objArtista);
         //console.log(formData);
         // Call API and wait for the response
-        const result = await fetchApiM1(ENDPOINTS.GUARDARARTISTA, "POST", objArtista);
+        const result = await fetchApiM1(ENDPOINTS.GUARDARBENEFICIOS, "POST", objetoBeneficio);
     
         // Log the result for debugging
         //console.log("Guardar Artista Response:", result);
     
-        if (!result[0].idArtista) {
-          throw new Error("idArtista is undefined in the API response");
+        if (!result[0].idBeneficio) {
+          throw new Error("idBeneficio is undefined in the API response");
         }
     
         // Set artist data and proceed to save categories
-        setArtGuardado(result[0]);
-        guardarCategorias(result[0].idArtista);
       } catch (err) {
         console.error("Error in guardarArtista:", err.message);
         setError(err.message);
@@ -173,8 +140,7 @@ function WizardForm() {
         //console.log("Guardar Imagen Response:", idImagenArticulo);
     
         // Crear un objeto actualizado y usarlo directamente
-        const updatedFormData = { ...formData, idImagenFotoPerfil: idImagenArticulo };
-        setFormData(updatedFormData);
+       
     
         return idImagenArticulo;
       } catch (err) {
@@ -189,7 +155,7 @@ function WizardForm() {
     const guardarDatos = async () => {
       try {
         if (imageUpload == null) {
-          guardarArtista(null);
+          guardarBeneficio(null);
         } else {
           const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
           const snapshot = await uploadBytes(imageRef, imageUpload);
@@ -200,9 +166,9 @@ function WizardForm() {
           //console.log("ID de Imagen guardada:", idImagen);
           
 
-          await guardarArtista(idImagen);
+          await guardarBeneficio(idImagen);
           alert("Datos Guardados Correctamente");
-          navigate('/pages/ArtistasDash');
+          navigate('/pages/BeneficiosDash');
         }
       } catch (err) {
         console.error("Error in guardarDatos:", err.message);
@@ -215,29 +181,32 @@ function WizardForm() {
         
         <div className="form-container">
           <div className="header">
-            <h2 className="tituloPaginaWizard">{FormTitles[page]}</h2>
+            {/* <h2 className="tituloPaginaWizard">{FormTitles[page]}</h2> */}
+            <h2 className="tituloPaginaWizard">Datos Beneficio</h2>
           </div>
-          <div className="body">{PageDisplay()}</div>
+          <div className="body"><P1WizardBeneficio formData={formData} setFormData={setFormData}
+                                    imageUpload = { imageUpload }
+                                    setImageUpload ={setImageUpload}
+                                    image={image} 
+                                     setImage={setImage}  />
+                                 </div>
+          {/* <div className="body">{PageDisplay()}</div> */}
           <div className="footer">
-            <button
+            {/* <button
               disabled={page == 0}
               onClick={() => {
                 setPage((currPage) => currPage - 1);
               }}
             >
               Prev
-            </button>
+            </button> */}
             <button
               onClick={() => {
-                if (page === FormTitles.length - 1) {
-                  guardarDatos();
-                  
-                } else {
-                  setPage((currPage) => currPage + 1);
-                }
+                guardarDatos();
               }}
             >
-              {page === FormTitles.length - 1 ? "Guardar y Volver" : "Next"}
+                Guardar
+              {/* {page === FormTitles.length - 1 ? "Guardar y Volver" : "Next"} */}
             </button>
           </div>
         </div>
