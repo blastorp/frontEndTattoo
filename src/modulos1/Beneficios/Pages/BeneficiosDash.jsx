@@ -23,6 +23,7 @@ function BeneficiosDash() {
 
         if (Array.isArray(result)) {
           setData(result);
+          console.log(result);
         } else {
           console.error("Unexpected data format:", result);
           setError("Unexpected data received from API."); // Provide a more informative error message
@@ -44,7 +45,7 @@ function BeneficiosDash() {
         <div className='contenedorContenidoPagina' >
         <TarjetaLinkAdd />
         {data.map((item) => (
-          <Tarjeta key={item.idBeneficios} objetoArtista={item} />
+          <Tarjeta key={item.idBeneficios} objetoBeneficio={item} />
         ))}
         </div>
 

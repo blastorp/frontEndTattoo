@@ -43,7 +43,7 @@ function ArtistasDash() {
         <div className='contenedorContenidoPagina' >
         <TarjetaLinkAdd />
         {data.map((item) => (
-          <Tarjeta key={item.id} objetoArtista={item} />
+          <Tarjeta key={item.idArtista} objetoArtista={item} />
         ))}
         </div>
 

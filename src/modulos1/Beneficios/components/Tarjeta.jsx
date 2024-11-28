@@ -52,7 +52,7 @@ export const Tarjeta = ({ objetoBeneficio }) => {
         { idBeneficio: objetoBeneficio.idBeneficio }
         
       );
-      alert("artista publicado");
+      alert("Beneficio publicado");
       }
       else {
          response = await fetchApiM1(
@@ -60,9 +60,9 @@ export const Tarjeta = ({ objetoBeneficio }) => {
           "GET", null, {},
           { idBeneficio: objetoBeneficio.idBeneficio }
         )
-        alert("artista despublicado");
+        alert("Beneficio despublicado");
       };
-      // Realiza la solicitud PUT
+    //   Realiza la solicitud PUT
       
 
       console.log("Respuesta del servidor:", response);
@@ -95,14 +95,14 @@ export const Tarjeta = ({ objetoBeneficio }) => {
       </div>
       <div className="info">
         <h3>{objetoBeneficio.nombre}</h3>
-        <p> {objetoBeneficio.cantVisitas}</p>
+        <p>Cantidad de Visitas: {objetoBeneficio.cantVisitas}</p>
       </div>
       <div className="toggle" key={objetoBeneficio.idBeneficio}>
         <label htmlFor={`publicado-${objetoBeneficio.idBeneficio}`}>
           <input
             type="checkbox"
             id={`publicado-${objetoBeneficio.idBeneficio}`}
-            checked={publicado}
+            checked={ publicado }
             onChange={togglePublicar} // Se ejecuta al cambiar
           />
           Publicado
