@@ -31,7 +31,7 @@ const Header = () => {
           <div className="navbar-collapse collapse d-sm-inline-flex justify-content-center align-items-center">
             <ul className="navbar-nav flex-grow-1 d-flex align-items-center justify-content-center">
               <li className="nav-item">
-                <Link to="/membresia" className="nav-link text-white">
+                <Link to="/pages/agendaartistas" className="nav-link text-white">
                   Servicios
                 </Link>
               </li>

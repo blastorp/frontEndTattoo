@@ -1,74 +1,40 @@
-.table-wrapper {
-    padding: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .table-title {
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-  }
-  
-  .search-container {
-    margin-bottom: 20px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .search-label {
-    font-size: 16px;
-    font-weight: 500;
-  }
-  
-  .search-input {
-    padding: 8px;
-    font-size: 16px;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .custom-table {
-    width: 80%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 18px;
-    text-align: left;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .custom-table thead tr {
-    background-color: #DA0037;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .custom-table th,
-  .custom-table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-  }
-  
-  .custom-table tbody tr {
-    background-color: #fdfdfd;
-  }
-  
-  .custom-table tbody tr:nth-child(even) {
-    background-color: #f3f3f3;
-  }
-  
-  .custom-table tbody tr:hover {
-    background-color: #BE3144;
-    cursor: pointer;
-  }
-  
-  .no-data {
-    text-align: center;
-    color: #999;
-    font-style: italic;
-  }
-  
+/* Modificar el estilo de los botones de navegación */
+.navegacion {
+  background-color: #DA0037; /* Color de fondo rojo */
+  color: white; /* Texto blanco */
+  font-size: 18px; /* Tamaño de fuente */
+  padding: 10px 20px; /* Aumentar el tamaño del botón */
+  border: none; /* Eliminar bordes */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de puntero al pasar sobre el botón */
+  margin: 0 10px; /* Espaciado a la izquierda y derecha */
+}
+
+/* Cambiar el color del texto de todos los elementos */
+body, .titulo-agenda, .dia, .hora, .btn-enviar, .btn-agendar {
+  color: white; /* Texto blanco */
+}
+
+/* Modificar el estilo de los días de la semana */
+.dia {
+  font-size: 18px;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.dia.seleccionada {
+  background-color: #BE3144; /* Cambiar color de fondo cuando el día está seleccionado */
+}
+
+/* Estilo de los botones de agendar y enviar */
+.btn-enviar, .btn-agendar {
+  background-color: #DA0037; /* Color de fondo rojo */
+  color: white; /* Texto blanco */
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px; /* Espaciado superior */
+}

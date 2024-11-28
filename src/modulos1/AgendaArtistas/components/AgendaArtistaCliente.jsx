@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../estilos/agendaartista.css";
-import fetchApiM2  from "../../../services/api/fetchApiM2";
-import ENDPOINTS  from "../../../services/api/endpoints";
+import fetchApiM2 from "../../../services/api/fetchApiM2";
+import ENDPOINTS from "../../../services/api/endpoints";
 
 const AgendaArtistas = () => {
   const [selectedDay, setSelectedDay] = useState(null);
@@ -43,6 +43,9 @@ const AgendaArtistas = () => {
 
   return (
     <div>
+      {/* Título arriba del contenedor */}
+      <h1 className="titulo-agenda">Agenda de Artistas</h1>
+
       <div className="cotizacion-container">
         <input
           type="text"

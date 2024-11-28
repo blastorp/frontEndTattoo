@@ -1,125 +1,173 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import '../estilos/membresiaedit.css';
-import fetchApiM2  from "../../../services/api/fetchApiM2";
-import ENDPOINTS  from "../../../services/api/endpoints";
+import { useParams, useNavigate } from "react-router-dom"; 
+import fetchApiM2 from "../../../services/api/fetchApiM2";
+import ENDPOINTS from "../../../services/api/endpoints";
+import "../estilos/membresiaadd.css";
 
 const MembresiaADMINEdit = () => {
-  const { id } = useParams(); // Obtiene el ID de la URL
+  const { id } = useParams(); // Captura el id de la URL
+  const navigate = useNavigate(); // Hook para navegar
   const [formData, setFormData] = useState({
-    texto: "",
-    opcion1: "",
-    email: "",
-    fecha: "",
-    contraseña: "",
-    opcion2: "",
-    aceptaTerminos: false,
+    nivel: "",
+    precioMensual: "",
+    fechaCreacion: "",
+    fechaVencimiento: "",
+    duracion: "",
+    publicar: false,
   });
+  const [mensaje, setMensaje] = useState(""); // Para mensajes de éxito/error
 
-  // Simula cargar datos de una API o estado inicial si es necesario
+  // Cargar los datos de la membresía cuando el componente se monta
   useEffect(() => {
-    if (id) {
-      // Aquí puedes cargar los datos asociados al ID desde el backend
-      console.log(`Cargar datos para la membresía con ID: ${id}`);
-      setFormData({
-        texto: "Ejemplo de texto",
-        opcion1: "opcionA",
-        email: "ejemplo@email.com",
-        fecha: "2024-11-25",
-        contraseña: "123456",
-        opcion2: "opcionB",
-        aceptaTerminos: true,
-      });
-    }
+    const fetchData = async () => {
+      try {
+        const response = await fetchApiM2(`${ENDPOINTS.GETMEMBRESIA}/${id}`);
+        if (response) {
+          setFormData({
+            nivel: response.nivel,
+            precioMensual: response.precioMensual,
+            fechaCreacion: response.fechaCreacion,
+            fechaVencimiento: response.fechaVencimiento,
+            duracion: response.duracion,
+            publicar: response.publicar,
+          });
+        }
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+        setMensaje("Error al cargar los datos.");
+      }
+    };
+
+    fetchData();
   }, [id]);
 
-  // Maneja los cambios en los campos del formulario
+  // Manejar cambios en los inputs
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
+    setFormData({
+      ...formData,
       [name]: type === "checkbox" ? checked : value,
-    }));
+    });
   };
 
-  // Maneja el envío del formulario
-  const handleSubmit = (e) => {
+  // Manejar envío del formulario
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Datos enviados:", formData);
-    // Aquí puedes agregar la lógica para enviar los datos al backend
+
+    // Validar datos
+    if (!formData.nivel || !formData.precioMensual || !formData.fechaCreacion || !formData.fechaVencimiento || !formData.duracion) {
+      setMensaje("Por favor, completa todos los campos.");
+      return;
+    }
+
+    try {
+      // Realiza la actualización de la membresía
+      const response = await fetchApiM2(`${ENDPOINTS.UPDATEMEMBRESIA}/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setMensaje("Membresía actualizada exitosamente!");
+        navigate("/pages/membresiacon"); // Redirige al listado de membresías
+      } else {
+        const error = await response.json();
+        setMensaje(`Error: ${error.message || "No se pudo actualizar la membresía"}`);
+      }
+    } catch (error) {
+      console.error("Error al actualizar la membresía:", error);
+      setMensaje("Error al conectar con el servidor.");
+    }
   };
 
   return (
     <div className="form-container">
-      <h1 className="form-title">Editar Membresía: ID {id}</h1>
+      <h1 className="form-title">Editar membresía</h1>
       <div className="form-content">
         <form className="formulario" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="texto"
-            placeholder="Texto"
-            className="input"
-            value={formData.texto}
-            onChange={handleChange}
-          />
-          <select
-            name="opcion1"
-            className="select"
-            value={formData.opcion1}
-            onChange={handleChange}
-          >
-            <option value="">Seleccione una opción</option>
-            <option value="opcionA">Opción A</option>
-            <option value="opcionB">Opción B</option>
-          </select>
-          <input
-            type="email"
-            name="email"
-            placeholder="Correo"
-            className="input"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <input
-            type="date"
-            name="fecha"
-            className="date"
-            value={formData.fecha}
-            onChange={handleChange}
-          />
-          <input
-            type="password"
-            name="contraseña"
-            placeholder="Contraseña"
-            className="input"
-            value={formData.contraseña}
-            onChange={handleChange}
-          />
-          <select
-            name="opcion2"
-            className="select"
-            value={formData.opcion2}
-            onChange={handleChange}
-          >
-            <option value="">Otra selección</option>
-            <option value="opcionB">Opción 1</option>
-            <option value="opcionC">Opción 2</option>
-          </select>
-          <label className="checkbox-container">
+          <div className="form-group">
+            <label htmlFor="nivel" className="form-label">Nivel</label>
             <input
-              type="checkbox"
-              name="aceptaTerminos"
-              checked={formData.aceptaTerminos}
+              type="text"
+              id="nivel"
+              name="nivel"
+              className="input"
+              value={formData.nivel}
               onChange={handleChange}
             />
-            Acepto los términos
-          </label>
-          <button type="submit" className="button">
-            Guardar cambios
-          </button>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="precioMensual" className="form-label">Precio mensual</label>
+            <input
+              type="number"
+              id="precioMensual"
+              name="precioMensual"
+              className="input"
+              value={formData.precioMensual}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="fechaCreacion" className="form-label">Fecha de creación</label>
+            <input
+              type="date"
+              id="fechaCreacion"
+              name="fechaCreacion"
+              className="date"
+              value={formData.fechaCreacion}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="fechaVencimiento" className="form-label">Fecha de vencimiento</label>
+            <input
+              type="date"
+              id="fechaVencimiento"
+              name="fechaVencimiento"
+              className="date"
+              value={formData.fechaVencimiento}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="duracion" className="form-label">Duración (en meses)</label>
+            <input
+              type="number"
+              id="duracion"
+              name="duracion"
+              className="input"
+              value={formData.duracion}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="checkbox-container">
+              <input
+                type="checkbox"
+                id="publicar"
+                name="publicar"
+                checked={formData.publicar}
+                onChange={handleChange}
+              />
+              Publicar
+            </label>
+          </div>
+
+          {mensaje && <p className="mensaje">{mensaje}</p>}
+
+          <button type="submit" className="button">Actualizar</button>
         </form>
+        
         <div className="image-container">
-          <img src="ruta/a/imagen.jpg" alt="Imagen" className="form-image" />
+          <img src="https://tiusr39pl.cuc-carrera-ti.ac.cr/images/Tatto2.jpeg" alt="Imagen" className="form-image" />
         </div>
       </div>
     </div>
