@@ -10,13 +10,12 @@ import {
 
 //Cliente
 import Home from './modulos1/Inicio/pages/Home';
-import ArtistasDash from './modulos1/Artistas/pages/ArtistasDash';
-import BeneficiosDash from './modulos1/Beneficios/Pages/BeneficiosDash';
+
 import AddBeneficio from './modulos1/Beneficios/Pages/AddBeneficio';
 
 import ArtistasView from './modulos1/Artistas/pages/ArtistaView';
 import ArtistaDetails from './modulos1/Artistas/pages/ArtistaDetails';
-import ArtistaEditArtista from  './modulos1/Artistas/pages/ArtistaEditArtista'
+
 import Galeria from './modulos1/Galeria/pages/galeria';
 import Membresia from './modulos1/Membresias/pages/membresia';
 import AgendaArtistas from './modulos1/AgendaArtistas/pages/agendaartistas';
@@ -30,6 +29,9 @@ import AgendaArtistasAdm from './modulos1/AgendaArtistas/pages/agendaartistasadm
 import TestimonioAdm from './modulos1/Testimonios/pages/testimonioadm';
 import ChatbotAdm from './modulos1/Chatbot/pages/chatbotadm';
 import ArtistasAddArtista from './modulos1/Artistas/pages/ArtistasAddArtista';
+import ArtistaEditArtista from './modulos1/Artistas/pages/ArtistaEditArtista';
+import ArtistasDash from './modulos1/Artistas/pages/ArtistasDash';
+import BeneficiosDash from './modulos1/Beneficios/Pages/BeneficiosDash';
 //Subpáginas Administrador
 import GaleriaAdmAdd from './modulos1/Galeria/pages/galeriaadd';
 import GaleriaAdmCon from './modulos1/Galeria/pages/galeriacon';
@@ -73,6 +75,14 @@ const router = createBrowserRouter([
   {
     path: "/pages/ArtistaDetails/:artistaId",
     element: <ArtistaDetails />
+  },
+  {
+    path: "/pages/ArtistaEditArtista/:idArt",
+    element: <ArtistaEditArtista />
+  },
+  {
+    path: "/pages/DashBoard",
+    element: <Dashboard />
   },
 ],
 {

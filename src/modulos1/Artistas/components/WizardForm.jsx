@@ -6,7 +6,7 @@ import ENDPOINTS  from "../../../services/api/endpoints";
 import P1WizardArtista from "../components/P1WizardArtista";
 import P2WizardArtista from "../components/P2WizardArtista";
 import P3WizardArtista from "../components/P3WizardArtista";
-import '../estilos/wizard.css'
+//import '../estilos/wizard.css'
 //interaccion con firebase
 import {
   ref,
@@ -218,8 +218,8 @@ function WizardForm() {
             <h2 className="tituloPaginaWizard">{FormTitles[page]}</h2>
           </div>
           <div className="body">{PageDisplay()}</div>
-          <div className="footer1">
-            <button
+          <div className="footer1" id="footerForm">
+          <button
               disabled={page == 0}
               onClick={() => {
                 setPage((currPage) => currPage - 1);

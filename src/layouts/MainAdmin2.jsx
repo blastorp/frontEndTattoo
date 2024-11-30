@@ -11,6 +11,7 @@ function MainAdmin({ tituloPagina, children }) {
     {nombre: 'Vista Cliente' , ruta:'/pages/ArtistasView'},
     {nombre: 'Artista' , ruta:'/pages/ArtistasDash'},
     {nombre: 'Beneficios' , ruta:'/pages/BeneficiosDash'},
+    {nombre: 'DashBoard' , ruta:'/pages/DashBoard'},
 
 
 

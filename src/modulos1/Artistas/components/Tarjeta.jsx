@@ -17,7 +17,7 @@ export const Tarjeta = ({ objetoArtista }) => {
     const fetchData = async () => {
       try {
         if (objetoArtista.idImagenFotoPerfil) {
-          console.log(objetoArtista.idImagenFotoPerfil);
+          
           const result = await fetchApiM1(
             ENDPOINTS.GETURLIXDIMAGEN,
             "GET",
@@ -73,10 +73,10 @@ export const Tarjeta = ({ objetoArtista }) => {
   return (
     <div className="card">
       <div className="profile-pic">
-        <img src={image} alt="Foto de perfil" />
+        <img src={ image } alt="Foto de perfil" />
         <div className="contenedorBotonesAccion">
           <div className="contenedorEdit">
-            <Link>
+            <Link to={ `/pages/ArtistaEditArtista/${ objetoArtista.idArtista }`} >
               <EditIcon />
             </Link>
           </div>
@@ -93,16 +93,16 @@ export const Tarjeta = ({ objetoArtista }) => {
         </div>
       </div>
       <div className="info">
-        <h3>{objetoArtista.nombre}</h3>
-        <p> 📞 {objetoArtista.telefono}</p>
+        <h3>{ objetoArtista.nombre }</h3>
+        <p> 📞 { objetoArtista.telefono }</p>
       </div>
-      <div className="toggle" key={objetoArtista.idArtista}>
-        <label htmlFor={`publicado-${objetoArtista.idArtista}`}>
+      <div className="toggle" key={ objetoArtista.idArtista }>
+        <label htmlFor={ `publicado-${ objetoArtista.idArtista }` }>
           <input
             type="checkbox"
-            id={`publicado-${objetoArtista.idArtista}`}
-            checked={publicado}
-            onChange={togglePublicar} // Se ejecuta al cambiar
+            id={ `publicado-${ objetoArtista.idArtista }` }
+            checked={ publicado }
+            onChange={ togglePublicar } // Se ejecuta al cambiar
           />
           Publicado
         </label>

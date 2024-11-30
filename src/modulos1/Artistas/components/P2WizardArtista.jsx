@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import '../estilos/wizard.css'
+import '../estilos/wizard.css' 
 
 
 function P2WizardArtista({ formData, setFormData,  setImageUpload, image, setImage }) {

@@ -1,0 +1,7 @@
+validaciones 
+
+cuando se crea o edita un artista debe estar seleccionada al menos una categorias
+
+el nombre y nombreart son obligatorios
+
+la identificacion debe ser unica

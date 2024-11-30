@@ -17,7 +17,7 @@ function P3WizardArtista({ formData, setFormData, categorias, categoriasElegidas
   };
 
   return (
-    <div className="other-info-container">
+    <div className="p3-container">
       {categorias.map((item) => (
         <div key={item.IdCategoria}>
           <label htmlFor={item.nombre}>{item.nombre}</label>

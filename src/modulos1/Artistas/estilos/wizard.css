@@ -60,10 +60,12 @@ body {
   box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
 }
 
-.footer1 {
+.footer1 #footerform {
+  width: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: row;
 }
 
 .footer button {
