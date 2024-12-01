@@ -6,6 +6,7 @@ export const ENDPOINTS = {
     DELETEARTISTA: "Artista/deleteArtista",
     DESPUBLICARARTISTA: "Artista/despublicarArtista",
     PUBLICARARTISTA: "Artista/publicarArtista",
+    ARCHIVARARTISTA: "Artista/archivarArtista",
     GETBENEFICIOS: "Beneficio/listarBeneficios",
     GETBENEFICIOXID: "Beneficio/getOneBeneficioById",
     GUARDARBENEFICIOS: "Beneficio/guardarBeneficio",

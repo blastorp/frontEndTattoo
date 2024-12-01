@@ -6,13 +6,14 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import EditIcon from "@mui/icons-material/Edit";
 import "../estilos/Tarjeta.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export const Tarjeta = ({ objetoArtista }) => {
   const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
   const [publicado, setPublicado] = useState(objetoArtista.publicado || false); // Inicializa con el valor actual
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -69,6 +70,24 @@ export const Tarjeta = ({ objetoArtista }) => {
       console.error("Error al actualizar el estado de publicación:", err);
     }
   };
+  const archivarArtista = async () => {
+    try {
+      
+      if (window.confirm("Quiere Archivar la ficha de: " + objetoArtista.nombre) == true) {
+         const response = await fetchApiM1(
+        ENDPOINTS.ARCHIVARARTISTA, // Endpoint para actualizar
+        "GET",null, {},
+        { idArtista: objetoArtista.idArtista }
+      );
+      console.log("Respuesta del servidor:", response);
+      alert("Ficha Archivada");
+      navigate('/pages/ArtistasDash');
+      } 
+       
+    } catch (err) {
+      console.error("Error al actualizar el estado de publicación:", err);
+    }
+  };
 
   return (
     <div className="card">
@@ -86,7 +105,7 @@ export const Tarjeta = ({ objetoArtista }) => {
             </Link>
           </div>
           <div className="contenedorArchivar">
-            <Link>
+            <Link onClick={ archivarArtista() }  >
               <ArchiveIcon />
             </Link>
           </div>

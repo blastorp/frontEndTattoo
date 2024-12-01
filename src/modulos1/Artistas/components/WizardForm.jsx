@@ -237,7 +237,11 @@ function WizardForm() {
                 }
               }}
             >
-              {page === FormTitles.length - 1 ? "Guardar y Volver" : "Next"}
+              {page === FormTitles.length - 1 ? 
+              
+              "Guardar y Volver"
+              
+              : "Next"}
             </button>
           </div>
         </div>
