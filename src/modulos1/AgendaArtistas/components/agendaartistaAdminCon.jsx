@@ -5,7 +5,6 @@ import fetchApiM2 from "../../../services/api/fetchApiM2";
 import ENDPOINTS from "../../../services/api/endpoints";
 
 const AgendaArtistaADMINCon = () => {
-
     const [searchTerm, setSearchTerm] = useState("");
     const [data, setData] = useState([]); // Estado para almacenar los datos
     const navigate = useNavigate(); // Hook para navegación
@@ -14,7 +13,7 @@ const AgendaArtistaADMINCon = () => {
         // Hacer la solicitud para obtener los datos
         const fetchData = async () => {
             try {
-                const response = await fetchApiM2(ENDPOINTS.GETARTISTAAVAILABILITY); // Endpoint de la API
+                const response = await fetchApiM2(ENDPOINTS.GETALLAGENDAARTISTAS); // Endpoint de la API
                 console.log("Respuesta de la API:", response); // Diagnóstico de la respuesta
 
                 // Verifica si los datos están presentes en la respuesta
@@ -48,29 +47,16 @@ const AgendaArtistaADMINCon = () => {
     // Comprobación: Verifica si los datos tienen las propiedades correctas
     console.log("Datos para renderizar:", data);
 
-    // Filtrado de los datos
-    const filteredData = data.filter(
-        (row) =>
-            row.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            row.estiloTatuaje.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            row.fecha.includes(searchTerm)
-    );
-
-    // Navegar a la edición del artista
-    const handleEdit = (id) => {
-        navigate(`/pages/agendaartistaedit/${id}`); 
-    };
-
     return (
         <div className="table-wrapper">
-            <h1 className="table-title">Lista de agenda de artistas</h1>
+            <h1 className="table-title">Agenda de Artistas</h1>
             <div className="search-container">
                 <label htmlFor="search-input" className="search-label">Buscar:</label>
                 <input
                     type="text"
                     id="search-input"
                     className="search-input"
-                    placeholder="Buscar por cliente, estilo o fecha"
+                    placeholder="Buscar por nombre de artista, fecha, hora"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)} // Actualiza el término de búsqueda
                 />
@@ -79,35 +65,49 @@ const AgendaArtistaADMINCon = () => {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre artista</th>
-                        <th>Día</th>
-                        <th>Horario</th>
-                        <th>Horario miembro</th>
+                        <th>Nombre Artista</th>
+                        <th>Fecha</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Fin</th>
+                        <th>Miembro</th>
+                        <th>Publicar</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredData.length > 0 ? (
-                        filteredData.map((row) => (
-                            <tr key={row.id}>
-                                <td>{row.id}</td>
-                                <td>{row.nombre}</td>
-                                <td>{row.dia}</td>
-                                <td>{row.horario}</td>
-                                <td>{row.horarioMiembro}</td>
-                                <td>
-                                    <button
-                                        className="edit-button"
-                                        onClick={() => handleEdit(row.id)}
-                                    >
-                                        Editar
-                                    </button>
-                                </td>
-                            </tr>
-                        ))
+                    {data.length > 0 ? (
+                        data
+                            .filter((row) => {
+                                // Filtrar los datos según el término de búsqueda
+                                const nombreArtista = row.nombreArtista || "";
+                                const fecha = row.fecha || "";
+                                return (
+                                    nombreArtista.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                    fecha.toLowerCase().includes(searchTerm.toLowerCase())
+                                );
+                            })
+                            .map((row) => (
+                                <tr key={row.idAgenda}>
+                                    <td>{row.idAgenda}</td>
+                                    <td>{row.nombreArtista}</td>
+                                    <td>{new Date(row.fecha).toLocaleDateString()}</td>
+                                    <td>{row.horaInicio}</td>
+                                    <td>{row.horaFin}</td>
+                                    <td>{row.esMembresia ? "Sí" : "No"}</td>
+                                    <td>{row.disponible ? "Sí" : "No"}</td>
+                                    <td>
+                                        <button
+                                            className="edit-button"
+                                            onClick={() => navigate(`/pages/agendaartistaedit/${row.idAgendaArtista}`)}
+                                        >
+                                            Editar
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))
                     ) : (
                         <tr>
-                            <td colSpan="6" className="no-data">No se encontraron resultados</td>
+                            <td colSpan="8" className="no-data">No se encontraron resultados</td>
                         </tr>
                     )}
                 </tbody>
@@ -115,6 +115,5 @@ const AgendaArtistaADMINCon = () => {
         </div>
     );
 };
-
 
 export default AgendaArtistaADMINCon;

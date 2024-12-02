@@ -4,6 +4,7 @@ export const ENDPOINTS = {
     COMMENTS: "comments",
 
     //AgendaArtista
+    GETALLAGENDAARTISTAS: "api/AgendaArtista",
     GETARTISTAAVAILABILITY: "api/AgendaArtista/{idArtista}/Disponibilidad", 
     CREATEARTISTAAGENDA: "api/AgendaArtista", 
     UPDATEARTISTAAGENDA: "api/AgendaArtista/{idAgenda}", 
