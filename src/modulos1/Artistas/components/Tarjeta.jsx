@@ -7,13 +7,20 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import EditIcon from "@mui/icons-material/Edit";
 import "../estilos/Tarjeta.css";
 import { Link, useNavigate } from "react-router-dom";
-
+import MuiDialog from "../../../layouts/componentes/MuiDialog";
 
 export const Tarjeta = ({ objetoArtista }) => {
   const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
   const [publicado, setPublicado] = useState(objetoArtista.publicado || false); // Inicializa con el valor actual
   const navigate = useNavigate();
+
+
+
+  const handleArchiveConfirm = () => {
+    navigate(`/pages/ArtistasDash/`);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -72,8 +79,6 @@ export const Tarjeta = ({ objetoArtista }) => {
   };
   const archivarArtista = async () => {
     try {
-      
-      if (window.confirm("Quiere Archivar la ficha de: " + objetoArtista.nombre) == true) {
          const response = await fetchApiM1(
         ENDPOINTS.ARCHIVARARTISTA, // Endpoint para actualizar
         "GET",null, {},
@@ -82,7 +87,7 @@ export const Tarjeta = ({ objetoArtista }) => {
       console.log("Respuesta del servidor:", response);
       alert("Ficha Archivada");
       navigate('/pages/ArtistasDash');
-      } 
+      
        
     } catch (err) {
       console.error("Error al actualizar el estado de publicación:", err);
@@ -105,9 +110,13 @@ export const Tarjeta = ({ objetoArtista }) => {
             </Link>
           </div>
           <div className="contenedorArchivar">
-            <Link onClick={ archivarArtista() }  >
-              <ArchiveIcon />
-            </Link>
+            <MuiDialog
+              mensaje={"¿Está seguro de que desea archivar este artista?"}
+              textoBoton1={"Confirmar"}
+              textoBoton2={"Cancelar"}
+              textoBotonTrigger={<ArchiveIcon />} 
+              onConfirm={ archivarArtista } 
+            />
           </div>
         </div>
       </div>
