@@ -1,54 +1,67 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../estilos/agendaartistasedit.css";
-import fetchApiM2  from "../../../services/api/fetchApiM2";
-import ENDPOINTS  from "../../../services/api/endpoints";
-//import AgendaArtistaADMINCon from "./agendaartistaAdminCon";
+import fetchApiM2 from "../../../services/api/fetchApiM2";
+import ENDPOINTS from "../../../services/api/endpoints";
 
 const AgendaArtistaADMINEdit = () => {
-    const { id } = useParams(); // Captura el id de la agenda desde la URL
-  const navigate = useNavigate(); // Hook para navegación
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     artista: "",
     fecha: "",
-    hora: "",
-    publicar: false,
-    membresia: false,
+    horaInicio: "",
+    horaFin: "",
+    disponible: false,
+    esMembresia: false,
   });
-  const [artistas, setArtistas] = useState([]); // Lista de artistas para el select
-  const [mensaje, setMensaje] = useState(""); // Para mensajes de éxito/error
 
-  // Cargar los datos de la agenda y artistas disponibles
+  const [artistas, setArtistas] = useState([]);
+  const [mensaje, setMensaje] = useState("");
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
-        // Obtener los datos de la agenda
-        const agendaResponse = await fetchApiM2(`${ENDPOINTS.GETAGENDA}/${id}`);
+        // Obtener datos de la agenda por ID
+        const agendaResponse = await fetchApiM2(
+          ENDPOINTS.GET_ARTISTAAGENDA_POR_ID.replace("{idAgenda}", id)
+        );
+
         if (agendaResponse) {
+          const fechaFormateada = new Date(agendaResponse.fecha)
+            .toISOString()
+            .split("T")[0];
           setFormData({
-            artista: agendaResponse.artista,
-            fecha: agendaResponse.fecha,
-            hora: agendaResponse.hora,
-            publicar: agendaResponse.publicar,
-            membresia: agendaResponse.membresia,
+            artista: agendaResponse.idArtista || "",
+            fecha: fechaFormateada,
+            horaInicio: agendaResponse.horaInicio || "",
+            horaFin: agendaResponse.horaFin || "",
+            disponible: agendaResponse.disponible || false,
+            esMembresia: agendaResponse.esMembresia || false,
           });
+        } else {
+          setMensaje("Agenda no encontrada.");
         }
 
-        // Obtener la lista de artistas
-        const artistasResponse = await fetchApiM2(ENDPOINTS.GETARTISTAS);
+        const artistasResponse = await fetchApiM2(ENDPOINTS.GET_ARTISTA_POR_IDNOMBRE);
         if (artistasResponse) {
-          setArtistas(artistasResponse); // Se asume que devuelve un array de artistas
+          setArtistas(artistasResponse);
+        } else {
+          setMensaje("No se pudieron cargar los artistas.");
         }
       } catch (error) {
-        console.error("Error al obtener los datos:", error);
         setMensaje("Error al cargar los datos.");
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, [id]);
 
-  // Manejar cambios en los inputs
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -57,36 +70,29 @@ const AgendaArtistaADMINEdit = () => {
     });
   };
 
-  // Manejar envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validar datos
-    if (!formData.artista || !formData.fecha || !formData.hora) {
+    if (!formData.artista || !formData.fecha || !formData.horaInicio || !formData.horaFin) {
       setMensaje("Por favor, completa todos los campos obligatorios.");
       return;
     }
 
+    setLoading(true);
     try {
-      // Realiza la actualización de la agenda
-      const response = await fetchApiM2(`${ENDPOINTS.UPDATEAGENDA}/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      await fetchApiM2(
+        ENDPOINTS.UPDATE_ARTISTA_AGENDA.replace("{idAgenda}", id),
+        "PUT", 
+        formData,
+        { "Content-Type": "application/json" }
+      );
 
-      if (response.ok) {
-        setMensaje("Agenda actualizada exitosamente!");
-        navigate("/pages/agenda"); // Redirige al listado de agendas
-      } else {
-        const error = await response.json();
-        setMensaje(`Error: ${error.message || "No se pudo actualizar la agenda"}`);
-      }
+      setMensaje("Agenda actualizada exitosamente!");
+      navigate("/pages/agendaartistascon");
     } catch (error) {
-      console.error("Error al actualizar la agenda:", error);
-      setMensaje("Error al conectar con el servidor.");
+      setMensaje(`Error: ${error.message || "No se pudo actualizar la agenda."}`);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -94,85 +100,108 @@ const AgendaArtistaADMINEdit = () => {
     <div className="form-container">
       <h1 className="form-title">Editar Agenda de Artista</h1>
       <div className="form-content">
-        <form className="formulario" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="artista" className="form-label">Artista</label>
-            <select
-              id="artista"
-              name="artista"
-              className="select"
-              value={formData.artista}
-              onChange={handleChange}
-            >
-              <option value="">Seleccionar artista</option>
-              {artistas.map((artista) => (
-                <option key={artista.id} value={artista.id}>
-                  {artista.nombre}
-                </option>
-              ))}
-            </select>
-          </div>
+        {loading ? (
+          <p>Cargando...</p>
+        ) : (
+          <form className="formulario" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="artista" className="form-label">Artista</label>
+              <select
+                id="artista"
+                name="artista"
+                className="select"
+                value={formData.artista}
+                onChange={handleChange}
+              >
+                <option value="">Seleccionar artista</option>
+                {artistas.map((artista) => (
+                  <option key={artista.idArtista} value={artista.idArtista}> {/* Cambio aquí */}
+                    {artista.nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="fecha" className="form-label">Fecha</label>
-            <input
-              type="date"
-              id="fecha"
-              name="fecha"
-              className="date"
-              value={formData.fecha}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="hora" className="form-label">Hora</label>
-            <input
-              type="time"
-              id="hora"
-              name="hora"
-              className="time"
-              value={formData.hora}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <label className="checkbox-container">
+            <div className="form-group">
+              <label htmlFor="fecha" className="form-label">Fecha</label>
               <input
-                type="checkbox"
-                id="publicar"
-                name="publicar"
-                checked={formData.publicar}
+                type="date"
+                id="fecha"
+                name="fecha"
+                className="date"
+                value={formData.fecha}
                 onChange={handleChange}
               />
-              Publicar
-            </label>
-          </div>
+            </div>
 
-          <div className="form-group">
-            <label className="checkbox-container">
+            <div className="form-group">
+              <label htmlFor="horaInicio" className="form-label">Hora de Inicio</label>
               <input
-                type="checkbox"
-                id="membresia"
-                name="membresia"
-                checked={formData.membresia}
+                type="time"
+                id="horaInicio"
+                name="horaInicio"
+                className="time"
+                value={formData.horaInicio}
                 onChange={handleChange}
               />
-              Membresía
-            </label>
-          </div>
+            </div>
 
-          {mensaje && <p className="mensaje">{mensaje}</p>}
+            <div className="form-group">
+              <label htmlFor="horaFin" className="form-label">Hora de Fin</label>
+              <input
+                type="time"
+                id="horaFin"
+                name="horaFin"
+                className="time"
+                value={formData.horaFin}
+                onChange={handleChange}
+              />
+            </div>
 
-          <button type="submit" className="button">Actualizar</button>
-        </form>
+            <div className="form-group">
+              <label className="checkbox-container">
+                <input
+                  type="checkbox"
+                  id="disponible"
+                  name="disponible"
+                  checked={formData.disponible}
+                  onChange={handleChange}
+                />
+                Publicar
+              </label>
+            </div>
+
+            <div className="form-group">
+              <label className="checkbox-container">
+                <input
+                  type="checkbox"
+                  id="membresia"
+                  name="esMembresia"
+                  checked={formData.esMembresia}
+                  onChange={handleChange}
+                />
+                Membresía
+              </label>
+            </div>
+
+            {mensaje && <p className="mensaje">{mensaje}</p>}
+
+            <button type="submit" className="button" disabled={loading}>
+              {loading ? "Actualizando..." : "Actualizar"}
+            </button>
+          </form>
+        )}
 
         <div className="image-container">
-          <img src="https://tiusr39pl.cuc-carrera-ti.ac.cr/images/Tatto2.jpeg" alt="Imagen" className="form-image" />
+          <img
+            src="https://tiusr39pl.cuc-carrera-ti.ac.cr/images/Tatto2.jpeg"
+            alt="Imagen"
+            className="form-image"
+          />
         </div>
       </div>
     </div>
   );
 };
-  export default AgendaArtistaADMINEdit;
+
+export default AgendaArtistaADMINEdit;

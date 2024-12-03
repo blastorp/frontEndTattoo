@@ -29,11 +29,12 @@ import ChatbotAdm from './modulos1/Chatbot/pages/chatbotadm';
 import GaleriaAdmAdd from './modulos1/Galeria/pages/galeriaadd';
 import GaleriaAdmCon from './modulos1/Galeria/pages/galeriacon';
 import GaleriaAdmEdit from './modulos1/Galeria/pages/galeriaedit';
-//import GaleriaAdmInfo from './modulos1/Galeria/pages/galeriainfo';
+
 import MembresiaAdmAdd from './modulos1/Membresias/pages/membresiaadd';
 import MembresiaAdmVenta from './modulos1/Membresias/pages/membresiaventa';
 import MembresiaAdmEdit from './modulos1/Membresias/pages/membresiaedit';
 import MembresiaAdmCon from './modulos1/Membresias/pages/membresiacon';
+
 import AgendaArtistasAdmAdd from './modulos1/AgendaArtistas/pages/agendaartistasadd';
 import AgendaArtistasAdmCon from './modulos1/AgendaArtistas/pages/agendaartistascon';
 import AgendaArtistasAdmEdit from './modulos1/AgendaArtistas/pages/agendaartistasedit';

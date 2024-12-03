@@ -1,73 +1,126 @@
-import React, { useState } from "react";
-import "../estilos/agendaartistasadd.css"
-import fetchApiM2  from "../../../services/api/fetchApiM2";
-import ENDPOINTS  from "../../../services/api/endpoints";
+import React, { useState, useEffect } from "react";
+import "../estilos/agendaartistasadd.css";
+import fetchApiM2 from "../../../services/api/fetchApiM2";
+import ENDPOINTS from "../../../services/api/endpoints";
+import { useNavigate } from "react-router-dom"; // Para la navegación
 
 const AgendaArtistaADMINAdd = () => {
-    // Estados para los datos del formulario
-    const [formData, setFormData] = useState({
-      artista: "",
-      fecha: "",
-      hora: "",
-      publicar: false,
-      membresia: false,
-    });
-  
-    const [mensaje, setMensaje] = useState(""); // Para mensajes de éxito/error
-  
-    // Manejar cambios en los inputs
-    const handleChange = (e) => {
-      const { name, value, type, checked } = e.target;
-      setFormData({
-        ...formData,
-        [name]: type === "checkbox" ? checked : value,
-      });
-    };
-  
-    // Manejar envío del formulario
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-  
-      // Validar datos
-      if (!formData.artista || !formData.fecha || !formData.hora) {
-        setMensaje("Por favor, completa todos los campos.");
-        return;
-      }
-  
+  // Estado para los datos del formulario
+  const [formData, setFormData] = useState({
+    artista: "",
+    fecha: "",
+    horaInicio: "",
+    horaFin: "",
+    disponible: false,
+    esMembresia: false,
+  });
+
+  // Estado para los artistas, mensaje y estado de carga
+  const [artistas, setArtistas] = useState([]);
+  const [mensaje, setMensaje] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate(); // Usar para redirigir a otra página
+
+  // Función para obtener los artistas desde el backend
+  useEffect(() => {
+    const fetchArtistas = async () => {
+      setLoading(true);
       try {
-        // Llamada al endpoint usando fetchApiM2
-        const response = await fetchApiM2(ENDPOINTS.CREATERESERVA, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
+        const artistasResponse = await fetchApiM2(ENDPOINTS.GET_ARTISTA_POR_IDNOMBRE);
+        console.log(artistasResponse); // Verificar los datos recibidos
   
-        // Manejar respuesta del servidor
-        if (response.ok) {
-          setMensaje("¡Reserva creada exitosamente!");
-          setFormData({
-            artista: "",
-            fecha: "",
-            hora: "",
-            publicar: false,
-            membresia: false,
-          });
+        if (artistasResponse) {
+          setArtistas(artistasResponse);
         } else {
-          const error = await response.json();
-          setMensaje(`Error: ${error.message || "No se pudo crear la reserva"}`);
+          setMensaje("No se pudieron cargar los artistas.");
         }
       } catch (error) {
-        console.error("Error al crear la reserva:", error);
-        setMensaje("Error al conectar con el servidor.");
+        setMensaje("Error al cargar los datos.");
+      } finally {
+        setLoading(false);
       }
     };
   
-    return (
-      <div className="form-container">
-        <h1 className="form-title">Agregar agenda de artistas</h1>
-        <div className="form-content">
+    fetchArtistas();
+  }, []);
+  
+  // Función para manejar los cambios en los inputs
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  // Función para manejar el envío del formulario
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validar que los campos obligatorios estén completos
+    if (!formData.artista || !formData.fecha || !formData.horaInicio || !formData.horaFin) {
+      setMensaje("Por favor, completa todos los campos obligatorios.");
+      return;
+    }
+
+    // Mostrar en consola los datos que se enviarán al backend
+    console.log("Datos a enviar al backend:", {
+      IdArtista: formData.artista, // El ID del artista
+      Fecha: formData.fecha,
+      HoraInicio: formData.horaInicio,
+      HoraFin: formData.horaFin,
+      Disponible: formData.disponible,
+      EsMembresia: formData.esMembresia,
+    });
+
+    setLoading(true);
+    try {
+      // Enviar los datos al backend para crear una nueva agenda
+      const response = await fetchApiM2(
+        ENDPOINTS.CREATE_ARTISTAAGENDA, // Endpoint para crear la agenda
+        "POST",
+        {
+          IdArtista: formData.artista, // Aquí se usa el IdArtista
+          Fecha: formData.fecha,
+          HoraInicio: formData.horaInicio,
+          HoraFin: formData.horaFin,
+          Disponible: formData.disponible,
+          EsMembresia: formData.esMembresia,
+        },
+        { "Content-Type": "application/json" }
+      );
+
+      // Si la respuesta es exitosa, mostramos el mensaje de éxito
+      setMensaje("Agenda creada exitosamente!");
+
+      // Limpiar el formulario después de la creación
+      setFormData({
+        artista: "",
+        fecha: "",
+        horaInicio: "",
+        horaFin: "",
+        disponible: false,
+        esMembresia: false,
+      });
+
+      // Redirigir a la página de agenda de artistas (opcional)
+      navigate("/pages/agendaartistascon");
+    } catch (error) {
+      // En caso de error, mostrar mensaje de error
+      setMensaje(`Error: ${error.message || "No se pudo crear la agenda."}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="form-container">
+      <h1 className="form-title">Crear Agenda de Artista</h1>
+      <div className="form-content">
+        {loading ? (
+          <p>Cargando...</p>
+        ) : (
           <form className="formulario" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="artista" className="form-label">Artista</label>
@@ -75,16 +128,18 @@ const AgendaArtistaADMINAdd = () => {
                 id="artista"
                 name="artista"
                 className="select"
-                value={formData.artista}
+                value={formData.artista}  // Aquí el valor debería ser un número
                 onChange={handleChange}
-              >
-                <option value="">Selecciona un artista</option>
-                <option value="artista1">Artista 1</option>
-                <option value="artista2">Artista 2</option>
-                <option value="artista3">Artista 3</option>
+                >
+                <option value="">Seleccionar artista</option>
+                {artistas.map((artista) => (
+                  <option key={artista.idArtista} value={artista.idArtista}>  {/* Usar IdArtista como value */}
+                    {artista.nombre}  {/* Mostrar el nombre del artista */}
+                  </option>
+                ))}
               </select>
             </div>
-  
+
             <div className="form-group">
               <label htmlFor="fecha" className="form-label">Fecha</label>
               <input
@@ -96,55 +151,75 @@ const AgendaArtistaADMINAdd = () => {
                 onChange={handleChange}
               />
             </div>
-  
+
             <div className="form-group">
-              <label htmlFor="hora" className="form-label">Hora</label>
+              <label htmlFor="horaInicio" className="form-label">Hora de Inicio</label>
               <input
                 type="time"
-                id="hora"
-                name="hora"
+                id="horaInicio"
+                name="horaInicio"
                 className="time"
-                value={formData.hora}
+                value={formData.horaInicio}
                 onChange={handleChange}
               />
             </div>
-  
+
+            <div className="form-group">
+              <label htmlFor="horaFin" className="form-label">Hora de Fin</label>
+              <input
+                type="time"
+                id="horaFin"
+                name="horaFin"
+                className="time"
+                value={formData.horaFin}
+                onChange={handleChange}
+              />
+            </div>
+
             <div className="form-group">
               <label className="checkbox-container">
                 <input
                   type="checkbox"
-                  id="publicar"
-                  name="publicar"
-                  checked={formData.publicar}
+                  id="disponible"
+                  name="disponible"
+                  checked={formData.disponible}
                   onChange={handleChange}
                 />
                 Publicar
               </label>
             </div>
-  
+
             <div className="form-group">
               <label className="checkbox-container">
                 <input
                   type="checkbox"
                   id="membresia"
-                  name="membresia"
-                  checked={formData.membresia}
+                  name="esMembresia"
+                  checked={formData.esMembresia}
                   onChange={handleChange}
                 />
                 Membresía
               </label>
             </div>
-  
-            <button type="submit" className="button">Enviar</button>
+
+            {mensaje && <p className="mensaje">{mensaje}</p>}
+
+            <button type="submit" className="button" disabled={loading}>
+              {loading ? "Creando..." : "Crear Agenda"}
+            </button>
           </form>
-          
-          {mensaje && <p className="mensaje">{mensaje}</p>}
-          <div className="image-container">
-            <img src="https://tiusr39pl.cuc-carrera-ti.ac.cr/images/Tatto2.jpeg" alt="Imagen" className="form-image" />
-          </div>
+        )}
+
+        <div className="image-container">
+          <img
+            src="https://tiusr39pl.cuc-carrera-ti.ac.cr/images/Tatto2.jpeg"
+            alt="Imagen"
+            className="form-image"
+          />
         </div>
       </div>
-    );
-  };
-  
-  export default AgendaArtistaADMINAdd;
+    </div>
+  );
+};
+
+export default AgendaArtistaADMINAdd;
