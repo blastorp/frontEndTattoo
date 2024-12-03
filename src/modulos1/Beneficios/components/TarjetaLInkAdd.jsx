@@ -7,20 +7,19 @@ function TarjetaLInkAdd() {
   return (
     <div className="card">
       <div className="profile-pic">
-        <img src="https://via.placeholder.com/100" alt="Foto de perfil" />
+        <img src="https://via.placeholder.com/100" alt="Foto Referencia" />
         <Button variant="outlined"
         color="primary" 
         component={Link} 
-        to="/pages/AddArtista"
+        to="/pages/AddBeneficio"
         startIcon={<AddIcon/>}
         >
-            Nuevo Perfil
-            
+                      Nuevo Beneficio
             </Button>
       </div>
       <div className="info">
-        <h3>Nombre de Artista</h3>
-        <p>📞 Contacto</p>
+        <h3>Titulo Beneficio</h3>
+        <p>Cantidad De Visitas</p>
       </div>
       <div className="toggle">
         <label for="publicado">

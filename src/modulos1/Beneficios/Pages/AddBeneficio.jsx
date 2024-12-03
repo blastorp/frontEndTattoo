@@ -1,12 +1,11 @@
 
 import React, { useState } from "react";
 
-// cambio
 
-import WizardForm from "../components/WizardForm";
+import WizardForm from "../components/wizardForm";
 import MainAdmin from "../../../layouts/MainAdmin2";
 
-function ArtistasAddArtista() {
+function AddBeneficio() {
   
   return (
     <MainAdmin tituloPagina={"Administracion Perfiles de Artistas"}>
@@ -20,4 +19,4 @@ function ArtistasAddArtista() {
   
 }
 
-export default ArtistasAddArtista
+export default AddBeneficio

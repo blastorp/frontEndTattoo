@@ -1,0 +1,88 @@
+/* Estilos generales */
+body {
+    
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--Secundariogris-color);
+}
+
+.form {
+  min-height: 300px;
+  padding: 20px;
+  background-color: var(--gris-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background-color: var(--SecundarioIntermedio-color);
+  
+}
+
+.header {
+  align-self: center;
+  justify-self: center;
+  font-family: var(--primary-font); 
+}
+
+/* Contenedor principal */
+.p1-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 16px;
+  background-color: var(--SecundarioIntermedio-color);
+  padding: 20px;
+  
+  /* height: 100vh; Ocupa toda la altura del viewport */
+  box-sizing: border-box;
+}
+
+/* Inputs */
+.p1-container input {
+  width: 350px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+/* Efectos de hover y focus */
+.p1-container input:hover {
+  border-color: var(--rojo-color);
+}
+
+.p1-container input:focus {
+  border-color: var(--oscuro-color);
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+.footer1 #footerform {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.footer button {
+  background-color: var(--SecundarioRojo-color);
+  width: 100px;
+  height: 33px;
+  border-radius: 5px;
+  font-family: var(--secondary-font);
+  font-weight: bold;
+  color: var(--Secundariogris-color);
+}
+
+.fotoPerfil {
+  max-width: 300px ;
+  height: auto;
+  align-self: center;
+  justify-self: center;
+  border-radius: 3px;
+  border: var(--gris-color) solid 1px;
+}

@@ -10,8 +10,12 @@ import {
 
 //Cliente
 import Home from './modulos1/Inicio/pages/Home';
-import ArtistasDash from './modulos1/Artistas/pages/ArtistasDash';
-import ArtistaEditArtista from  './modulos1/Artistas/pages/ArtistaEditArtista'
+
+import AddBeneficio from './modulos1/Beneficios/Pages/AddBeneficio';
+
+import ArtistasView from './modulos1/Artistas/pages/ArtistaView';
+import ArtistaDetails from './modulos1/Artistas/pages/ArtistaDetails';
+
 import Galeria from './modulos1/Galeria/pages/galeria';
 import Membresia from './modulos1/Membresias/pages/membresia';
 import AgendaArtistas from './modulos1/AgendaArtistas/pages/agendaartistas';
@@ -24,7 +28,10 @@ import MembresiaAdm from './modulos1/Membresias/pages/membresiaadm';
 import AgendaArtistasAdm from './modulos1/AgendaArtistas/pages/agendaartistasadm';
 import TestimonioAdm from './modulos1/Testimonios/pages/testimonioadm';
 import ChatbotAdm from './modulos1/Chatbot/pages/chatbotadm';
-
+import ArtistasAddArtista from './modulos1/Artistas/pages/ArtistasAddArtista';
+import ArtistaEditArtista from './modulos1/Artistas/pages/ArtistaEditArtista';
+import ArtistasDash from './modulos1/Artistas/pages/ArtistasDash';
+import BeneficiosDash from './modulos1/Beneficios/Pages/BeneficiosDash';
 //Subpáginas Administrador
 import GaleriaAdmAdd from './modulos1/Galeria/pages/galeriaadd';
 import GaleriaAdmCon from './modulos1/Galeria/pages/galeriacon';
@@ -38,6 +45,7 @@ import MembresiaAdmCon from './modulos1/Membresias/pages/membresiacon';
 import AgendaArtistasAdmCon from './modulos1/AgendaArtistas/pages/agendaartistascon';
 import AgendaArtistasAdmEdit from './modulos1/AgendaArtistas/pages/agendaartistasedit';
 
+import ArtistaView from  './modulos1/Artistas/pages/ArtistaView'
 
 const router = createBrowserRouter([
   {
@@ -49,94 +57,37 @@ const router = createBrowserRouter([
     element: <ArtistasDash />
   },
   {
-    path: "/pages/ArtistaEditArtista",
+    path: "/pages/AddArtista",
+    element: <ArtistasAddArtista />
+  },
+  {
+    path: "/pages/BeneficiosDash",
+    element: <BeneficiosDash />
+  },
+  {
+    path: "/pages/AddBeneficio",
+    element: <AddBeneficio />
+  },
+  {
+    path: "/pages/ArtistasView",
+    element: <ArtistasView />
+  },
+  {
+    path: "/pages/ArtistaDetails/:artistaId",
+    element: <ArtistaDetails />
+  },
+  {
+    path: "/pages/ArtistaEditArtista/:idArt",
     element: <ArtistaEditArtista />
   },
   {
-    path: "/pages/galeria",
-    element: <Galeria />
-  },
-  {
-    path: "/pages/membresia",
-    element: <Membresia />
-  },
-  {
-    path: "/pages/agendaartistas",
-    element: <AgendaArtistas />
-  },
-  {
-    path: "/pages/nuevotestimonio",  
-    element: <NuevoTestimonio />
-  },
-  {
-    path: "/pages/dashboard",  
+    path: "/pages/DashBoard",
     element: <Dashboard />
   },
-  {
-    path: "/pages/galeriaaadm",  
-    element: <GaleriaAdm />
-  },
-  {
-    path: "/pages/membresiaadm",  
-    element: <MembresiaAdm />
-  },
-  {
-    path: "/pages/agendaartistasadm",  
-    element: <AgendaArtistasAdm />
-  },
-  {
-    path: "/pages/testimonioadm",  
-    element: <TestimonioAdm />
-  },
-  {
-    path: "/pages/chatbotadm",  
-    element: <ChatbotAdm />
-  },
-  {
-    path: "/pages/galeriaadd",  
-    element: <GaleriaAdmAdd />
-  },
-  {
-    path: "/pages/galeriacon",  
-    element: <GaleriaAdmCon />
-  },
-  {
-    path: "/pages/galeriaedit/:id",  
-    element: <GaleriaAdmEdit />
-  },
-  /*{
-    path: "/pages/galeriainfo",  
-    element: <GaleriaAdmInfo />
-  },*/
-  {
-    path: "/pages/membresiaadd",  
-    element: <MembresiaAdmAdd />
-  },
-  {
-    path: "/pages/membresiaventa",  
-    element: <MembresiaAdmVenta />
-  },
-  {
-    path: "/pages/membresiaedit/:id",  
-    element: <MembresiaAdmEdit />
-  },
-  {
-    path: "/pages/membresiacon",  
-    element: <MembresiaAdmCon />
-  },
-  /* {
-    path: "/pages/agendaartistasaad",  
-    element: <AgendaArtistasAdmAdd />
-  },*/
-  {
-    path: "/pages/agendaartistascon",  
-    element: <AgendaArtistasAdmCon />
-  },
-  {
-    path: "/pages/agendaartistasedit/:id",  
-    element: <AgendaArtistasAdmEdit />
-  },
-]);
+],
+{
+  basename: "/templeofink", // Agrega el prefijo del subdirectorio
+});
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,6 +1,25 @@
 export const ENDPOINTS = {
     GETARTISTAS: "Artista/listarPlanes",
-    GETARTISTAXID: "/Artista/getOneArtistaById",
+    GETARTISTAXID: "Artista/getOneArtistaById",
+    GUARDARARTISTA: "Artista/guardarArtista",
+    EDITARTISTA: "Artista/editarArtista",
+    DELETEARTISTA: "Artista/deleteArtista",
+    DESPUBLICARARTISTA: "Artista/despublicarArtista",
+    PUBLICARARTISTA: "Artista/publicarArtista",
+    ARCHIVARARTISTA: "Artista/archivarArtista",
+    GETBENEFICIOS: "Beneficio/listarBeneficios",
+    GETBENEFICIOXID: "Beneficio/getOneBeneficioById",
+    GUARDARBENEFICIOS: "Beneficio/guardarBeneficio",
+    DELETEBENEFICIO: "Beneficio/deleteBeneficio",
+    PUBLICARBENEFICIO: "Beneficio/publicarBeneficio",
+    DESPUBLICARBENEFICIO: "Beneficio/despublicarBeneficio",
+    GETCATEGORIAS: "Categoria/listarCategorias",
+    GETCATEGORIAXARTISTA: "Categoria/listarCategoriasXArtista",
+    GETARTISTASXCATEGORIA: "Categoria/listarArtistasXCategoria",
+    ASIGNARCATEGORIAS: "Categoria/asignarCategoriaArtista",
+    GUARDARIMAGENARTICULO: "ImagenArticulo/guardarImagen",
+    GETURLIXDIMAGEN: "ImagenArticulo/buscarUrlXID",
+    
     COMMENTS: "comments",
 
     //AgendaArtista
