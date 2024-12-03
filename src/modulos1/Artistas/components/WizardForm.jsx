@@ -20,7 +20,7 @@ import { useNavigate } from "react-router-dom";
 import MuiDialog from "../../../layouts/componentes/MuiDialog";
 
 function WizardForm() {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(0); 
   const [formData, setFormData] = useState({
     idArtista: null,
     nombre: "",

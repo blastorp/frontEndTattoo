@@ -1,7 +1,7 @@
 import React from 'react'
 import MainAdmin from '../../../layouts/MainAdmin2'
 import TarjetaLinkAdd from '../components/TarjetaLInkAdd'
-import ArrayTarjetaApi from '../components/ArrayTarjetaApi'
+
 import fetchApiM1  from "../../../services/api/fetchApiM1";
 import ENDPOINTS  from "../../../services/api/endpoints";
 import Tarjeta from '../components/Tarjeta'
