@@ -14,6 +14,10 @@ export const ENDPOINTS = {
     
     /*GETARTISTAAVAILABILITY: "api/AgendaArtista/{idArtista}/Disponibilidad",  en stand by*/
     
+    //Membresias
+    GET_BENEFICIOS: "api/Beneficios",
+    CREATE_MEMBRESIA: "api/Membresias",
+    
     //Galeria
     GETGALERIAPUBLICADOS: "api/Galeria/Publicados", 
     GETGALERIAPORARTISTA: "api/Galeria/PorArtista/{idArtista}", 
@@ -43,7 +47,7 @@ export const ENDPOINTS = {
     //Membresias  
     GETALLMEMBRESIAS: "api/membresias",
     GETMEMBRESIABYID: "api/membresias/{id}",
-    CREATEMEMBRESIA: "api/membresias",
+
     UPDATEMEMBRESIAPUBLICAR: "api/membresias/{id}/Publicar"
 
   

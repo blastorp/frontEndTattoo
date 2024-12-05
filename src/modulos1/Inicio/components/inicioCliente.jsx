@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "../estilos/inicioC.css";
-import fetchApiM2  from "../../../services/api/fetchApiM2";
-import ENDPOINTS  from "../../../services/api/endpoints";
+//import fetchApiM2  from "../../../services/api/fetchApiM2";
+//import ENDPOINTS  from "../../../services/api/endpoints";
 
 const Inicio = () => {
     const [currentIndex, setCurrentIndex] = useState(0);

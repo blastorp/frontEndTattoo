@@ -13,6 +13,7 @@ const AgendaArtistaADMINAdd = () => {
     horaFin: "",
     disponible: false,
     esMembresia: false,
+    Publicar: false,
   });
 
   // Estado para los artistas, mensaje y estado de carga
@@ -72,6 +73,7 @@ const AgendaArtistaADMINAdd = () => {
       HoraFin: formData.horaFin,
       Disponible: formData.disponible,
       EsMembresia: formData.esMembresia,
+      Publicar: formData.publicar,
     });
 
     setLoading(true);
@@ -87,6 +89,7 @@ const AgendaArtistaADMINAdd = () => {
           HoraFin: formData.horaFin,
           Disponible: formData.disponible,
           EsMembresia: formData.esMembresia,
+          Publicar: formData.publicar,
         },
         { "Content-Type": "application/json" }
       );
@@ -102,6 +105,7 @@ const AgendaArtistaADMINAdd = () => {
         horaFin: "",
         disponible: false,
         esMembresia: false,
+        publicar: false,
       });
 
       // Redirigir a la página de agenda de artistas (opcional)
@@ -185,7 +189,7 @@ const AgendaArtistaADMINAdd = () => {
                   checked={formData.disponible}
                   onChange={handleChange}
                 />
-                Publicar
+                Disponibilidad
               </label>
             </div>
 
@@ -199,6 +203,19 @@ const AgendaArtistaADMINAdd = () => {
                   onChange={handleChange}
                 />
                 Membresía
+              </label>
+            </div>
+            
+            <div className="form-group">
+              <label className="checkbox-container">
+                <input
+                  type="checkbox"
+                  id="membresia"
+                  name="publicar"
+                  checked={formData.publicar}
+                  onChange={handleChange}
+                />
+                Publicar
               </label>
             </div>
 

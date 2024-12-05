@@ -15,6 +15,7 @@ const AgendaArtistaADMINEdit = () => {
     horaFin: "",
     disponible: false,
     esMembresia: false,
+    publicar: false,
   });
 
   const [artistas, setArtistas] = useState([]);
@@ -41,6 +42,7 @@ const AgendaArtistaADMINEdit = () => {
             horaFin: agendaResponse.horaFin || "",
             disponible: agendaResponse.disponible || false,
             esMembresia: agendaResponse.esMembresia || false,
+            publicar: agendaResponse.publicar || false,
           });
         } else {
           setMensaje("Agenda no encontrada.");
@@ -167,7 +169,7 @@ const AgendaArtistaADMINEdit = () => {
                   checked={formData.disponible}
                   onChange={handleChange}
                 />
-                Publicar
+                Disponible
               </label>
             </div>
 
@@ -181,6 +183,19 @@ const AgendaArtistaADMINEdit = () => {
                   onChange={handleChange}
                 />
                 Membresía
+              </label>
+            </div>
+
+            <div className="form-group">
+              <label className="checkbox-container">
+                <input
+                  type="checkbox"
+                  id="publicar"
+                  name="publicar"
+                  checked={formData.publicar}
+                  onChange={handleChange}
+                />
+                Publicar
               </label>
             </div>
 

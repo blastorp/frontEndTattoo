@@ -100,6 +100,7 @@ const AgendaArtistaADMINCon = () => {
                         <th>Hora Fin</th>
                         <th>Miembro</th>
                         <th>Disponible</th>
+                        <th>Publicar</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
@@ -132,6 +133,13 @@ const AgendaArtistaADMINCon = () => {
                                         type="checkbox"
                                         checked={row.disponible}
                                         onChange={(e) => handleCheckboxChange(row.idAgenda, "disponible", e.target.checked)} // 'Campo' y 'Valor' utilizados correctamente
+                                    />
+                                </td>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        checked={row.publicar}
+                                        onChange={(e) => handleCheckboxChange(row.idAgenda, "publicar", e.target.checked)} // 'Campo' y 'Valor' utilizados correctamente
                                     />
                                 </td>
                                 <td>
