@@ -8,7 +8,7 @@ la identificacion debe ser unica
 
 
 
-pasos para archivar  #donde
+** pasos para archivar  #donde
 [
 
    modificar boton generado en tarjeta
@@ -34,11 +34,11 @@ que falta para tener Artistas listo y reproducible
    ** filtros para ordenar en artistas ArtistasDash #Done
    ** indicar en tarjeta si la ficha esta archivada, y en el view si fuera necesario
    
-    cambiar colores de link
+    ** cambiar colores de link
     
     extras 
-    anadir info administrativa con otro icono para desplegar todo lo que esta en base de datos
-    view de telefono y de desktop extra, o solo linkear al view del cliente
+    ** anadir info administrativa con otro icono para desplegar todo lo que esta en base de datos
+   ** view de telefono y de desktop extra, o solo linkear al view del cliente
 
     estilos {
         ver estilos de tarjeta e info necesaria, el dialog corregir colores, p3 organizar mejor los checkbox
