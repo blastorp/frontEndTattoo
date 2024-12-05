@@ -2,7 +2,9 @@ import React from "react";
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 import AddIcon from '@mui/icons-material/Add';
+import InfoIcon from "@mui/icons-material/Info";
 import '../estilos/Tarjeta.css'
+import Switch from "../../../layouts/componentes/Switch"
 function TarjetaLInkAdd() {
   return (
     <div className="card">
@@ -23,10 +25,18 @@ function TarjetaLInkAdd() {
         <p>📞 Contacto</p>
       </div>
       <div className="toggle">
-        <label for="publicado">
+        {/* <label for="publicado">
           <input disabled type="checkbox" id="publicado" />
           Publicado
-        </label>
+        </label> */}
+        <Switch 
+        
+        titulo = { "Publicado" }
+        />
+        <div className="contenedorInfo">
+          <InfoIcon diable sx={{color:"var(--gris-color)"}}/>
+         
+        </div>
       </div>
     </div>
   );

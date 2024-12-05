@@ -15,6 +15,7 @@ pasos para archivar  #donde
 anadir funcion cuando se pulsa tal boton 
 pedir confirmacion al cliente
 refrescar la pagina una vez se realiza la confirmacion
+deshabilitar el archivado
  
 ]
 
@@ -30,20 +31,22 @@ confirmacion de guardado y archivado]
 que falta para tener Artistas listo y reproducible
 {
     
-    filtros para ordenar en artistas ArtistasDash
-    indicar en tarjeta si la ficha esta archivada, y en el view si fuera necesario
-    anadir info administrativa con otro icono para desplegar todo lo que esta en base de datos
+   ** filtros para ordenar en artistas ArtistasDash #Done
+   ** indicar en tarjeta si la ficha esta archivada, y en el view si fuera necesario
+   
     cambiar colores de link
     
+    extras 
+    anadir info administrativa con otro icono para desplegar todo lo que esta en base de datos
     view de telefono y de desktop extra, o solo linkear al view del cliente
 
     estilos {
-        ver estilos de tarjeta, el dialog corregir colores, p3 organizar mejor los checkbox
+        ver estilos de tarjeta e info necesaria, el dialog corregir colores, p3 organizar mejor los checkbox
     }
 }
 
 variados {
-    implementar el loading y mensaje de Done
+    implementar el loading y mensaje de Done, tambien mensajes de informacion
 }
 
 

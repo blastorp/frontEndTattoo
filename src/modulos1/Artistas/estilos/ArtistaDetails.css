@@ -2,22 +2,24 @@
 
 /* Header Section */
 header {
-    background-color: var(--intermedio-color);
+    background-color: var(--SecundarioIntermedio-color);
     color: var(--Secundariogris-color);
     padding: var(--spacing-large);
+    font-weight: bolder;
     text-align: center;
     position: relative;
   }
   
   /* Back Arrow Button Style */
-  .back-button {
+  .back-button-artDet {
+    width: 50px;
     position: absolute;
     top: 20px;
     left: 20px;
     background-color: var(--SecudandarioOscuro-color);
     color: var(--Secundariogris-color);
     border: none;
-    border-radius: 50%; /* Circular button */
+    
     padding: 12px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -26,7 +28,7 @@ header {
     align-items: center;
   }
   
-  .back-button:hover {
+  .back-button-artDet:hover {
     background-color: var(--SecundarioRojo-color);
   }
   
@@ -54,25 +56,25 @@ header {
   }
   
   /* Profile Picture */
-  .profile-pic {
+  .profile-pic-details {
     text-align: center;
     margin-bottom: var(--spacing-large);
   }
   
-  .profile-pic img {
-    width: 150px;
-    height: 150px;
+  .profile-pic-details img {
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--rojo-color);
   }
   
   /* Section Titles */
-  section h2 {
+  section h2, h3 {
     font-family: var(--primary-font);
-    font-size: 2rem;
+  
     margin-bottom: var(--spacing-medium);
-    color: var(--rojo-color);
+    color: var(--intermedio-color);
   }
   
   /* Paragraph Text */
@@ -116,4 +118,23 @@ header {
   
   .back-button:hover {
     background-color: var(--SecundarioRojo-color);
+  }
+
+  .nombreArt {
+
+    color: var(--rojo-color);
+    font-weight: bold;
+  }
+
+  .contenedorMinigaleria {
+    
+    display: flex;
+    flex-direction: column;
+  }
+  .contenedorBotones{
+    display: flex;
+    flex-direction: row;
+  }
+  .contenedorMinigaleria button {
+    width: 50px;
   }

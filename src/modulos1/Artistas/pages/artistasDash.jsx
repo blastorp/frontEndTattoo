@@ -9,8 +9,14 @@ import '../estilos/ArtistasDash.css';
 function ArtistasDash() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  const [filters, setFilters] = useState({ search: "", publicados: true, archivados: true, activos: true });
+  const [filters, setFilters] = useState({ search: "", publicados: false, archivados: false, activos: true });
   const [sortOption, setSortOption] = useState("nombre"); // Default sorting
+  const [activo, setActivo] = useState(null);
+
+ ///funciones para manejar los checks 
+ const handleActivosArchivados = (e) => {
+  setActivo((prevValue) => (prevValue === e.target.value ? "" : e.target.value));
+};
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,7 +56,10 @@ function ArtistasDash() {
 // filtros para artistas
   const asideContent = (
     <div>
+    <label htmlFor="searchbar">Busqueda por Nombre</label>
       <input
+      id="searchbar"
+      name="searchbar"
         type="text"
         placeholder="Search by name"
         value={filters.search}
@@ -66,14 +75,17 @@ function ArtistasDash() {
         if (e.target.checked) {
           setFilters({
             ...filters,
-            activos: true, // Agregar categoría
+            activos: true,
+            archivados: false // Agregar categoría
           });
         } else {
           setFilters({
             ...filters,
             activos: false,
+            archivados: true
           });
         }
+        
       }}
     />
     Perfiles Activos
@@ -88,13 +100,16 @@ function ArtistasDash() {
           setFilters({
             ...filters,
             archivados: true,
+            activos: false
           });
         } else {
           setFilters({
             ...filters,
             archivados: false,
+            activos: true
           });
         }
+
       }}
     />
     Perfiles Archivados

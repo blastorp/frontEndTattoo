@@ -3,10 +3,9 @@ import MyNavBar from "./componentes2/Navbar";
 import BarraTitulo from "./componentes2/BarraTitulo.jsx";
 import AsideAdmin from "./componentes2/AsideAdmin.jsx";
 import './estilos/MainAdmin.css';
-
 function MainAdmin({ tituloPagina, children, asideContent }) {
   const [filters, setFilters] = useState({ search: "", category: "" });
-  const [sortOption, setSortOption] = useState("name"); // Default sorting option
+  const [sortOption, setSortOption] = useState("name");
 
   const arrayLinks = [
     { nombre: 'Mi Dashboard', ruta: '#' },
@@ -22,23 +21,28 @@ function MainAdmin({ tituloPagina, children, asideContent }) {
       <div className="distribucionContenido">
         <div className="contenedorAside">
           <AsideAdmin>
-            {React.cloneElement(asideContent, {
-              filters,
-              setFilters,
-              sortOption,
-              setSortOption,
-            })}
+            {React.isValidElement(asideContent)
+              ? React.cloneElement(asideContent, {
+                  filters,
+                  setFilters,
+                  sortOption,
+                  setSortOption,
+                })
+              : null}
           </AsideAdmin>
         </div>
         <div className="contenedorBarraTitulo">
           <BarraTitulo titulo={tituloPagina} />
         </div>
         <div className="contenedorContenidoPagina">
-          {React.cloneElement(children, { filters, sortOption })}
+          {React.isValidElement(children)
+            ? React.cloneElement(children, { filters, sortOption })
+            : children}
         </div>
       </div>
     </div>
   );
 }
+
 
 export default MainAdmin;
