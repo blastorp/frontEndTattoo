@@ -5,6 +5,9 @@ import AsideAdmin from "./componentes2/AsideAdmin.jsx";
 import './estilos/MainAdmin.css';
 
 function MainAdmin({ tituloPagina, children, asideContent }) {
+  const [filters, setFilters] = useState({ search: "", category: "" });
+  const [sortOption, setSortOption] = useState("name"); // Default sorting option
+
   const arrayLinks = [
     { nombre: 'Mi Dashboard', ruta: '#' },
     { nombre: 'Vista Cliente', ruta: '/pages/ArtistasView' },
@@ -18,13 +21,20 @@ function MainAdmin({ tituloPagina, children, asideContent }) {
       <MyNavBar clasName listaLinks={arrayLinks} />
       <div className="distribucionContenido">
         <div className="contenedorAside">
-          <AsideAdmin>{ asideContent }</AsideAdmin>
+          <AsideAdmin>
+            {React.cloneElement(asideContent, {
+              filters,
+              setFilters,
+              sortOption,
+              setSortOption,
+            })}
+          </AsideAdmin>
         </div>
         <div className="contenedorBarraTitulo">
           <BarraTitulo titulo={tituloPagina} />
         </div>
         <div className="contenedorContenidoPagina">
-          {children}
+          {React.cloneElement(children, { filters, sortOption })}
         </div>
       </div>
     </div>

@@ -97,7 +97,11 @@ export const Tarjeta = ({ objetoArtista }) => {
   return (
     <div className="card">
       <div className="profile-pic">
-        <img src={ image } alt="Foto de perfil" />
+        <div className="imageCont">
+
+          <img src={ image } alt="Foto de perfil" />
+        </div>
+        
         <div className="contenedorBotonesAccion">
           <div className="contenedorEdit">
             <Link to={ `/pages/ArtistaEditArtista/${ objetoArtista.idArtista }`} >
@@ -129,7 +133,8 @@ export const Tarjeta = ({ objetoArtista }) => {
           <input
             type="checkbox"
             id={ `publicado-${ objetoArtista.idArtista }` }
-            checked={ publicado }
+            checked= {false}
+            disabled = { objetoArtista.archivado  }
             onChange={ togglePublicar } // Se ejecuta al cambiar
           />
           Publicado

@@ -33,12 +33,17 @@ que falta para tener Artistas listo y reproducible
     filtros para ordenar en artistas ArtistasDash
     indicar en tarjeta si la ficha esta archivada, y en el view si fuera necesario
     anadir info administrativa con otro icono para desplegar todo lo que esta en base de datos
+    cambiar colores de link
     
     view de telefono y de desktop extra, o solo linkear al view del cliente
 
     estilos {
         ver estilos de tarjeta, el dialog corregir colores, p3 organizar mejor los checkbox
     }
+}
+
+variados {
+    implementar el loading y mensaje de Done
 }
 
 
