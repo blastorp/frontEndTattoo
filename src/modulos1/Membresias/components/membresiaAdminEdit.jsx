@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom"; 
+import Select from "react-select";
+import { NumericFormat } from "react-number-format";
 import fetchApiM2 from "../../../services/api/fetchApiM2";
 import ENDPOINTS from "../../../services/api/endpoints";
-import "../estilos/membresiaadd.css";
+import "../estilos/membresiaedit.css";
 
 const MembresiaADMINEdit = () => {
   const { id } = useParams(); // Captura el id de la URL
@@ -14,11 +16,31 @@ const MembresiaADMINEdit = () => {
     fechaVencimiento: "",
     duracion: "",
     publicar: false,
+    beneficiosSeleccionados: [],
   });
+  const [beneficios, setBeneficios] = useState([]); // Beneficios disponibles
   const [mensaje, setMensaje] = useState(""); // Para mensajes de éxito/error
 
   // Cargar los datos de la membresía cuando el componente se monta
   useEffect(() => {
+    const fetchBeneficios = async () => {
+      try {
+        const response = await fetchApiM2(ENDPOINTS.GET_BENEFICIOS);
+        if (response.ok) {
+          const data = await response.json();
+          const opciones = data.map((beneficio) => ({
+            value: beneficio.id,
+            label: beneficio.nombre,
+          }));
+          setBeneficios(opciones);
+        } else {
+          console.error("Error al cargar beneficios");
+        }
+      } catch (error) {
+        console.error("Error al conectar con el servidor:", error);
+      }
+    };
+
     const fetchData = async () => {
       try {
         const response = await fetchApiM2(`${ENDPOINTS.GETMEMBRESIA}/${id}`);
@@ -30,6 +52,7 @@ const MembresiaADMINEdit = () => {
             fechaVencimiento: response.fechaVencimiento,
             duracion: response.duracion,
             publicar: response.publicar,
+            beneficiosSeleccionados: response.beneficiosSeleccionados || [],
           });
         }
       } catch (error) {
@@ -38,6 +61,7 @@ const MembresiaADMINEdit = () => {
       }
     };
 
+    fetchBeneficios();
     fetchData();
   }, [id]);
 
@@ -47,6 +71,14 @@ const MembresiaADMINEdit = () => {
     setFormData({
       ...formData,
       [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  // Manejar cambios en los beneficios seleccionados
+  const handleBeneficiosChange = (selectedOptions) => {
+    setFormData({
+      ...formData,
+      beneficiosSeleccionados: selectedOptions || [],
     });
   };
 
@@ -62,12 +94,17 @@ const MembresiaADMINEdit = () => {
 
     try {
       // Realiza la actualización de la membresía
+      const dataToSend = {
+        ...formData,
+        beneficiosSeleccionados: formData.beneficiosSeleccionados.map((b) => b.value),
+      };
+
       const response = await fetchApiM2(`${ENDPOINTS.UPDATEMEMBRESIA}/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       });
 
       if (response.ok) {
@@ -102,13 +139,17 @@ const MembresiaADMINEdit = () => {
 
           <div className="form-group">
             <label htmlFor="precioMensual" className="form-label">Precio mensual</label>
-            <input
-              type="number"
+            <NumericFormat
               id="precioMensual"
               name="precioMensual"
               className="input"
               value={formData.precioMensual}
-              onChange={handleChange}
+              onValueChange={(values) => {
+                setFormData({ ...formData, precioMensual: values.value });
+              }}
+              thousandSeparator={true}
+              prefix={"₡"}
+              decimalScale={2}
             />
           </div>
 
@@ -118,9 +159,10 @@ const MembresiaADMINEdit = () => {
               type="date"
               id="fechaCreacion"
               name="fechaCreacion"
-              className="date"
+              className="input"
               value={formData.fechaCreacion}
               onChange={handleChange}
+              disabled  // Deshabilitar el campo para evitar que se modifique
             />
           </div>
 
@@ -130,7 +172,7 @@ const MembresiaADMINEdit = () => {
               type="date"
               id="fechaVencimiento"
               name="fechaVencimiento"
-              className="date"
+              className="input"
               value={formData.fechaVencimiento}
               onChange={handleChange}
             />
@@ -138,13 +180,29 @@ const MembresiaADMINEdit = () => {
 
           <div className="form-group">
             <label htmlFor="duracion" className="form-label">Duración (en meses)</label>
-            <input
-              type="number"
+            <select
               id="duracion"
               name="duracion"
-              className="input"
+              className="select"
               value={formData.duracion}
               onChange={handleChange}
+            >
+              <option value="1">1 mes</option>
+              <option value="3">3 meses</option>
+              <option value="6">6 meses</option>
+              <option value="12">12 meses</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="beneficios" className="form-label">Selecciona los beneficios</label>
+            <Select
+              isMulti
+              options={beneficios}
+              value={formData.beneficiosSeleccionados}
+              onChange={handleBeneficiosChange}
+              classNamePrefix="react-select"
+              placeholder="Selecciona beneficios..."
             />
           </div>
 

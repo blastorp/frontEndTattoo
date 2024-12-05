@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../estilos/galeriaadd.css';
-import fetchApiM2  from "../../../services/api/fetchApiM2";
-import ENDPOINTS  from "../../../services/api/endpoints";
+//import fetchApiM2  from "../../../services/api/fetchApiM2";
+//import ENDPOINTS  from "../../../services/api/endpoints";
 
 const GaleriaADMINAdd = () => {
     const [imagePreview, setImagePreview] = useState(null);

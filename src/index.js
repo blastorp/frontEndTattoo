@@ -37,12 +37,13 @@ import ArtistaInfo from './modulos1/Artistas/pages/ArtistaInfo';
 import GaleriaAdmAdd from './modulos1/Galeria/pages/galeriaadd';
 import GaleriaAdmCon from './modulos1/Galeria/pages/galeriacon';
 import GaleriaAdmEdit from './modulos1/Galeria/pages/galeriaedit';
-//import GaleriaAdmInfo from './modulos1/Galeria/pages/galeriainfo';
+
 import MembresiaAdmAdd from './modulos1/Membresias/pages/membresiaadd';
 import MembresiaAdmVenta from './modulos1/Membresias/pages/membresiaventa';
 import MembresiaAdmEdit from './modulos1/Membresias/pages/membresiaedit';
 import MembresiaAdmCon from './modulos1/Membresias/pages/membresiacon';
-//import AgendaArtistasAdmAdd from './modulos1/AgendaArtistas/pages/agendaartistasaad';
+
+import AgendaArtistasAdmAdd from './modulos1/AgendaArtistas/pages/agendaartistasadd';
 import AgendaArtistasAdmCon from './modulos1/AgendaArtistas/pages/agendaartistascon';
 import AgendaArtistasAdmEdit from './modulos1/AgendaArtistas/pages/agendaartistasedit';
 
@@ -89,10 +90,75 @@ const router = createBrowserRouter([
     path: "/pages/DashBoard",
     element: <Dashboard />
   },
+  {
+  path: "/pages/galeriaaadm",  
+  element: <GaleriaAdm />
+  },
+{
+  path: "/pages/membresiaadm",  
+  element: <MembresiaAdm />
+},
+{
+  path: "/pages/agendaartistasadm",  
+  element: <AgendaArtistasAdm />
+},
+{
+  path: "/pages/testimonioadm",  
+  element: <TestimonioAdm />
+},
+{
+  path: "/pages/chatbotadm",  
+  element: <ChatbotAdm />
+},
+{
+  path: "/pages/galeriaadd",  
+  element: <GaleriaAdmAdd />
+},
+{
+  path: "/pages/galeriacon",  
+  element: <GaleriaAdmCon />
+},
+{
+  path: "/pages/galeriaedit/:id",  
+  element: <GaleriaAdmEdit />
+},
+/*{
+  path: "/pages/galeriainfo",  
+  element: <GaleriaAdmInfo />
+},*/
+{
+  path: "/pages/membresiaadd",  
+  element: <MembresiaAdmAdd />
+},
+{
+  path: "/pages/membresiaventa",  
+  element: <MembresiaAdmVenta />
+},
+{
+  path: "/pages/membresiaedit/:id",  
+  element: <MembresiaAdmEdit />
+},
+{
+  path: "/pages/membresiacon",  
+  element: <MembresiaAdmCon />
+},
+ {
+  path: "/pages/agendaartistasadd",  
+  element: <AgendaArtistasAdmAdd />
+},
+{
+  path: "/pages/agendaartistascon",  
+  element: <AgendaArtistasAdmCon />
+},
+{
+  path: "/pages/agendaartistasedit/:id",  
+  element: <AgendaArtistasAdmEdit />
+},
 ],
 {
   basename: "/templeofink", // Agrega el prefijo del subdirectorio
 });
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
