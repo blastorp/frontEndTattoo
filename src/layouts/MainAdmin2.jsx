@@ -3,6 +3,7 @@ import MyNavBar from "./componentes2/Navbar";
 import BarraTitulo from "./componentes2/BarraTitulo.jsx";
 import AsideAdmin from "./componentes2/AsideAdmin.jsx";
 import './estilos/MainAdmin.css';
+import AnimacionImagenPan from './componentes/AnimacionImagenPan.jsx'
 function MainAdmin({ tituloPagina, children, asideContent }) {
   const [filters, setFilters] = useState({ search: "", category: "" });
   const [sortOption, setSortOption] = useState("name");
@@ -20,7 +21,8 @@ function MainAdmin({ tituloPagina, children, asideContent }) {
       <MyNavBar clasName listaLinks={arrayLinks} />
       <div className="distribucionContenido">
         <div className="contenedorAside">
-          <AsideAdmin>
+          { (asideContent)? 
+           <AsideAdmin>
             {React.isValidElement(asideContent)
               ? React.cloneElement(asideContent, {
                   filters,
@@ -30,6 +32,13 @@ function MainAdmin({ tituloPagina, children, asideContent }) {
                 })
               : null}
           </AsideAdmin>
+        :
+        <AsideAdmin>
+           <AnimacionImagenPan />
+          </AsideAdmin>
+        }
+          
+         
         </div>
         <div className="contenedorBarraTitulo">
           <BarraTitulo titulo={tituloPagina} />

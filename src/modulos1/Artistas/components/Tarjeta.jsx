@@ -165,7 +165,10 @@ export const Tarjeta = ({ objetoArtista }) => {
         titulo = { "Publicado" }
         />
         <div className="contenedorInfo">
-          <InfoIcon sx={{color:"var(--gris-color)"}}/>
+          <Link to={`/pages/ArtistaInfo/${objetoArtista.idArtista}`}>
+          <InfoIcon  sx={{color:"var(--gris-color)"}}/>
+          </Link>
+          
          
         </div>
       </div>

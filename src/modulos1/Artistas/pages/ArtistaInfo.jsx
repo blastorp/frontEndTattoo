@@ -7,8 +7,9 @@ import { useParams } from "react-router-dom";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import CheckboxButton from "../../../layouts/componentes/CheckBoxButton";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
-function ArtistaDetails() {
+function ArtistaInfo() {
   const { artistaId } = useParams();
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
@@ -105,14 +106,14 @@ function ArtistaDetails() {
         </section>
 
         {/* Contact Info */}
-
+        <h2>Datos Personales</h2>
+        <h6>Nombre Registrado:  {data.nombre}</h6>
+        <p>email: {data.email}</p>
+        <p>Telefono: {data.telefono} <a target="blank" href={`https://wa.me/506${data.telefono}`}> <WhatsAppIcon fontSize="large" sx={{color:"green"}}/> </a> </p>
+        <p>Identificacion: {data.nroIdentificacion}</p>
+        <p>Fecha ingreso: {new Date(data.fechaCreacion).toLocaleDateString("es-ES")}</p>
         {/* Creation Date */}
-        <section>
-          <h3>
-            Miembro del Templo desde{" "}
-            {new Date(data.fechaCreacion).getFullYear()}
-          </h3>
-        </section>
+        
         <section className="contenedorMinigaleria">
           <h3 >Categorias y Artes</h3>
           <div className="contenedorBotones">
@@ -133,4 +134,4 @@ function ArtistaDetails() {
   );
 }
 
-export default ArtistaDetails;
+export default ArtistaInfo;

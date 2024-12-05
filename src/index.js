@@ -32,6 +32,7 @@ import ArtistasAddArtista from './modulos1/Artistas/pages/ArtistasAddArtista';
 import ArtistaEditArtista from './modulos1/Artistas/pages/ArtistaEditArtista';
 import ArtistasDash from './modulos1/Artistas/pages/ArtistasDash';
 import BeneficiosDash from './modulos1/Beneficios/Pages/BeneficiosDash';
+import ArtistaInfo from './modulos1/Artistas/pages/ArtistaInfo';
 //Subpáginas Administrador
 import GaleriaAdmAdd from './modulos1/Galeria/pages/galeriaadd';
 import GaleriaAdmCon from './modulos1/Galeria/pages/galeriacon';
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
   {
     path: "/pages/ArtistaEditArtista/:idArt",
     element: <ArtistaEditArtista />
+  },
+  {
+    path: "/pages/ArtistaInfo/:artistaId",
+    element: <ArtistaInfo />
   },
   {
     path: "/pages/DashBoard",
