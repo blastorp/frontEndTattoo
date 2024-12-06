@@ -45,7 +45,7 @@ const AgendaArtistaADMINCon = () => {
       }
   
       // Reemplazar {idAgenda} en la URL con el valor real
-      const url = ENDPOINTS.UPDATE_DISPONIBLE_MEMBRESIA_AGENDA_ARTISTA.replace("{idAgenda}", idAgenda);
+      const url = ENDPOINTS.UPDATE_DMP_AGENDA_ARTISTA.replace("{idAgenda}", idAgenda);
       console.log("URL generada para el PATCH:", url);
   
       try {

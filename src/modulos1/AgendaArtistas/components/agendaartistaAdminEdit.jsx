@@ -117,7 +117,7 @@ const AgendaArtistaADMINEdit = () => {
               >
                 <option value="">Seleccionar artista</option>
                 {artistas.map((artista) => (
-                  <option key={artista.idArtista} value={artista.idArtista}> {/* Cambio aquí */}
+                  <option key={artista.idArtista} value={artista.idArtista}> 
                     {artista.nombre}
                   </option>
                 ))}
