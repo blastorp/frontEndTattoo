@@ -6,8 +6,7 @@ function P1WizardBeneficio({ formData, setFormData,  setImageUpload, image, setI
         if (event.target.files && event.target.files[0]) {
           setImage(URL.createObjectURL(event.target.files[0]));
           setImageUpload(event.target.files[0]);
-          
-    
+
         }
        }
   
@@ -19,7 +18,7 @@ function P1WizardBeneficio({ formData, setFormData,  setImageUpload, image, setI
           type="text"
           name="NombreArt"
           placeholder="nombre..."
-          value={formData.nombreArt}
+          value={formData.nombre}
           maxLength={90}
           onChange={(event) =>
             setFormData({ ...formData, nombre: event.target.value })
@@ -30,7 +29,7 @@ function P1WizardBeneficio({ formData, setFormData,  setImageUpload, image, setI
           type="text"
           name="NombreArt"
           placeholder="nombre..."
-          value={formData.nombreArt}
+          value={formData.subtitulo}
           maxLength={90}
           onChange={(event) =>
             setFormData({ ...formData, subtitulo: event.target.value })
@@ -42,19 +41,19 @@ function P1WizardBeneficio({ formData, setFormData,  setImageUpload, image, setI
           placeholder="Descripcion Artista..."
           rows="4" cols="50"
           maxLength={900}
-          value={formData.descripcionArt}
+          value={formData.descripcion}
           onChange={(event) =>
             setFormData({ ...formData, descripcion: event.target.value })
           }
         />
-  <label htmlFor="Foto Perfil">Elegir Foto Perfil</label>
+  <label htmlFor="Foto Perfil">Elegir Foto Beneficio</label>
   
        <input name="Foto Perfil"
         type="file" 
         onChange={onImageChange}
          className="filetype" 
           accept="image/png, image/gif, image/jpeg"/>
-       <img className="fotoPerfil" alt="Foto Perfil image" src={ image } />
+       <img className="fotoPerfil" alt="Foto Beneficio image" src={ image } />
        {/* dar formato css */}
       </div>
   )

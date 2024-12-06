@@ -89,13 +89,13 @@ const router = createBrowserRouter(
       element: <ArtistaInfo />,
     },
 
-    { path: "Pages/BeneficioDetails", 
+    { path: "pages/BeneficioDetails/:idBeneficio", 
       element: <BeneficioDetails /> },
-    { path: "Pages/BeneficioEdit", 
+    { path: "pages/BeneficioEdit/:idBeneficio", 
       element: <BeneficioEdit /> },
-    { path: "Pages/BeneficioInfo", 
+    { path: "pages/BeneficioInfo", 
       element: <BeneficioInfo /> },
-    { path: "Pages/BeneficiosView", 
+    { path: "pages/BeneficiosView", 
       element: <BeneficiosView /> },
 
     {

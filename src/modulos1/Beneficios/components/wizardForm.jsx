@@ -98,30 +98,7 @@ function WizardForm() {
       }
     };
     
-    const guardarCategorias = async (idArtista) => {
-      try {
-        // Map categories to objects with idArtista and idCategoria
-        const objCategorias = categoriasElegidas.map((idCategoria) => ({
-          idArtista,
-          idCategoria,
-        }));
-    
-        // Log the object to verify it is correct
-        ////console.log("Categorías a guardar:", objCategorias);
-    
-        // Call API to save categories
-        const result = await fetchApiM1(ENDPOINTS.ASIGNARCATEGORIAS, "POST", objCategorias);
-    
-        // Log the result for debugging
-        //console.log("Guardar Categorías Response:", result);
-    
-        setArtGuardado(result);
-      } catch (err) {
-        //console.error("Error in guardarCategorias:", err.message);
-        setError(err.message);
-        //alert("Error in guardarCategorias:", err.message);
-      }
-    };
+   
 
     const guardarImagen = async (urlImagen) => {
       try {
@@ -179,8 +156,8 @@ function WizardForm() {
     return (
       <div className="form">
         
-        <div className="form-container">
-          <div className="header">
+        <div className="form-container-wizard">
+          <div className="header-wizard">
             {/* <h2 className="tituloPaginaWizard">{FormTitles[page]}</h2> */}
             <h2 className="tituloPaginaWizard">Datos Beneficio</h2>
           </div>
