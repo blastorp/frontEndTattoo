@@ -11,10 +11,10 @@ import '../estilos/dashboard.css';
 
 const Dashboard = () => {
   const buttons = [
-    { label: "Perfiles de artistas", icon: <FaUser />, path: "/pages/adm" },
+    { label: "Perfiles de artistas", icon: <FaUser />, path: "/pages/ArtistasDash" },
     { label: "Ofertas y promociones", icon: <FaTag />, path: "/pages/adm" },
     { label: "Membresía", icon: <FaCreditCard />, path: "/pages/membresiaadm" },
-    { label: "Beneficios", icon: <FaGift />, path: "/pages/adm" },
+    { label: "Beneficios", icon: <FaGift />, path: "/pages/BeneficiosDash" },
     { label: "Tarjetas de regalo", icon: <FaGift />, path: "/pages/adm" },
     { label: "Galería de fotos", icon: <FaImages />, path: "/pages/galeriaaadm" },
     { label: "Categorías de tatuajes", icon: <FaImages />, path: "/pages/adm" },

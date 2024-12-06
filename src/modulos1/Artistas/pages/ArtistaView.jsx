@@ -1,5 +1,5 @@
 import React from 'react'
-import MainClient from '../../../layouts/MainClient'
+import MainAdmin from '../../../layouts/MainAdmin2';
 import TarjetaClient from '../components/TarjetaClient';
 import fetchApiM1  from "../../../services/api/fetchApiM1";
 import ENDPOINTS  from "../../../services/api/endpoints";
@@ -35,7 +35,7 @@ function ArtistaView() {
 
   }, []);
   return (
-    <MainClient tituloPagina={"Artistas"}>
+    <MainAdmin tituloPagina={"Artistas"}>
         
         <div className='contenedorContenidoPagina' >
         {data.filter((item) => item.publicado)
@@ -45,7 +45,7 @@ function ArtistaView() {
         </div>
 
         
-    </MainClient>
+    </MainAdmin>
    ) 
 }
 

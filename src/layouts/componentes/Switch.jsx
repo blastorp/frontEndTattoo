@@ -4,8 +4,10 @@ import styled from 'styled-components';
 const Switch = ( {idIN, checkedIN, diasabledIN, onChangeIN, titulo}) => {
   return (
     <StyledWrapper>
-      <label className="switch">
+      <label className="switch"
+      title='Publicar o Despublicar'>
         <input type="checkbox" 
+        
         id={ idIN }
         checked ={ checkedIN }
         disabled = { diasabledIN }

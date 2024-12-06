@@ -108,6 +108,7 @@ function ArtistaInfo() {
         {/* Contact Info */}
         <h2>Datos Personales</h2>
         <h6>Nombre Registrado:  {data.nombre}</h6>
+        <h6>Identificador:  {data.idArtista}</h6>
         <p>email: {data.email}</p>
         <p>Telefono: {data.telefono} <a target="blank" href={`https://wa.me/506${data.telefono}`}> <WhatsAppIcon fontSize="large" sx={{color:"green"}}/> </a> </p>
         <p>Identificacion: {data.nroIdentificacion}</p>

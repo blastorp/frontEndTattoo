@@ -1,18 +1,8 @@
-/* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
+
   /* Tarjeta */
-  .card {
+  .card-artista {
     min-height: 250px;
-    background-color: var(--SecudandarioOscuro-color);
+    background-color: var(--SecundarioIntermedio-color);
     border: 1px solid var(--rojo-color);
     color: var(--Secundariogris-color);
     margin:  5px;
@@ -25,13 +15,23 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    position: relative;
+  }
+
+  .card-artista h3 {
+    color: var(--Secundariogris-color);
+
+  }
+  .card-artista p {
+    color: var(--Secundariogris-color);
+
   }
   .profile-pic-artista {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-end ;
+    justify-content: space-between;
+    align-items: center ;
     
   }
   .contenedorBotonesAccion  {
@@ -98,7 +98,7 @@ body {
   width: 130px;
   height: 130px;
   overflow: hidden;
-  position: absolute;
+  position:absolute;
   top: -3px;
   right: -3px;
 }

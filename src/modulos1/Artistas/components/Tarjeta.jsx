@@ -5,7 +5,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import EditIcon from "@mui/icons-material/Edit";
 import InfoIcon from "@mui/icons-material/Info";
-import "../estilos/Tarjeta.css";
+import "../../01EstilosCompartidos/Tarjeta.css";
 import { Link, useNavigate } from "react-router-dom";
 import MuiDialog from "../../../layouts/componentes/MuiDialog";
 import Switch from "../../../layouts/componentes/Switch";
@@ -99,7 +99,7 @@ export const Tarjeta = ({ objetoArtista }) => {
   };
 
   return (
-    <div className="card">
+    <div className="card-artista">
       {objetoArtista.archivado ? (
         <div class="ribbon-wrapper-green">
           <div class="ribbon-green">ARCHIVADO</div>
@@ -109,19 +109,21 @@ export const Tarjeta = ({ objetoArtista }) => {
       )}
 
       <div className="profile-pic-artista">
+
         <div className="imageCont">
+          
           <img src={image} alt="Foto de perfil" />
         </div>
 
         <div className="contenedorBotonesAccion">
           <div className="contenedorEdit">
             <Link to={`/pages/ArtistaEditArtista/${objetoArtista.idArtista}`}>
-              <EditIcon sx={{color:"var(--oscuro-color)"}} />
+              <EditIcon titleAccess="Editar"  sx={{color:"var(--oscuro-color)"}} />
             </Link>
           </div>
           <div className="contenedorVer">
-            <Link>
-              <VisibilityIcon  sx={{color:"var(--oscuro-color)"}}/>
+            <Link to={`/pages/ArtistaDetails/${objetoArtista.idArtista}`}>
+              <VisibilityIcon titleAccess="Vista Cliente"  sx={{color:"var(--oscuro-color)"}}/>
             </Link>
           </div>
 
@@ -133,7 +135,7 @@ export const Tarjeta = ({ objetoArtista }) => {
                 mensaje={"¿Está seguro de que desea archivar este artista?"}
                 textoBoton1={"Confirmar"}
                 textoBoton2={"Cancelar"}
-                textoBotonTrigger={<ArchiveIcon sx={{color:"var(--rojo-color)"}}/>}
+                textoBotonTrigger={<ArchiveIcon titleAccess="Archivar"  sx={{color:"var(--rojo-color)"}}/>}
                 onConfirm={archivarArtista}
               />
             </div>
@@ -145,18 +147,7 @@ export const Tarjeta = ({ objetoArtista }) => {
         <p> 📞 {objetoArtista.telefono}</p>
       </div>
       <div className="toggle" key={objetoArtista.idArtista}>
-        {/* <div className="contedorCheckPublicado">
-        <label htmlFor={`publicado-${objetoArtista.idArtista}`}>
-          <input
-            type="checkbox"
-            id={`publicado-${objetoArtista.idArtista}`}
-            checked={publicado}
-            disabled={objetoArtista.archivado}
-            onChange={togglePublicar} // Se ejecuta al cambiar
-          />
-          Publicado
-        </label>
-        </div> */}
+        
         <Switch 
         idIn = { `publicado-${objetoArtista.idArtista}` }
         checkedIN = { publicado }
@@ -166,7 +157,7 @@ export const Tarjeta = ({ objetoArtista }) => {
         />
         <div className="contenedorInfo">
           <Link to={`/pages/ArtistaInfo/${objetoArtista.idArtista}`}>
-          <InfoIcon  sx={{color:"var(--gris-color)"}}/>
+          <InfoIcon titleAccess="Info Administrativa"  sx={{color:"var(--gris-color)"}}/>
           </Link>
           
          

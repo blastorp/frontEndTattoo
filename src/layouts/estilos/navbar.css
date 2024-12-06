@@ -4,11 +4,12 @@
 }
 
 nav{
-  background-color: var(--intermedio-color);
+  background-color: var(--SecundarioIntermedio-color);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   position: sticky; 
   top: 0; /* Position the navbar at the top of the page */
   width: 100%;
+  z-index: 1000;
 }
 nav ul{
   width: 100%;

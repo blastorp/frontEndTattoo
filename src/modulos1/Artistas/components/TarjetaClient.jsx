@@ -5,7 +5,7 @@ import ENDPOINTS from "../../../services/api/endpoints";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import EditIcon from "@mui/icons-material/Edit";
-import "../estilos/TarjetaClient.css";
+import "../../01EstilosCompartidos/Tarjeta.css";
 import { Link } from "react-router-dom";
 
 export const TarjetaClient = ({ objetoArtista }) => {
@@ -40,8 +40,8 @@ export const TarjetaClient = ({ objetoArtista }) => {
   }, [objetoArtista.idImagenFotoPerfil]);
 
   return (
-    <div className="card">
-      <div className="profile-pic">
+    <div className="card-artista">
+      <div className="profile-pic-artista">
         <img src={image} alt="Foto de perfil" />
       </div>
       <div className="info">

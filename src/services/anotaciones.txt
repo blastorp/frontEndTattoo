@@ -46,7 +46,12 @@ que falta para tener Artistas listo y reproducible
 }
 
 variados {
-    implementar el loading y mensaje de Done, tambien mensajes de informacion
+    implementar el loading y mensaje de Done, tambien mensajes de informacion, validaciones
 }
 
+
+beneficios {
+
+    pensar en asociar a membresias como hacerlo
+}
 
