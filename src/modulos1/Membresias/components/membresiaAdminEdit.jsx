@@ -22,35 +22,23 @@ const MembresiaADMINEdit = () => {
   const [mensaje, setMensaje] = useState(""); // Para mensajes de éxito/error
   const [loading, setLoading] = useState(true); // Iniciar con "Cargando..."
 
-  // Función para cargar beneficios
-  const fetchBeneficios = async () => {
-    try {
-      const response = await fetchApiM2(ENDPOINTS.GET_BENEFICIOS);
-      if (Array.isArray(response) && response.length > 0) {
-        const opciones = response.map((beneficio) => ({
-          value: beneficio.id,
-          label: beneficio.nombre,
-        }));
-        setBeneficios(opciones);
-      } else {
-        setMensaje("No se pudieron cargar los beneficios.");
-      }
-    } catch (error) {
-      console.error("Error al conectar con el servidor:", error);
-      setMensaje("Error al cargar los beneficios.");
-    }
-  };
-
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true); // Activar el estado de carga
-      try {
-        // Cargar beneficios solo una vez
-        if (beneficios.length === 0) {
-          await fetchBeneficios();
-        }
+      setLoading(true);
 
-        // Cargar datos de la membresía
+      try {
+        // Cargar los beneficios
+        const beneficiosResponse = await fetchApiM2(ENDPOINTS.GET_BENEFICIOS);
+        const opcionesBeneficios = Array.isArray(beneficiosResponse)
+          ? beneficiosResponse.map((beneficio) => ({
+              value: beneficio.idBeneficio,
+              label: beneficio.nombre,
+            }))
+          : [];
+
+        setBeneficios(opcionesBeneficios);
+
+        // Cargar los datos de la membresía
         const membresiaResponse = await fetchApiM2(
           ENDPOINTS.GET_MEMBRESIAS_POR_ID.replace("{idMembresia}", id)
         );
@@ -63,11 +51,14 @@ const MembresiaADMINEdit = () => {
             .toISOString()
             .split("T")[0];
 
-          // Asegurarse de que los beneficios seleccionados tengan el formato correcto
-          const beneficiosSeleccionados = membresiaResponse.beneficiosSeleccionados?.map((idBeneficio) => {
-            const beneficio = beneficios.find(b => b.value === idBeneficio); // Buscar el beneficio por id
-            return beneficio ? beneficio : null;
-          }).filter(b => b !== null); // Eliminar valores nulos
+          // Manejar beneficios seleccionados
+          const beneficiosSeleccionados = membresiaResponse.beneficios
+            ?.split(",") // Dividir por comas
+            .map((nombre) => nombre.trim()) // Eliminar espacios
+            .map((nombre) =>
+              opcionesBeneficios.find((b) => b.label === nombre) || null
+            )
+            .filter((b) => b !== null); // Filtrar valores nulos
 
           setFormData({
             nivel: membresiaResponse.nivel,
@@ -76,20 +67,28 @@ const MembresiaADMINEdit = () => {
             fechaVencimiento: fechaFormateadaV,
             duracion: membresiaResponse.duracion,
             publicar: membresiaResponse.publicar,
-            beneficiosSeleccionados: beneficiosSeleccionados, // Asignar beneficios seleccionados
+            beneficiosSeleccionados,
           });
         } else {
           setMensaje("Membresía no encontrada.");
         }
       } catch (error) {
+        console.error("Error al cargar los datos:", error);
         setMensaje("Error al cargar los datos.");
       } finally {
-        setLoading(false); // Desactivar el estado de carga
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, [id, beneficios]); // Dependencia en beneficios para asegurar que la lista de beneficios esté disponible
+  }, [id]);
+
+  const handleBeneficiosChange = (selectedOptions) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      beneficiosSeleccionados: selectedOptions || [], // Actualiza los beneficios seleccionados
+    }));
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -99,49 +98,53 @@ const MembresiaADMINEdit = () => {
     });
   };
 
-  const handleBeneficiosChange = (selectedOptions) => {
-    setFormData({
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  // Validar datos
+  if (
+    !formData.nivel ||
+    !formData.precioMensual ||
+    !formData.fechaCreacion ||
+    !formData.fechaVencimiento ||
+    !formData.duracion
+  ) {
+    setMensaje("Por favor, completa todos los campos.");
+    return;
+  }
+
+  setLoading(true);
+  try {
+    const dataToSend = {
       ...formData,
-      beneficiosSeleccionados: selectedOptions || [], // Actualiza los beneficios seleccionados
-    });
-  };
+      BeneficiosIds: formData.beneficiosSeleccionados.map((b) => b.value), // Renombrado a "BeneficiosIds"
+    };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Validar datos
-    if (!formData.nivel || !formData.precioMensual || !formData.fechaCreacion || !formData.fechaVencimiento || !formData.duracion) {
-      setMensaje("Por favor, completa todos los campos.");
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const dataToSend = {
-        ...formData,
-        beneficiosSeleccionados: formData.beneficiosSeleccionados.map((b) => b.value), // Mapeando solo los valores de los beneficios
-      };
-
-      console.log("Datos a enviar:", dataToSend); // Verifica los datos antes de enviar
-
-      // Realizar el PUT para actualizar los datos
-      const response = await fetchApiM2(`${ENDPOINTS.UPDATE_MEMBRESIA}/${id}`, "PUT", dataToSend, {
+    // Realizar el PUT para actualizar los datos
+    const response = await fetchApiM2(
+      ENDPOINTS.UPDATE_MEMBRESIA.replace("{idMembresia}", id),
+      "PUT",
+      dataToSend,
+      {
         "Content-Type": "application/json",
-      });
-
-      if (response.ok) {
-        setMensaje("Membresía actualizada exitosamente!");
-        navigate("/pages/membresiacon"); // Redirige al listado de membresías
-      } else {
-        const error = await response.json();
-        setMensaje(`Error: ${error.message || "No se pudo actualizar la membresía"}`);
       }
-    } catch (error) {
-      setMensaje("Error al conectar con el servidor.");
-    } finally {
-      setLoading(false); // Desactivar el estado de carga
+    );
+
+    if (response.ok) {
+      setMensaje("Membresía actualizada exitosamente!");
+      navigate("/pages/membresiacon"); // Redirige al listado de membresías
+    } else {
+      const error = await response.json();
+      setMensaje(
+        `Error: ${error.message || "No se pudo actualizar la membresía"}`
+      );
     }
-  };
+  } catch (error) {
+    setMensaje("Error al conectar con el servidor.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="form-container">
@@ -152,7 +155,9 @@ const MembresiaADMINEdit = () => {
         ) : (
           <form className="formulario" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="nivel" className="form-label">Nivel</label>
+              <label htmlFor="nivel" className="form-label">
+                Nivel
+              </label>
               <input
                 type="text"
                 id="nivel"
@@ -164,7 +169,9 @@ const MembresiaADMINEdit = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="precioMensual" className="form-label">Precio mensual</label>
+              <label htmlFor="precioMensual" className="form-label">
+                Precio mensual
+              </label>
               <NumericFormat
                 id="precioMensual"
                 name="precioMensual"
@@ -180,7 +187,9 @@ const MembresiaADMINEdit = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="fechaCreacion" className="form-label">Fecha de creación</label>
+              <label htmlFor="fechaCreacion" className="form-label">
+                Fecha de creación
+              </label>
               <input
                 type="date"
                 id="fechaCreacion"
@@ -188,12 +197,14 @@ const MembresiaADMINEdit = () => {
                 className="input"
                 value={formData.fechaCreacion}
                 onChange={handleChange}
-                disabled  // Deshabilitar el campo para evitar que se modifique
+                disabled
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="fechaVencimiento" className="form-label">Fecha de vencimiento</label>
+              <label htmlFor="fechaVencimiento" className="form-label">
+                Fecha de vencimiento
+              </label>
               <input
                 type="date"
                 id="fechaVencimiento"
@@ -205,7 +216,9 @@ const MembresiaADMINEdit = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="duracion" className="form-label">Duración (en meses)</label>
+              <label htmlFor="duracion" className="form-label">
+                Duración (en meses)
+              </label>
               <select
                 id="duracion"
                 name="duracion"
@@ -221,7 +234,9 @@ const MembresiaADMINEdit = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="beneficios" className="form-label">Selecciona los beneficios</label>
+              <label htmlFor="beneficios" className="form-label">
+                Selecciona los beneficios
+              </label>
               <Select
                 isMulti
                 options={beneficios}
@@ -253,7 +268,11 @@ const MembresiaADMINEdit = () => {
           </form>
         )}
         <div className="image-container">
-          <img src="https://tiusr39pl.cuc-carrera-ti.ac.cr/images/Tatto2.jpeg" alt="Imagen" className="form-image" />
+          <img
+            src="https://tiusr39pl.cuc-carrera-ti.ac.cr/images/Tatto2.jpeg"
+            alt="Imagen"
+            className="form-image"
+          />
         </div>
       </div>
     </div>

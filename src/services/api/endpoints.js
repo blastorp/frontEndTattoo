@@ -21,7 +21,7 @@ export const ENDPOINTS = {
     GET_ALL_MEMBRESIAS: "api/Membresias",
     GET_MEMBRESIAS_POR_ID: "api/Membresias/{idMembresia}",
     UPDATE_PUBLICAR_MEMBRESIA: "api/Membresias/Actualizar/{idMembresia}",
-    UPDATE_MEMBRESIA: "api/Membresias/{idMembresia}",
+    UPDATE_MEMBRESIA: "api/Membresias/MembresiasActualizar/{idMembresia}",
     
     //Galeria
     GETGALERIAPUBLICADOS: "api/Galeria/Publicados", 
