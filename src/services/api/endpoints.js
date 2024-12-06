@@ -13,6 +13,7 @@ export const ENDPOINTS = {
     DELETEBENEFICIO: "Beneficio/deleteBeneficio",
     PUBLICARBENEFICIO: "Beneficio/publicarBeneficio",
     DESPUBLICARBENEFICIO: "Beneficio/despublicarBeneficio",
+    ARCHIVARBENEFICIO: "Beneficio/archivarBeneficio",
     GETCATEGORIAS: "Categoria/listarCategorias",
     GETCATEGORIAXARTISTA: "Categoria/listarCategoriasXArtista",
     GETARTISTASXCATEGORIA: "Categoria/listarArtistasXCategoria",

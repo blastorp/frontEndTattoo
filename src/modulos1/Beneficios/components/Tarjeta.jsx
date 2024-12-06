@@ -74,8 +74,38 @@ export const Tarjeta = ({ objetoBeneficio }) => {
     }
   };
 
+  const archivarBeneficio = async () => {
+    try {
+      const response = await fetchApiM1(
+        ENDPOINTS.ARCHIVARBENEFICIO, // Endpoint para actualizar
+        "GET",
+        null,
+        {},
+        { idBeneficio: objetoBeneficio.idBeneficio }
+      );
+      console.log("Respuesta del servidor:", response);
+      if ((response.message = "Beneficio archivado")) {
+        
+      }
+
+      alert("Ficha Archivada");
+      window.location.reload();
+    } catch (err) {
+      console.error("Error al actualizar el estado de publicación:", err);
+    }
+  };
+
   return (
     <div className="card-artista">
+      
+        {objetoBeneficio.archivado ? (
+        <div class="ribbon-wrapper-green">
+          <div class="ribbon-green">ARCHIVADO</div>
+        </div>
+      ) : (
+        ""
+      )}
+
       <div className="profile-pic-artista">
         <img src={image} alt="Foto de perfil" />
         
@@ -100,7 +130,7 @@ export const Tarjeta = ({ objetoBeneficio }) => {
                 textoBoton1={"Confirmar"}
                 textoBoton2={"Cancelar"}
                 textoBotonTrigger={<ArchiveIcon titleAccess="Archivar" sx={{color:"var(--rojo-color)"}}/>}
-                // onConfirm={archivarBeneficio}
+                onConfirm={archivarBeneficio}
               />
             </div>
           )}
@@ -128,7 +158,7 @@ export const Tarjeta = ({ objetoBeneficio }) => {
         titulo = { "Publicado" }
         />
         <div className="contenedorInfo">
-          <Link to={`/pages/ArtistaInfo/${objetoBeneficio.idBeneficio}`}>
+          <Link to={`/pages/BeneficioInfo/${objetoBeneficio.idBeneficio}`}>
           <InfoIcon titleAccess="Info Administrativa"  sx={{color:"var(--gris-color)"}}/>
           </Link>
           
