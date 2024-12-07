@@ -2,7 +2,7 @@ import React from "react";
 import { ShoppingCart } from "@mui/icons-material";
 import { useCart } from "../../../state/CartContext";
 
-function CartIcon() {
+function FloatingCart() {
   const { getTotalItems } = useCart(); // Get the total items from context
   const totalItems = getTotalItems(); // Get the total number of items in the cart
 
@@ -16,4 +16,4 @@ function CartIcon() {
   );
 }
 
-export default CartIcon;
+export default FloatingCart;

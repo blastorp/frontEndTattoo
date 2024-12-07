@@ -4,16 +4,16 @@ import "../estilos/TiendaPage.css";
 import { CartProvider } from "./../../../state/CartContext";
 
 import CarritoDeCompras from "../components/CarritoDeCompras";
-import FloatingCartIcon from "../components/CartIcon";
+import FloatingCart from "../components/FloatingCart";
 
 function TiendaPage() {
   return (
-      <CartProvider>
-        <MainAdmin tituloPagina={"Tienda"}>
-          <FloatingCartIcon />
-          <CarritoDeCompras />
-        </MainAdmin>
-      </CartProvider>
+    <CartProvider>
+      <MainAdmin tituloPagina={"Tienda"}>
+        <FloatingCart />
+        <CarritoDeCompras />
+      </MainAdmin>
+    </CartProvider>
   );
 }
 
