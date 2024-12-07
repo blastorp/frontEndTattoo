@@ -30,7 +30,7 @@ import TestimonioAdm from './modulos1/Testimonios/pages/testimonioadm';
 import ChatbotAdm from './modulos1/Chatbot/pages/chatbotadm';
 import ArtistasAddArtista from './modulos1/Artistas/pages/ArtistasAddArtista';
 import ArtistaEditArtista from './modulos1/Artistas/pages/ArtistaEditArtista';
-import ArtistasDash from './modulos1/Artistas/pages/ArtistasDash';
+import ArtistasDash from './modulos1/Artistas/pages/ArtistaDash';
 import BeneficiosDash from './modulos1/Beneficios/Pages/BeneficiosDash';
 //Subpáginas Administrador
 import GaleriaAdmAdd from './modulos1/Galeria/pages/galeriaadd';
@@ -46,6 +46,7 @@ import AgendaArtistasAdmCon from './modulos1/AgendaArtistas/pages/agendaartistas
 import AgendaArtistasAdmEdit from './modulos1/AgendaArtistas/pages/agendaartistasedit';
 
 import ArtistaView from  './modulos1/Artistas/pages/ArtistaView'
+import TiendaPage from './modulos1/Tienda/pages/TiendaPage';
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
   {
     path: "/pages/DashBoard",
     element: <Dashboard />
+  },
+  {
+    path: "/pages/Tienda",
+    element: <TiendaPage />,
   },
 ],
 {

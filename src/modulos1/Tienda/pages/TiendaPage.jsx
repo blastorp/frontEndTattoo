@@ -1,22 +1,20 @@
-import React from 'react'
-import MainAdmin from '../../../layouts/MainAdmin2'
-import '../estilos/ArtistasDash.css'
-import { ShoppingCart } from '@mui/icons-material';
+import React from "react";
+import MainAdmin from "../../../layouts/MainAdmin1";
+import "../estilos/TiendaPage.css";
+import { CartProvider } from "./../../../state/CartContext";
+
+import CarritoDeCompras from "../components/CarritoDeCompras";
+import FloatingCartIcon from "../components/CartIcon";
 
 function TiendaPage() {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
-  
   return (
-    <MainAdmin tituloPagina={"Tienda"}>
-        <div className='contenedorContenidoPagina' >
-        <ShoppingCart />
-        </div>      
-    </MainAdmin>
-   ) 
+      <CartProvider>
+        <MainAdmin tituloPagina={"Tienda"}>
+          <FloatingCartIcon />
+          <CarritoDeCompras />
+        </MainAdmin>
+      </CartProvider>
+  );
 }
 
 export default TiendaPage;
-
-
-
