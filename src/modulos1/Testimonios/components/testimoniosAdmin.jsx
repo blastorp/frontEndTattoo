@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const TestimonioADMIN = () => {
   const buttons = [
-    { label: "Consultar testimonios", icon: <FaTag />, path: "/perfiles-artistas" },
+    { label: "Consultar testimonios", icon: <FaTag />, path: "/pages/testimoniocon" },
     { label: "Eliminar testimonios", icon: <FaCreditCard />, path: "/perfiles-artistas" },
   ];
 

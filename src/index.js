@@ -39,6 +39,7 @@ import AgendaArtistasAdmAdd from './modulos1/AgendaArtistas/pages/agendaartistas
 import AgendaArtistasAdmCon from './modulos1/AgendaArtistas/pages/agendaartistascon';
 import AgendaArtistasAdmEdit from './modulos1/AgendaArtistas/pages/agendaartistasedit';
 
+import TestimoniosAdmCon from './modulos1/Testimonios/pages/testimoniocon';
 
 const router = createBrowserRouter([
   {
@@ -136,6 +137,10 @@ const router = createBrowserRouter([
   {
     path: "/pages/agendaartistasedit/:id",  
     element: <AgendaArtistasAdmEdit />
+  },
+  {
+    path: "/pages/testimoniocon",  
+    element: <TestimoniosAdmCon />
   },
 ]);
 

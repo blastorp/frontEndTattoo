@@ -23,6 +23,15 @@ export const ENDPOINTS = {
     UPDATE_PUBLICAR_MEMBRESIA: "api/Membresias/Actualizar/{idMembresia}",
     UPDATE_MEMBRESIA: "api/Membresias/MembresiasActualizar/{idMembresia}",
     
+    //Testimonios
+    CREATE_TESTIMONIOS: "api/Testimonios",
+    GET_ALL_TESTIMONIOS: "api/Testimonios",
+    GET_ULTIMOS_TESTIMONIOS: "api/Testimonios/Ultimos",
+    UPDATE_PUBLICAR_TESTIMONIOS: "api/Testimonios/Actualizar/{idTestimonio}",
+    DELETE_TESTIMONIOS: "api/Testimonios/{idTestimonio}",
+    DELETE_PVETADA_TESTIMONIOS: "api/Testimonios/EliminarPorPalabrasVetadas",
+
+
     //Galeria
     GETGALERIAPUBLICADOS: "api/Galeria/Publicados", 
     GETGALERIAPORARTISTA: "api/Galeria/PorArtista/{idArtista}", 
