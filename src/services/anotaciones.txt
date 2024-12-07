@@ -55,3 +55,12 @@ beneficios {
     pensar en asociar a membresias como hacerlo
 }
 
+
+posibles cambios a bd 
+
+agregar a beneficios categorias , cuidados del tatuaje, fecha creacion y fecha de modificacion
+restricciones de validaciones
+
+agregar likes y art Cuidados del Tattoo
+
+

@@ -100,7 +100,7 @@ function ArtistaDetails() {
 
         {/* Description */}
         <section>
-          <h2>Perfil de {data.nombreArt}</h2>
+          <h2>Biografia de {data.nombreArt}</h2>
           <p>{data.descripcionArt}</p>
         </section>
 

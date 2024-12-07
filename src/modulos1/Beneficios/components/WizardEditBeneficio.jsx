@@ -123,7 +123,7 @@ function WizardEditBeneficio( ) {
       //console.log("objcreagdo: "+ objArtista);
       //console.log(formData);
       // Call API and wait for the response
-      const result = await fetchApiM1(ENDPOINTS.EDITBENEFICIO , "POST", objetoBeneficio);
+      const result = await fetchApiM1(ENDPOINTS.EDITARBENEFICIO , "POST", objetoBeneficio);
   
       // Log the result for debugging
       //console.log("Guardar Artista Response:", result);
@@ -181,7 +181,7 @@ function WizardEditBeneficio( ) {
       if (imageUpload == null) {
         guardarBeneficio(null);
     } else if(imageUpload == imagenInicial){
-        await guardarBeneficio(formData.idImagenFotoPerfil);
+        await guardarBeneficio(formData.idImagenArticulo);
         alert("Datos Guardados Correctamente");
         navigate("/pages/BeneficiosDash");
     } 
@@ -206,7 +206,7 @@ function WizardEditBeneficio( ) {
         //console.log("ID de Imagen guardada:", idImagen);
         await guardarBeneficio(idImagen);
         alert("Datos Guardados Correctamente");
-        navigate("/pages/ArtistasDash");
+        navigate("/pages/BeneficiosDash");
       }
     } catch (err) {
       console.error("Error in guardarDatos:", err.message);
