@@ -25,7 +25,7 @@ import TestimonioAdm from "./modulos1/Testimonios/pages/testimonioadm";
 import ChatbotAdm from "./modulos1/Chatbot/pages/chatbotadm";
 import ArtistasAddArtista from "./modulos1/Artistas/pages/ArtistasAddArtista";
 import ArtistaEditArtista from "./modulos1/Artistas/pages/ArtistaEditArtista";
-import ArtistasDash from "./modulos1/Artistas/pages/ArtistasDash";
+import ArtistasDash from "./modulos1/Artistas/pages/artistasDash";
 import ArtistaInfo from "./modulos1/Artistas/pages/ArtistaInfo";
 import BeneficiosDash from "./modulos1/Beneficios/Pages/BeneficiosDash";
 import AddBeneficio from "./modulos1/Beneficios/Pages/AddBeneficio";
@@ -47,6 +47,8 @@ import MembresiaAdmCon from "./modulos1/Membresias/pages/membresiacon";
 import AgendaArtistasAdmAdd from "./modulos1/AgendaArtistas/pages/agendaartistasadd";
 import AgendaArtistasAdmCon from "./modulos1/AgendaArtistas/pages/agendaartistascon";
 import AgendaArtistasAdmEdit from "./modulos1/AgendaArtistas/pages/agendaartistasedit";
+
+import TiendaPage from "./modulos1/Tienda/pages/TiendaPage"
 
 import ArtistaView from "./modulos1/Artistas/pages/ArtistaView";
 
@@ -165,6 +167,10 @@ const router = createBrowserRouter(
     {
       path: "/pages/agendaartistasedit/:id",
       element: <AgendaArtistasAdmEdit />,
+    },
+    {
+      path: "/pages/tienda",
+      element: <TiendaPage />,
     },
   ],
   {
