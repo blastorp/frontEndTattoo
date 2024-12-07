@@ -76,7 +76,7 @@ body {
     color: var(--Secundariogris-color);
   }
 
-  .fotoPerfil {
+  label .fotoPerfil {
     max-width: 300px ;
     height: auto;
     align-self: center;

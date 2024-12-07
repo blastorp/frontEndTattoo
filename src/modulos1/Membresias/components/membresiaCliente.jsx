@@ -66,7 +66,7 @@ const Membresia = () => {
             {data.map((membresia) => (
               <div className="card" key={membresia.idMembresia}>
                 <h3 className="membership-name">{membresia.nivel}</h3>
-                <p className="membership-price">${membresia.precioMensual}/mes</p>
+                <p className="membership-price">₡{membresia.precioMensual}/mes</p>
                 <ul className="membership-benefits">
                   {membresia.beneficios ? (
                     membresia.beneficios.split(";").map((benefit, index) => (

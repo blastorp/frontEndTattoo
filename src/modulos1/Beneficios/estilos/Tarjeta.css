@@ -10,7 +10,7 @@ body {
   }
   
   /* Tarjeta */
-  .card {
+  .card-beneficios {
     min-height: 250px;
     background-color: var(--SecudandarioOscuro-color);
     border: 1px solid var(--rojo-color);

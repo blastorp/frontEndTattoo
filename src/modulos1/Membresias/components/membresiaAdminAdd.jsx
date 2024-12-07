@@ -1,22 +1,51 @@
-import React, { useState } from "react";
-import "../estilos/membresiaadd.css";
+import React, { useState, useEffect } from "react";
+import { NumericFormat } from "react-number-format";
+import Select from "react-select";
 import fetchApiM2 from "../../../services/api/fetchApiM2";
 import ENDPOINTS from "../../../services/api/endpoints";
 
 const MembresiaADMINAdd = () => {
-  // Estados para los datos del formulario
   const [formData, setFormData] = useState({
     nivel: "",
     precioMensual: "",
     fechaCreacion: "",
     fechaVencimiento: "",
-    duracion: "",
+    duracion: "1",
     publicar: false,
+    beneficiosSeleccionados: [],
   });
 
-  const [mensaje, setMensaje] = useState(""); // Para mensajes de éxito/error
+  const [beneficios, setBeneficios] = useState([]);
+  const [mensaje, setMensaje] = useState("");
 
-  // Manejar cambios en los inputs
+  // Función para cargar beneficios
+  const fetchBeneficios = async () => {
+    try {
+      const response = await fetchApiM2(ENDPOINTS.GET_BENEFICIOS);
+      if (Array.isArray(response) && response.length > 0) {
+        const opciones = response.map((beneficio) => ({
+          value: beneficio.idBeneficio, 
+          label: beneficio.nombre, 
+        }));
+        setBeneficios(opciones);
+      } else {
+        setMensaje("No se pudieron cargar los beneficios.");
+      }
+    } catch (error) {
+      console.error("Error al conectar con el servidor:", error);
+      setMensaje("Error al cargar los beneficios.");
+    }
+  };
+
+  useEffect(() => {
+    fetchBeneficios();
+    setFormData((prevData) => ({
+      ...prevData,
+      fechaCreacion: new Date().toISOString().split("T")[0], // Fecha actual
+    }));
+  }, []);
+
+  // Manejo de cambios en el formulario
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -25,44 +54,77 @@ const MembresiaADMINAdd = () => {
     });
   };
 
-  // Manejar envío del formulario
+  // Manejo de cambios en los beneficios seleccionados
+  const handleBeneficiosChange = (selectedOptions) => {
+    setFormData({
+      ...formData,
+      beneficiosSeleccionados: selectedOptions || [],
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Validar datos
-    if (!formData.nivel || !formData.precioMensual || !formData.fechaCreacion || !formData.fechaVencimiento || !formData.duracion) {
-      setMensaje("Por favor, completa todos los campos.");
+  
+    // Validar que los campos obligatorios estén completos
+    if (
+      !formData.nivel ||
+      !formData.precioMensual ||
+      !formData.fechaCreacion ||
+      !formData.fechaVencimiento ||
+      !formData.duracion
+    ) {
+      setMensaje("Por favor, completa todos los campos obligatorios.");
       return;
     }
-
+  
+    // Mostrar en consola los datos que se enviarán al backend
+    console.log("Datos a enviar al backend:", {
+      Nivel: formData.nivel,
+      PrecioMensual: formData.precioMensual,
+      FechaCreacion: formData.fechaCreacion,
+      FechaVencimiento: formData.fechaVencimiento,
+      Duracion: formData.duracion,
+      Publicar: formData.publicar,
+      BeneficiosIds: formData.beneficiosSeleccionados.map(b => b.value), // Beneficios seleccionados
+    });
+  
     try {
-      // Llamada al endpoint usando fetchApiM2
-      const response = await fetchApiM2(ENDPOINTS.CREATEMEMBRESIA, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      // Enviar los datos al backend para crear la nueva membresía
+      const response = await fetchApiM2(
+        ENDPOINTS.CREATE_MEMBRESIA, // Endpoint para crear la membresía
+        "POST",
+        {
+          Nivel: formData.nivel,
+          PrecioMensual: formData.precioMensual,
+          FechaCreacion: formData.fechaCreacion,
+          FechaVencimiento: formData.fechaVencimiento,
+          Duracion: formData.duracion,
+          Publicar: formData.publicar,
+          BeneficiosIds: formData.beneficiosSeleccionados.map(b => b.value),
         },
-        body: JSON.stringify(formData),
+        { "Content-Type": "application/json" }
+      );
+  
+      // Si la respuesta es exitosa, mostramos el mensaje de éxito
+      setMensaje("¡Membresía creada exitosamente!");
+  
+      // Limpiar el formulario después de la creación
+      setFormData({
+        nivel: "",
+        precioMensual: "",
+        fechaCreacion: "",
+        fechaVencimiento: "",
+        duracion: "1",
+        publicar: false,
+        beneficiosSeleccionados: [],
       });
-
-      // Manejar respuesta del servidor
-      if (response.ok) {
-        setMensaje("¡Membresía creada exitosamente!");
-        setFormData({
-          nivel: "",
-          precioMensual: "",
-          fechaCreacion: "",
-          fechaVencimiento: "",
-          duracion: "",
-          publicar: false,
-        });
-      } else {
-        const error = await response.json();
-        setMensaje(`Error: ${error.message || "No se pudo crear la membresía"}`);
-      }
+  
+      // Redirigir a otra página si es necesario
+      // navigate("/pages/membresias"); // Descomenta esta línea si necesitas redirigir a otra página
+  
     } catch (error) {
-      console.error("Error al crear la membresía:", error);
-      setMensaje("Error al conectar con el servidor.");
+      // En caso de error, mostrar mensaje de error
+      setMensaje(`Error: ${error.message || "No se pudo crear la membresía."}`);
     }
   };
 
@@ -85,13 +147,17 @@ const MembresiaADMINAdd = () => {
 
           <div className="form-group">
             <label htmlFor="precioMensual" className="form-label">Precio mensual</label>
-            <input
-              type="number"
+            <NumericFormat
               id="precioMensual"
               name="precioMensual"
               className="input"
               value={formData.precioMensual}
-              onChange={handleChange}
+              onValueChange={(values) => {
+                setFormData({ ...formData, precioMensual: values.value });
+              }}
+              thousandSeparator={true}
+              prefix={"₡"}
+              decimalScale={2}
             />
           </div>
 
@@ -101,9 +167,10 @@ const MembresiaADMINAdd = () => {
               type="date"
               id="fechaCreacion"
               name="fechaCreacion"
-              className="date"
+              className="input"
               value={formData.fechaCreacion}
               onChange={handleChange}
+              disabled  
             />
           </div>
 
@@ -113,7 +180,7 @@ const MembresiaADMINAdd = () => {
               type="date"
               id="fechaVencimiento"
               name="fechaVencimiento"
-              className="date"
+              className="input"
               value={formData.fechaVencimiento}
               onChange={handleChange}
             />
@@ -121,13 +188,29 @@ const MembresiaADMINAdd = () => {
 
           <div className="form-group">
             <label htmlFor="duracion" className="form-label">Duración (en meses)</label>
-            <input
-              type="number"
+            <select
               id="duracion"
               name="duracion"
-              className="input"
+              className="select"
               value={formData.duracion}
               onChange={handleChange}
+            >
+              <option value="1">1 mes</option>
+              <option value="3">3 meses</option>
+              <option value="6">6 meses</option>
+              <option value="12">12 meses</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="beneficios" className="form-label">Selecciona los beneficios</label>
+            <Select
+              isMulti
+              options={beneficios}
+              value={formData.beneficiosSeleccionados}
+              onChange={handleBeneficiosChange}
+              classNamePrefix="react-select"
+              placeholder="Selecciona beneficios..."
             />
           </div>
 
@@ -146,9 +229,9 @@ const MembresiaADMINAdd = () => {
 
           <button type="submit" className="button">Enviar</button>
         </form>
-        
+
         {mensaje && <p className="mensaje">{mensaje}</p>}
-        
+
         <div className="image-container">
           <img src="https://tiusr39pl.cuc-carrera-ti.ac.cr/images/Tatto2.jpeg" alt="Imagen" className="form-image" />
         </div>

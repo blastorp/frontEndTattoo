@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from "react";
 import fetchApiM1 from "../../../services/api/fetchApiM1";
 import ENDPOINTS from "../../../services/api/endpoints";
@@ -8,28 +10,29 @@ import EditIcon from "@mui/icons-material/Edit";
 import "../../01EstilosCompartidos/Tarjeta.css";
 import { Link } from "react-router-dom";
 
-export const TarjetaClient = ({ objetoArtista }) => {
+const TarjetaClient = ({ objetoBeneficio }) => {
   const [image, setImage] = useState(null);
   const [error, setError] = useState(null);
-  const [publicado, setPublicado] = useState(objetoArtista.publicado || false); // Inicializa con el valor actual
+  
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (objetoArtista.idImagenFotoPerfil) {
-          console.log(objetoArtista.idImagenFotoPerfil);
+        if (objetoBeneficio.idImagenArticulo) {
+          
           const result = await fetchApiM1(
             ENDPOINTS.GETURLIXDIMAGEN,
             "GET",
             null,
             {},
-            { idImagenArticulo: objetoArtista.idImagenFotoPerfil }
+            { idImagenArticulo: objetoBeneficio.idImagenArticulo }
           );
 
           console.log(result[0]);
           setImage(result[0].imagenUrl);
         } else {
           setImage("https://via.placeholder.com/100");
+
         }
       } catch (err) {
         setError(err.message);
@@ -37,20 +40,22 @@ export const TarjetaClient = ({ objetoArtista }) => {
       }
     };
     fetchData();
-  }, [objetoArtista.idImagenFotoPerfil]);
+  }, []);
 
   return (
     <div className="card-artista">
-      <div className="profile-pic-artista-cliente ">
-        <img src={image} alt="Foto de perfil" />
+        <div className="tituloBeneficio">
+        <h5>{objetoBeneficio.nombre}</h5>
+            
+        </div>
+      <div className="profile-pic-beneficio-cliente">
+        <img src={image} alt="Foto de Articulo" />
       </div>
       <div className="info">
-        <h3>{objetoArtista.nombreArt}</h3>
-        <div className="description">
-        
-      </div>
+        <p>{objetoBeneficio.subtitulo}</p>
        
-        <Link className="link-style-none" to={`/pages/ArtistaDetails/${objetoArtista.idArtista}`}>
+       
+        <Link className="link-style-none" to={`/pages/BeneficioDetails/${objetoBeneficio.idBeneficio}`}>
           Ver mas...
         </Link>
       </div>

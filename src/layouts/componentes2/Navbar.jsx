@@ -10,7 +10,7 @@ function MyNavBar({listaLinks}) {
     const hideSidebar = () => setIsSidebarVisible(false);
 
     return (
-        <nav>
+        <nav className="navJ">
             {/* Sidebar */}
             <ul className={`sidebar ${isSidebarVisible ? "visible" : ""}`}>
                 <li onClick={hideSidebar}>

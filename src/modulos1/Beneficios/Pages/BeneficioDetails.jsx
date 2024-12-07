@@ -1,15 +1,15 @@
 import React from "react";
 import fetchApiM1 from "../../../services/api/fetchApiM1";
 import ENDPOINTS from "../../../services/api/endpoints";
-import "../estilos/ArtistaDetails.css";
+import "../estilos/BeneficioDetails.css";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import CheckboxButton from "../../../layouts/componentes/CheckBoxButton";
 
-function ArtistaDetails() {
-  const { artistaId } = useParams();
+function BeneficioDetails() {
+  const { idBeneficio } = useParams();
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [image, setImage] = useState(null);
@@ -24,35 +24,36 @@ function ArtistaDetails() {
     const fetchData1 = async () => {
       try {
         const result = await fetchApiM1(
-          ENDPOINTS.GETARTISTAXID,
+          ENDPOINTS.GETBENEFICIOXID,
           "GET",
           null,
           {},
-          { idArtista: artistaId }
+          { idBeneficio: idBeneficio }
         );
-
+        setData(result[0]);
+        fetchData2(result[0].idImagenArticulo);
         // const resultCat = await fetchApiM1(ENDPOINTS.GETCATEGORIAS);
 
         //   setCategorias(resultCat);
         //   console.log("categorias " + categorias)
 
-        const resultCatAsignadas = await fetchApiM1(
-          ENDPOINTS.GETCATEGORIAXARTISTA,
-          "GET",
-          null,
-          {},
-          { idArtista: artistaId }
-        );
-        setcategoriasElegidas(resultCatAsignadas);
+        // const resultCatAsignadas = await fetchApiM1(
+        //   ENDPOINTS.GETCATEGORIAXARTISTA,
+        //   "GET",
+        //   null,
+        //   {},
+        //   { idArtista: artistaId }
+        // );
+        // setcategoriasElegidas(resultCatAsignadas);
 
-        console.log(categoriasElegidas);
-        if (Array.isArray(result)) {
-          setData(result[0]);
-          fetchData2(result[0].idImagenFotoPerfil);
-        } else {
-          console.error("Unexpected data format:", result);
-          setError("Unexpected data received from API."); // Provide a more informative error message
-        }
+        // console.log(categoriasElegidas);
+        // if (Array.isArray(result)) {
+        //   setData(result[0]);
+        //   
+        // } else {
+        //   console.error("Unexpected data format:", result);
+        //   setError("Unexpected data received from API."); // Provide a more informative error message
+        // } 
       } catch (err) {
         setError(err.message);
       }
@@ -69,7 +70,7 @@ function ArtistaDetails() {
             { idImagenArticulo: idImagen }
           );
 
-          console.log(result[0]);
+          
           setImage(result[0].imagenUrl);
         } else {
           setImage("https://via.placeholder.com/100");
@@ -95,34 +96,21 @@ function ArtistaDetails() {
         {/* Profile Picture */}
         <div className="profile-pic-details">
           <img src={image} alt="Profile" />
-          <h2 className="nombreArt">{data.nombreArt}</h2>
+          <h2 className="nombreArt">{data.nombre}</h2>
         </div>
 
         {/* Description */}
         <section>
-          <h2>Biografia de {data.nombreArt}</h2>
-          <p>{data.descripcionArt}</p>
+          <h2>{data.subtitulo}</h2>
+          <p>{data.descripcion}</p>
         </section>
 
-        {/* Contact Info */}
-
-        {/* Creation Date */}
+        
         <section>
-          <h3>
-            Miembro del Templo desde{" "}
-            {new Date(data.fechaCreacion).getFullYear()}
-          </h3>
+        <h2>Membresias Asociadas:</h2>
+          {/* aqui iria la lista de membresias asociadas a este beneficio */}
         </section>
-        <section className="contenedorMinigaleria">
-          <h3 >Categorias y Artes</h3>
-          <div className="contenedorBotones">
-          <CheckboxButton key="" idIn="nulo">Todas</CheckboxButton> 
-            {categoriasElegidas.map((item) => (
-            <CheckboxButton key={item.idCategoria} idIn={item.idCategoria}>{item.nombre}</CheckboxButton> 
-          ))}
-          </div>
-          
-        </section>
+        
       </main>
 
       {/* Footer */}
@@ -133,4 +121,4 @@ function ArtistaDetails() {
   );
 }
 
-export default ArtistaDetails;
+export default BeneficioDetails;

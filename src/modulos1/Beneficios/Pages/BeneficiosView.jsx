@@ -1,12 +1,12 @@
 import React from 'react'
 import MainAdmin from '../../../layouts/MainAdmin2';
-import TarjetaClient from '../components/TarjetaClient';
+import TarjetaClientBeneficio from '../components/TarjetaClientBeneficio';
 import fetchApiM1  from "../../../services/api/fetchApiM1";
 import ENDPOINTS  from "../../../services/api/endpoints";
-import '../estilos/ArtistaView.css'
+import '../estilos/BeneficiosView.css'
 import { useEffect, useRef, useState } from "react";
 
-function ArtistaView() {
+function BeneficiosView() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   
@@ -15,7 +15,7 @@ function ArtistaView() {
     const fetchData = async () => {
       
       try {
-        const result = await fetchApiM1(ENDPOINTS.GETARTISTAS);
+        const result = await fetchApiM1(ENDPOINTS.GETBENEFICIOS);
         // setData(result)
 
         if (Array.isArray(result)) {
@@ -35,12 +35,12 @@ function ArtistaView() {
 
   }, []);
   return (
-    <MainAdmin tituloPagina={"Artistas"}>
+    <MainAdmin tituloPagina={"Beneficios"}>
         
         <div className='contenedorContenidoPagina' >
         {data.filter((item) => item.publicado)
         .map((item) => (
-          <TarjetaClient key={item.idArtista} objetoArtista={item} />
+          <TarjetaClientBeneficio key={item.idBeneficio} objetoBeneficio={item} />
         ))}
         </div>
 
@@ -49,4 +49,4 @@ function ArtistaView() {
    ) 
 }
 
-export default ArtistaView;
+export default BeneficiosView;

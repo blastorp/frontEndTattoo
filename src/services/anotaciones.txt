@@ -5,3 +5,62 @@ cuando se crea o edita un artista debe estar seleccionada al menos una categoria
 el nombre y nombreart son obligatorios
 
 la identificacion debe ser unica
+
+
+
+** pasos para archivar  #donde
+[
+
+   modificar boton generado en tarjeta
+anadir funcion cuando se pulsa tal boton 
+pedir confirmacion al cliente
+refrescar la pagina una vez se realiza la confirmacion
+deshabilitar el archivado
+ 
+]
+
+
+
+lugares donde implementar la confirmacion
+[buscar todos los alerts
+
+los errores
+
+confirmacion de guardado y archivado]
+
+que falta para tener Artistas listo y reproducible
+{
+    
+   ** filtros para ordenar en artistas ArtistasDash #Done
+   ** indicar en tarjeta si la ficha esta archivada, y en el view si fuera necesario
+   
+    ** cambiar colores de link
+    
+    extras 
+    ** anadir info administrativa con otro icono para desplegar todo lo que esta en base de datos
+   ** view de telefono y de desktop extra, o solo linkear al view del cliente
+
+    estilos {
+        ver estilos de tarjeta e info necesaria, el dialog corregir colores, p3 organizar mejor los checkbox
+    }
+}
+
+variados {
+    implementar el loading y mensaje de Done, tambien mensajes de informacion, validaciones
+}
+
+
+beneficios {
+
+    pensar en asociar a membresias como hacerlo
+}
+
+
+posibles cambios a bd 
+
+agregar a beneficios categorias , cuidados del tatuaje, fecha creacion y fecha de modificacion
+restricciones de validaciones
+
+agregar likes y art Cuidados del Tattoo
+
+

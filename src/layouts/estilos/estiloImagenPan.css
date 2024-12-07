@@ -1,0 +1,26 @@
+
+
+.frame-pan {
+    width: 200px;
+    height: 350px;
+    overflow: hidden;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.image-pan {
+    width: auto;
+    height: 350px;
+    position: absolute;
+    animation: panoramic 10s infinite linear alternate;
+}
+
+@keyframes panoramic {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-320px);
+    }
+}

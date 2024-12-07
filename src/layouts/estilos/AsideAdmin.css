@@ -5,7 +5,7 @@
     display: grid;
     grid-template-rows: 4fr 6fr;
     height:80%;
-    background-color: var(--gris-color);
+    background-color: var(--SecundarioIntermedio-color);
     border-radius: 3px;
     box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
 }

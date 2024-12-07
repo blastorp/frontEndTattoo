@@ -1,5 +1,5 @@
 import React from "react";
-import "../estilos/agendaartistaadd.css";
+import "../estilos/agendaartistasadd.css";
 import MainDash from "../../../layouts/MainDash";  
 import AgendaArtistaADMINADD from "../components/agendaartistaAdminAdd.jsx";  
 
