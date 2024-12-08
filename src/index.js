@@ -113,6 +113,8 @@ const router = createBrowserRouter(
       element: <CategoriasDash /> },
     { path: "pages/CategoriasView", 
       element: <CategoriasView /> },
+    { path: "pages/AddCategoria", 
+      element: <AddCategoria /> },
 
     {
       path: "/pages/DashBoard",

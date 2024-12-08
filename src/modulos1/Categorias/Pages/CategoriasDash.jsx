@@ -149,7 +149,7 @@ function CategoriasDash() {
                 checked={sortOption === "fecha"}
                 onChange={() => setSortOption("fecha")}
               />
-              Ordenar por Fecha Inicio
+              Ordenar por Fecha Creacion
             </label>
           </div>
         </div>

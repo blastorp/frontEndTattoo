@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import fetchApiM1  from "../../../services/api/fetchApiM1";
 import ENDPOINTS  from "../../../services/api/endpoints";
 // cambio
-import P1WizardBeneficio from "../components/P1WizardBeneficio";
+import P1WizardCategoria from "../components/P1WizardCategoria";
 import '../estilos/wizard.css'
 //interaccion con firebase
 import {
@@ -23,19 +23,18 @@ function WizardForm() {
   
     //const [page, setPage] = useState(0);
     const [formData, setFormData] = useState({
-        idBeneficio: null,
+        idCategoria: null,
+        idCategoriaPadre: null,
         nombre: "",
-        subtitulo: "",
-        descripcion: "",
+        descripcionCategoria: "",
         idImagenArticulo: null,
-        cantVisitas: null,
         estadoLogico: true,
-        publicado: true,
+        publicado: false,
         archivado: false
         
     });
 
-    const [artGuardado, setArtGuardado] = useState(null);
+    
     const [image, setImage] = useState(null);
     const [imageUpload, setImageUpload] = useState(null);
     const [urlImagen, setUrlImagen] = useState(null);
@@ -45,31 +44,29 @@ function WizardForm() {
     //para navegar a otra pagina
     const navigate = useNavigate();
     
-   
-    const guardarBeneficio = async (idImagen) => {
+ 
+
+    const guardarCategoria = async (idImagen) => {
       try {
 
-        const objetoBeneficio = {
-            idBeneficio: null,
-            nombre: formData.nombre,
-            subtitulo: formData.subtitulo,
-            descripcion: formData.descripcion,
-            idImagenArticulo: idImagen,
-            cantVisitas: 0,
-            estadoLogico: true,
-            publicado: true,
-            archivado: false
+        const objetoCategoria = {
+            idCategoria: null,
+        idCategoriaPadre: null,
+        nombre: formData.nombre,
+        descripcionCategoria: formData.descripcionCategoria,
+        idImagenArticulo: idImagen,
+        estadoLogico: true,
+        publicado: false,
+        archivado: false
         }
-        //console.log("objcreagdo: "+ objArtista);
-        //console.log(formData);
-        // Call API and wait for the response
-        const result = await fetchApiM1(ENDPOINTS.GUARDARBENEFICIOS, "POST", objetoBeneficio);
+        
+        const result = await fetchApiM1(ENDPOINTS.GUARDARCATEGORIA, "POST", objetoCategoria);
     
         // Log the result for debugging
         //console.log("Guardar Artista Response:", result);
-    
-        if (!result[0].idBeneficio) {
-          throw new Error("idBeneficio is undefined in the API response");
+        alert("Datos Guardados Correctamente");
+        if (!result[0].idCategoria) {
+          throw new Error("idCategoria is undefined in the API response");
         }
     
         // Set artist data and proceed to save categories
@@ -114,7 +111,7 @@ function WizardForm() {
     const guardarDatos = async () => {
       try {
         if (imageUpload == null) {
-          guardarBeneficio(null);
+          guardarCategoria(null);
         } else {
           const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
           const snapshot = await uploadBytes(imageRef, imageUpload);
@@ -125,9 +122,9 @@ function WizardForm() {
           //console.log("ID de Imagen guardada:", idImagen);
           
 
-          await guardarBeneficio(idImagen);
-          alert("Datos Guardados Correctamente");
-          navigate('/pages/BeneficiosDash');
+          await guardarCategoria(idImagen);
+          
+          navigate('/pages/CategoriasDash');
         }
       } catch (err) {
         console.error("Error in guardarDatos:", err.message);
@@ -141,31 +138,24 @@ function WizardForm() {
         <div className="form-container-wizard">
           <div className="header-wizard">
             {/* <h2 className="tituloPaginaWizard">{FormTitles[page]}</h2> */}
-            <h2 className="tituloPaginaWizard">Datos Beneficio</h2>
+            <h2 className="tituloPaginaWizard">Datos Categoria</h2>
           </div>
-          <div className="body"><P1WizardBeneficio formData={formData} setFormData={setFormData}
+          <div className="body"><P1WizardCategoria formData={formData} setFormData={setFormData}
                                     imageUpload = { imageUpload }
                                     setImageUpload ={setImageUpload}
                                     image={image} 
                                      setImage={setImage}  />
                                  </div>
-          {/* <div className="body">{PageDisplay()}</div> */}
+          
           <div className="">
-            {/* <button
-              disabled={page == 0}
-              onClick={() => {
-                setPage((currPage) => currPage - 1);
-              }}
-            >
-              Prev
-            </button> */}
+            
             <button
               onClick={() => {
                 guardarDatos();
               }}
             >
                 Guardar
-              {/* {page === FormTitles.length - 1 ? "Guardar y Volver" : "Next"} */}
+              
             </button>
           </div>
         </div>
