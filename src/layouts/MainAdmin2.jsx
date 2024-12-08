@@ -13,6 +13,7 @@ function MainAdmin({ tituloPagina, children, asideContent }) {
     { nombre: 'Vista Cliente', ruta: '/pages/ArtistasView' },
     { nombre: 'Artista', ruta: '/pages/ArtistasDash' },
     { nombre: 'Beneficios', ruta: '/pages/BeneficiosDash' },
+    { nombre: 'Categorias', ruta: '/pages/CategoriasDash' },
     { nombre: 'Vista Cliente Beneficios', ruta: '/pages/BeneficiosView' },
     { nombre: 'DashBoard', ruta: '/pages/DashBoard' },
   ];

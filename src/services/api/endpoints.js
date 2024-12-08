@@ -1,5 +1,7 @@
 export const ENDPOINTS = {
-    GETARTISTAS: "Artista/listarPlanes",
+    
+  //Artistas
+  GETARTISTAS: "Artista/listarPlanes",
     GETARTISTAXID: "Artista/getOneArtistaById",
     GUARDARARTISTA: "Artista/guardarArtista",
     EDITARTISTA: "Artista/editarArtista",
@@ -7,6 +9,7 @@ export const ENDPOINTS = {
     DESPUBLICARARTISTA: "Artista/despublicarArtista",
     PUBLICARARTISTA: "Artista/publicarArtista",
     ARCHIVARARTISTA: "Artista/archivarArtista",
+    //Beneficios
     GETBENEFICIOS: "Beneficio/listarBeneficios",
     GETBENEFICIOXID: "Beneficio/getOneBeneficioById",
     GUARDARBENEFICIOS: "Beneficio/guardarBeneficio",
@@ -15,12 +18,22 @@ export const ENDPOINTS = {
     PUBLICARBENEFICIO: "Beneficio/publicarBeneficio",
     DESPUBLICARBENEFICIO: "Beneficio/despublicarBeneficio",
     ARCHIVARBENEFICIO: "Beneficio/archivarBeneficio",
+    //Categorias
     GETCATEGORIAS: "Categoria/listarCategorias",
     GETCATEGORIAXARTISTA: "Categoria/listarCategoriasXArtista",
     GETARTISTASXCATEGORIA: "Categoria/listarArtistasXCategoria",
     ASIGNARCATEGORIAS: "Categoria/asignarCategoriaArtista",
+    GUARDARCATEGORIA: "Categoria/guardarCategoria",
+    DELETECATEGORIA: "Categoria/deleteCategoria",
+    PUBLICARCATEGORIA: "Categoria/publicarCategoria",
+    ARCHIVARCATEGORIA: "Categoria/archivarCategoria",
+    DESPUBLICARCATEGORIA: "Categoria/despublicarCategoria",
+
+    //ImagenesArticulos
     GUARDARIMAGENARTICULO: "ImagenArticulo/guardarImagen",
     GETURLIXDIMAGEN: "ImagenArticulo/buscarUrlXID",
+    
+
     
     COMMENTS: "comments",
 

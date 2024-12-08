@@ -10,11 +10,14 @@ import Home from "./modulos1/Inicio/pages/Home";
 
 import ArtistasView from "./modulos1/Artistas/pages/ArtistaView";
 import ArtistaDetails from "./modulos1/Artistas/pages/ArtistaDetails";
-
+import BeneficiosView from "./modulos1/Beneficios/Pages/BeneficiosView";
 import Galeria from "./modulos1/Galeria/pages/galeria";
 import Membresia from "./modulos1/Membresias/pages/membresia";
 import AgendaArtistas from "./modulos1/AgendaArtistas/pages/agendaartistas";
 import NuevoTestimonio from "./modulos1/Testimonios/pages/nuevotestimonio";
+import BeneficioDetails from "./modulos1/Beneficios/Pages/BeneficioDetails";
+import CategoriaDetails from "./modulos1/Categorias/Pages/CategoriaDetails";
+import CategoriasView from "./modulos1/Categorias/Pages/CategoriaDetails";
 
 //Administrador
 import Dashboard from "./modulos1/Inicio/pages/Dashboard";
@@ -25,14 +28,17 @@ import TestimonioAdm from "./modulos1/Testimonios/pages/testimonioadm";
 import ChatbotAdm from "./modulos1/Chatbot/pages/chatbotadm";
 import ArtistasAddArtista from "./modulos1/Artistas/pages/ArtistasAddArtista";
 import ArtistaEditArtista from "./modulos1/Artistas/pages/ArtistaEditArtista";
-import ArtistasDash from "./modulos1/Artistas/pages/artistasDash";
+import ArtistasDash from "./modulos1/Artistas/pages/ArtistasDash";
 import ArtistaInfo from "./modulos1/Artistas/pages/ArtistaInfo";
 import BeneficiosDash from "./modulos1/Beneficios/Pages/BeneficiosDash";
 import AddBeneficio from "./modulos1/Beneficios/Pages/AddBeneficio";
-import BeneficioDetails from "./modulos1/Beneficios/Pages/BeneficioDetails";
 import BeneficioEdit from "./modulos1/Beneficios/Pages/BeneficioEdit";
 import BeneficioInfo from "./modulos1/Beneficios/Pages/BeneficioInfo";
-import BeneficiosView from "./modulos1/Beneficios/Pages/BeneficiosView";
+import CategoriasDash from "./modulos1/Categorias/Pages/CategoriasDash";
+import AddCategoria from "./modulos1/Categorias/Pages/AddCategoria";
+import CategoriaEdit from "./modulos1/Categorias/Pages/CategoriaEdit";
+import CategoriaInfo from "./modulos1/Categorias/Pages/CategoriaInfo";
+
 
 //Subpáginas Administrador
 import GaleriaAdmAdd from "./modulos1/Galeria/pages/galeriaadd";
@@ -99,6 +105,14 @@ const router = createBrowserRouter(
       element: <BeneficioInfo /> },
     { path: "pages/BeneficiosView", 
       element: <BeneficiosView /> },
+    { path: "pages/CategoriaDetails/:idCategoria", 
+      element: <CategoriaDetails /> },
+    { path: "pages/CategoriaEdit/:idCategoria", 
+      element: <CategoriaEdit /> },
+    { path: "pages/CategoriasDash", 
+      element: <CategoriasDash /> },
+    { path: "pages/CategoriasView", 
+      element: <CategoriasView /> },
 
     {
       path: "/pages/DashBoard",
