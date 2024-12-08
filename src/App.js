@@ -1,7 +1,9 @@
-
 import './App.css';
 import MyNavBar from './layouts/componentes/Navbar';
 import MainAdmin from './layouts/MainAdmin';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
+
 
 import { useState } from 'react';
 
@@ -24,5 +26,14 @@ const titulo = "Prueba Titulo"
     </div>
   );
 }
+
+const App = () => {
+  return (
+      <div>
+          <Login />
+          <Register />
+      </div>
+  );
+};
 
 export default App;

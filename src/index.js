@@ -1,12 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+
 //import App from './App';
 import './estilosGlobal/estiloGlobal.css';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
+//login y registro
+import Login from './modulos2/frontend/components/Login';
+import Register from './modulos2/frontend/components/Register';
+import UserDashboard from './modulos2/frontend/components/UserDashboard';
+import AdminDashboard from './modulos2/frontend/components/AdminDashboard';
+import ArtistDashboard from './modulos2/frontend/components/ArtistDashboard';
+import StudioHeadDashboard from './modulos2/frontend/components/StudioHeadDashboard';
+
+
 
 //Cliente
 import Home from './modulos1/Inicio/pages/Home';
@@ -43,6 +54,30 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />
+  },
+  {
+    path: "/login",
+    element: <Login />
+  },
+  {
+    path: "/register",
+    element: <Register />
+  },
+  {
+    path: "/user-dashboard",
+    element: <UserDashboard />
+  },
+  {
+    path: "/admin-dashboard",
+    element: <AdminDashboard />
+  },
+  {
+    path: "/artist-dashboard",
+    element: <ArtistDashboard />
+  },
+  {
+    path: "/studio-head-dashboard",
+    element: <StudioHeadDashboard />
   },
   {
     path: "/pages/ArtistasDash",
@@ -135,6 +170,10 @@ const router = createBrowserRouter([
   {
     path: "/pages/agendaartistasedit/:id",  
     element: <AgendaArtistasAdmEdit />
+  },
+  {
+    path: "*",  // Ruta para manejar 404
+    element: <h1>404 - Página no encontrada</h1>
   },
 ]);
 
