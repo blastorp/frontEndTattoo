@@ -44,24 +44,20 @@ const AgendaArtistaADMINCon = () => {
           return;
       }
   
-      // Reemplazar {idAgenda} en la URL con el valor real
       const url = ENDPOINTS.UPDATE_DMP_AGENDA_ARTISTA.replace("{idAgenda}", idAgenda);
       console.log("URL generada para el PATCH:", url);
   
       try {
-          // Construir el objeto que se enviará al backend
           const requestData = {
-              idAgenda: idAgenda,  // Asegúrate de que el ID se esté enviando
-              Campo: Campo,         // El campo que debe actualizarse (Disponible o EsMembresia)
-              Valor: Valor,         // El valor (true o false) que se debe asignar
+              idAgenda: idAgenda,  
+              Campo: Campo,         
+              Valor: Valor,         
           };
   
           console.log("Datos enviados al backend:", requestData);
   
-          // Realizar la solicitud PATCH utilizando fetchApiM2
           const response = await fetchApiM2(url, "PATCH", requestData);
   
-          // Verificar si la respuesta fue exitosa
           console.log("Respuesta exitosa:", response);
           setData((prevData) =>
               prevData.map((row) =>

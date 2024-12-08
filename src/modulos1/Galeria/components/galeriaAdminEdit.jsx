@@ -1,29 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { useParams } from "react-router-dom";
 import '../estilos/galeriaedit.css';
-//import fetchApiM2  from "../../../services/api/fetchApiM2";
-//import ENDPOINTS  from "../../../services/api/endpoints";
+import fetchApiM2  from "../../../services/api/fetchApiM2";
+import ENDPOINTS  from "../../../services/api/endpoints";
 
-const EditarPagina = () => {
+const GaleriaADMINEdit = () => {
     const { id } = useParams(); 
     const [imagePreview, setImagePreview] = useState(null);
+    const [artistas, setArtistas] = useState([]);
+    const [mensaje, setMensaje] = useState("");
+    const [loading, setLoading] = useState(false);
 
-
-    const artistas = [
-        "Seleccionar artista",
-        "Artista 1",
-        "Artista 2",
-        "Artista 3",
-    ]; 
-
+    // Arreglo de categorías
     const categorias = [
         "Seleccionar...",
-        "Seleccionar...",
-        "Seleccionar...",
-        "Seleccionar...",
-        "Seleccionar...",
+        "Categoría 1",
+        "Categoría 2",
+        "Categoría 3",
+        "Categoría 4",
+        "Categoría 5",
+    ];
 
-    ]; 
+    // Función para obtener los artistas desde el backend
+    useEffect(() => {
+        const fetchArtistas = async () => {
+            setLoading(true);
+            try {
+                const artistasResponse = await fetchApiM2(ENDPOINTS.GET_ARTISTA_POR_IDNOMBRE);
+                console.log(artistasResponse); // Verificar los datos recibidos
+
+                if (artistasResponse) {
+                    setArtistas(artistasResponse);
+                } else {
+                    setMensaje("No se pudieron cargar los artistas.");
+                }
+            } catch (error) {
+                setMensaje("Error al cargar los datos.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchArtistas();
+    }, []);
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -59,11 +78,15 @@ const EditarPagina = () => {
                         <div className="form-group">
                             <label htmlFor="artista">Nombre artista</label>
                             <select id="artista">
-                                {artistas.map((artista, index) => (
-                                    <option key={index} value={artista}>
-                                        {artista}
-                                    </option>
-                                ))}
+                                {loading ? (
+                                    <option value="">Cargando...</option>
+                                ) : (
+                                    artistas.map((artista, index) => (
+                                        <option key={artista.idArtista} value={artista.idArtista}>
+                                            {artista.nombre}
+                                        </option>
+                                    ))
+                                )}
                             </select>
                         </div>
                     </div>
@@ -106,5 +129,4 @@ const EditarPagina = () => {
         </div>
     );
 };
-
-export default EditarPagina;
+export default GaleriaADMINEdit;

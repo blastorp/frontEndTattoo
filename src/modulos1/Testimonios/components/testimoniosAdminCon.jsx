@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import '../estilos/testimoniocon.css';
 import fetchApiM2 from "../../../services/api/fetchApiM2";
 import ENDPOINTS from "../../../services/api/endpoints";
+import { FaRedo } from 'react-icons/fa'; 
 
 const TestimoniosADMINCon = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -55,6 +56,34 @@ const TestimoniosADMINCon = () => {
         }
     };
 
+    const handleDeleteButtonClick = async (idTestimonio) => {
+        try {
+            console.log("Eliminando testimonios con ID:", idTestimonio);
+            await fetchApiM2(ENDPOINTS.DELETE_TESTIMONIOS.replace("{idTestimonio}", idTestimonio), "DELETE", {});
+
+            setData((prevData) => prevData.filter((row) => row.idTestimonio !== idTestimonio));
+            console.log("Testimonio eliminado exitosamente");
+        } catch (error) {
+            console.error("Error al eliminar testimonio:", error);
+        }
+    };
+
+    const handleDeleteAllButtonClick = async () => {
+        try {
+            console.log("Eliminando testimonios con palabras vetadas...");
+            await fetchApiM2(ENDPOINTS.DELETE_PVETADA_TESTIMONIOS, "DELETE", {});
+
+            
+            setData((prevData) => prevData.filter((row) => !row.noVetas)); 
+        } catch (error) {
+            console.error("Error al eliminar testimonios:", error);
+        }
+    };
+
+    const handleRefreshButtonClick = () => {
+        window.location.reload(); 
+    };
+
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return isNaN(date) ? "Invalid Date" : date.toLocaleDateString();
@@ -76,9 +105,9 @@ const TestimoniosADMINCon = () => {
     };
 
     const filteredData = data.filter((row) => {
-        if (!row.testimonioTexto) return false; 
+        if (!row.testimonioTexto) return false;
         const lowerCaseSearchTerm = searchTerm.toLowerCase();
-        const matchId = String(row.idTestimonio).toLowerCase().includes(lowerCaseSearchTerm); 
+        const matchId = String(row.idTestimonio).toLowerCase().includes(lowerCaseSearchTerm);
         const matchTestimonio = row.testimonioTexto.toLowerCase().includes(lowerCaseSearchTerm);
 
         return matchId || matchTestimonio;
@@ -97,6 +126,15 @@ const TestimoniosADMINCon = () => {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
+                <button id="refresh-button" className="refresh-button update-button" onClick={handleRefreshButtonClick}>
+                    <FaRedo /> 
+                </button>
+            </div>
+            <div className="delete-container">
+                <label htmlFor="delete-button" className="delete-label">Testimonios con palabras vetadas</label>
+                <button id="delete-button" className="delete-button update-button" onClick={handleDeleteAllButtonClick}>
+                    Eliminar
+                </button>
             </div>
             <table className="custom-table">
                 <thead>
@@ -132,7 +170,7 @@ const TestimoniosADMINCon = () => {
                                 <td>
                                     <button
                                         className="delete-button"
-                                        onClick={() => console.log(`Eliminar Testimonio ID: ${row.idTestimonio}`)}
+                                        onClick={() => handleDeleteButtonClick(row.idTestimonio)}
                                     >
                                         Eliminar
                                     </button>

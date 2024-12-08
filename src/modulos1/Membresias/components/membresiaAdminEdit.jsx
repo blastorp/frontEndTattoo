@@ -140,7 +140,7 @@ const handleSubmit = async (e) => {
       );
     }
   } catch (error) {
-    setMensaje("Error al conectar con el servidor.");
+    //setMensaje("Error al conectar con el servidor.");
   } finally {
     setLoading(false);
   }

@@ -31,6 +31,11 @@ export const ENDPOINTS = {
     DELETE_TESTIMONIOS: "api/Testimonios/{idTestimonio}",
     DELETE_PVETADA_TESTIMONIOS: "api/Testimonios/EliminarPorPalabrasVetadas",
 
+    CREATE_PALABRAS_VETADAS: "api/PalabrasVetadas",
+    GET_ALL_PALABRAS_VETADAS: "api/PalabrasVetadas",
+    GET_PALABRAS_VETADAS_POR_ID: "api/PalabrasVetadas/{id}",
+    UPDATE_PALABRAS_VETADAS: "api/PalabrasVetadas/Actualizar/{id}",
+    DELETE_PALABRAS_VETADAS: "api/PalabrasVetadas/{id}",
 
     //Galeria
     GETGALERIAPUBLICADOS: "api/Galeria/Publicados", 

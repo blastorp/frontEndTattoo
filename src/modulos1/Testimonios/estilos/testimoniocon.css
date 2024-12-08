@@ -27,7 +27,7 @@
 .search-input {
   padding: 8px;
   font-size: 16px;
-  width: 300px;
+  width: 400px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -77,6 +77,11 @@
   color: gray;
 }
 
+.delete-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
 
 .delete-button {
   background-color: #BE3144;
@@ -109,4 +114,15 @@
 .styled-checkbox {
   width: 20px;
   height: 20px;
+}
+
+.update-button {
+  background-color: #BE3144;
+  color: #FFFFFF; 
+  border: none;
+  width: 100px;
+  height: 50px;
+  margin-bottom: 2px;
+  border-radius: 1px;
+  cursor: pointer;
 }

@@ -1,26 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../estilos/galeriaadd.css';
-//import fetchApiM2  from "../../../services/api/fetchApiM2";
-//import ENDPOINTS  from "../../../services/api/endpoints";
+import fetchApiM2 from "../../../services/api/fetchApiM2";
+import ENDPOINTS from "../../../services/api/endpoints";
 
 const GaleriaADMINAdd = () => {
     const [imagePreview, setImagePreview] = useState(null);
+    const [artistas, setArtistas] = useState([]);
+    const [mensaje, setMensaje] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const artistas = [
-        "Seleccionar artista",
-        "Artista 1",
-        "Artista 2",
-        "Artista 3",
-    ]; 
+    useEffect(() => {
+        const fetchArtistas = async () => {
+            setLoading(true);
+            try {
+                const artistasResponse = await fetchApiM2(ENDPOINTS.GET_ARTISTA_POR_IDNOMBRE);
+                console.log(artistasResponse); 
 
-    const categorias = [
-        "Seleccionar...",
-        "Seleccionar...",
-        "Seleccionar...",
-        "Seleccionar...",
-        "Seleccionar...",
-        "Seleccionar...",
-    ]; 
+                if (artistasResponse) {
+                    setArtistas(artistasResponse);
+                } else {
+                    setMensaje("No se pudieron cargar los artistas.");
+                }
+            } catch (error) {
+                setMensaje("Error al cargar los datos.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchArtistas();
+    }, []);
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
@@ -56,11 +65,15 @@ const GaleriaADMINAdd = () => {
                         <div className="form-group">
                             <label htmlFor="artista">Nombre artista</label>
                             <select id="artista">
-                                {artistas.map((artista, index) => (
-                                    <option key={index} value={artista}>
-                                        {artista}
-                                    </option>
-                                ))}
+                                {loading ? (
+                                    <option value="">Cargando...</option>
+                                ) : (
+                                    artistas.map((artista, index) => (
+                                        <option key={artista.idArtista} value={artista.idArtista}>
+                                            {artista.nombre}
+                                        </option>
+                                    ))
+                                )}
                             </select>
                         </div>
                     </div>
@@ -86,10 +99,10 @@ const GaleriaADMINAdd = () => {
                     <div className="form-group">
                         <label>Categorías</label>
                         <div className="select-group">
-                            {categorias.map((categoria, index) => (
+                            {Array.from({ length: 6 }, (_, index) => (
                                 <div key={index} className="select-container">
                                     <select id={`categoria${index + 1}`}>
-                                        <option value="">{categoria}</option>
+                                        <option value="">Seleccionar categoría</option>
                                     </select>
                                 </div>
                             ))}
