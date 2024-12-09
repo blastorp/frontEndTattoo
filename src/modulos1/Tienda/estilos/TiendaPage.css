@@ -49,9 +49,9 @@
   color: #f4f4f4; /* White on hover */
 }
 
-/* Right panel for products */
-.right-panel {
-  width: 70%;
+/* Center panel for products */
+.center-panel {
+  width: 100%;
   padding: 20px;
 }
 
@@ -69,11 +69,10 @@
 
 .product-card {
   width: 30%;
-  padding: 20px;
   background-color: #333; /* Dark background for cards */
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  text-align: center;
+  text-align: left;
   color: #f4f4f4; /* Light text color */
 }
 
@@ -85,7 +84,7 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 8px 8px 0px 0px;
 }
 
 .product-name {
@@ -112,79 +111,201 @@
 .add-to-cart-btn:hover {
   background-color: #c53030; /* Darker red on hover */
 }
-
-/* Cart Section */
+/* Full-Width Cart Layout */
 .cart {
-  position: fixed;
-  right: 20px;
-  top: 80px;
-  width: 300px; /* Fixed width for the cart */
-  background-color: #333; /* Dark background for the cart */
+  width: 70%;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  background-color: #1a1a1a;
   color: #f4f4f4;
 }
 
 .cart-title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
-  color: #f4f4f4;
+  margin-bottom: 20px;
 }
 
 .cart-items {
   list-style: none;
   padding: 0;
-  margin-top: 10px;
 }
 
 .cart-item {
   display: flex;
-  justify-content: space-between;
-  margin: 10px 0;
-  background-color: #444; /* Dark background for cart items */
+  align-items: center;
+  gap: 15px;
   padding: 10px;
+  background-color: #444; /* Dark background for cart items */
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.cart-item-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
   border-radius: 8px;
 }
 
-.cart-item-price {
-  color: #ef4444; /* Red price */
+.cart-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1; /* Take the remaining space */
 }
 
+.item-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #f4f4f4;
+}
+
+.item-price {
+  font-size: 0.9rem;
+  color: #ef4444;
+}
+/* Hide the default up/down arrows in number inputs */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.quantity-input[type="number"] {
+  -moz-appearance: textfield; /* For Firefox */
+  width: 50px; /* Adjusted width */
+  padding: 5px;
+  text-align: center;
+  font-size: 1rem;
+  border: none;
+  background-color: #444;
+  color: #f4f4f4;
+  border-radius: 4px;
+}
+
+/* Reduce width of quantity controls and buttons */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Reduced gap between buttons and input */
+}
+
+.quantity-button {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  min-width: 30px; /* Ensure buttons aren't too large */
+  max-width: 30px; /* Ensure buttons aren't too large */
+}
+
+.quantity-button:hover {
+  background-color: #c53030;
+}
+
+
 .remove-item-btn {
-  color: #f4f4f4; /* Light color for remove button */
   background: none;
   border: none;
+  color: #f4f4f4;
   cursor: pointer;
   text-decoration: underline;
   transition: color 0.3s;
 }
 
 .remove-item-btn:hover {
-  color: #ef4444; /* Red on hover */
+  color: #ef4444;
 }
 
 .clear-cart-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #ef4444; /* Red button */
+  background-color: #ef4444;
   color: white;
+  padding: 10px 20px;
   border: none;
   border-radius: 8px;
+  width: 100%;
+  margin-top: 20px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .clear-cart-btn:hover {
-  background-color: #c53030; /* Darker red on hover */
+  background-color: #c53030;
 }
 
-/* Floating cart icon */
+.total-section {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ef4444;
+  margin-top: 20px;
+}
+
+.proceed-to-checkout-btn {
+  background-color: #ef4444;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.proceed-to-checkout-btn:hover {
+  background-color: #c53030;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .cart {
+    padding: 10px;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .quantity-controls {
+    flex-direction: column;
+  }
+
+  .quantity-input {
+    width: 40px;
+  }
+}
+
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  .cart-page {
+    flex-direction: column; /* Stack panels on top of each other */
+  }
+
+  .cart-left-panel,
+  .cart-right-panel {
+    width: 100%; /* Take full width on small screens */
+    margin-bottom: 20px;
+  }
+
+  .cart-item {
+    flex-direction: column; /* Stack item details on top of each other */
+  }
+
+  .quantity-controls {
+    flex-direction: column;
+  }
+}
+
 .floating-cart {
   position: fixed;
   top: 120px;
   right: 20px;
-  background-color: #ef4444; /* Red background */
+  background-color: #ef4444; /* Red background for the cart */
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -193,13 +314,42 @@
   align-items: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  flex-direction: column; /* Stack link and icon vertically */
+  padding: 10px; /* Add some space around the link and icon */
+}
+
+.cart-link {
+  position: absolute;
+  top: 55px; /* Position above the cart icon */
+  color: white; /* White text for the link */
+  font-size: 12px; /* Small font size */
+  font-weight: bold; /* Bold text */
+  text-decoration: none; /* Remove underline */
+  transform: translateX(-50%); /* Center the link horizontally */
+  left: 50%;
+  text-align: center; /* Center text inside link */
+}
+
+.cart-back-link {
+  position: absolute;
+  top: 20px;
+  color: white; /* White text for the link */
+  font-size: 12px; /* Small font size */
+  font-weight: bold; /* Bold text */
+  text-decoration: none; /* Remove underline */
+  transform: translateX(-50%); /* Center the link horizontally */
+  text-align: center; /* Center text inside link */
+}
+
+.cart-link:hover {
+  color: #f4f4f4; /* Lighter color when hovering */
 }
 
 .cart-count {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  background-color: #333; /* Dark background for count */
+  top: -5px; /* Slightly adjust for better positioning */
+  right: -5px;
+  background-color: #333; /* Dark background for the count */
   color: white;
   font-size: 0.8rem;
   font-weight: bold;
@@ -209,7 +359,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Adjust the cart icon size */
+.floating-cart .MuiSvgIcon-root {
+  font-size: 30px; /* Icon size */
 }
 
 /* Media Queries for Mobile */
@@ -225,23 +379,6 @@
 
   .product-card {
     padding: 10px; /* Adjust padding for smaller screens */
-  }
-
-  .floating-cart {
-    bottom: 10px;
-    right: 10px;
-  }
-}
-
-/* Media Queries for Mobile */
-@media (max-width: 768px) {
-  .right-panel {
-    width: 100%; /* Make the right panel take full width */
-    padding: 10px; /* Add padding for better spacing */
-  }
-
-  .product-grid {
-    grid-template-columns: 1fr; /* Show only one column for the product grid */
   }
 
   .floating-cart {
@@ -269,4 +406,43 @@
   }
 }
 
+/* Horizontal Filter Bar */
+.filter-bar {
+  width: 100%;
+  padding: 10px;
+  background-color: #2c2c2c; /* Dark gray */
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
+.filter-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #f4f4f4;
+  margin-right: 15px;
+}
+
+.category-list-horizontal {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.category-list-horizontal li button {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.category-list-horizontal li button:hover {
+  color: #f4f4f4;
+}

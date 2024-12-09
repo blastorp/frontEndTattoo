@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { CartProvider } from "./state/CartContext";
 
 //import App from './App';
 import "./estilosGlobal/estiloGlobal.css";
@@ -28,7 +29,7 @@ import TestimonioAdm from "./modulos1/Testimonios/pages/testimonioadm";
 import ChatbotAdm from "./modulos1/Chatbot/pages/chatbotadm";
 import ArtistasAddArtista from "./modulos1/Artistas/pages/ArtistasAddArtista";
 import ArtistaEditArtista from "./modulos1/Artistas/pages/ArtistaEditArtista";
-import ArtistasDash from "./modulos1/Artistas/pages/ArtistasDash";
+import ArtistasDash from "./modulos1/Artistas/pages/artistasDash";
 import ArtistaInfo from "./modulos1/Artistas/pages/ArtistaInfo";
 import BeneficiosDash from "./modulos1/Beneficios/Pages/BeneficiosDash";
 import AddBeneficio from "./modulos1/Beneficios/Pages/AddBeneficio";
@@ -55,6 +56,7 @@ import AgendaArtistasAdmCon from "./modulos1/AgendaArtistas/pages/agendaartistas
 import AgendaArtistasAdmEdit from "./modulos1/AgendaArtistas/pages/agendaartistasedit";
 
 import TiendaPage from "./modulos1/Tienda/pages/TiendaPage"
+import Carrito from "./modulos1/Tienda/pages/Carrito"
 
 import ArtistaView from "./modulos1/Artistas/pages/ArtistaView";
 
@@ -186,6 +188,10 @@ const router = createBrowserRouter(
       path: "/pages/tienda",
       element: <TiendaPage />,
     },
+    {
+      path: "/pages/carrito",
+      element: <Carrito />,
+    },
   ],
   {
     basename: "/templeofink", // Agrega el prefijo del subdirectorio
@@ -194,9 +200,11 @@ const router = createBrowserRouter(
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  <CartProvider>
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
+  </CartProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
