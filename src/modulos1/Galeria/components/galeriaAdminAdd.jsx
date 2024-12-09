@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import '../estilos/galeriaadd.css';
 import fetchApiM2 from "../../../services/api/fetchApiM2";
 import ENDPOINTS from "../../../services/api/endpoints";
-import { getStorage } from "../../../services/firebase/FirebaseConTOI";
 import Select from 'react-select';
 
 const GaleriaADMINAdd = () => {
@@ -19,6 +18,7 @@ const GaleriaADMINAdd = () => {
         Array.from({ length: 5 }, () => []) // Inicializa con 5 arrays vacíos para las selecciones múltiples
     );
 
+    // Fetch inicial para cargar artistas y subcategorías
     useEffect(() => {
         const fetchArtistas = async () => {
             setLoading(true);
@@ -87,89 +87,40 @@ const GaleriaADMINAdd = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-
+    
         const formData = new FormData();
         const nombreTatuaje = e.target.elements.input1.value;
         const artistaSeleccionado = e.target.elements.artista.value;
         const publicar = e.target.elements.publicar.checked;
-
+    
         // Combina todos los IDs seleccionados en una sola cadena separada por comas
         const subcategoriaIds = categorias.flat().join(",");
-
+    
         if (!subcategoriaIds) {
             setMensaje("Debes seleccionar al menos una categoría.");
             setLoading(false);
             return;
         }
-
+    
         formData.append("nombreTatuaje", nombreTatuaje);
         formData.append("artistaSeleccionado", artistaSeleccionado);
         formData.append("publicar", publicar);
         formData.append("subcategoriaIds", subcategoriaIds);
-        
-        if (imagePreview) {
-            // Configura Firebase y crea una referencia de almacenamiento
-            const storageRef = getStorage().ref(); // Asegúrate de que storage() sea almacenado correctamente
-            const file = dataURLtoFile(imagePreview, 'image.jpg'); // Convierte la URL de la vista previa a un archivo
-            const uploadTask = storageRef.child(`gallery/${file.name}`).put(file); // Cambiado a 'gallery'
-
-            uploadTask.on(
-                'state_changed',
-                null,
-                (error) => {
-                    console.error("Error al subir la imagen:", error);
-                    setMensaje("Error al subir la imagen.");
-                    setLoading(false);
-                },
-                async () => {
-                    const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
-                    formData.append("imagentatuaje", downloadURL); // Agrega la URL de descarga de la imagen a los datos del formulario
-
-                    try {
-                        const response = await fetchApiM2(ENDPOINTS.CREATE_GALERIA, "POST", formData);
-                        if (response.success) {
-                            setMensaje("Tatuaje añadido con éxito.");
-                        } else {
-                            setMensaje(`Error al añadir tatuaje: ${response.message || 'Desconocido'}`);
-                        }
-                    } catch (error) {
-                        console.error("Error al añadir tatuaje:", error);
-                        setMensaje("Error al añadir tatuaje");
-                    } finally {
-                        setLoading(false);
-                    }
-                }
-            );
-        } else {
-            try {
-                const response = await fetchApiM2(ENDPOINTS.CREATE_GALERIA, "POST", formData);
-                if (response.success) {
-                    setMensaje("Tatuaje añadido con éxito.");
-                } else {
-                    setMensaje(`Error al añadir tatuaje: ${response.message || 'Desconocido'}`);
-                }
-            } catch (error) {
-                console.error("Error al añadir tatuaje:", error);
-                setMensaje("Error al añadir tatuaje");
-            } finally {
-                setLoading(false);
+    
+        try {
+            const response = await fetchApiM2(ENDPOINTS.CREATE_GALERIA, "POST", formData);
+            if (response.success) {
+                setMensaje("Tatuaje añadido con éxito.");
+            } else {
+                setMensaje(`Error al añadir tatuaje: ${response.message || "Desconocido"}`);
             }
+        } catch (error) {
+            console.error("Error al añadir tatuaje:", error);
+            setMensaje("Error al añadir tatuaje");
+        } finally {
+            setLoading(false);
         }
     };
-
-    const dataURLtoFile = (dataurl, filename) => {
-        const arr = dataurl.split(',');
-        const mime = arr[0].match(/:(.*?);/)[1];
-        const bstr = atob(arr[1]);
-        let n = bstr.length;
-        const u8arr = new Uint8Array(n);
-
-        while (n--) {
-            u8arr[n] = bstr.charCodeAt(n);
-        }
-
-        return new File([u8arr], filename, { type: mime });
-    }
 
     return (
         <div className="container">
