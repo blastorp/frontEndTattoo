@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import ArrowBack from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
-import CheckboxButton from "../../../layouts/componentes/CheckBoxButton";
 
 function BeneficioDetails() {
   const { idBeneficio } = useParams();
@@ -32,28 +31,7 @@ function BeneficioDetails() {
         );
         setData(result[0]);
         fetchData2(result[0].idImagenArticulo);
-        // const resultCat = await fetchApiM1(ENDPOINTS.GETCATEGORIAS);
 
-        //   setCategorias(resultCat);
-        //   console.log("categorias " + categorias)
-
-        // const resultCatAsignadas = await fetchApiM1(
-        //   ENDPOINTS.GETCATEGORIAXARTISTA,
-        //   "GET",
-        //   null,
-        //   {},
-        //   { idArtista: artistaId }
-        // );
-        // setcategoriasElegidas(resultCatAsignadas);
-
-        // console.log(categoriasElegidas);
-        // if (Array.isArray(result)) {
-        //   setData(result[0]);
-        //   
-        // } else {
-        //   console.error("Unexpected data format:", result);
-        //   setError("Unexpected data received from API."); // Provide a more informative error message
-        // } 
       } catch (err) {
         setError(err.message);
       }

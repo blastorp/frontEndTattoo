@@ -28,6 +28,9 @@ export const ENDPOINTS = {
     PUBLICARCATEGORIA: "Categoria/publicarCategoria",
     ARCHIVARCATEGORIA: "Categoria/archivarCategoria",
     DESPUBLICARCATEGORIA: "Categoria/despublicarCategoria",
+    GETCATEGORIAXID: "Categoria/categoriaXId",
+    EDITCATEGORIA: "Categoria/editarCategoria",
+    INDICADORESCATEGORIA: "Categoria/indicadoresCategoria",
 
     //ImagenesArticulos
     GUARDARIMAGENARTICULO: "ImagenArticulo/guardarImagen",

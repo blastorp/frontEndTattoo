@@ -32,9 +32,9 @@ function P1WizardCategoria({ formData, setFormData,  setImageUpload, image, setI
           placeholder="Descripcion Categoria..."
           rows="4" cols="50"
           maxLength={900}
-          value={formData.descripcion}
+          value={formData.descripcionCategoria}
           onChange={(event) =>
-            setFormData({ ...formData, descripcion: event.target.value })
+            setFormData({ ...formData, descripcionCategoria: event.target.value })
           }
         />
   <label htmlFor="Foto Perfil">Elegir Imagen Categoria</label>

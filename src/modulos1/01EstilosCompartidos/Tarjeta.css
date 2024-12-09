@@ -60,6 +60,14 @@
     border: 1px solid var(--gris-color);
     justify-self: center;
   }
+  .profile-pic-categoria-cliente img {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px; /* Marco cuadrado */
+    object-fit: cover;
+    border: 1px solid var(--gris-color);
+    justify-self: center;
+  }
   .profile-pic-artista-cliente img {
     width: 200px;
     height: 200px;

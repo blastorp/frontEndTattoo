@@ -2,7 +2,7 @@ import React from 'react'
 import WizardEditBeneficio from '../components/WizardEditBeneficio'
 import MainAdmin2 from '../../../layouts/MainAdmin2'
 
-function ArtistaEditArtista() {
+function BeneficioEdit() {
   return (
     <MainAdmin2 tituloPagina={"Edicion Ficha Beneficio"}>
         
@@ -14,4 +14,4 @@ function ArtistaEditArtista() {
   )
 }
 
-export default ArtistaEditArtista
+export default BeneficioEdit

@@ -17,7 +17,7 @@ import AgendaArtistas from "./modulos1/AgendaArtistas/pages/agendaartistas";
 import NuevoTestimonio from "./modulos1/Testimonios/pages/nuevotestimonio";
 import BeneficioDetails from "./modulos1/Beneficios/Pages/BeneficioDetails";
 import CategoriaDetails from "./modulos1/Categorias/Pages/CategoriaDetails";
-import CategoriasView from "./modulos1/Categorias/Pages/CategoriaDetails";
+import CategoriasView from "./modulos1/Categorias/Pages/CategoriasView";
 
 //Administrador
 import Dashboard from "./modulos1/Inicio/pages/Dashboard";

@@ -15,6 +15,7 @@ function MainAdmin({ tituloPagina, children, asideContent }) {
     { nombre: 'Beneficios', ruta: '/pages/BeneficiosDash' },
     { nombre: 'Categorias', ruta: '/pages/CategoriasDash' },
     { nombre: 'Vista Cliente Beneficios', ruta: '/pages/BeneficiosView' },
+    { nombre: 'Vista Cliente Categorias', ruta: '/pages/CategoriasView' },
     { nombre: 'DashBoard', ruta: '/pages/DashBoard' },
   ];
 

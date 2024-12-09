@@ -14,14 +14,28 @@ import Switch from "../../../layouts/componentes/Switch";
 
 export const Tarjeta = ({ objetoCategoria }) => {
   const [image, setImage] = useState(null);
+  const [indicadores, setIndicadores] = useState([])
   const [error, setError] = useState(null);
   const [publicado, setPublicado] = useState(objetoCategoria.publicado || false); // Inicializa con el valor actual
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        
+          const resultIndicadores = await fetchApiM1(
+            ENDPOINTS.INDICADORESCATEGORIA,
+            "GET",
+            null,
+            {},
+            { idCategoria: objetoCategoria.idCategoria }
+          );
+          if(resultIndicadores[0]) {
+            setIndicadores(resultIndicadores[0]);
+          }
+          
+          
         if (objetoCategoria.idImagenArticulo) {
-          console.log(objetoCategoria.idImagenArticulo);
+          
           const result = await fetchApiM1(
             ENDPOINTS.GETURLIXDIMAGEN,
             "GET",
@@ -138,8 +152,8 @@ export const Tarjeta = ({ objetoCategoria }) => {
       </div>
       <div className="info">
         <h3>{objetoCategoria.nombre}</h3>
-        <p>Artistas Expertos:</p>
-        <p>Tattoos en Galeria:</p>
+        <p>Artistas Expertos: <b style={{color: "orange"}}>{indicadores.cantidadArtistas? indicadores.cantidadArtistas : "0"}</b> </p>
+        <p>Tattoos en Galeria: <b style={{color: "green"}}>{indicadores.cantidadTattosGaleria? indicadores.cantidadTattosGaleria : "0"}</b></p>
       </div>
       <div className="toggle" key={objetoCategoria.idCategoria}>
         {/* <label htmlFor={`publicado-${objetoCategoria.idCategoria}`}>
