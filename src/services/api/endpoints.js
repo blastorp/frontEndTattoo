@@ -18,6 +18,17 @@ export const ENDPOINTS = {
     PUBLICARBENEFICIO: "Beneficio/publicarBeneficio",
     DESPUBLICARBENEFICIO: "Beneficio/despublicarBeneficio",
     ARCHIVARBENEFICIO: "Beneficio/archivarBeneficio",
+    //ArticulosCT
+    GETARTICULOS: "ArticuloCT/listarArticulos",
+    GETARTICULOXID: "ArticuloCT/getOneArticuloById",
+    GUARDARARTICULO: "ArticuloCT/guardarArticulo",
+    EDITARARTICULO: "ArticuloCT/editarArticulo",
+    DELETEARTICULO: "ArticuloCT/deleteArticulo",
+    PUBLICARARTICULO: "ArticuloCT/publicarArticulo",
+    DESPUBLICARARTICULO: "ArticuloCT/despublicarArticulo",
+    ARCHIVARARTICULO: "ArticuloCT/archivarArticulo",
+    LIKEARTICULO: "ArticuloCT/likeArticulo",
+    DISLIKEARTICULO: "ArticuloCT/dislikeArticulo",
     //Categorias
     GETCATEGORIAS: "Categoria/listarCategorias",
     GETCATEGORIAXARTISTA: "Categoria/listarCategoriasXArtista",

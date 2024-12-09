@@ -39,6 +39,12 @@ import CategoriasDash from "./modulos1/Categorias/Pages/CategoriasDash";
 import AddCategoria from "./modulos1/Categorias/Pages/AddCategoria";
 import CategoriaEdit from "./modulos1/Categorias/Pages/CategoriaEdit";
 import CategoriaInfo from "./modulos1/Categorias/Pages/CategoriaInfo";
+import ArticuloCTView from "./modulos1/ArticuloCT/Pages/ArticuloCTView";
+import ArticuloCTInfo from "./modulos1/ArticuloCT/Pages/ArticuloCTInfo";
+import ArticuloCTEdit from "./modulos1/ArticuloCT/Pages/ArticuloCTEdit";
+import ArticuloCTDetails from "./modulos1/ArticuloCT/Pages/ArticuloCTDetails";
+import ArticuloCTDash from "./modulos1/ArticuloCT/Pages/ArticuloCTDash";
+import AddArticuloCT from "./modulos1/ArticuloCT/Pages/AddArticuloCT";
 
 
 
@@ -67,11 +73,17 @@ import PalabrasVetadasAdmCon from './modulos1/Testimonios/pages/palabrasvetadasc
 import PalabrasVetadasAdmAdd from './modulos1/Testimonios/pages/palabrasvetadasadd';
 import PalabrasVetadasAdmEdit from './modulos1/Testimonios/pages/palabrasvetadasedit';
 
+//test
 
+import BlogEditor from "./modulos1/ArticuloCT/components/BlogEditor";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />
+  },
+  {
+    path: "/test",
+    element: <BlogEditor />
   },
   {
     path: "/pages/ArtistasDash",
@@ -222,7 +234,7 @@ const router = createBrowserRouter([
       path: "/pages/ArtistaInfo/:artistaId",
       element: <ArtistaInfo />,
     },
-
+//beneficios
     { path: "pages/BeneficioDetails/:idBeneficio", 
       element: <BeneficioDetails /> },
     { path: "pages/BeneficioEdit/:idBeneficio", 
@@ -231,6 +243,8 @@ const router = createBrowserRouter([
       element: <BeneficioInfo /> },
     { path: "pages/BeneficiosView", 
       element: <BeneficiosView /> },
+
+      //Categorias
     { path: "pages/CategoriaDetails/:idCategoria", 
       element: <CategoriaDetails /> },
     { path: "pages/CategoriaEdit/:idCategoria", 
@@ -241,7 +255,13 @@ const router = createBrowserRouter([
       element: <CategoriasView /> },
     { path: "pages/AddCategoria", 
       element: <AddCategoria /> },
-
+// Articulos CT
+{ path: "pages/ArticuloCTDetails/:idArticuloCT", element: <ArticuloCTDetails /> },
+  { path: "pages/ArticuloCTEdit/:idArticuloCT", element: <ArticuloCTEdit /> },
+  { path: "pages/ArticuloCTDash", element: <ArticuloCTDash /> },
+  { path: "pages/ArticuloCTView", element: <ArticuloCTView /> },
+  { path: "pages/AddArticuloCT", element: <AddArticuloCT /> },
+  { path: "pages/ArticuloCTInfo/:idArticuloCT", element: <ArticuloCTInfo /> },
     {
       path: "/pages/DashBoard",
       element: <Dashboard />,

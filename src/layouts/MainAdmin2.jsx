@@ -14,9 +14,11 @@ function MainAdmin({ tituloPagina, children, asideContent }) {
     { nombre: 'Artista', ruta: '/pages/ArtistasDash' },
     { nombre: 'Beneficios', ruta: '/pages/BeneficiosDash' },
     { nombre: 'Categorias', ruta: '/pages/CategoriasDash' },
+    { nombre: 'ArticuloCT', ruta: '/pages/ArticuloCTDash' },
     { nombre: 'Vista Cliente Beneficios', ruta: '/pages/BeneficiosView' },
     { nombre: 'Vista Cliente Categorias', ruta: '/pages/CategoriasView' },
     { nombre: 'DashBoard', ruta: '/pages/DashBoard' },
+    { nombre: 'test', ruta: '/test' },
   ];
 
   return (
