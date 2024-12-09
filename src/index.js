@@ -29,7 +29,7 @@ import TestimonioAdm from "./modulos1/Testimonios/pages/testimonioadm";
 import ChatbotAdm from "./modulos1/Chatbot/pages/chatbotadm";
 import ArtistasAddArtista from "./modulos1/Artistas/pages/ArtistasAddArtista";
 import ArtistaEditArtista from "./modulos1/Artistas/pages/ArtistaEditArtista";
-import ArtistasDash from "./modulos1/Artistas/pages/artistasDash";
+import ArtistasDash from "./modulos1/Artistas/pages/ArtistasDash";
 import ArtistaInfo from "./modulos1/Artistas/pages/ArtistaInfo";
 import BeneficiosDash from "./modulos1/Beneficios/Pages/BeneficiosDash";
 import AddBeneficio from "./modulos1/Beneficios/Pages/AddBeneficio";
