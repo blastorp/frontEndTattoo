@@ -6,7 +6,7 @@ export const products = [
     description: "A ceramic coffee mug with a bold tattoo-inspired design.",
     categories: ["cups", "home", "tattoo accessories"],
     destacado: true,
-    image: "https://source.unsplash.com/200x200/?coffee,mug",
+    image: "https://fakeimg.pl/400x400",
   },
   {
     id: "2",
@@ -15,7 +15,7 @@ export const products = [
     description: "A comfortable T-shirt featuring a classic tattoo design.",
     categories: ["apparel", "T-shirts"],
     destacado: true,
-    image: "https://source.unsplash.com/200x200/?tshirt,tattoo",
+    image: "https://fakeimg.pl/400x400",
   },
   {
     id: "3",
@@ -24,7 +24,7 @@ export const products = [
     description: "A kit with a variety of temporary tattoos to try at home.",
     categories: ["tattoo kits", "temporary tattoos"],
     destacado: false,
-    image: "https://source.unsplash.com/200x200/?tattoo,kit",
+    image: "https://fakeimg.pl/400x400",
   },
   {
     id: "4",
@@ -33,7 +33,7 @@ export const products = [
     description: "A high-quality poster featuring an intricate tattoo design.",
     categories: ["posters", "decor"],
     destacado: false,
-    image: "https://source.unsplash.com/200x200/?poster,design",
+    image: "https://fakeimg.pl/400x400",
   },
   {
     id: "5",
@@ -42,7 +42,7 @@ export const products = [
     description: "A durable tote bag with a unique tattoo-themed print.",
     categories: ["bags", "tote bags"],
     destacado: true,
-    image: "https://source.unsplash.com/200x200/?bag,tattoo",
+    image: "https://fakeimg.pl/400x400",
   },
   {
     id: "6",
@@ -51,7 +51,7 @@ export const products = [
     description: "A stainless steel water bottle featuring bold tattoo designs.",
     categories: ["bottles", "accessories"],
     destacado: false,
-    image: "https://source.unsplash.com/200x200/?water,bottle,tattoo",
+    image: "https://fakeimg.pl/400x400",
   },
   {
     id: "7",
@@ -60,7 +60,7 @@ export const products = [
     description: "A pack of high-quality stickers featuring classic tattoo designs.",
     categories: ["stickers", "tattoo art"],
     destacado: true,
-    image: "https://source.unsplash.com/200x200/?sticker,tattoo",
+    image: "https://fakeimg.pl/400x400",
   },
   {
     id: "8",
@@ -69,7 +69,7 @@ export const products = [
     description: "A warm hoodie with a vibrant tattoo design on the back.",
     categories: ["apparel", "hoodies"],
     destacado: false,
-    image: "https://source.unsplash.com/200x200/?hoodie,tattoo",
+    image: "https://fakeimg.pl/400x400",
   },
   {
     id: "9",
@@ -78,7 +78,7 @@ export const products = [
     description: "A sketchbook designed for creating tattoo ideas and sketches.",
     categories: ["art supplies", "sketchbooks"],
     destacado: true,
-    image: "https://source.unsplash.com/200x200/?sketchbook,tattoo",
+    image: "https://fakeimg.pl/400x400",
   },
   {
     id: "10",
@@ -87,6 +87,6 @@ export const products = [
     description: "A protective phone case with a bold tattoo-themed design.",
     categories: ["accessories", "phone cases"],
     destacado: false,
-    image: "https://source.unsplash.com/200x200/?phonecase,tattoo",
+    image: "https://fakeimg.pl/400x400",
   },
 ];
