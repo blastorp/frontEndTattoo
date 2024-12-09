@@ -38,12 +38,14 @@ export const ENDPOINTS = {
     DELETE_PALABRAS_VETADAS: "api/PalabrasVetadas/{id}",
 
     //Galeria
-    GET_ALL_GALERIA: "api/Galeria/", 
+    GET_GALERIA_INICIO: "api/Galeria/Inicio",
+    GET_GALERIA_CLIENTE: "api/Galeria/Cliente",
+    GET_ALL_GALERIA: "api/Galeria", 
     GET_GALERIA_POR_ID: "api/Galeria/{idTatuaje}", 
     GET_SUBCATEGORIAS: "api/Galeria/Subcategorias/{filtroNombre}", 
-    CREATE_GALERIA: "api/Galeria/", 
+    CREATE_GALERIA: "api/Galeria", 
     UPDATE_GALERIA: "api/Galeria/{idTatuaje}",
-    UPDATE_GALERIA_MEMBRESIA: "api/Galeria/Actualizar/{idTatuaje}",
+    UPDATE_GALERIA_PUBLICAR: "api/Galeria/Actualizar/{idTatuaje}",
 
   };
 

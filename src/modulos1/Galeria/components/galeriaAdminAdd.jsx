@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import '../estilos/galeriaadd.css';
 import fetchApiM2 from "../../../services/api/fetchApiM2";
 import ENDPOINTS from "../../../services/api/endpoints";
-import { storage } from "../../../services/firebase/FirebaseConTOI";
+import { getStorage } from "../../../services/firebase/FirebaseConTOI";
 import Select from 'react-select';
 
 const GaleriaADMINAdd = () => {
@@ -109,7 +109,7 @@ const GaleriaADMINAdd = () => {
         
         if (imagePreview) {
             // Configura Firebase y crea una referencia de almacenamiento
-            const storageRef = storage().ref(); // Asegúrate de que storage() sea almacenado correctamente
+            const storageRef = getStorage().ref(); // Asegúrate de que storage() sea almacenado correctamente
             const file = dataURLtoFile(imagePreview, 'image.jpg'); // Convierte la URL de la vista previa a un archivo
             const uploadTask = storageRef.child(`gallery/${file.name}`).put(file); // Cambiado a 'gallery'
 

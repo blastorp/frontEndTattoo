@@ -6,6 +6,7 @@ import ENDPOINTS from "../../../services/api/endpoints";
 
 const Inicio = () => {
     const [testimonios, setTestimonios] = useState([]);
+    const [galeria, setGaleria] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     // Función para obtener testimonios desde la API
@@ -28,6 +29,28 @@ const Inicio = () => {
         };
 
         fetchData();
+    }, []);
+
+    // Obtener galería de inicio desde la API
+    useEffect(() => {
+        const fetchGaleria = async () => {
+            try {
+                const response = await fetchApiM2(ENDPOINTS.GET_GALERIA_INICIO);
+                console.log("Respuesta de la API:", response);
+
+                if (Array.isArray(response)) {
+                    setGaleria(response);
+                } else if (response?.data && Array.isArray(response.data)) {
+                    setGaleria(response.data);
+                } else {
+                    console.error("No se encontraron datos válidos en la respuesta.");
+                }
+            } catch (error) {
+                console.error("Error al obtener la galería:", error);
+            }
+        };
+
+        fetchGaleria();
     }, []);
 
     // Control deslizante automático
@@ -121,6 +144,24 @@ const Inicio = () => {
                     </Link>
                 </div>
             </div>
+
+            {/* Sección de Galería */}
+            <section className="gallery-section">
+                <h2 className="gallery-title">
+                    Explora nuestra galería de tatuajes únicos y  encuentra tu próxima obra maestra.
+                </h2>
+                <div className="gallery-container">
+                    {galeria.length === 0 ? (
+                        <p>Cargando galería...</p>
+                    ) : (
+                        galeria.map((image, index) => (
+                            <div key={index} className="gallery-item">
+                                <img src={image.imagenTatuaje} alt={`Galería ${index + 1}`} />
+                            </div>
+                        ))
+                    )}
+                </div>
+            </section>
         </div>
     );
 };
