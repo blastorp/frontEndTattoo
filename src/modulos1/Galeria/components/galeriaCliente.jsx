@@ -7,25 +7,82 @@ import ENDPOINTS from "../../../services/api/endpoints"; // Asegúrate de que el
 const GaleriaCliente = () => {
   const [imagenes, setImagenes] = useState([]);
   const [imagenExpandida, setImagenExpandida] = useState(null);
+  const [artistas, setArtistas] = useState([]); // Estado para los artistas
+  const [estilos, setEstilos] = useState([]); // Estado para los estilos
+  const [ubicaciones, setUbicaciones] = useState([]); // Estado para las ubicaciones
+  const [tamanos, setTamanos] = useState([]); // Estado para los tamaños
+  const [colores, setColores] = useState([]); // Estado para los colores
+  const [tematicas, setTematicas] = useState([]); // Estado para las temáticas
+  const [loading, setLoading] = useState(false); // Estado de carga
+  const [mensaje, setMensaje] = useState(""); // Estado para mensajes de error o éxito
 
-  // Función para hacer el fetch de las imágenes
-  const fetchImagenes = async () => {
-    try {
-      const response = await fetchApiM2(ENDPOINTS.GETGALERIAPUBLICADOS);
-      if (response.ok) {
-        const data = await response.json();
-        setImagenes(data); // Suponiendo que 'data' es el array de imágenes que devuelve la API
-      } else {
-        console.error("Error al obtener las imágenes");
-      }
-    } catch (error) {
-      console.error("Hubo un problema con la solicitud:", error);
-    }
-  };
-
-  // Llamar a la función fetchImagenes cuando el componente se monta
   useEffect(() => {
-    fetchImagenes();
+    const fetchArtistas = async () => {
+      setLoading(true);
+      try {
+        const artistasResponse = await fetchApiM2(ENDPOINTS.GET_ARTISTA_POR_IDNOMBRE);
+        if (artistasResponse) {
+          setArtistas(artistasResponse);
+        } else {
+          setMensaje("No se pudieron cargar los artistas.");
+        }
+      } catch (error) {
+        setMensaje("Error al cargar los datos.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const fetchSubCategorias = async () => {
+      setLoading(true);
+      try {
+        const [estilosResponse, ubicacionesResponse, tamanosResponse, coloresResponse, tematicasResponse] = await Promise.all([
+          fetchApiM2(`${ENDPOINTS.GET_SUBCATEGORIAS.replace("{filtroNombre}", "Estilos")}`),
+          fetchApiM2(`${ENDPOINTS.GET_SUBCATEGORIAS.replace("{filtroNombre}", "Ubicacion")}`),
+          fetchApiM2(`${ENDPOINTS.GET_SUBCATEGORIAS.replace("{filtroNombre}", "Tamano")}`),
+          fetchApiM2(`${ENDPOINTS.GET_SUBCATEGORIAS.replace("{filtroNombre}", "Color")}`),
+          fetchApiM2(`${ENDPOINTS.GET_SUBCATEGORIAS.replace("{filtroNombre}", "Tematica")}`)
+        ]);
+
+        if (estilosResponse && ubicacionesResponse && tamanosResponse && coloresResponse && tematicasResponse) {
+          setEstilos(estilosResponse.map(item => ({ value: item.idSubcategoria, label: item.nombre })));
+          setUbicaciones(ubicacionesResponse.map(item => ({ value: item.idSubcategoria, label: item.nombre })));
+          setTamanos(tamanosResponse.map(item => ({ value: item.idSubcategoria, label: item.nombre })));
+          setColores(coloresResponse.map(item => ({ value: item.idSubcategoria, label: item.nombre })));
+          setTematicas(tematicasResponse.map(item => ({ value: item.idSubcategoria, label: item.nombre })));
+        } else {
+          setMensaje("No se pudieron cargar las subcategorías.");
+        }
+      } catch (error) {
+        setMensaje("Error al cargar los datos.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArtistas();
+    fetchSubCategorias(); // Cargar las subcategorías al montar el componente
+
+    // Obtener imágenes de la galería de cliente
+    const fetchGaleriaCliente = async () => {
+      setLoading(true);
+      try {
+        const response = await fetchApiM2(ENDPOINTS.GET_GALERIA_CLIENTE);
+        if (Array.isArray(response)) {
+          setImagenes(response);
+        } else if (response?.data && Array.isArray(response.data)) {
+          setImagenes(response.data);
+        } else {
+          setMensaje("No se encontraron datos válidos en la respuesta.");
+        }
+      } catch (error) {
+        setMensaje("Error al obtener la galería de cliente:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGaleriaCliente();
   }, []);
 
   const handleImageClick = (src) => {
@@ -39,7 +96,7 @@ const GaleriaCliente = () => {
   return (
     <div>
       <h1>Galería</h1>
-      
+
       {/* Filtros */}
       <section className="filtros">
         <div className="filtro-item">
@@ -47,7 +104,9 @@ const GaleriaCliente = () => {
             <option value="Estilo">
               <i className="bi bi-palette"></i> Estilo
             </option>
-            {/* Agregar más opciones según sea necesario */}
+            {estilos.map(option => (
+              <option key={option.value} value={option.value}>{option.label}</option>
+            ))}
           </select>
         </div>
 
@@ -56,7 +115,9 @@ const GaleriaCliente = () => {
             <option value="Ubicacion">
               <i className="bi bi-geo-alt"></i> Ubicación
             </option>
-            {/* Agregar más opciones */}
+            {ubicaciones.map(option => (
+              <option key={option.value} value={option.value}>{option.label}</option>
+            ))}
           </select>
         </div>
 
@@ -65,7 +126,9 @@ const GaleriaCliente = () => {
             <option value="Tamano">
               <i className="bi bi-arrows-expand"></i> Tamaño
             </option>
-            {/* Agregar más opciones */}
+            {tamanos.map(option => (
+              <option key={option.value} value={option.value}>{option.label}</option>
+            ))}
           </select>
         </div>
 
@@ -74,7 +137,9 @@ const GaleriaCliente = () => {
             <option value="Color">
               <i className="bi bi-paint-bucket"></i> Color
             </option>
-            {/* Agregar más opciones */}
+            {colores.map(option => (
+              <option key={option.value} value={option.value}>{option.label}</option>
+            ))}
           </select>
         </div>
 
@@ -83,16 +148,24 @@ const GaleriaCliente = () => {
             <option value="Tematica">
               <i className="bi bi-file-earmark-text"></i> Temática
             </option>
-            {/* Agregar más opciones */}
+            {tematicas.map(option => (
+              <option key={option.value} value={option.value}>{option.label}</option>
+            ))}
           </select>
         </div>
 
         <div className="filtro-item">
-          <select>
-            <option value="Artista">
-              <i className="bi bi-person"></i> Artista
-            </option>
-            {/* Agregar más opciones */}
+          <select id="artista">
+            <option value="">Seleccionar artista</option>
+            {loading ? (
+              <option value="">Cargando...</option>
+            ) : (
+              artistas.map((artista) => (
+                <option key={artista.idArtista} value={artista.idArtista}>
+                  {artista.nombre}
+                </option>
+              ))
+            )}
           </select>
         </div>
       </section>
@@ -101,8 +174,8 @@ const GaleriaCliente = () => {
       <section className="galeria">
         {imagenes.length > 0 ? (
           imagenes.map((imagen, index) => (
-            <div key={index} className="imagen" onClick={() => handleImageClick(imagen.url)}>
-              <img src={imagen.url} alt={`Imagen ${index}`} />
+            <div key={index} className="imagen" onClick={() => handleImageClick(imagen.imagenTatuaje)}>
+              <img src={imagen.imagenTatuaje} alt={`Imagen ${index}`} />
             </div>
           ))
         ) : (
@@ -122,10 +195,13 @@ const GaleriaCliente = () => {
             id="imgExpandida"
             src={imagenExpandida}
             alt="Imagen expandida"
-            style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+            style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }}
           />
         </div>
       )}
+
+      {loading && <p>Cargando...</p>}
+      {mensaje && <p>{mensaje}</p>}
     </div>
   );
 };

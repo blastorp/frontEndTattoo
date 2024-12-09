@@ -41,6 +41,9 @@ import CategoriaEdit from "./modulos1/Categorias/Pages/CategoriaEdit";
 import CategoriaInfo from "./modulos1/Categorias/Pages/CategoriaInfo";
 
 
+
+import PalabrasVetadasAdm from './modulos1/Testimonios/pages/palabrasvetadasadm';
+
 //Subpáginas Administrador
 import GaleriaAdmAdd from "./modulos1/Galeria/pages/galeriaadd";
 import GaleriaAdmCon from "./modulos1/Galeria/pages/galeriacon";
@@ -59,9 +62,130 @@ import TiendaPage from "./modulos1/Tienda/pages/TiendaPage"
 import Carrito from "./modulos1/Tienda/pages/Carrito"
 
 import ArtistaView from "./modulos1/Artistas/pages/ArtistaView";
+import TestimoniosAdmCon from './modulos1/Testimonios/pages/testimoniocon';
+import PalabrasVetadasAdmCon from './modulos1/Testimonios/pages/palabrasvetadascon';
+import PalabrasVetadasAdmAdd from './modulos1/Testimonios/pages/palabrasvetadasadd';
+import PalabrasVetadasAdmEdit from './modulos1/Testimonios/pages/palabrasvetadasedit';
 
-const router = createBrowserRouter(
-  [
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />
+  },
+  {
+    path: "/pages/ArtistasDash",
+    element: <ArtistasDash />
+  },
+  {
+    path: "/pages/ArtistaEditArtista",
+    element: <ArtistaEditArtista />
+  },
+  {
+    path: "/pages/galeria",
+    element: <Galeria />
+  },
+  {
+    path: "/pages/membresia",
+    element: <Membresia />
+  },
+  {
+    path: "/pages/agendaartistas",
+    element: <AgendaArtistas />
+  },
+  {
+    path: "/pages/nuevotestimonio",  
+    element: <NuevoTestimonio />
+  },
+  {
+    path: "/pages/dashboard",  
+    element: <Dashboard />
+  },
+  {
+    path: "/pages/galeriaaadm",  
+    element: <GaleriaAdm />
+  },
+  {
+    path: "/pages/membresiaadm",  
+    element: <MembresiaAdm />
+  },
+  {
+    path: "/pages/agendaartistasadm",  
+    element: <AgendaArtistasAdm />
+  },
+  {
+    path: "/pages/testimonioadm",  
+    element: <TestimonioAdm />
+  },
+  {
+    path: "/pages/chatbotadm",  
+    element: <ChatbotAdm />
+  },
+  {
+    path: "/pages/palabrasvetadasadm",  
+    element: <PalabrasVetadasAdm />
+  },
+  {
+    path: "/pages/galeriaadd",  
+    element: <GaleriaAdmAdd />
+  },
+  {
+    path: "/pages/galeriacon",  
+    element: <GaleriaAdmCon />
+  },
+  {
+    path: "/pages/galeriaedit/:id",  
+    element: <GaleriaAdmEdit />
+  },
+  /*{
+    path: "/pages/galeriainfo",  
+    element: <GaleriaAdmInfo />
+  },*/
+  {
+    path: "/pages/membresiaadd",  
+    element: <MembresiaAdmAdd />
+  },
+  {
+    path: "/pages/membresiaventa",  
+    element: <MembresiaAdmVenta />
+  },
+  {
+    path: "/pages/membresiaedit/:id",  
+    element: <MembresiaAdmEdit />
+  },
+  {
+    path: "/pages/membresiacon",  
+    element: <MembresiaAdmCon />
+  },
+   {
+    path: "/pages/agendaartistasadd",  
+    element: <AgendaArtistasAdmAdd />
+  },
+  {
+    path: "/pages/agendaartistascon",  
+    element: <AgendaArtistasAdmCon />
+  },
+  {
+    path: "/pages/agendaartistasedit/:id",  
+    element: <AgendaArtistasAdmEdit />
+  },
+  {
+    path: "/pages/testimoniocon",  
+    element: <TestimoniosAdmCon />
+  },
+  {
+    path: "/pages/palabrasvetadascon",  
+    element: <PalabrasVetadasAdmCon />
+  },
+  {
+    path: "/pages/palabrasvetadasadd",  
+    element: <PalabrasVetadasAdmAdd />
+  },
+  {
+    path: "/pages/palabrasvetadasedit/:id",  
+    element: <PalabrasVetadasAdmEdit />
+  },
+
     {
       path: "/",
       element: <Home />,

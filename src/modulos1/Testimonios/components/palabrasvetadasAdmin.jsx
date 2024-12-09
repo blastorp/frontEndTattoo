@@ -1,19 +1,19 @@
 import React from 'react';
-import { FaUser, FaTag, FaCreditCard } from 'react-icons/fa'; 
-import '../estilos/galeriaDash.css'; 
+import {FaTag, FaCreditCard } from 'react-icons/fa'; 
+import '../estilos/testimonioDash.css'; 
 import { Link } from 'react-router-dom'; 
 
-const GaleriaADMIN = () => {
+
+const PalabrasvetadasADMIN = () => {
   const buttons = [
-    { label: "Cargar imágenes", icon: <FaUser />, path: "/pages/galeriaadd"},
-    { label: "Consultar imágenes", icon: <FaTag />, path: "/pages/galeriacon" },
-    { label: "Información galería", icon: <FaCreditCard />, path: "/perfiles-artistas" },
+    { label: "Agregar testimonios", icon: <FaTag />, path: "/pages/palabrasvetadasadd" },
+    { label: "Consultar palabras vetadas", icon: <FaCreditCard />, path: "/pages/palabrasvetadascon" },
   ];
 
   return (
     <div className="membresia-container">
     <div className="membresia-header">
-      <h1>Gestión de Galería</h1>
+      <h1>Gestión de palabras vetadas</h1>
     </div>
     <div className="membresia-image">
       <img src="ruta/a/tu/imagen.jpg" alt="Imagen de membresía" />
@@ -30,4 +30,4 @@ const GaleriaADMIN = () => {
   );
 };
 
-export default GaleriaADMIN;
+export default PalabrasvetadasADMIN;

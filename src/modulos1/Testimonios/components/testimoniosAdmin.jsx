@@ -2,14 +2,11 @@ import React from 'react';
 import {FaTag, FaCreditCard } from 'react-icons/fa'; 
 import '../estilos/testimonioDash.css'; 
 import { Link } from 'react-router-dom'; 
-//import fetchApiM2  from "../../../services/api/fetchApiM2";
-//import ENDPOINTS  from "../../../services/api/endpoints";
-
 
 const TestimonioADMIN = () => {
   const buttons = [
-    { label: "Consultar testimonios", icon: <FaTag />, path: "/perfiles-artistas" },
-    { label: "Eliminar testimonios", icon: <FaCreditCard />, path: "/perfiles-artistas" },
+    { label: "Consultar testimonios", icon: <FaTag />, path: "/pages/testimoniocon" },
+    { label: "Palabras vetadas", icon: <FaCreditCard />, path: "/pages/palabrasvetadasadm" },
   ];
 
   return (

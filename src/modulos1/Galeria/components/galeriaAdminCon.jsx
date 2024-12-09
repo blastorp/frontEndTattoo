@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
-import '../estilos/galeriacon.css';
+import "../estilos/galeriacon.css";
 import fetchApiM2 from "../../../services/api/fetchApiM2";
 import ENDPOINTS from "../../../services/api/endpoints";
 
@@ -10,39 +10,65 @@ const GaleriaADMINCon = () => {
     const navigate = useNavigate(); // Hook para navegación
 
     useEffect(() => {
-        // Hacer la solicitud para obtener los datos
         const fetchData = async () => {
             try {
-                const response = await fetchApiM2(ENDPOINTS.GETGALERIAPUBLICADOS); 
-                console.log("Respuesta de la API:", response);
+                const response = await fetchApiM2(ENDPOINTS.GET_ALL_GALERIA);
+                console.log("Respuesta de la API:", response); // Diagnóstico de la respuesta
 
-                // Manejo de la respuesta
                 if (Array.isArray(response)) {
                     setData(response);
-                } else if (response && response.data && Array.isArray(response.data)) {
+                } else if (response?.data && Array.isArray(response.data)) {
                     setData(response.data);
                 } else {
-                    console.error("No se encontraron datos válidos en la respuesta.", response);
+                    console.error("No se encontraron datos en la respuesta.");
                 }
             } catch (error) {
                 console.error("Error al hacer el fetch:", error);
             }
         };
 
-        fetchData(); // Llamar a la función de fetch al montar el componente
+        fetchData();
     }, []);
 
-    // Filtrar datos según el término de búsqueda
-    const filteredData = data.filter(
-        (row) =>
-            row.nombre?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            row.estilo?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            row.fecha?.includes(searchTerm)
-    );
+    useEffect(() => {
+        console.log("Datos cargados en el estado:", data);
+    }, [data]);
 
-    // Navegar al formulario de edición
-    const handleEdit = (id) => {
-        navigate(`/pages/galeriaedit/${id}`);
+    if (data.length === 0) {
+        return <div>Cargando...</div>;
+    }
+
+    const handleCheckboxChange = async (idTatuaje, Campo, Valor) => {
+        if (!idTatuaje) {
+            console.error("IdTatuaje no está definido");
+            return;
+        }
+
+        const url = ENDPOINTS.UPDATE_GALERIA_PUBLICAR.replace("{idTatuaje}", idTatuaje);
+        console.log("URL generada para el PATCH:", url);
+
+        try {
+            const requestData = {
+                idTatuaje: idTatuaje,  
+                Campo: Campo,         
+                Valor: Valor,         
+            };
+
+            console.log("Datos enviados al backend:", requestData);
+
+            const response = await fetchApiM2(url, "PATCH", requestData);
+
+            console.log("Respuesta exitosa:", response);
+            setData((prevData) =>
+                prevData.map((row) =>
+                    row.idTatuaje === idTatuaje
+                        ? { ...row, [Campo]: Valor }
+                        : row
+                )
+            );
+        } catch (error) {
+            console.error("Error al hacer el fetch:", error);
+        }
     };
 
     return (
@@ -68,40 +94,54 @@ const GaleriaADMINCon = () => {
                         <th>Fecha</th>
                         <th>Artista</th>
                         <th>Publicar</th>
+                        <th>Subcategorías</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredData.length > 0 ? (
-                        filteredData.map((row) => (
-                            <tr key={row.id}>
-                                <td>{row.id}</td>
-                                <td>{row.nombre}</td>
+                    {data
+                        .filter((row) => {
+                            const nombreTatuaje = row.nombreTatuaje || "";
+                            const fecha = new Date(row.fechapublicacion).toLocaleDateString() || "";
+                            return (
+                                nombreTatuaje.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                fecha.includes(searchTerm)
+                            );
+                        })
+                        .map((row) => (
+                            <tr key={row.idTatuaje}>
+                                <td>{row.idTatuaje}</td>
+                                <td>{row.nombreTatuaje}</td>
                                 <td>
                                     <img
-                                        src={row.imagen || "placeholder.jpg"}
-                                        alt={row.nombre}
+                                        src={row.imagenTatuaje || "placeholder.jpg"}
+                                        alt={row.nombreTatuaje}
                                         className="gallery-image"
                                     />
                                 </td>
-                                <td>{new Date(row.fecha).toLocaleDateString()}</td>
-                                <td>{row.artista}</td>
-                                <td>{row.publicar ? "Sí" : "No"}</td>
+                                <td>{new Date(row.fechaPublicacion).toLocaleDateString()}</td>
+                                <td>{row.idArtista}</td>
+                                <td>
+                                    <div className="checkbox-container">
+                                        <input
+                                            type="checkbox"
+                                            className="styled-checkbox"
+                                            checked={row.publicar}
+                                            onChange={(e) => handleCheckboxChange(row.idTatuaje, "publicar", e.target.checked)}
+                                        />
+                                    </div>
+                                </td>
+                                <td>{row.subcategorias}</td>
                                 <td>
                                     <button
                                         className="edit-button"
-                                        onClick={() => handleEdit(row.id)}
+                                        onClick={() => navigate(`/pages/galeriaedit/${row.idTatuaje}`)}
                                     >
                                         Editar
                                     </button>
                                 </td>
                             </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td colSpan="7" className="no-data">No se encontraron resultados</td>
-                        </tr>
-                    )}
+                        ))}
                 </tbody>
             </table>
         </div>
