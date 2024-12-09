@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const TestimonioADMIN = () => {
   const buttons = [
     { label: "Consultar testimonios", icon: <FaTag />, path: "/pages/testimoniocon" },
-    { label: "Eliminar testimonios", icon: <FaCreditCard />, path: "/pages/palabrasvetadasadm" },
+    { label: "Palabras vetadas", icon: <FaCreditCard />, path: "/pages/palabrasvetadasadm" },
   ];
 
   return (

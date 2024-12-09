@@ -24,7 +24,12 @@ const fetchApiM2 = async (segmentoRuta, metodo = "GET", cuerpo = null, cabecera 
         clearTimeout(timeoutId); 
 
         if (!response.ok) {
-            const errorMessage = await response.text(); 
+            let errorMessage;
+            try {
+                errorMessage = await response.json(); // intenta obtener el mensaje de error como JSON
+            } catch (jsonError) {
+                errorMessage = await response.text(); // fallback si no se puede parsear a JSON
+            }
             throw new Error(`Error ${response.status}: ${errorMessage}`);
         }
 
@@ -37,13 +42,12 @@ const fetchApiM2 = async (segmentoRuta, metodo = "GET", cuerpo = null, cabecera 
     } catch (error) {
         clearTimeout(timeoutId); 
         if (error.name === 'AbortError') {
-            console.error("Fetch aborted due to timeout.");
+            console.error("Fetch abortado debido a tiempo de espera.");
         } else {
-            console.error("Fetch error:", error.message);
+            console.error("Error en fetchApiM2:", error.message);
         }
         throw error; 
     }
 };
-
 
 export default fetchApiM2;

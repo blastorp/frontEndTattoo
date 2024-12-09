@@ -38,36 +38,13 @@ export const ENDPOINTS = {
     DELETE_PALABRAS_VETADAS: "api/PalabrasVetadas/{id}",
 
     //Galeria
-    GETGALERIAPUBLICADOS: "api/Galeria/Publicados", 
-    GETGALERIAPORARTISTA: "api/Galeria/PorArtista/{idArtista}", 
-    CREATEGALERIA: "api/Galeria", 
-    UPDATEGALERIA: "api/Galeria/{id}", 
+    GET_ALL_GALERIA: "api/Galeria/", 
+    GET_GALERIA_POR_ID: "api/Galeria/{idTatuaje}", 
+    GET_SUBCATEGORIAS: "api/Galeria/Subcategorias/{filtroNombre}", 
+    CREATE_GALERIA: "api/Galeria/", 
+    UPDATE_GALERIA: "api/Galeria/{idTatuaje}",
+    UPDATE_GALERIA_MEMBRESIA: "api/Galeria/Actualizar/{idTatuaje}",
 
-    //JoinGaleriaCategoria
-    GETALLJOINGALERIACATEGORIA: "api/JoinGaleriaCategoria", 
-    GETCATEGORIASPORTATUAJE: "api/JoinGaleriaCategoria/Categorias/{idTatuaje}", 
-    GETGALERIAPORCATEGORIA: "api/JoinGaleriaCategoria/Galeria/{idCategoria}", 
-    GETJOINGALERIACATEGORIA: "api/JoinGaleriaCategoria/{idGaleriaCategoria}", 
-    CREATEJOINGALERIACATEGORIA: "api/JoinGaleriaCategoria", 
-    UPDATEJOINGALERIACATEGORIA: "api/JoinGaleriaCategoria",
-
-    //JoinMembresiaBeneficio
-    GETBENEFICIOSPORMEMBRESIA: "api/JoinMembresiaBeneficio/Membresia/{idMembresia}", 
-    GETTODOSBENEFICIOS: "api/JoinMembresiaBeneficio", 
-    CREATEBENEFICIO: "api/JoinMembresiaBeneficio", 
-    UPDATEBENEFICIO: "api/JoinMembresiaBeneficio/{id}", 
-
-    // JoinUsuarioMembresia
-    GETMEMBRESIASACTIVAS: "api/JoinUsuarioMembresia/Activas/{idUsuario}", 
-    GETMEMBRESIASPROXIMASRENOVACION: "api/JoinUsuarioMembresia/ProximasRenovacion/{diasAntes}", 
-    CREATEMEMBRESIABENEFICIO: "api/JoinUsuarioMembresia", 
-    UPDATEMEMBRESIABENEFICIO: "api/JoinUsuarioMembresia", 
-
-    //Membresias  
-   
-    GETMEMBRESIABYID: "api/membresias/{id}",
-
-  
   };
 
   export default ENDPOINTS
