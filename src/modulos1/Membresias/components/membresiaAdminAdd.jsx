@@ -233,7 +233,7 @@ const MembresiaADMINAdd = () => {
         {mensaje && <p className="mensaje">{mensaje}</p>}
 
         <div className="image-container">
-          <img src="https://tiusr39pl.cuc-carrera-ti.ac.cr/images/Tatto2.jpeg" alt="Imagen" className="form-image" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/templeofinkgallery.firebasestorage.app/o/assets%2FAsset4.avif?alt=media&token=c85c60a8-8f25-4122-9aee-b6959521be09" alt="Imagen" className="form-image" />
         </div>
       </div>
     </div>

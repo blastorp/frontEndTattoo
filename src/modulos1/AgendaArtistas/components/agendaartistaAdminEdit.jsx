@@ -209,7 +209,7 @@ const AgendaArtistaADMINEdit = () => {
 
         <div className="image-container">
           <img
-            src="https://tiusr39pl.cuc-carrera-ti.ac.cr/images/Tatto2.jpeg"
+            src="https://firebasestorage.googleapis.com/v0/b/templeofinkgallery.firebasestorage.app/o/assets%2FAsset9.jpg?alt=media&token=a875f303-d24e-4fa0-bd7b-f35d1cff4b15"
             alt="Imagen"
             className="form-image"
           />

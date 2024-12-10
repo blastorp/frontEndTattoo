@@ -105,7 +105,7 @@ const PalabrasVetadasADMINAdd = () => {
 
         <div className="image-container">
           <img
-            src="https://tiusr39pl.cuc-carrera-ti.ac.cr/images/PalabrasVetadas.jpeg"
+            src="https://firebasestorage.googleapis.com/v0/b/templeofinkgallery.firebasestorage.app/o/assets%2FTatuaje13.jpg?alt=media&token=a9f68320-1e77-47e9-804b-46a149c22e15"
             alt="Imagen"
             className="form-image"
           />

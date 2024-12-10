@@ -15,7 +15,7 @@ const TestimonioADMIN = () => {
       <h1>Gestión de Testimonios</h1>
     </div>
     <div className="membresia-image">
-      <img src="ruta/a/tu/imagen.jpg" alt="Imagen de membresía" />
+      <img src="https://firebasestorage.googleapis.com/v0/b/templeofinkgallery.firebasestorage.app/o/assets%2FAsset12.jpg?alt=media&token=2c961e53-5079-4b87-b9c4-5f7c719e1228" alt="Imagen de membresía" />
     </div>
     <div className="membresia-buttons">
       {buttons.map((button, index) => (

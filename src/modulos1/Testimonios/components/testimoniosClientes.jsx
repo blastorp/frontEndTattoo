@@ -74,7 +74,7 @@ const TestimoniosClientes = () => {
 
         {/* Imagen */}
         <img
-          src="https://via.placeholder.com/400"
+          src="https://firebasestorage.googleapis.com/v0/b/templeofinkgallery.firebasestorage.app/o/assets%2FTattoo1.jpeg?alt=media&token=de47036f-30ae-4f60-a0c6-165ce17c44b3"
           alt="Testimonios de clientes"
           className="testimonio-image"
         />
