@@ -63,4 +63,11 @@ restricciones de validaciones
 
 agregar likes y art Cuidados del Tattoo
 
+nota temporal {
+    subir imagen principal, obtener id
+    guardar datos principales de articulo, obtener id de articulo
+    subir imagenes secundarias y obtner url 
+    sustituir imagenes
+}
+
 

@@ -1,0 +1,23 @@
+.contenedor-editor {
+    max-width: 95%;
+    display: flex;
+    flex-direction: column;;
+}
+
+.contenedor-sticky {
+    position: sticky;
+    width: 100%;
+    margin: auto;
+
+}
+.contenedor-botones-add {
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+}
+.contenedor-botones-add button{
+    width: 100px;
+}

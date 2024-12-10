@@ -6,7 +6,7 @@ import MainAdmin from "../../../layouts/MainAdmin2";
 
 function AddArticuloCT() {
   return (
-    <MainAdmin tituloPagina={"Nueva Articulo Cuidados Tattoo"}>
+    <MainAdmin tituloPagina={"Nuevo Articulo Cuidados Tattoo"}>
         
     <WizardForm />
     

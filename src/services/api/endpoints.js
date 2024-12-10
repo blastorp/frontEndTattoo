@@ -29,6 +29,13 @@ export const ENDPOINTS = {
     ARCHIVARARTICULO: "ArticuloCT/archivarArticulo",
     LIKEARTICULO: "ArticuloCT/likeArticulo",
     DISLIKEARTICULO: "ArticuloCT/dislikeArticulo",
+      //elementosArticulosCT
+    LISTARELEMENTOSXIDARTICULO: "HijosArticuloCT/listarHijosXIdArticuloCT",
+    GUARDARELEMENTOSARTICULO: "HijosArticuloCT/guardarHijosArticuloCT",
+    ELIMINARONEELEMENTOARTICULO: "HijosArticuloCT/eliminarOneHijoArticuloCT",
+    ELIMINARTODOSELEMENTOSXARTICULO: "HijosArticuloCT/eliminarHijosArticuloCT",
+
+
     //Categorias
     GETCATEGORIAS: "Categoria/listarCategorias",
     GETCATEGORIAXARTISTA: "Categoria/listarCategoriasXArtista",
