@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import "../estilos/inicioC.css";
 import fetchApiM2 from "../../../services/api/fetchApiM2";
 import ENDPOINTS from "../../../services/api/endpoints";
+import ArtistaInicio from '../../Artistas/components/ArtistaInicio';
+import ArticuloCTInicio from '../../ArticuloCT/Pages/ArticuloCTInicio';
 
 const Inicio = () => {
     const [testimonios, setTestimonios] = useState([]);
@@ -161,6 +163,13 @@ const Inicio = () => {
                         ))
                     )}
                 </div>
+            </section>
+            {/* Sección de Artista */}
+            <section className="artista-section">
+               <ArtistaInicio />
+            </section>
+            <section className="CuidadoTattoo-section">
+               <ArticuloCTInicio />
             </section>
         </div>
     );

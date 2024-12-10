@@ -143,6 +143,11 @@ const BlogEditor = ({elements, setElements}) => {
 
 const StyledWrapper = styled.div`
 /* Contenedor Sticky */
+
+.contenedor-editor{
+max-width:700px;
+}
+
 .contenedor-sticky {
     width: 95%;
     justify-self: center;
@@ -205,6 +210,7 @@ button:hover {
 /* Contenedor de Elementos */
 .conetenedor-todos-elementos {
   display: flex;
+  
   flex-direction: column;
   gap: 20px;
   padding: 20px;
@@ -279,6 +285,9 @@ display: flex;
 flex-direction: column;
 justify-conte
 }
+
+textarea {
+max-width: 600px;}
     
 `;
 

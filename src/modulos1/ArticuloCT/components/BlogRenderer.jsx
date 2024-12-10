@@ -30,7 +30,7 @@ const BlogRenderer = ({ elements }) => {
                 className="blog-subtitle"
                 style={{
                   fontWeight: "bold",
-                  color: "#333",
+                  color: "var(--rojo-color)",
                   margin: "20px 0 10px",
                 }}
               >

@@ -33,26 +33,16 @@ function MyNavBar({listaLinks}) {
                             
                             </li>
                 ))}
-                {/* <li><a href="#">Blog</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Forum</a></li>
-                <li><a href="#">Login</a></li> */}
+
             </ul>
 
             {/* Main Navigation */}
             <ul>
-                <li className="titulo"><a  href="#">Temple of Ink</a></li>
+                <li className="titulo"><Link  to="/">Temple of Ink</Link></li>
                 {listaLinks.map((item,index) => (
                     <li className="hideOnMobile"><Link to={item.ruta}>{item.nombre}</Link></li>
                 ))}
 
-
-                {/* <li className="hideOnMobile"><a href="#">Blog</a></li>
-                <li className="hideOnMobile"><a href="#">Products</a></li>
-                <li className="hideOnMobile"><a href="#">About</a></li>
-                <li className="hideOnMobile"><a href="#">Forum</a></li>
-                <li className="hideOnMobile"><a href="#">Login</a></li> */}
                 <li className="menu-button" onClick={showSidebar}>
                     <a href="#">
                         <svg

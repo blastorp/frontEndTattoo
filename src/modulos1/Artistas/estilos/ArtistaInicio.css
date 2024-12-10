@@ -1,0 +1,83 @@
+.artistas-section {
+    padding: 20px;
+    background-color: var(--FondoClaro-color);
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+ 
+.artistas-section:hover {
+    background-color: var(--FondoMedio-color);
+    transform: scale(1.02);
+}
+
+
+.artistas-section:hover .artistas-title{
+    font-size: 2.2rem;
+    color: var(--rojo-color);
+    transform: translateY(-5px);
+}
+.artistas-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../imagenes/TranspareteTattoo2.png'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    pointer-events: none; 
+    transition: opacity 0.3s;
+    z-index: 0;
+}
+
+.artistas-section:hover::before {
+    opacity: 0.05;
+}
+
+.artistas-title, 
+.subtitulo-sec {
+    text-align: center;
+    transition: transform 0.3s, font-size 0.3s, color 0.3s;
+    z-index: 1; /* Asegura que el texto esté encima del fondo */
+    position: relative;
+}
+
+.artistas-title {
+    color: var(--Secundariogris-color);
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.artistas-title:hover {
+    font-size: 2.2rem;
+    color: var(--rojo-color);
+    transform: translateY(-5px);
+}
+
+.subtitulo-sec {
+    color: var(--Secundariogris-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+
+
+.artista-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 15px;
+    z-index: 1;
+    position: relative;
+}
+
+.buttonD {
+    z-index: 1000;
+    justify-self: center;
+    width: 150px;
+    height: 60px;
+}

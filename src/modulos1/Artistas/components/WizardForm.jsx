@@ -36,7 +36,7 @@ function WizardForm() {
     archivado: true,
   });
 
-  const [confirmado, setConfirmado] = useState(false);
+
   const [artGuardado, setArtGuardado] = useState(null);
   const [image, setImage] = useState(null);
   const [imageUpload, setImageUpload] = useState(null);
@@ -206,29 +206,24 @@ function WizardForm() {
 
   const guardarDatos = async () => {
     try {
-      if (confirmado) {
-        if (imageUpload == null) {
-          guardarArtista(null);
-        } else {
-          const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-          const snapshot = await uploadBytes(imageRef, imageUpload);
-          const url = await getDownloadURL(snapshot.ref);
-          //console.log("URL de imagen:", url);
-
-          const idImagen = await guardarImagen(url);
-          //console.log("ID de Imagen guardada:", idImagen);
-
-          await guardarArtista(idImagen);
-          alert("Datos Guardados Correctamente");
-          navigate("/pages/ArtistasDash");
-        }
+      if (imageUpload == null) {
+        guardarArtista(null);
+      } else {
+        const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+        const snapshot = await uploadBytes(imageRef, imageUpload);
+        const url = await getDownloadURL(snapshot.ref);
+        const idImagen = await guardarImagen(url);
+        await guardarArtista(idImagen);
+        alert("Datos guardados correctamente");
+        navigate("/pages/ArtistasDash");
       }
     } catch (err) {
-      console.error("Error in guardarDatos:", err.message);
+      console.error("Error en guardarDatos:", err.message);
       setError(err.message);
-      alert("Error in guardarDatos:", err.message);
+      alert(err.message);
     }
   };
+  
   return (
     <div className="form">
       <div className="form-container">

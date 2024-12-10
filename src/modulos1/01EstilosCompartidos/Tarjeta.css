@@ -18,6 +18,15 @@
     position: relative;
   }
 
+  .card-artista:hover {
+    transform: scale(1.05);
+    background-color: var(--SecundarioIntermedioClaro-color);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  
+    h3 {
+      color: var(--rojo-color);
+    }
+  }
   .card-artista h3 {
     color: var(--Secundariogris-color);
 

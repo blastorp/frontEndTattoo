@@ -1,0 +1,114 @@
+.articulo-section {
+    padding: 20px;
+    background-color: var(--FondoClaro-color);
+    transition: background-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.articulo-section:hover {
+    background-color: var(--FondoMedio-color);
+    transform: scale(1.02);
+}
+
+.articulo-title, 
+.subtitulo-sec {
+    text-align: center;
+    transition: transform 0.3s, font-size 0.3s, color 0.3s;
+    z-index: 1; /* Asegura que el texto esté encima del fondo */
+    position: relative;
+}
+
+.articulo-title {
+    color: var(--Secundariogris-color);
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.articulo-title:hover {
+    font-size: 2.2rem;
+    color: var(--rojo-color);
+    transform: translateY(-5px);
+}
+
+.subtitulo-sec {
+    color: var(--Secundariogris-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.articulo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.articulo-content {
+    flex: 70%;  /* Mayor espacio al párrafo */
+    max-width: 70%;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--Secundariogris-color);
+}
+
+.articulo-text {
+    color: var(--Secundariogris-color);
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.image-frame {
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+    height: 300px;
+    margin-left: 30px;
+}
+
+.image-panorama {
+    position: absolute;
+    top: 0;
+    left: -200px; /* Comienza el movimiento desde fuera del área visible */
+    animation: slide 10s infinite linear;
+}
+
+.image-panorama img {
+    width: 400px; /* Asegúrate de que la imagen sea panorámica */
+    height: 300px;
+    object-fit: cover;
+}
+
+@keyframes slide {
+    0% {
+        left: -200px;
+    }
+    50% {
+        left: 0;
+    }
+    100% {
+        left: 200px; /* Limita el movimiento hasta 200px */
+    }
+}
+
+.buttonD {
+    z-index: 1000;
+    margin-top: 30px;
+    
+    padding: 10px 20px;
+    background-color: var(--rojo-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    justify-self: center;
+}
+
+.buttonD:hover {
+    background-color: var(--rojo-color-claro);
+}
+
+.boton-link {
+    font-size: 1rem;
+    font-weight: bold;
+}

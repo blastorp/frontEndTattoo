@@ -9,16 +9,11 @@ function MainAdmin({ tituloPagina, children, asideContent }) {
   const [sortOption, setSortOption] = useState("name");
 
   const arrayLinks = [
-    { nombre: 'Mi Dashboard', ruta: '#' },
-    { nombre: 'Vista Cliente', ruta: '/pages/ArtistasView' },
-    { nombre: 'Artista', ruta: '/pages/ArtistasDash' },
-    { nombre: 'Beneficios', ruta: '/pages/BeneficiosDash' },
-    { nombre: 'Categorias', ruta: '/pages/CategoriasDash' },
-    { nombre: 'ArticuloCT', ruta: '/pages/ArticuloCTDash' },
+   
     { nombre: 'Vista Cliente Beneficios', ruta: '/pages/BeneficiosView' },
     { nombre: 'Vista Cliente Categorias', ruta: '/pages/CategoriasView' },
     { nombre: 'DashBoard', ruta: '/pages/DashBoard' },
-    { nombre: 'test', ruta: '/test' },
+    // { nombre: 'test', ruta: '/test' },
   ];
 
   return (

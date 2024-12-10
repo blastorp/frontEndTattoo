@@ -43,14 +43,14 @@ function P2WizardArtista({ formData, setFormData,  setImageUpload, image, setIma
           setFormData({ ...formData, descripcionArt: event.target.value })
         }
       />
-<label htmlFor="Foto Perfil">Elegir Foto Perfil</label>
+      <label htmlFor="Foto Perfil">Elegir Foto Perfil</label>
 
      <input name="Foto Perfil"
       type="file" 
       onChange={onImageChange}
        className="filetype" 
         accept="image/png, image/gif, image/jpeg"/>
-     <img className="fotoPerfil" alt="Foto Perfil image" src={image} />
+     <img style={{maxWidth:"300px"}} className="foto-Perfil-artista" alt="Foto Perfil image" src={image} />
      {/* dar formato css */}
     </div>
   );

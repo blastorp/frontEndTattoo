@@ -78,7 +78,7 @@ body {
   color: var(--Secundariogris-color);
 }
 
-.fotoPerfil {
+div img.foto-Perfil-artista {
   max-width: 300px ;
   height: auto;
   align-self: center;
