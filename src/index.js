@@ -256,8 +256,8 @@ const router = createBrowserRouter([
     { path: "pages/AddCategoria", 
       element: <AddCategoria /> },
 // Articulos CT
-{ path: "pages/ArticuloCTDetails/:idArticuloCT", element: <ArticuloCTDetails /> },
-  { path: "pages/ArticuloCTEdit/:idArticuloCT", element: <ArticuloCTEdit /> },
+{ path: "pages/ArticuloCTDetails/:idArticulo", element: <ArticuloCTDetails /> },
+  { path: "pages/ArticuloCTEdit/:idArticulo", element: <ArticuloCTEdit /> },
   { path: "pages/ArticuloCTDash", element: <ArticuloCTDash /> },
   { path: "pages/ArticuloCTView", element: <ArticuloCTView /> },
   { path: "pages/AddArticuloCT", element: <AddArticuloCT /> },

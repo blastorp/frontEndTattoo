@@ -107,7 +107,8 @@ function WizardForm() {
           try {
             const fileName = `images/articulos/idArt_${idArticulo}_${Date.now()}_${i}.jpg`;
             const imageRef = ref(storage, fileName);
-            const snapshot = await uploadBytes(imageRef, imageUpload);
+            const blob = await fetch(element.contenido).then((res) => res.blob());
+            const snapshot = await uploadBytes(imageRef, blob);
             const url = await getDownloadURL(snapshot.ref);
             updatedElements[i].contenido = url;
             setElements(updatedElements);
