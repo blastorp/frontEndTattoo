@@ -6,46 +6,65 @@ import ENDPOINTS from "../../../services/api/endpoints";
 
 const MembresiaADMINCon = () => {
     const [searchTerm, setSearchTerm] = useState("");
-    const [data, setData] = useState([]); // Estado para almacenar los datos
-    const navigate = useNavigate(); // Hook para navegación
+    const [data, setData] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        // Hacer la solicitud para obtener los datos
         const fetchData = async () => {
             try {
-                const response = await fetchApiM2(ENDPOINTS.GETALLMEMBRESIAS); // Endpoint de la API
-                console.log("Respuesta de la API:", response); // Diagnóstico de la respuesta
-
-                // Verifica si los datos están presentes en la respuesta
-                if (Array.isArray(response)) {
-                    console.log("Datos obtenidos directamente como array:", response);
-                    setData(response); // Establecer los datos obtenidos en el estado
-                } else if (response && response.data && Array.isArray(response.data)) {
-                    console.log("Datos obtenidos dentro de 'data':", response.data);
-                    setData(response.data); // Establecer los datos si están dentro de "data"
-                } else {
-                    console.error("No se encontraron datos en la respuesta. Respuesta:", response);
-                }
+                console.log("Fetching data from:", ENDPOINTS.GET_ALL_MEMBRESIAS);
+                const response = await fetchApiM2(ENDPOINTS.GET_ALL_MEMBRESIAS);
+                setData(response || []);
             } catch (error) {
                 console.error("Error al hacer el fetch:", error);
             }
         };
 
-        fetchData(); // Llamar a la función de fetch al montar el componente
-    }, []); // El array vacío asegura que esto solo se ejecute una vez cuando el componente se monta
+        fetchData();
+    }, []);
 
-    // Diagnóstico: Verifica los datos cargados en el estado
-    useEffect(() => {
-        console.log("Datos cargados en el estado:", data);
-    }, [data]);
+    const handleCheckboxChange = async (idMembresia, Campo, Valor) => {
+        if (!idMembresia) {
+            console.error("idMembresia no está definido");
+            return;
+        }
+    
+        // Reemplazar {idMembresia} en la URL con el valor real
+        const url = ENDPOINTS.UPDATE_PUBLICAR_MEMBRESIA.replace("{idMembresia}", idMembresia);
+        console.log("URL generada para el PATCH:", url);
+    
+        try {
+            // Construir el objeto que se enviará al backend
+            const requestData = {
+                idMembresia: idMembresia,  // Asegúrate de que el ID se esté enviando
+                Campo: Campo,         // El campo que debe actualizarse (Disponible o EsMembresia)
+                Valor: Valor,         // El valor (true o false) que se debe asignar
+            };
+    
+            console.log("Datos enviados al backend:", requestData);
+    
+            // Realizar la solicitud PATCH utilizando fetchApiM2
+            const response = await fetchApiM2(url, "PATCH", requestData);
+    
+            // Verificar si la respuesta fue exitosa
+            console.log("Respuesta exitosa:", response);
+            setData((prevData) =>
+                prevData.map((row) =>
+                    row.idMembresia === idMembresia
+                        ? { ...row, [Campo]: Valor }
+                        : row
+                )
+            );
+        } catch (error) {
+            console.error("Error al hacer el fetch:", error);
+        }
+    };
 
-    // Si los datos aún no están disponibles, muestra un mensaje de carga
-    if (data.length === 0) {
-        return <div>Cargando...</div>; // Puedes mostrar un mensaje de "Cargando..." mientras los datos están vacíos
-    }
-
-    // Comprobación: Verifica si los datos tienen las propiedades correctas
-    console.log("Datos para renderizar:", data);
+    
+    const filteredData = data.filter((row) =>
+        row.nivel.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        row.beneficios?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return (
         <div className="table-wrapper">
@@ -58,7 +77,7 @@ const MembresiaADMINCon = () => {
                     className="search-input"
                     placeholder="Buscar por nivel, beneficios o fecha"
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)} // Actualiza el término de búsqueda
+                    onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
             <table className="custom-table">
@@ -69,22 +88,30 @@ const MembresiaADMINCon = () => {
                         <th>Beneficios</th>
                         <th>Precio mensual</th>
                         <th>Fecha creación</th>
+                        <th>Fecha vencimiento</th>
                         <th>Duración</th>
                         <th>Publicar</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data.length > 0 ? (
-                        data.map((row) => (
+                    {filteredData.length > 0 ? (
+                        filteredData.map((row) => (
                             <tr key={row.idMembresia}>
                                 <td>{row.idMembresia}</td>
                                 <td>{row.nivel}</td>
                                 <td>{row.beneficios || "No disponible"}</td>
                                 <td>{row.precioMensual}</td>
                                 <td>{new Date(row.fechaCreacion).toLocaleDateString()}</td>
+                                <td>{new Date(row.fechaVencimiento).toLocaleDateString()}</td>
                                 <td>{row.duracion} meses</td>
-                                <td>{row.publicar ? "Sí" : "No"}</td>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        checked={row.publicar}
+                                        onChange={(e) => handleCheckboxChange(row.idMembresia, "publicar",e.target.checked)}
+                                    />
+                                </td> 
                                 <td>
                                     <button
                                         className="edit-button"

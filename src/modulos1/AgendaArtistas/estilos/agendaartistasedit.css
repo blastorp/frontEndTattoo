@@ -1,40 +1,107 @@
-/* Modificar el estilo de los botones de navegación */
-.navegacion {
-  background-color: #DA0037; /* Color de fondo rojo */
-  color: white; /* Texto blanco */
-  font-size: 18px; /* Tamaño de fuente */
-  padding: 10px 20px; /* Aumentar el tamaño del botón */
-  border: none; /* Eliminar bordes */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cursor de puntero al pasar sobre el botón */
-  margin: 0 10px; /* Espaciado a la izquierda y derecha */
+/* Contenedor principal del formulario */
+.form-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-/* Cambiar el color del texto de todos los elementos */
-body, .titulo-agenda, .dia, .hora, .btn-enviar, .btn-agendar {
-  color: white; /* Texto blanco */
-}
-
-/* Modificar el estilo de los días de la semana */
-.dia {
-  font-size: 18px;
-  padding: 10px;
-  cursor: pointer;
+/* Título del formulario */
+.form-title {
   text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffffff;
 }
 
-.dia.seleccionada {
-  background-color: #BE3144; /* Cambiar color de fondo cuando el día está seleccionado */
+/* Contenedor para el formulario y elementos */
+.form-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 20px;
+  width: 100%;
 }
 
-/* Estilo de los botones de agendar y enviar */
-.btn-enviar, .btn-agendar {
-  background-color: #DA0037; /* Color de fondo rojo */
-  color: white; /* Texto blanco */
-  font-size: 16px;
-  padding: 10px 20px;
+/* Formulario */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Etiquetas de los campos */
+.form-label {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+/* Contenedor para cada grupo del formulario */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Input, select y date */
+.input,
+.select,
+.date,
+.time {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #DA0037;
+  border-radius: 5px;
+  background-color: #121212;
+  color: #ffffff;
+  width: 100%;
+}
+
+.select {
+  appearance: none; /* Eliminar estilo por defecto */
+}
+
+.input::placeholder {
+  color: #ffffff;
+}
+
+/* Checkbox */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+}
+
+/* Botón */
+.button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #DA0037;
   border: none;
   border-radius: 5px;
+  color: #ffffff;
   cursor: pointer;
-  margin-top: 20px; /* Espaciado superior */
+  transition: background-color 0.3s;
+  width: 100%; /* Ancho completo */
 }
+
+.button:hover {
+  background-color: #BE3144;
+}
+
+/* Mensaje de éxito o error */
+.mensaje {
+  margin-top: 10px;
+  font-size: 1rem;
+  text-align: center;
+  color: #ffffff;
+}
+

@@ -33,11 +33,11 @@
 }
 
 .custom-table {
-  width: 95%;
+  width: 80%;
   border-collapse: collapse;
   margin: 20px 0;
   font-size: 18px;
-  text-align: center;
+  text-align: left;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -49,7 +49,7 @@
 
 .custom-table th,
 .custom-table td {
-  padding: 25px 45px;
+  padding: 12px 15px;
   border: 1px solid #ddd;
 }
 
@@ -70,4 +70,59 @@
   text-align: center;
   color: #999;
   font-style: italic;
+}
+
+.no-data {
+  text-align: center;
+  color: gray;
+}
+
+.delete-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+.delete-button {
+  background-color: #BE3144;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.stars-container {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+.star {
+  font-size: 20px;
+  color: #ddd;
+}
+
+.star.filled {
+  color: #ffcc00;
+}
+
+.checkbox-container {
+  display: flex;
+  justify-content: center;
+}
+
+.styled-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.update-button {
+  background-color: #BE3144;
+  color: #FFFFFF; 
+  border: none;
+  width: 100px;
+  height: 50px;
+  margin-bottom: 2px;
+  border-radius: 1px;
+  cursor: pointer;
 }

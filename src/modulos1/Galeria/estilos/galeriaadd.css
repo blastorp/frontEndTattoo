@@ -1,38 +1,43 @@
-/* Contenedor principal */
+/* GaleriaADMINAdd.css */
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  padding: 80px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Título del formulario */
 .form-title {
-  text-align: center;
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-/* Diseño de formulario e imagen */
 .form-layout {
   display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se distribuyan en múltiples líneas */
   justify-content: space-between;
-  gap: 2rem;
   width: 100%;
-  max-width: 1000px; /* Ajuste de ancho máximo */
-  align-items: center; /* Alinea verticalmente imagen y formulario */
+  max-width: 1200px;
+  margin-top: 20px;
 }
 
-/* Contenedor de la imagen */
 .image-container {
-  width: 40%;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #ccc;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
   height: 300px;
   overflow: hidden;
+  margin-right: 20px;
+  position: relative;
 }
 
 .image-preview {
@@ -42,69 +47,69 @@
 }
 
 .placeholder {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #aaa;
+  font-size: 18px;
+  color: #999;
 }
 
-/* Formulario */
 .form-container {
+  flex: 2;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  width: 50%; /* Ancho del formulario */
+  gap: 15px;
+  width: 100%;
 }
 
-/* Alinear "Nombre del tatuaje" y "Nombre artista" en la misma fila */
 .form-row {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap; /* Permite que las filas se distribuyan en múltiples líneas */
+  gap: 15px;
+  width: calc(100% - 30px); /* Ajusta el ancho total menos el espacio entre filas */
 }
 
-/* Dividir los dos campos dentro de la fila */
-.form-row .form-group {
-  flex: 1;
-}
-
-/* Contenedor de selectores */
-.select-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-between;
-}
-
-/* Selectores más amplios */
-.select-container {
+.form-group {
   display: flex;
   flex-direction: column;
-  width: calc(50% - 0.5rem); /* Dos selectores por fila */
+  gap: 5px;
+  width: calc(50% - 15px); /* Ajusta el ancho para que haya dos columnas de 50% cada una */
 }
 
-/* Ajustar estilos de input y select */
-input[type="text"], select {
-  padding: 0.7rem;
+.form-group label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 16px;
+  width: 100%;
 }
 
-/* Estilo de botones */
-.button-group {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+.form-group input[type="checkbox"] {
+  width: auto;
 }
 
-button {
-  padding: 0.8rem 1.5rem;
-  background-color: #da0033; /* Color de fondo del botón */
-  color: white;
+.form-group button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
   border: none;
   border-radius: 4px;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #be3144; /* Color de fondo al pasar el cursor */
+.form-group button:hover {
+  background-color: #0056b3;
+}
+
+.mensaje {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ff0000;
+  text-align: center;
 }

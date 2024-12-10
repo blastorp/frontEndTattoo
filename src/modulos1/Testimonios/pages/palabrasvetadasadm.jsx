@@ -1,17 +1,18 @@
 import React from "react";
-import "../estilos/agendaartistasadd.css";
+import "../estilos/testimonioDash.css";
 import MainDash from "../../../layouts/MainDash";  
-import AgendaArtistaADMINADD from "../components/agendaartistaAdminAdd.jsx";  
+import PalabrasvetadasADMIN from "../components/palabrasvetadasAdmin.jsx";  
 
 function DashBoard({ tituloPagina, children }) {
   return (
     <MainDash tituloPagina={tituloPagina}>
       {/*children */}
       <div className='contenedorContenidoPagina'>
-        <AgendaArtistaADMINADD />
+        < PalabrasvetadasADMIN/>
       </div>
     </MainDash>
   );
 }
 
 export default DashBoard;
+

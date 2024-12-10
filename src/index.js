@@ -16,6 +16,7 @@ import Galeria from './modulos1/Galeria/pages/galeria';
 import Membresia from './modulos1/Membresias/pages/membresia';
 import AgendaArtistas from './modulos1/AgendaArtistas/pages/agendaartistas';
 import NuevoTestimonio from './modulos1/Testimonios/pages/nuevotestimonio';
+import Chatbot from './modulos1/Chatbot/pages/chatbot';
 
 //Administrador
 import Dashboard from './modulos1/Inicio/pages/Dashboard';
@@ -24,19 +25,26 @@ import MembresiaAdm from './modulos1/Membresias/pages/membresiaadm';
 import AgendaArtistasAdm from './modulos1/AgendaArtistas/pages/agendaartistasadm';
 import TestimonioAdm from './modulos1/Testimonios/pages/testimonioadm';
 import ChatbotAdm from './modulos1/Chatbot/pages/chatbotadm';
+import PalabrasVetadasAdm from './modulos1/Testimonios/pages/palabrasvetadasadm';
 
 //Subpáginas Administrador
 import GaleriaAdmAdd from './modulos1/Galeria/pages/galeriaadd';
 import GaleriaAdmCon from './modulos1/Galeria/pages/galeriacon';
 import GaleriaAdmEdit from './modulos1/Galeria/pages/galeriaedit';
-//import GaleriaAdmInfo from './modulos1/Galeria/pages/galeriainfo';
+
 import MembresiaAdmAdd from './modulos1/Membresias/pages/membresiaadd';
 import MembresiaAdmVenta from './modulos1/Membresias/pages/membresiaventa';
 import MembresiaAdmEdit from './modulos1/Membresias/pages/membresiaedit';
 import MembresiaAdmCon from './modulos1/Membresias/pages/membresiacon';
-//import AgendaArtistasAdmAdd from './modulos1/AgendaArtistas/pages/agendaartistasaad';
+
+import AgendaArtistasAdmAdd from './modulos1/AgendaArtistas/pages/agendaartistasadd';
 import AgendaArtistasAdmCon from './modulos1/AgendaArtistas/pages/agendaartistascon';
 import AgendaArtistasAdmEdit from './modulos1/AgendaArtistas/pages/agendaartistasedit';
+
+import TestimoniosAdmCon from './modulos1/Testimonios/pages/testimoniocon';
+import PalabrasVetadasAdmCon from './modulos1/Testimonios/pages/palabrasvetadascon';
+import PalabrasVetadasAdmAdd from './modulos1/Testimonios/pages/palabrasvetadasadd';
+import PalabrasVetadasAdmEdit from './modulos1/Testimonios/pages/palabrasvetadasedit';
 
 
 const router = createBrowserRouter([
@@ -93,6 +101,10 @@ const router = createBrowserRouter([
     element: <ChatbotAdm />
   },
   {
+    path: "/pages/palabrasvetadasadm",  
+    element: <PalabrasVetadasAdm />
+  },
+  {
     path: "/pages/galeriaadd",  
     element: <GaleriaAdmAdd />
   },
@@ -124,10 +136,10 @@ const router = createBrowserRouter([
     path: "/pages/membresiacon",  
     element: <MembresiaAdmCon />
   },
-  /* {
-    path: "/pages/agendaartistasaad",  
+   {
+    path: "/pages/agendaartistasadd",  
     element: <AgendaArtistasAdmAdd />
-  },*/
+  },
   {
     path: "/pages/agendaartistascon",  
     element: <AgendaArtistasAdmCon />
@@ -135,6 +147,26 @@ const router = createBrowserRouter([
   {
     path: "/pages/agendaartistasedit/:id",  
     element: <AgendaArtistasAdmEdit />
+  },
+  {
+    path: "/pages/testimoniocon",  
+    element: <TestimoniosAdmCon />
+  },
+  {
+    path: "/pages/palabrasvetadascon",  
+    element: <PalabrasVetadasAdmCon />
+  },
+  {
+    path: "/pages/palabrasvetadasadd",  
+    element: <PalabrasVetadasAdmAdd />
+  },
+  {
+    path: "/pages/palabrasvetadasedit/:id",  
+    element: <PalabrasVetadasAdmEdit />
+  },
+  {
+    path: "/pages/chatbot",  
+    element: <Chatbot />
   },
 ]);
 

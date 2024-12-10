@@ -18,7 +18,7 @@ const AgendaArtistaADMIN = () => {
       <h1>Gestión de Agenda de Artistas</h1>
     </div>
     <div className="membresia-image">
-      <img src="ruta/a/tu/imagen.jpg" alt="Imagen de membresía" />
+      <img src="https://firebasestorage.googleapis.com/v0/b/templeofinkgallery.firebasestorage.app/o/assets%2FAsset3.jpg?alt=media&token=1d39382d-d388-4a1a-ad7f-ba85fc07ad97" alt="Imagen de membresía" />
     </div>
     <div className="membresia-buttons">
       {buttons.map((button, index) => (

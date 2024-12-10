@@ -6,6 +6,8 @@ import ENDPOINTS from "../../../services/api/endpoints";
 const Membresia = () => {
   const [data, setData] = useState([]); // Estado para almacenar los datos de la API
   const [currentIndex, setCurrentIndex] = useState(0); // Índice para el carrusel
+  const [loading, setLoading] = useState(true); // Estado de carga
+  const [error, setError] = useState(null); // Estado de error
 
   const cardsToShow = 3; // Número de tarjetas visibles a la vez
   const cardWidth = 350; // Ancho de cada tarjeta
@@ -15,16 +17,19 @@ const Membresia = () => {
     // Hacer la solicitud para obtener las membresías
     const fetchData = async () => {
       try {
-        const response = await fetchApiM2(ENDPOINTS.GETALLMEMBRESIAS);
+        setLoading(true); // Establecer el estado de carga en true al iniciar la solicitud
+        const response = await fetchApiM2(ENDPOINTS.GET_ALL_MEMBRESIAS);
         if (Array.isArray(response)) {
           setData(response);
         } else if (response?.data && Array.isArray(response.data)) {
           setData(response.data);
         } else {
-          console.error("No se encontraron datos válidos:", response);
+          throw new Error("No se encontraron datos válidos");
         }
       } catch (error) {
-        console.error("Error al obtener las membresías:", error);
+        setError(error.message); // Guardar el mensaje de error en el estado
+      } finally {
+        setLoading(false); // Establecer el estado de carga en false cuando la solicitud ha terminado
       }
     };
 
@@ -44,29 +49,28 @@ const Membresia = () => {
   };
 
   // Mostrar mensaje mientras los datos se están cargando
-  if (data.length === 0) {
+  if (loading) {
     return <div>Cargando membresías...</div>;
+  }
+
+  // Mostrar mensaje de error si se produjo uno
+  if (error) {
+    return <div>Error: {error}</div>;
   }
 
   return (
     <div>
       <h1>Membresías</h1>
       <div className="membership-carousel-wrapper">
-        <button className="carousel-nav prev-btn" onClick={prevSlide}>
+        <button className="carousel-nav prev-btn" onClick={prevSlide} disabled={currentIndex === 0}>
           &#10094;
         </button>
         <div className="membership-carousel">
-          <div
-            className="membership-cards"
-            style={{
-              transform: `translateX(-${currentIndex * cardWidth}px)`,
-              width: `${data.length * cardWidth}px`,
-            }}
-          >
+          <div className="membership-cards">
             {data.map((membresia) => (
               <div className="card" key={membresia.idMembresia}>
                 <h3 className="membership-name">{membresia.nivel}</h3>
-                <p className="membership-price">${membresia.precioMensual}/mes</p>
+                <p className="membership-price">₡{membresia.precioMensual}/mes</p>
                 <ul className="membership-benefits">
                   {membresia.beneficios ? (
                     membresia.beneficios.split(";").map((benefit, index) => (
@@ -81,7 +85,7 @@ const Membresia = () => {
             ))}
           </div>
         </div>
-        <button className="carousel-nav next-btn" onClick={nextSlide}>
+        <button className="carousel-nav next-btn" onClick={nextSlide} disabled={currentIndex === maxIndex}>
           &#10095;
         </button>
       </div>

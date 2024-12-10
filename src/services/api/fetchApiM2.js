@@ -1,33 +1,56 @@
 const BASE_URL_2 = "http://localhost:5008/";
+//const BASE_URL_2 = "https://tiusr39pl.cuc-carrera-ti.ac.cr/BETOIC";
+
 
 // fetchApiM2 Cristian
-const fetchApiM2 = async (segmentoRuta, metodo = "GET", cuerpo = null, cabecera = {}) => {
-  try {
-    const opciones = {
-      method: metodo, // GET, POST, PUT, DELETE, etc.
-      headers: {
-        "Content-Type": "application/json", // Por defecto se usa JSON
-        ...cabecera, // Combina con encabezados personalizados
-      },
-    };
+const fetchApiM2 = async (segmentoRuta, metodo = "GET", cuerpo = null, cabecera = {}, timeout = 5000) => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
 
-    // Si el método no es GET, incluye el cuerpo (para POST, PUT, DELETE, etc.)
-    if (cuerpo && metodo !== "GET") {
-      opciones.body = JSON.stringify(cuerpo);
+    try {
+        const opciones = {
+            method: metodo,
+            headers: {
+                "Content-Type": "application/json",
+                ...cabecera,
+            },
+            signal: controller.signal,
+        };
+
+        if (cuerpo && (metodo !== "GET" && metodo !== "DELETE")) {
+            opciones.body = JSON.stringify(cuerpo);
+        }
+
+        const response = await fetch(`${BASE_URL_2}${segmentoRuta}`, opciones);
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+            let errorMessage;
+            try {
+                errorMessage = await response.json(); 
+            } catch (jsonError) {
+                errorMessage = await response.text(); 
+            }
+            throw new Error(`Error ${response.status}: ${errorMessage}`);
+        }
+
+
+        try {
+            return await response.json();
+        } catch (error) {
+            console.warn("No se pudo parsear la respuesta JSON. Devuelve un objeto vacío.");
+            return {}; 
+        }
+    } catch (error) {
+        clearTimeout(timeoutId); 
+        if (error.name === 'AbortError') {
+            console.error("Fetch abortado debido a tiempo de espera.");
+        } else {
+            console.error("Error en fetchApiM2:", error.message);
+        }
+        throw error; 
     }
-
-    const response = await fetch(`${BASE_URL_2}${segmentoRuta}`, opciones);
-
-    if (!response.ok) {
-      const errorMessage = await response.text(); // Leer el cuerpo de la respuesta para errores
-      throw new Error(`Error ${response.status}: ${errorMessage}`);
-    }
-
-    return await response.json(); // Devuelve la respuesta como JSON
-  } catch (error) {
-    console.error("Fetch error:", error.message);
-    throw error; // Propaga el error para manejarlo fuera de la función
-  }
 };
 
 export default fetchApiM2;

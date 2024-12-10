@@ -1,120 +1,157 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
-import '../estilos/agendaartistascon.css';
+import "../estilos/agendaartistascon.css";
 import fetchApiM2 from "../../../services/api/fetchApiM2";
 import ENDPOINTS from "../../../services/api/endpoints";
 
 const AgendaArtistaADMINCon = () => {
-
     const [searchTerm, setSearchTerm] = useState("");
     const [data, setData] = useState([]); // Estado para almacenar los datos
     const navigate = useNavigate(); // Hook para navegación
 
     useEffect(() => {
-        // Hacer la solicitud para obtener los datos
         const fetchData = async () => {
             try {
-                const response = await fetchApiM2(ENDPOINTS.GETARTISTAAVAILABILITY); // Endpoint de la API
+                const response = await fetchApiM2(ENDPOINTS.GET_ALL_AGENDAARTISTAS);
                 console.log("Respuesta de la API:", response); // Diagnóstico de la respuesta
 
-                // Verifica si los datos están presentes en la respuesta
                 if (Array.isArray(response)) {
-                    console.log("Datos obtenidos directamente como array:", response);
-                    setData(response); // Establecer los datos obtenidos en el estado
-                } else if (response && response.data && Array.isArray(response.data)) {
-                    console.log("Datos obtenidos dentro de 'data':", response.data);
-                    setData(response.data); // Establecer los datos si están dentro de "data"
+                    setData(response);
+                } else if (response?.data && Array.isArray(response.data)) {
+                    setData(response.data);
                 } else {
-                    console.error("No se encontraron datos en la respuesta. Respuesta:", response);
+                    console.error("No se encontraron datos en la respuesta.");
                 }
             } catch (error) {
                 console.error("Error al hacer el fetch:", error);
             }
         };
 
-        fetchData(); // Llamar a la función de fetch al montar el componente
-    }, []); // El array vacío asegura que esto solo se ejecute una vez cuando el componente se monta
+        fetchData();
+    }, []);
 
-    // Diagnóstico: Verifica los datos cargados en el estado
     useEffect(() => {
         console.log("Datos cargados en el estado:", data);
     }, [data]);
 
-    // Si los datos aún no están disponibles, muestra un mensaje de carga
     if (data.length === 0) {
-        return <div>Cargando...</div>; // Puedes mostrar un mensaje de "Cargando..." mientras los datos están vacíos
+        return <div>Cargando...</div>;
     }
 
-    // Comprobación: Verifica si los datos tienen las propiedades correctas
-    console.log("Datos para renderizar:", data);
-
-    // Filtrado de los datos
-    const filteredData = data.filter(
-        (row) =>
-            row.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            row.estiloTatuaje.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            row.fecha.includes(searchTerm)
-    );
-
-    // Navegar a la edición del artista
-    const handleEdit = (id) => {
-        navigate(`/pages/agendaartistaedit/${id}`); 
-    };
-
+    const handleCheckboxChange = async (idAgenda, Campo, Valor) => {
+      if (!idAgenda) {
+          console.error("IdAgenda no está definido");
+          return;
+      }
+  
+      const url = ENDPOINTS.UPDATE_DMP_AGENDA_ARTISTA.replace("{idAgenda}", idAgenda);
+      console.log("URL generada para el PATCH:", url);
+  
+      try {
+          const requestData = {
+              idAgenda: idAgenda,  
+              Campo: Campo,         
+              Valor: Valor,         
+          };
+  
+          console.log("Datos enviados al backend:", requestData);
+  
+          const response = await fetchApiM2(url, "PATCH", requestData);
+  
+          console.log("Respuesta exitosa:", response);
+          setData((prevData) =>
+              prevData.map((row) =>
+                  row.idAgenda === idAgenda
+                      ? { ...row, [Campo]: Valor }
+                      : row
+              )
+          );
+      } catch (error) {
+          console.error("Error al hacer el fetch:", error);
+      }
+  };
+  
+  
     return (
         <div className="table-wrapper">
-            <h1 className="table-title">Lista de agenda de artistas</h1>
+            <h1 className="table-title">Agenda de Artistas</h1>
             <div className="search-container">
                 <label htmlFor="search-input" className="search-label">Buscar:</label>
                 <input
                     type="text"
                     id="search-input"
                     className="search-input"
-                    placeholder="Buscar por cliente, estilo o fecha"
+                    placeholder="Buscar por nombre de artista o fecha"
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)} // Actualiza el término de búsqueda
+                    onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
             <table className="custom-table">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nombre artista</th>
-                        <th>Día</th>
-                        <th>Horario</th>
-                        <th>Horario miembro</th>
+                        <th>Nombre Artista</th>
+                        <th>Fecha</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Fin</th>
+                        <th>Miembro</th>
+                        <th>Disponible</th>
+                        <th>Publicar</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredData.length > 0 ? (
-                        filteredData.map((row) => (
-                            <tr key={row.id}>
-                                <td>{row.id}</td>
-                                <td>{row.nombre}</td>
-                                <td>{row.dia}</td>
-                                <td>{row.horario}</td>
-                                <td>{row.horarioMiembro}</td>
+                    {data
+                        .filter((row) => {
+                            const IdArtista = row.IdArtista || "";
+                            const fecha = new Date(row.fecha).toLocaleDateString() || "";
+                            return (
+                              IdArtista.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                fecha.includes(searchTerm)
+                            );
+                        })
+                        .map((row) => (
+                            <tr key={row.idAgenda}>
+                                <td>{row.idAgenda}</td>
+                                <td>{row.idArtista}</td>
+                                <td>{new Date(row.fecha).toLocaleDateString()}</td>
+                                <td>{row.horaInicio.substring(0, 5)}</td>
+                                <td>{row.horaFin.substring(0, 5)}</td>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        checked={row.esMembresia}
+                                        onChange={(e) => handleCheckboxChange(row.idAgenda, "esMembresia", e.target.checked)} // 'Campo' y 'Valor' utilizados correctamente
+                                    />
+                                </td>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        checked={row.disponible}
+                                        onChange={(e) => handleCheckboxChange(row.idAgenda, "disponible", e.target.checked)} // 'Campo' y 'Valor' utilizados correctamente
+                                    />
+                                </td>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        checked={row.publicar}
+                                        onChange={(e) => handleCheckboxChange(row.idAgenda, "publicar", e.target.checked)} // 'Campo' y 'Valor' utilizados correctamente
+                                    />
+                                </td>
                                 <td>
                                     <button
                                         className="edit-button"
-                                        onClick={() => handleEdit(row.id)}
+                                        onClick={() => navigate(`/pages/agendaartistasedit/${row.idAgenda}`)}
                                     >
                                         Editar
                                     </button>
                                 </td>
                             </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td colSpan="6" className="no-data">No se encontraron resultados</td>
-                        </tr>
-                    )}
+                        ))}
                 </tbody>
             </table>
         </div>
     );
 };
-
 
 export default AgendaArtistaADMINCon;

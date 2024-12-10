@@ -51,28 +51,23 @@
   border: 2px solid #ffffff;
 }
 
-/* Input and Select Styles */
 .input,
 .select,
 .date {
   padding: 10px;
   font-size: 1rem;
-  border: 2px solid #DA0037;
+  border: 2px solid #1e1e1e;
   border-radius: 5px;
-  background-color: #121212;
+  background-color: #1e1e1e; 
   color: #ffffff;
   width: 100%;
 }
 
-.select {
-  appearance: none;
+.input::placeholder,
+.select::placeholder {
+  color: #ffffff; 
 }
 
-.input::placeholder {
-  color: #ffffff;
-}
-
-/* Checkbox Style */
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -81,17 +76,52 @@
 }
 
 .button {
-  padding: 6px 3px; /* Menos padding para reducir el tamaño */
-  font-size: 0.85rem; /* Fuente más pequeña */
+  padding: 6px 3px; 
+  font-size: 0.85rem; 
   background-color: #DA0037;
   border: none;
   border-radius: 5px;
   color: #ffffff;
   cursor: pointer;
   transition: background-color 0.3s;
-  width: auto; /* Elimina el 100% de ancho, para que sea proporcional */
+  width: auto; 
 }
 
 .button:hover {
   background-color: #BE3144;
+}
+
+
+.react-select__control {
+  background-color: #1e1e1e !important;
+  border: 2px solid #DA0037 !important;
+  color: #ffffff !important;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.react-select__control--is-focused {
+  border-color: #BE3144 !important;
+}
+
+.react-select__placeholder,
+.react-select__single-value {
+  color: #ffffff !important;
+}
+
+.react-select__menu {
+  background-color: #1e1e1e !important;
+  border: 2px solid #DA0037 !important;
+}
+
+.react-select__option,
+.react-select__multi-value {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+.react-select__option--is-selected,
+.react-select__multi-value__label {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
 }
