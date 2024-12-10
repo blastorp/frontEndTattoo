@@ -1,4 +1,6 @@
 const BASE_URL_2 = "http://localhost:5008/";
+//const BASE_URL_2 = "https://tiusr39pl.cuc-carrera-ti.ac.cr/BETOIC";
+
 
 // fetchApiM2 Cristian
 const fetchApiM2 = async (segmentoRuta, metodo = "GET", cuerpo = null, cabecera = {}, timeout = 5000) => {
