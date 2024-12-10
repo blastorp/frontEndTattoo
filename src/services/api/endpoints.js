@@ -50,6 +50,7 @@ export const ENDPOINTS = {
     //Chatbot
     CREATE_INTERACCIONES_CHATBOT_REGISTRAR: "/Chatbot/RegistrarInteraccion",
 
+
   };
 
   export default ENDPOINTS
