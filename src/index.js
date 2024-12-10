@@ -16,6 +16,7 @@ import Galeria from './modulos1/Galeria/pages/galeria';
 import Membresia from './modulos1/Membresias/pages/membresia';
 import AgendaArtistas from './modulos1/AgendaArtistas/pages/agendaartistas';
 import NuevoTestimonio from './modulos1/Testimonios/pages/nuevotestimonio';
+import Chatbot from './modulos1/Chatbot/pages/chatbot';
 
 //Administrador
 import Dashboard from './modulos1/Inicio/pages/Dashboard';
@@ -162,6 +163,10 @@ const router = createBrowserRouter([
   {
     path: "/pages/palabrasvetadasedit/:id",  
     element: <PalabrasVetadasAdmEdit />
+  },
+  {
+    path: "/pages/chatbot",  
+    element: <Chatbot />
   },
 ]);
 

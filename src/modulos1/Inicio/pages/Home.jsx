@@ -10,6 +10,7 @@ function Inicio({ tituloPagina, children }) {
         <div className='contenedorContenidoPagina' >
             <InicioCliente />
         </div>
+        
     </MainAdmin>
   );
 }

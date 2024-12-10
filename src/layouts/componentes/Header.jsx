@@ -69,6 +69,12 @@ const Header = () => {
                   <i className="bi bi-shop"></i>
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/pages/chatbot" className="nav-link text-white">
+                  {/* Icono de Chatbot */}
+                  <i className="bi bi-chat-dots"></i>
+                </Link>
+              </li>
 
               {/* Dropdown para Perfil */}
               <li className="nav-item dropdown">

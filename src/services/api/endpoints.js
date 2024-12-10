@@ -47,6 +47,9 @@ export const ENDPOINTS = {
     UPDATE_GALERIA: "api/Galeria/{idTatuaje}",
     UPDATE_GALERIA_PUBLICAR: "api/Galeria/Actualizar/{idTatuaje}",
 
+    //Chatbot
+    CREATE_INTERACCIONES_CHATBOT_REGISTRAR: "/Chatbot/RegistrarInteraccion",
+
   };
 
   export default ENDPOINTS

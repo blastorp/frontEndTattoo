@@ -1,106 +1,115 @@
-/* Contenedor principal del formulario */
+/* GaleriaADMINAdd.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-layout {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se distribuyan en múltiples líneas */
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  overflow: hidden;
+  margin-right: 20px;
+  position: relative;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  font-size: 18px;
+  color: #999;
+}
+
 .form-container {
-    width: 100%;
-    max-width: 1600px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  /* Título del formulario */
-  .form-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #ffffff;
-  }
-  
-  /* Contenedor para el formulario y elementos */
-  .form-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    gap: 20px;
-    width: 100%;
-  }
-  
-  /* Formulario */
-  .formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    flex: 1;
-    padding: 20px;
-    background-color: #1e1e1e;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Etiquetas de los campos */
-  .form-label {
-    font-size: 1rem;
-    color: #ffffff;
-    margin-bottom: 5px;
-  }
-  
-  /* Contenedor para cada grupo del formulario */
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  /* Input, select y date */
-  .input,
-  .select,
-  .date,
-  .time {
-    padding: 10px;
-    font-size: 1rem;
-    border: 2px solid #DA0037;
-    border-radius: 5px;
-    background-color: #121212;
-    color: #ffffff;
-    width: 100%;
-  }
-  
-  .select {
-    appearance: none; /* Eliminar estilo por defecto */
-  }
-  
-  .input::placeholder {
-    color: #ffffff;
-  }
-  
-  /* Checkbox */
-  .checkbox-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #ffffff;
-  }
-  
-  /* Botón */
-  .button {
-    padding: 10px 15px;
-    font-size: 1rem;
-    background-color: #DA0037;
-    border: none;
-    border-radius: 5px;
-    color: #ffffff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%; /* Ancho completo */
-  }
-  
-  .button:hover {
-    background-color: #BE3144;
-  }
-  
-  .mensaje {
-    margin-top: 10px;
-    font-size: 1rem;
-    text-align: center;
-    color: #ffffff;
-  }
-  
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las filas se distribuyan en múltiples líneas */
+  gap: 15px;
+  width: calc(100% - 30px); /* Ajusta el ancho total menos el espacio entre filas */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: calc(50% - 15px); /* Ajusta el ancho para que haya dos columnas de 50% cada una */
+}
+
+.form-group label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.form-group input[type="checkbox"] {
+  width: 20px;
+}
+
+.form-group button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-group button:hover {
+  background-color: #0056b3;
+}
+
+.mensaje {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ff0000;
+  text-align: center;
+}

@@ -9,8 +9,8 @@ const fetchApiM2 = async (segmentoRuta, metodo = "GET", cuerpo = null, cabecera 
         const opciones = {
             method: metodo,
             headers: {
-                "Content-Type": "application/json", 
-                ...cabecera, 
+                "Content-Type": "application/json",
+                ...cabecera,
             },
             signal: controller.signal,
         };
@@ -21,7 +21,7 @@ const fetchApiM2 = async (segmentoRuta, metodo = "GET", cuerpo = null, cabecera 
 
         const response = await fetch(`${BASE_URL_2}${segmentoRuta}`, opciones);
 
-        clearTimeout(timeoutId); 
+        clearTimeout(timeoutId);
 
         if (!response.ok) {
             let errorMessage;
@@ -32,6 +32,7 @@ const fetchApiM2 = async (segmentoRuta, metodo = "GET", cuerpo = null, cabecera 
             }
             throw new Error(`Error ${response.status}: ${errorMessage}`);
         }
+
 
         try {
             return await response.json();
