@@ -28,9 +28,9 @@ const fetchApiM2 = async (segmentoRuta, metodo = "GET", cuerpo = null, cabecera 
         if (!response.ok) {
             let errorMessage;
             try {
-                errorMessage = await response.json(); // intenta obtener el mensaje de error como JSON
+                errorMessage = await response.json(); 
             } catch (jsonError) {
-                errorMessage = await response.text(); // fallback si no se puede parsear a JSON
+                errorMessage = await response.text(); 
             }
             throw new Error(`Error ${response.status}: ${errorMessage}`);
         }
