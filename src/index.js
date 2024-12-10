@@ -16,7 +16,18 @@ import UserDashboard from './modulos2/frontend/components/UserDashboard';
 import AdminDashboard from './modulos2/frontend/components/AdminDashboard';
 import ArtistDashboard from './modulos2/frontend/components/ArtistDashboard';
 import StudioHeadDashboard from './modulos2/frontend/components/StudioHeadDashboard';
+//administradores tabla 
+import AdminsPage from './modulos2/frontend/components/AdminList';
 
+// Ofertas
+import OfertasPage from './modulos2/frontend/pages/ofertaPage';
+import OfertaForm from './modulos2/frontend/components/ofertas/ofertaForm';
+
+//Tarjetas de Regalo
+import GiftCardPage from './modulos2/frontend/pages/giftCardPage';
+
+//faqs
+import FaqPage from './modulos2/frontend/pages/faqPage';
 
 
 //Cliente
@@ -62,6 +73,26 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />
+  },
+  {
+    path: "/admins", // Nueva ruta para Administradores
+    element: <AdminsPage />
+  },
+  {
+    path: "/ofertas",
+    element: <OfertasPage />,
+  },
+  {
+    path: "/ofertas/nueva",
+    element: <OfertaForm />,
+  },
+  {
+    path: "/giftCard",
+    element: <GiftCardPage />,
+  },
+  {
+    path: "/faq",
+    element: <FaqPage />,
   },
   {
     path: "/user-dashboard",

@@ -11,7 +11,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const tipoUsuarioValidado = tipo_usuario === 'cliente' || tipo_usuario === 'asistenteAdministrativo' || tipo_usuario === 'artista' || tipo_usuario === 'jefe' ? tipo_usuario : 'cliente'; // Valor predeterminado
+            const tipoUsuarioValidado = tipo_usuario === 'cliente' ? tipo_usuario : 'cliente'; // Valor predeterminado
             const response = await axios.post('http://localhost:5000/api/auth/register', {
                 nombre,
                 email,
@@ -58,9 +58,6 @@ const Register = () => {
                 >
                     <option value="">Seleccione el tipo de usuario</option>
                     <option value="cliente">Cliente</option>
-                    <option value="asistente">Asistente Administrativo</option>
-                    <option value="artista">Artista</option>
-                    <option value="jefe">Jefe de Estudio</option>
                 </select>
                 <button type="submit">Registrar</button>
             </form>
